@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onLineDetectionBtn(sender: AnyObject) {
-        print("line-detection btn clicked! :)");
+        print("line-detection btn clicked");
     }
 
 }

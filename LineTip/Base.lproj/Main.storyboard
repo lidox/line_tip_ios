@@ -82,6 +82,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jef-BP-vcx">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="V0g-r0-O5Z">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="K8Q-Yy-KD7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="MMy-lZ-KYR">
                             <connections>
                                 <action selector="addName:" destination="UxL-Dm-l8t" id="cxK-Tk-KQP"/>

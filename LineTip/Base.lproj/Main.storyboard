@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -54,68 +52,41 @@
             </objects>
             <point key="canvasLocation" x="505" y="432"/>
         </scene>
-        <!--User Management Table View Controller-->
-        <scene sceneID="0GG-ZL-GEQ">
+        <!--User Table View Controller-->
+        <scene sceneID="q1s-bw-seM">
             <objects>
-                <viewController id="UxL-Dm-l8t" customClass="UserManagementTableViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EzE-VE-i2o"/>
-                        <viewControllerLayoutGuide type="bottom" id="bft-0f-Fl4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rSr-wc-6Lf">
+                <viewController id="rUj-SJ-ezV" customClass="UserTableViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hq0-mw-XqW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aEw-zS-u2z">
-                                <rect key="frame" x="0.0" y="56" width="600" height="488"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="UxL-Dm-l8t" id="iBo-GK-HIR"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="aEw-zS-u2z" firstAttribute="centerX" secondItem="rSr-wc-6Lf" secondAttribute="centerX" id="2cT-4A-tch"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aEw-zS-u2z" secondAttribute="trailing" constant="-20" id="7js-1g-mC0"/>
-                            <constraint firstItem="aEw-zS-u2z" firstAttribute="top" secondItem="EzE-VE-i2o" secondAttribute="bottom" constant="-8" id="Bzo-3B-YUf"/>
-                            <constraint firstItem="aEw-zS-u2z" firstAttribute="centerY" secondItem="rSr-wc-6Lf" secondAttribute="centerY" id="iP4-Ty-6i4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="jef-BP-vcx">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="V0g-r0-O5Z">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="mei-jD-bUF">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mei-jD-bUF" id="YY8-Rs-bWe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="cDA-Za-BAG">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="VVW-fl-Ilv">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="K8Q-Yy-KD7"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="snj-nJ-isM"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Add" id="MMy-lZ-KYR">
-                                <connections>
-                                    <action selector="addName:" destination="UxL-Dm-l8t" id="cxK-Tk-KQP"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="O5U-tU-7QZ">
-                                <connections>
-                                    <segue destination="ngK-Xm-GCe" kind="show" id="Lpb-QF-siW"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="4fN-7J-TKV">
+                            <connections>
+                                <action selector="addUser:" destination="rUj-SJ-ezV" id="e2C-89-Bez"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="aEw-zS-u2z" id="3iX-c0-hsL"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c0j-BN-d1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94F-pF-GSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947" y="432"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="LeC-AE-xMO">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="ngK-Xm-GCe" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GO8-cU-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2585" y="432"/>
+            <point key="canvasLocation" x="1135" y="1128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">
@@ -128,7 +99,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UxL-Dm-l8t" kind="relationship" relationship="rootViewController" id="LDJ-WV-hY7"/>
+                        <segue destination="rUj-SJ-ezV" kind="relationship" relationship="rootViewController" id="PPw-J3-8vW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TQ-je-dlw" userLabel="First Responder" sceneMemberID="firstResponder"/>

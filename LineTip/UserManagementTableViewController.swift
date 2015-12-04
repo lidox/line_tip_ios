@@ -56,7 +56,7 @@ class UserManagementTableViewController: UIViewController, UITableViewDataSource
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print("set count done")
+            //print("set count done")
             return names.count
     }
     
@@ -66,7 +66,7 @@ class UserManagementTableViewController: UIViewController, UITableViewDataSource
             tableView.dequeueReusableCellWithIdentifier("Cell")
             
             cell!.textLabel!.text = names[indexPath.row]
-            print("set labels done")
+            //print("set labels done")
             return cell!
     }
     

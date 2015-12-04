@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,17 +20,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome text, Launcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YA0-ne-E8r">
-                                <rect key="frame" x="181" y="83" width="238" height="27"/>
+                                <rect key="frame" x="181" y="127" width="238" height="27"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="launcher_smile-jpg.png" translatesAutoresizingMaskIntoConstraints="NO" id="GAq-yt-kDS">
-                                <rect key="frame" x="172" y="126" width="256" height="256"/>
+                                <rect key="frame" x="172" y="170" width="256" height="256"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elH-bz-7jv">
-                                <rect key="frame" x="206" y="423" width="188" height="34"/>
+                                <rect key="frame" x="206" y="467" width="188" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="LINE DETECTION TEST"/>
                                 <connections>
@@ -87,11 +88,14 @@
                                 <segue destination="BYZ-38-t0r" kind="show" id="K8Q-Yy-KD7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="MMy-lZ-KYR">
-                            <connections>
-                                <action selector="addName:" destination="UxL-Dm-l8t" id="cxK-Tk-KQP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="MMy-lZ-KYR">
+                                <connections>
+                                    <action selector="addName:" destination="UxL-Dm-l8t" id="cxK-Tk-KQP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="O5U-tU-7QZ"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="aEw-zS-u2z" id="3iX-c0-hsL"/>

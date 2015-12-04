@@ -20,6 +20,7 @@
 		047941741C0C586F0093EDD6 /* UserManagementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941731C0C586F0093EDD6 /* UserManagementTableViewController.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
+		048064AB1C11809800F775CC /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064AA1C11809800F775CC /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		047941731C0C586F0093EDD6 /* UserManagementTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementTableViewController.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
+		048064AA1C11809800F775CC /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				0418F5CB1C083A4A00B90989 /* ViewController.swift */,
 				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
 				047941731C0C586F0093EDD6 /* UserManagementTableViewController.swift */,
+				048064AA1C11809800F775CC /* UserViewController.swift */,
 				0418F5D01C083A4A00B90989 /* Assets.xcassets */,
 				0418F5D21C083A4A00B90989 /* LaunchScreen.storyboard */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
+				048064AB1C11809800F775CC /* UserViewController.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,

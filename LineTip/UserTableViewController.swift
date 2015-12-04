@@ -36,6 +36,9 @@ class UserTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
         print("Row: \(row) value= \(names[row])")
+        
+        //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
+        //self.presentViewController(vc, animated: true, completion: nil)
     }
 
     @IBAction func addUser(sender: AnyObject) {
@@ -66,5 +69,17 @@ class UserTableViewController: UITableViewController {
         presentViewController(alert,
             animated: true,
             completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //print("prepareForSegue")
+        if segue.identifier == "toMainSegue" {
+            //print("prepareForSegue toMainSegue")
+            if let destination = segue.destinationViewController as? MainViewController {
+                if let index = tableView.indexPathForSelectedRow?.row {
+                    destination.userName = names[index]
+                }
+            }
+        }
     }
 }

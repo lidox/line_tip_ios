@@ -68,6 +68,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="sxP-u8-0uh" kind="show" identifier="toMainSegue" id="SMr-6J-9mk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -87,6 +90,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94F-pF-GSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1135" y="1128"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="lXG-z7-9HY">
+            <objects>
+                <viewController storyboardIdentifier="myVCId" id="sxP-u8-0uh" customClass="MainViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wUH-hF-MwW"/>
+                        <viewControllerLayoutGuide type="bottom" id="lwW-WC-ELI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="osz-hr-bmT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kng-xI-R2v">
+                                <rect key="frame" x="147" y="49" width="51" height="31"/>
+                            </switch>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hym-L0-Auc">
+                                <rect key="frame" x="308" y="77" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eDe-eY-scl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782" y="1128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">

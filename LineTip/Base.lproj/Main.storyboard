@@ -102,8 +102,23 @@
                     <view key="view" contentMode="scaleToFill" id="osz-hr-bmT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
+                                <rect key="frame" x="268" y="94" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AO8-OJ-gJR" firstAttribute="top" secondItem="wUH-hF-MwW" secondAttribute="bottom" constant="30" id="7Ja-oL-JdL"/>
+                            <constraint firstItem="AO8-OJ-gJR" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="HEM-Bu-idg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="medIdLabel" destination="AO8-OJ-gJR" id="CgR-Kg-zNq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDe-eY-scl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

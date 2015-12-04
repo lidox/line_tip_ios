@@ -17,8 +17,7 @@ class UserManagementTableViewController: UIViewController, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "MED IDs"
-        tableView.registerClass(UITableViewCell.self,
-            forCellReuseIdentifier: "Cell")
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     @IBAction func addName(sender: AnyObject) {
@@ -53,25 +52,29 @@ class UserManagementTableViewController: UIViewController, UITableViewDataSource
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            print("set count done")
             return names.count
     }
     
-    func tableView(tableView: UITableView,
-        cellForRowAtIndexPath
-        indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             
             let cell =
             tableView.dequeueReusableCellWithIdentifier("Cell")
             
             cell!.textLabel!.text = names[indexPath.row]
-            
+            print("set labels done")
             return cell!
+    }
+    
+    func tableView(var tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView = self.tableView
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let row = indexPath.row
+        print("Row: \(row) value= \(names[row])")
     }
 
 }

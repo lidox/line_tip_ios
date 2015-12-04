@@ -94,7 +94,11 @@
                                     <action selector="addName:" destination="UxL-Dm-l8t" id="cxK-Tk-KQP"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="O5U-tU-7QZ"/>
+                            <barButtonItem title="Item" id="O5U-tU-7QZ">
+                                <connections>
+                                    <segue destination="ngK-Xm-GCe" kind="show" id="Lpb-QF-siW"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -104,6 +108,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0j-BN-d1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1947" y="432"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="LeC-AE-xMO">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="ngK-Xm-GCe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GO8-cU-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2585" y="432"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">

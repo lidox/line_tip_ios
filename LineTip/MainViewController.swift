@@ -37,26 +37,16 @@ class MainViewController: UIViewController {
         vc1.didMoveToParentViewController(self)
         
         
-        let vc2 = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
+        let vc2 = StatisticsViewController(nibName: "SettingsViewController", bundle: nil)
         var frame2 = vc2.view.frame
-        frame2.origin.x = self.view.frame.size.width
+        frame2.origin.x = self.view.frame.size.width * 2
         vc2.view.frame = frame2;
         
         self.addChildViewController(vc2)
         self.scrollView.addSubview(vc2.view)
         vc2.didMoveToParentViewController(self)
         
-        
-        let vc3 = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
-        var frame3 = vc3.view.frame
-        frame3.origin.x = self.view.frame.size.width
-        vc3.view.frame = frame3;
-        
-        self.addChildViewController(vc3)
-        self.scrollView.addSubview(vc3.view)
-        vc3.didMoveToParentViewController(self)
-        
-        // video bei 10:27: https://www.youtube.com/watch?v=3jAlg5BnYUU
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
         
     }
     

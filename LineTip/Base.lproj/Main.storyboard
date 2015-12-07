@@ -36,11 +36,20 @@
                                     <segue destination="mvJ-h4-gin" kind="show" id="K7M-Zk-Kft"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDu-3o-XJA">
+                                <rect key="frame" x="206" y="503" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="U1z-gF-UhE" kind="show" id="OH7-Kp-a5D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YA0-ne-E8r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="El2-UX-2lP"/>
                             <constraint firstItem="YA0-ne-E8r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="63" id="aGF-iW-as5"/>
+                            <constraint firstItem="SDu-3o-XJA" firstAttribute="top" secondItem="elH-bz-7jv" secondAttribute="bottom" constant="2" id="bxL-Sk-zpS"/>
+                            <constraint firstItem="SDu-3o-XJA" firstAttribute="leading" secondItem="elH-bz-7jv" secondAttribute="leading" id="cU4-qb-nzq"/>
                             <constraint firstItem="GAq-yt-kDS" firstAttribute="top" secondItem="YA0-ne-E8r" secondAttribute="bottom" constant="16" id="h9L-Pf-CCK"/>
                             <constraint firstItem="elH-bz-7jv" firstAttribute="top" secondItem="GAq-yt-kDS" secondAttribute="bottom" constant="41" id="la8-69-yvI"/>
                             <constraint firstItem="GAq-yt-kDS" firstAttribute="centerX" secondItem="YA0-ne-E8r" secondAttribute="centerX" id="nmK-go-7YZ"/>
@@ -103,22 +112,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
-                                <rect key="frame" x="0.0" y="123" width="600" height="477"/>
-                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
-                                <rect key="frame" x="268" y="94" width="65" height="21"/>
+                                <rect key="frame" x="268" y="72" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
+                                <rect key="frame" x="0.0" y="92" width="600" height="508"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AO8-OJ-gJR" firstAttribute="top" secondItem="wUH-hF-MwW" secondAttribute="bottom" constant="30" id="7Ja-oL-JdL"/>
-                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="AO8-OJ-gJR" secondAttribute="bottom" constant="8" symbolic="YES" id="9LV-eY-PO5"/>
+                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="AO8-OJ-gJR" secondAttribute="bottom" constant="-1" id="9LV-eY-PO5"/>
                             <constraint firstItem="AO8-OJ-gJR" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="HEM-Bu-idg"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="leading" secondItem="osz-hr-bmT" secondAttribute="leading" id="Jl5-ZJ-hSo"/>
+                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="wUH-hF-MwW" secondAttribute="bottom" constant="28" id="Nra-Vr-rjS"/>
+                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="UDf-gD-94R"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="bottom" secondItem="lwW-WC-ELI" secondAttribute="top" id="l54-Od-c7k"/>
                             <constraint firstAttribute="trailing" secondItem="Kx6-XX-yKP" secondAttribute="trailing" id="xcd-5d-7eh"/>
                         </constraints>
@@ -131,6 +141,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDe-eY-scl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1782" y="1128"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Jba-07-V4f">
+            <objects>
+                <viewController id="U1z-gF-UhE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QpQ-k2-910"/>
+                        <viewControllerLayoutGuide type="bottom" id="OzC-1k-uUp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uY3-MK-RpN" customClass="LineDetectionUIView" customModule="LineTip" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="piX-ta-s0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="1128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">

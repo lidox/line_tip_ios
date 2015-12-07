@@ -27,6 +27,7 @@
 		048064BF1C11FCA100F775CC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048064BD1C11FCA100F775CC /* SettingsViewController.xib */; };
 		048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064C01C11FD8300F775CC /* ResultsViewController.swift */; };
 		048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048064C11C11FD8300F775CC /* ResultsViewController.xib */; };
+		048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064C41C157E2800F775CC /* LineDetectionUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		048064BD1C11FCA100F775CC /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		048064C01C11FD8300F775CC /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		048064C11C11FD8300F775CC /* ResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
+		048064C41C157E2800F775CC /* LineDetectionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDetectionUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,13 +129,14 @@
 				0418F5C91C083A4A00B90989 /* AppDelegate.swift */,
 				0418F5CB1C083A4A00B90989 /* ViewController.swift */,
 				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
-				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
 				0418F5D01C083A4A00B90989 /* Assets.xcassets */,
 				0418F5D21C083A4A00B90989 /* LaunchScreen.storyboard */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				0418F5FC1C08433B00B90989 /* Images.xcassets */,
 				047941791C0C5F880093EDD6 /* model */,
+				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
+				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
 				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
@@ -319,6 +322,7 @@
 			files = (
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
+				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,

@@ -16,16 +16,20 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orH-5W-afX">
-                    <rect key="frame" x="64" y="49" width="56" height="21"/>
+                    <rect key="frame" x="272" y="22" width="56" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSp-lJ-lfo">
+                    <rect key="frame" x="268" y="56" width="64" height="30"/>
+                    <state key="normal" title="New Test"/>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="0.88124064912601985" blue="0.18065268330555095" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="orH-5W-afX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="BOc-1x-uGS"/>
-                <constraint firstItem="orH-5W-afX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="49" id="ihT-Ky-Qs6"/>
+                <constraint firstItem="orH-5W-afX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="272" id="BOc-1x-uGS"/>
+                <constraint firstItem="orH-5W-afX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="ihT-Ky-Qs6"/>
             </constraints>
         </view>
     </objects>

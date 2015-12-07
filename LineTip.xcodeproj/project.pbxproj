@@ -28,6 +28,9 @@
 		048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064C01C11FD8300F775CC /* ResultsViewController.swift */; };
 		048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048064C11C11FD8300F775CC /* ResultsViewController.xib */; };
 		048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064C41C157E2800F775CC /* LineDetectionUIView.swift */; };
+		048064D11C15B73900F775CC /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D01C15B73900F775CC /* Line.swift */; };
+		048064D31C15B76B00F775CC /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 048064D21C15B76B00F775CC /* ball.png */; };
+		048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D41C15B7B500F775CC /* LineDetectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		048064C01C11FD8300F775CC /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		048064C11C11FD8300F775CC /* ResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		048064C41C157E2800F775CC /* LineDetectionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDetectionUIView.swift; sourceTree = "<group>"; };
+		048064D01C15B73900F775CC /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		048064D21C15B76B00F775CC /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		048064D41C15B7B500F775CC /* LineDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDetectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 				0418F5FC1C08433B00B90989 /* Images.xcassets */,
 				047941791C0C5F880093EDD6 /* model */,
 				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
+				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
 				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
@@ -168,6 +175,7 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				048064D21C15B76B00F775CC /* ball.png */,
 				0418F5F81C083D6400B90989 /* launcher_smile-jpg.png */,
 				0418F5F91C083D6400B90989 /* Line-icon.png */,
 			);
@@ -177,6 +185,7 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				048064D01C15B73900F775CC /* Line.swift */,
 				047941771C0C5A300093EDD6 /* Trial.swift */,
 				047941751C0C59CA0093EDD6 /* User.swift */,
 			);
@@ -293,6 +302,7 @@
 				0418F5FA1C083D6400B90989 /* launcher_smile-jpg.png in Resources */,
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,
+				048064D31C15B76B00F775CC /* ball.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,
@@ -326,9 +336,11 @@
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
+				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
 				048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */,
+				048064D11C15B73900F775CC /* Line.swift in Sources */,
 				048064BE1C11FCA100F775CC /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

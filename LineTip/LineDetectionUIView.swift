@@ -10,7 +10,10 @@ import UIKit
 
 class LineDetectionUIView: UIView {
 
+    var line = Line(x1: 0, y1: 800, x2: 400, y2: 800)
+    
     override func drawRect(rect: CGRect) {
+        
         let context = UIGraphicsGetCurrentContext()
         
         // line width
@@ -24,8 +27,17 @@ class LineDetectionUIView: UIView {
         CGContextSetStrokeColorWithColor(context, color)
         
         // draw points
-        CGContextMoveToPoint(context, 30, 30)
-        CGContextAddLineToPoint(context, 300, 400)
+        CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
+        CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
+        
+        // image
+        let imageName = "ball.png"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: 75, height: 75)
+        self.addSubview(imageView)
+        
+        print("LineDetectionUIView drawRect done: \(line.getMidpointX()):\(line.getMidpointY())")
         
         CGContextStrokePath(context)
     }

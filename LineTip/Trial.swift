@@ -11,6 +11,7 @@ import UIKit
 class Trial: NSObject {
     var hits : Int = 0
     var fails : Int = 0
+    var overflow : Int = 0
     var timeStamp: String
     var duration: String = ""
     
@@ -32,5 +33,13 @@ class Trial: NSObject {
         else {
             return "\(strMinutes):\(strSeconds)"
         }
+    }
+    
+    func countMiss() {
+        self.fails++
+    }
+    
+    func countHit() {
+        self.hits++
     }
 }

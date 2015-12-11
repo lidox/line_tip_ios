@@ -28,7 +28,6 @@ class LineDetectionUIView: UIView {
     }
     
     func draw(){
-        print("conetect descriptio: \(context.debugDescription)")
         let isLastLineDrawn = trial.overflowCounter == (lines.count)
         if(isLastLineDrawn){
             trial.overflowCounter = 0
@@ -41,15 +40,13 @@ class LineDetectionUIView: UIView {
     
     func onHit(img: AnyObject){
         print("Hit line")
-        //if()
-        //if trial startTime==0 --> start = new date
-        trial.countHit()
-        draw()
+        //trial.countHit()
+        //draw()
     }
     
     func onFail(img: AnyObject){
         print("Failed to hit line")
-        trial.countMiss()
+        //trial.countMiss()
     }
     
     func getLineColor() -> CGColor {
@@ -64,9 +61,6 @@ class LineDetectionUIView: UIView {
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
-        let imageName = imageNameString
-        let image = UIImage(named: imageName)
-        //myImageView = UIImageView(image: image!)
         myImageView.alpha = spotAlpha
         myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
         self.addSubview(myImageView)

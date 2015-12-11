@@ -31,6 +31,8 @@
 		048064D11C15B73900F775CC /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D01C15B73900F775CC /* Line.swift */; };
 		048064D31C15B76B00F775CC /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 048064D21C15B76B00F775CC /* ball.png */; };
 		048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D41C15B7B500F775CC /* LineDetectionViewController.swift */; };
+		048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D61C1AE52C00F775CC /* LineGenerator.swift */; };
+		048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D81C1AE89800F775CC /* PreGeneratedLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		048064D01C15B73900F775CC /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		048064D21C15B76B00F775CC /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		048064D41C15B7B500F775CC /* LineDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDetectionViewController.swift; sourceTree = "<group>"; };
+		048064D61C1AE52C00F775CC /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
+		048064D81C1AE89800F775CC /* PreGeneratedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreGeneratedLine.swift; path = ../PreGeneratedLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,8 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				048064D81C1AE89800F775CC /* PreGeneratedLine.swift */,
+				048064D61C1AE52C00F775CC /* LineGenerator.swift */,
 				048064D01C15B73900F775CC /* Line.swift */,
 				047941771C0C5A300093EDD6 /* Trial.swift */,
 				047941751C0C59CA0093EDD6 /* User.swift */,
@@ -335,7 +341,9 @@
 				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
+				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
+				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,

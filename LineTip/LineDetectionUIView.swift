@@ -9,10 +9,6 @@
 import UIKit
 
 class LineDetectionUIView: UIView {
-
-    var line = Line(x1: 0, y1: 100, x2: 400, y2: 100)
-    var line2 = Line(x1: 0, y1: 200, x2: 400, y2: 200)
-    var line3 = Line(x1: 0, y1: 500, x2: 400, y2: 500)
     
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
@@ -20,23 +16,25 @@ class LineDetectionUIView: UIView {
     var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
     
     override func drawRect(rect: CGRect) {
-        lines.append(line)
-        lines.append(line2)
-        lines.append(line3)
-        
-        drawLine(lines[trial.overflowCounter])
+        //print("drawRect")
+        draw()
     }
     
     func draw(){
         let isLastLineDrawn = trial.overflowCounter == (lines.count)
-        
         if(isLastLineDrawn){
             trial.overflowCounter = 0
         }
         
         print("counter:\(trial.overflowCounter)")
         
-        drawLine(lines[trial.overflowCounter])
+        let isFirstLineNotDrawnYet = trial.hits == 0 && trial.fails == 0
+        if(isFirstLineNotDrawnYet){
+            context = UIGraphicsGetCurrentContext()
+        }
+        
+        drawRawLine(lines[trial.overflowCounter], lineWidth: getLineWidth(), lineColor: getLineColor())
+        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
     }
     
     func onFail(img: AnyObject){
@@ -63,9 +61,6 @@ class LineDetectionUIView: UIView {
     }
     
     func drawRawLine(line: Line, lineWidth: CGFloat, lineColor: CGColor) {
-        if(trial.hits == 0 && trial.fails == 0){
-            context = UIGraphicsGetCurrentContext()
-        }
         CGContextClearRect(context, self.bounds)
         CGContextSetLineWidth(context, lineWidth)
         CGContextSetStrokeColorWithColor(context, lineColor)
@@ -77,17 +72,16 @@ class LineDetectionUIView: UIView {
         
     }
     
-    func drawLine(line: Line) {
-        drawRawLine(line, lineWidth: getLineWidth(), lineColor: getLineColor())
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: line)
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+        print("init")
+        var lineGenerator : LineGenerator
+        lineGenerator = PreGeneratedLine()
+        lines = lineGenerator.getLines()
     }
     
     

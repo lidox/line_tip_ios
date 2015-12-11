@@ -29,24 +29,19 @@ class LineDetectionUIView: UIView {
     
     func draw(){
         let isLastLineDrawn = trial.overflowCounter == (lines.count)
+        
         if(isLastLineDrawn){
             trial.overflowCounter = 0
         }
-        print("counter:\(trial.overflowCounter)")
         
+        print("counter:\(trial.overflowCounter)")
         
         drawLine(lines[trial.overflowCounter])
     }
     
-    func onHit(img: AnyObject){
-        print("Hit line")
-        //trial.countHit()
-        //draw()
-    }
-    
     func onFail(img: AnyObject){
         print("Failed to hit line")
-        //trial.countMiss()
+        trial.countMiss()
     }
     
     func getLineColor() -> CGColor {

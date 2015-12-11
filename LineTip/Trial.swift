@@ -11,7 +11,7 @@ import UIKit
 class Trial: NSObject {
     var hits : Int = 0
     var fails : Int = 0
-    var overflow : Int = 0
+    var overflowCounter : Int = 0
     var timeStamp: String
     var duration: String = ""
     
@@ -41,5 +41,6 @@ class Trial: NSObject {
     
     func countHit() {
         self.hits++
+        self.overflowCounter++
     }
 }

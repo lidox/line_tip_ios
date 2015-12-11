@@ -17,27 +17,31 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var counter = 0
     
     override func drawRect(rect: CGRect) {
         lines.append(line)
         lines.append(line2)
         lines.append(line3)
         
-        drawRawLine(lines[counter])
+        drawRawLine(lines[trial.overflowCounter])
         
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: self.line)
+        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
         
-        print("LineDetectionUIView drawRect done: \(line.getMidpointX()):\(line.getMidpointY())")
+        print("LineDetectionUIView drawRect done: \(lines[trial.overflowCounter].getMidpointX()):\(lines[trial.overflowCounter].getMidpointY())")
         
     }
     
     func draw(){
-    
-        drawRawLine(lines[counter])
-        print("counter:\(counter)")
+        let isLastLineDrawn = trial.overflowCounter == (lines.count)
+        if(isLastLineDrawn){
+            trial.overflowCounter = 0
+        }
+        print("counter:\(trial.overflowCounter)")
+        
+        
+        drawRawLine(lines[trial.overflowCounter])
         drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: self.line)
-        counter++
+        
     }
     
     func onHit(img: AnyObject){
@@ -86,9 +90,8 @@ class LineDetectionUIView: UIView {
     }
     
     func drawRawLine(line: Line) {
-        if(counter==0){
+        if(trial.hits == 0 && trial.fails == 0){
             context = UIGraphicsGetCurrentContext()
-            counter++
         }
         CGContextSetLineWidth(context, getLineWidth())
         CGContextSetStrokeColorWithColor(context, getColor())

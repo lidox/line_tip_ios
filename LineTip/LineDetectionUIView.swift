@@ -13,7 +13,19 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
+    var myImageView  = UIImageView(image: UIImage(named: "ball.png")) 
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        print("init")
+        var lineGenerator : LineGenerator
+        lineGenerator = getLineGenerator()
+        lines = lineGenerator.getLines()
+    }
     
     override func drawRect(rect: CGRect) {
         //print("drawRect")
@@ -34,23 +46,12 @@ class LineDetectionUIView: UIView {
         }
         
         drawRawLine(lines[trial.overflowCounter], lineWidth: getLineWidth(), lineColor: getLineColor())
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
+        drawSpot(getImageName(), spotWidth: getSpotWidth(), spotHeight: getSpotHeight(), spotAlpha: 1, line: lines[trial.overflowCounter])
     }
     
     func onFail(img: AnyObject){
-        print("Failed to hit line")
+        print("failed to hit line")
         trial.countMiss()
-    }
-    
-    func getLineColor() -> CGColor {
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let components: [CGFloat] = [255, 255, 255, 255]
-        let color = CGColorCreate(colorSpace, components)
-        return color!
-    }
-    
-    func getLineWidth() -> CGFloat {
-        return 5.0
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
@@ -72,16 +73,31 @@ class LineDetectionUIView: UIView {
         
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    func getLineWidth() -> CGFloat {
+        return 5.0
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        print("init")
-        var lineGenerator : LineGenerator
-        lineGenerator = PreGeneratedLine()
-        lines = lineGenerator.getLines()
+    func getSpotWidth() -> Double {
+        return 75
+    }
+    
+    func getSpotHeight() -> Double {
+        return 75
+    }
+    
+    func getImageName() -> String {
+        return "ball.png"
+    }
+    
+    func getLineColor() -> CGColor {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let components: [CGFloat] = [255, 255, 255, 255]
+        let color = CGColorCreate(colorSpace, components)
+        return color!
+    }
+    
+    func getLineGenerator() -> LineGenerator {
+        return PreGeneratedLine()
     }
     
     

@@ -17,7 +17,6 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    //var myImageView : UIImageView!
     var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
     
     override func drawRect(rect: CGRect) {
@@ -25,9 +24,7 @@ class LineDetectionUIView: UIView {
         lines.append(line2)
         lines.append(line3)
         
-        drawRawLine(lines[trial.overflowCounter])
-        
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
+        drawLine(lines[trial.overflowCounter])
     }
     
     func draw(){
@@ -39,8 +36,7 @@ class LineDetectionUIView: UIView {
         print("counter:\(trial.overflowCounter)")
         
         
-        drawRawLine(lines[trial.overflowCounter])
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
+        drawLine(lines[trial.overflowCounter])
     }
     
     func onHit(img: AnyObject){
@@ -56,7 +52,7 @@ class LineDetectionUIView: UIView {
         trial.countMiss()
     }
     
-    func getColor() -> CGColor {
+    func getLineColor() -> CGColor {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let components: [CGFloat] = [255, 255, 255, 255]
         let color = CGColorCreate(colorSpace, components)
@@ -74,34 +70,27 @@ class LineDetectionUIView: UIView {
         myImageView.alpha = spotAlpha
         myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
         self.addSubview(myImageView)
-        
-        // tap listener
-        //let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
-        //myImageView.userInteractionEnabled = true
-        //myImageView.addGestureRecognizer(tapGestureRecognizer)
-        
-        //let uiViewGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFail:"))
-        //self.userInteractionEnabled = true
-        //self.addGestureRecognizer(uiViewGestureRecognizer)
-        
-        
         return myImageView
     }
     
-    func drawRawLine(line: Line) {
+    func drawRawLine(line: Line, lineWidth: CGFloat, lineColor: CGColor) {
         if(trial.hits == 0 && trial.fails == 0){
             context = UIGraphicsGetCurrentContext()
         }
         CGContextClearRect(context, self.bounds)
-        CGContextSetLineWidth(context, getLineWidth())
-        CGContextSetStrokeColorWithColor(context, getColor())
-        //x1: 0, y1: 100, x2: 400, y2: 10)
+        CGContextSetLineWidth(context, lineWidth)
+        CGContextSetStrokeColorWithColor(context, lineColor)
         CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
         
         CGContextStrokePath(context)
         print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
-
+        
+    }
+    
+    func drawLine(line: Line) {
+        drawRawLine(line, lineWidth: getLineWidth(), lineColor: getLineColor())
+        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: line)
     }
     
     override init(frame: CGRect) {

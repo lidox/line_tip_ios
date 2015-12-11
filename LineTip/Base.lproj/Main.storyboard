@@ -142,10 +142,10 @@
             </objects>
             <point key="canvasLocation" x="1782" y="1128"/>
         </scene>
-        <!--View Controller-->
+        <!--Line Detection View Controller-->
         <scene sceneID="Jba-07-V4f">
             <objects>
-                <viewController id="U1z-gF-UhE" sceneMemberID="viewController">
+                <viewController id="U1z-gF-UhE" customClass="LineDetectionViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QpQ-k2-910"/>
                         <viewControllerLayoutGuide type="bottom" id="OzC-1k-uUp"/>
@@ -155,6 +155,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="uiView" destination="uY3-MK-RpN" id="gxU-0C-bAQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piX-ta-s0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

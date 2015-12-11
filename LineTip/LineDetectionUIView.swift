@@ -10,13 +10,15 @@ import UIKit
 
 class LineDetectionUIView: UIView {
 
-    var line = Line(x1: 0, y1: 800, x2: 400, y2: 800)
-    var line2 = Line(x1: 20, y1: 200, x2: 400, y2: 200)
-    var line3 = Line(x1: 30, y1: 500, x2: 400, y2: 500)
+    var line = Line(x1: 0, y1: 100, x2: 400, y2: 100)
+    var line2 = Line(x1: 0, y1: 200, x2: 400, y2: 200)
+    var line3 = Line(x1: 0, y1: 500, x2: 400, y2: 500)
     
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
+    //var myImageView : UIImageView!
+    var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
     
     override func drawRect(rect: CGRect) {
         lines.append(line)
@@ -26,12 +28,10 @@ class LineDetectionUIView: UIView {
         drawRawLine(lines[trial.overflowCounter])
         
         drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
-        
-        print("LineDetectionUIView drawRect done: \(lines[trial.overflowCounter].getMidpointX()):\(lines[trial.overflowCounter].getMidpointY())")
-        
     }
     
     func draw(){
+        print("conetect descriptio: \(context.debugDescription)")
         let isLastLineDrawn = trial.overflowCounter == (lines.count)
         if(isLastLineDrawn){
             trial.overflowCounter = 0
@@ -40,8 +40,7 @@ class LineDetectionUIView: UIView {
         
         
         drawRawLine(lines[trial.overflowCounter])
-        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: self.line)
-        
+        drawSpot("ball.png", spotWidth: 75, spotHeight: 75, spotAlpha: 1, line: lines[trial.overflowCounter])
     }
     
     func onHit(img: AnyObject){
@@ -71,33 +70,38 @@ class LineDetectionUIView: UIView {
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
         let imageName = imageNameString
         let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
-        imageView.alpha = spotAlpha
-        imageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
-        self.addSubview(imageView)
+        //myImageView = UIImageView(image: image!)
+        myImageView.alpha = spotAlpha
+        myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
+        self.addSubview(myImageView)
         
         // tap listener
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
-        imageView.userInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
+        //let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
+        //myImageView.userInteractionEnabled = true
+        //myImageView.addGestureRecognizer(tapGestureRecognizer)
         
-        let uiViewGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFail:"))
-        self.userInteractionEnabled = true
-        self.addGestureRecognizer(uiViewGestureRecognizer)
+        //let uiViewGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFail:"))
+        //self.userInteractionEnabled = true
+        //self.addGestureRecognizer(uiViewGestureRecognizer)
         
         
-        return imageView
+        return myImageView
     }
     
     func drawRawLine(line: Line) {
         if(trial.hits == 0 && trial.fails == 0){
             context = UIGraphicsGetCurrentContext()
         }
+        CGContextClearRect(context, self.bounds)
         CGContextSetLineWidth(context, getLineWidth())
         CGContextSetStrokeColorWithColor(context, getColor())
+        //x1: 0, y1: 100, x2: 400, y2: 10)
         CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
+        
         CGContextStrokePath(context)
+        print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
+
     }
     
     override init(frame: CGRect) {

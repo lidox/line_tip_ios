@@ -14,28 +14,20 @@ class LineDetectionViewController: UIViewController {
     //@IBOutlet weak var spot: UIImageView!
     //@IBOutlet var uiView: LineDetectionUIView!
     
+    @IBOutlet var uiView: LineDetectionUIView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        print("viewDidLoad")
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
+        uiView.myImageView.userInteractionEnabled = true
+        uiView.myImageView.addGestureRecognizer(tapGestureRecognizer)
         
-        //print("LineDetectionViewController viewDidLoad")
-        
-        // hier die line setzen
-        //uiView.line = Line(x1: 180, y1: 400, x2: 600, y2: 400)
-        
-        
-        // set spotSize
-        //spot.frame = CGRectMake(0, 0, 50, 50)
-        
-        //var frame:CGRect = spot.frame
-        //frame.origin.y = CGFloat(uiView.line.getMidpointY())
-        //frame.origin.x = CGFloat(uiView.line.getMidpointX())
-        
-        //spot.frame = CGRect(x: CGFloat(uiView.line.getMidpointX()), y: CGFloat(uiView.line.getMidpointY()), width: spot.frame.size.width, height: spot.frame.size.height)
-        
-        //spot.frame = CGRect(origin: spot.frame.origin, size: spot.frame.size)
-        
+        let uiViewGestureRecognizer = UITapGestureRecognizer(target:uiView, action:Selector("onFail:"))
+        uiView.userInteractionEnabled = true
+        uiView.addGestureRecognizer(uiViewGestureRecognizer)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,6 +37,19 @@ class LineDetectionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func onHit(img: AnyObject){
+        print("CONTROLLER Hit line")
+        uiView.trial.countHit()
+        uiView.draw()
+        uiView.setNeedsDisplay()
+ 
+    }
+    
+    func onFail(img: AnyObject){
+        print("CONTROLLER Failed to hit line")
+        uiView.trial.countMiss()
     }
     
     

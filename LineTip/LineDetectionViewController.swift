@@ -28,13 +28,15 @@ class LineDetectionViewController: UIViewController {
     }
     
     func onHit(img: AnyObject){
-        print("CONTROLLER Hit line")
+        uiView.trial.startCountingTime()
         uiView.trial.countHit()
         uiView.setNeedsDisplay()
+        print("CONTROLLER Hit line")
     }
     
     func onFinish(img: AnyObject){
         print("Trial finished")
+        uiView.trial.stopCountingTime()
     }
     
     func addHitListener() {

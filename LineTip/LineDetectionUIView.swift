@@ -50,8 +50,9 @@ class LineDetectionUIView: UIView {
     }
     
     func onFail(img: AnyObject){
-        print("failed to hit line")
+        trial.startCountingTime()
         trial.countMiss()
+        print("failed to hit line")
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {

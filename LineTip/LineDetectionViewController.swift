@@ -10,6 +10,7 @@ import UIKit
 
 class LineDetectionViewController: UIViewController {
     
+    @IBOutlet weak var finishImg: UIImageView!
     @IBOutlet var uiView: LineDetectionUIView!
     
     override func viewDidLoad() {
@@ -32,6 +33,10 @@ class LineDetectionViewController: UIViewController {
         uiView.setNeedsDisplay()
     }
     
+    func onFinish(img: AnyObject){
+        print("Trial finished")
+    }
+    
     func addHitListener() {
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
         uiView.myImageView.userInteractionEnabled = true
@@ -40,5 +45,9 @@ class LineDetectionViewController: UIViewController {
         let uiViewGestureRecognizer = UITapGestureRecognizer(target:uiView, action:Selector("onFail:"))
         uiView.userInteractionEnabled = true
         uiView.addGestureRecognizer(uiViewGestureRecognizer)
+        
+        let finishTrialGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFinish:"))
+        finishImg.userInteractionEnabled = true
+        finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
     }
 }

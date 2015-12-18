@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040691471C24464F00E2F9B2 /* finish_trial.png in Resources */ = {isa = PBXBuildFile; fileRef = 040691461C24464F00E2F9B2 /* finish_trial.png */; };
 		0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5C91C083A4A00B90989 /* AppDelegate.swift */; };
 		0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5CB1C083A4A00B90989 /* ViewController.swift */; };
 		0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5CD1C083A4A00B90989 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040691461C24464F00E2F9B2 /* finish_trial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finish_trial.png; sourceTree = "<group>"; };
 		0418F5C61C083A4A00B90989 /* LineTip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineTip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0418F5C91C083A4A00B90989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0418F5CB1C083A4A00B90989 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				048064D21C15B76B00F775CC /* ball.png */,
+				040691461C24464F00E2F9B2 /* finish_trial.png */,
 				0418F5F81C083D6400B90989 /* launcher_smile-jpg.png */,
 				0418F5F91C083D6400B90989 /* Line-icon.png */,
 			);
@@ -305,6 +308,7 @@
 			files = (
 				048064BF1C11FCA100F775CC /* SettingsViewController.xib in Resources */,
 				0418F5D41C083A4A00B90989 /* LaunchScreen.storyboard in Resources */,
+				040691471C24464F00E2F9B2 /* finish_trial.png in Resources */,
 				0418F5D11C083A4A00B90989 /* Assets.xcassets in Resources */,
 				0418F5FA1C083D6400B90989 /* launcher_smile-jpg.png in Resources */,
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,

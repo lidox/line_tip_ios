@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -115,7 +116,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
                                 <rect key="frame" x="268" y="72" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
@@ -153,9 +154,19 @@
                     <view key="view" contentMode="scaleToFill" id="uY3-MK-RpN" customClass="LineDetectionUIView" customModule="LineTip" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="finish_trial.png" translatesAutoresizingMaskIntoConstraints="NO" id="FbE-Qs-PRf">
+                                <rect key="frame" x="539" y="13" width="48" height="48"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="FbE-Qs-PRf" secondAttribute="trailing" constant="-9" id="Hfp-s9-fdw"/>
+                            <constraint firstItem="FbE-Qs-PRf" firstAttribute="top" secondItem="QpQ-k2-910" secondAttribute="bottom" constant="-7" id="dmu-Ke-WZK"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="finishImg" destination="FbE-Qs-PRf" id="K7e-Wu-yS2"/>
                         <outlet property="uiView" destination="uY3-MK-RpN" id="gxU-0C-bAQ"/>
                     </connections>
                 </viewController>
@@ -183,6 +194,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="finish_trial.png" width="48" height="48"/>
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
     </resources>
 </document>

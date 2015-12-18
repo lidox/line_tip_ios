@@ -43,4 +43,9 @@ class Trial: NSObject {
         self.hits++
         self.overflowCounter++
     }
+    
+    func hasStarted() -> Bool {
+        return  (self.hits != 0 && self.fails != 0)
+    }
+    
 }

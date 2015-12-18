@@ -40,8 +40,8 @@ class LineDetectionUIView: UIView {
         
         print("counter:\(trial.overflowCounter)")
         
-        let isFirstLineNotDrawnYet = trial.hits == 0 && trial.fails == 0
-        if(isFirstLineNotDrawnYet){
+        
+        if(!trial.hasStarted()){
             context = UIGraphicsGetCurrentContext()
         }
         

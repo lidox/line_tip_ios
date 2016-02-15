@@ -26,7 +26,7 @@ class Trial: NSObject {
         }
     }
     
-    func stopCountingTime() -> Double {
+    func stopCountigTime() -> Double {
         var duration = -1.0
         if((self.startTime) != nil){
             let elapsedTime = CFAbsoluteTimeGetCurrent() - startTime

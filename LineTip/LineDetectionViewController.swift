@@ -36,7 +36,14 @@ class LineDetectionViewController: UIViewController {
     
     func onFinish(img: AnyObject){
         print("Trial finished")
-        uiView.trial.stopCountingTime()
+        uiView.trial.stopCountigTime()
+        switchToViewControllerByIdentifier("myVCId")
+    }
+    
+    func switchToViewControllerByIdentifier(identifier: String){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! MainViewController
+        self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
     func addHitListener() {

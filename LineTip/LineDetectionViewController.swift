@@ -13,6 +13,8 @@ class LineDetectionViewController: UIViewController {
     @IBOutlet weak var finishImg: UIImageView!
     @IBOutlet var uiView: LineDetectionUIView!
     
+    var userName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
@@ -35,9 +37,16 @@ class LineDetectionViewController: UIViewController {
     }
     
     func onFinish(img: AnyObject){
-        print("Trial finished")
         uiView.trial.stopCountigTime()
-        Utils.switchToViewControllerByIdentifier(self, identifier: "myVCId")
+        print("Trial finished! hits: \(uiView.trial.hits) misses: \(uiView.trial.fails) duration: \(uiView.trial.duration) s timestamp: \(uiView.trial.timeStamp)")
+        
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
+        nextViewController.resultsVC.lastTrial = uiView.trial
+        nextViewController.userName = self.userName
+        nextViewController.resultsVC.userName = self.userName
+        self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
     func addHitListener() {
@@ -53,4 +62,5 @@ class LineDetectionViewController: UIViewController {
         finishImg.userInteractionEnabled = true
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
     }
+    
 }

@@ -125,6 +125,7 @@
                             <constraint firstAttribute="trailing" secondItem="Kx6-XX-yKP" secondAttribute="trailing" id="xcd-5d-7eh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HUh-DB-kqb"/>
                     <connections>
                         <outlet property="medIdLabel" destination="AO8-OJ-gJR" id="CgR-Kg-zNq"/>
                         <outlet property="scrollView" destination="Kx6-XX-yKP" id="EdB-S9-kWB"/>
@@ -176,7 +177,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="rUj-SJ-ezV" kind="relationship" relationship="rootViewController" id="PPw-J3-8vW"/>
+                        <segue destination="rUj-SJ-ezV" kind="relationship" relationship="rootViewController" id="gfk-1t-n2N"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TQ-je-dlw" userLabel="First Responder" sceneMemberID="firstResponder"/>

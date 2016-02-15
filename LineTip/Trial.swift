@@ -9,14 +9,17 @@
 import UIKit
 
 class Trial: NSObject {
+
     var hits : Int = 0
     var fails : Int = 0
     var overflowCounter : Int = 0
     var timeStamp: String
     var startTime: CFAbsoluteTime!
+    var duration: Double = 0
+    var userName: String = ""
     
     override init(){
-        self.timeStamp = "\(NSDate().timeIntervalSince1970 * 1000)"
+        self.timeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
     }
     
     
@@ -31,6 +34,7 @@ class Trial: NSObject {
         if((self.startTime) != nil){
             let elapsedTime = CFAbsoluteTimeGetCurrent() - startTime
             duration = round(elapsedTime)
+            self.duration = round(elapsedTime)
             print("duration: \(elapsedTime) und als sek: \(duration)")
         }
         else{

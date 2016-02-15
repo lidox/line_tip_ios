@@ -14,17 +14,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var medIdLabel: UILabel!
     
+    let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
     var userName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc0 = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
-        
-        self.addChildViewController(vc0)
-        self.scrollView.addSubview(vc0.view)
-        vc0.didMoveToParentViewController(self)
-        
+        self.addChildViewController(resultsVC)
+        self.scrollView.addSubview(resultsVC.view)
+        resultsVC.didMoveToParentViewController(self)
         
         
         let vc1 = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
@@ -52,6 +50,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         print("MainViewController userName= \(userName)")
+        resultsVC.userName = self.userName
         medIdLabel.text = "Med-ID: \(userName)"
     }
 

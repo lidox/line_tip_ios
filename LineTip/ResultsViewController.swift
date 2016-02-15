@@ -10,15 +10,31 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
+    
+    //labels
+    @IBOutlet weak var timeStampLabel: UILabel!
+    @IBOutlet weak var hitLabel: UILabel!
+    @IBOutlet weak var missLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    var lastTrial = Trial()
+    var userName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if(lastTrial.hasStarted()){
+            timeStampLabel.text = "\(lastTrial.timeStamp)"
+            hitLabel.text = "\(lastTrial.hits)"
+            missLabel.text = "\(lastTrial.fails)"
+            durationLabel.text = "\(lastTrial.duration)"
+        }
     }
     
     @IBAction func startLineDetectionBtn(sender: AnyObject) {
         print("start line detection")
-        Utils.switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
+        
+        switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +42,12 @@ class ResultsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
+        nextViewController.userName = self.userName
+        currentVC.presentViewController(nextViewController, animated:true, completion:nil)
+    }
 
     /*
     // MARK: - Navigation

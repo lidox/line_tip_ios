@@ -36,9 +36,6 @@ class UserTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
         print("Row: \(row) value= \(names[row])")
-        
-        //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
-        //self.presentViewController(vc, animated: true, completion: nil)
     }
 
     @IBAction func addUser(sender: AnyObject) {

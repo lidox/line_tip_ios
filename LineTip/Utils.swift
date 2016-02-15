@@ -17,8 +17,4 @@ class Utils {
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
-    class func sayHello(personName: String, alreadyGreeted: Bool) -> String {
-            return   personName
-    }
-    
 }

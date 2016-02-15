@@ -37,20 +37,11 @@
                                     <segue destination="mvJ-h4-gin" kind="show" id="K7M-Zk-Kft"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDu-3o-XJA">
-                                <rect key="frame" x="206" y="503" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="U1z-gF-UhE" kind="show" id="OH7-Kp-a5D"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YA0-ne-E8r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="El2-UX-2lP"/>
                             <constraint firstItem="YA0-ne-E8r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="63" id="aGF-iW-as5"/>
-                            <constraint firstItem="SDu-3o-XJA" firstAttribute="top" secondItem="elH-bz-7jv" secondAttribute="bottom" constant="2" id="bxL-Sk-zpS"/>
-                            <constraint firstItem="SDu-3o-XJA" firstAttribute="leading" secondItem="elH-bz-7jv" secondAttribute="leading" id="cU4-qb-nzq"/>
                             <constraint firstItem="GAq-yt-kDS" firstAttribute="top" secondItem="YA0-ne-E8r" secondAttribute="bottom" constant="16" id="h9L-Pf-CCK"/>
                             <constraint firstItem="elH-bz-7jv" firstAttribute="top" secondItem="GAq-yt-kDS" secondAttribute="bottom" constant="41" id="la8-69-yvI"/>
                             <constraint firstItem="GAq-yt-kDS" firstAttribute="centerX" secondItem="YA0-ne-E8r" secondAttribute="centerX" id="nmK-go-7YZ"/>
@@ -146,7 +137,7 @@
         <!--Line Detection View Controller-->
         <scene sceneID="Jba-07-V4f">
             <objects>
-                <viewController id="U1z-gF-UhE" customClass="LineDetectionViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="line_detection_canvas" id="U1z-gF-UhE" customClass="LineDetectionViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QpQ-k2-910"/>
                         <viewControllerLayoutGuide type="bottom" id="OzC-1k-uUp"/>

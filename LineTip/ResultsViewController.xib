@@ -18,12 +18,15 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orH-5W-afX">
                     <rect key="frame" x="272" y="22" width="56" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSp-lJ-lfo">
-                    <rect key="frame" x="268" y="56" width="64" height="30"/>
-                    <state key="normal" title="New Test"/>
+                    <rect key="frame" x="283" y="56" width="34" height="30"/>
+                    <state key="normal" title="Start"/>
+                    <connections>
+                        <action selector="startLineDetectionBtn:" destination="-1" eventType="touchUpInside" id="h4p-EB-GPc"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.88124064912601985" blue="0.18065268330555095" alpha="1" colorSpace="calibratedRGB"/>

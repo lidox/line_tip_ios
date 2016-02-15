@@ -9,11 +9,16 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func startLineDetectionBtn(sender: AnyObject) {
+        print("start line detection")
+        Utils.switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
     }
 
     override func didReceiveMemoryWarning() {

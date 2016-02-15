@@ -18,6 +18,7 @@
 		0418F5FA1C083D6400B90989 /* launcher_smile-jpg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5F81C083D6400B90989 /* launcher_smile-jpg.png */; };
 		0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5F91C083D6400B90989 /* Line-icon.png */; };
 		0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5FC1C08433B00B90989 /* Images.xcassets */; };
+		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
 		048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B01C1197AD00F775CC /* UserTableViewController.swift */; };
@@ -71,6 +72,7 @@
 		0418F5F81C083D6400B90989 /* launcher_smile-jpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launcher_smile-jpg.png"; sourceTree = "<group>"; };
 		0418F5F91C083D6400B90989 /* Line-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line-icon.png"; sourceTree = "<group>"; };
 		0418F5FC1C08433B00B90989 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		048064B01C1197AD00F775CC /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04316F1A1C71D23C00BA600C /* Utils.swift */,
 				048064D81C1AE89800F775CC /* PreGeneratedLine.swift */,
 				048064D61C1AE52C00F775CC /* LineGenerator.swift */,
 				048064D01C15B73900F775CC /* Line.swift */,
@@ -346,6 +349,7 @@
 				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
+				04316F1B1C71D23C00BA600C /* Utils.swift in Sources */,
 				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,

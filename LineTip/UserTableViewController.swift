@@ -69,9 +69,7 @@ class UserTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //print("prepareForSegue")
         if segue.identifier == "toMainSegue" {
-            //^^^^print("prepareForSegue toMainSegue")
             if let destination = segue.destinationViewController as? MainViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
                     destination.userName = names[index]

@@ -13,7 +13,7 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
+    var myImageView  = UIImageView(image: UIImage(named: "trans.png"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

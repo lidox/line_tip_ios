@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBAction func onLineDetectionBtn(sender: AnyObject) {
         print("line-detection btn clicked");
         
-        Utils.printLinesToConsole()
+        //Utils.printLinesToConsole()
     }
     
     

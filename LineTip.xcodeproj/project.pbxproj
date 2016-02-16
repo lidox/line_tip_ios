@@ -35,6 +35,7 @@
 		048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D41C15B7B500F775CC /* LineDetectionViewController.swift */; };
 		048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D61C1AE52C00F775CC /* LineGenerator.swift */; };
 		048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D81C1AE89800F775CC /* PreGeneratedLine.swift */; };
+		048E19481C721BCB00035760 /* trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 048E19471C721BCB00035760 /* trans.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		048064D41C15B7B500F775CC /* LineDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDetectionViewController.swift; sourceTree = "<group>"; };
 		048064D61C1AE52C00F775CC /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
 		048064D81C1AE89800F775CC /* PreGeneratedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreGeneratedLine.swift; path = ../PreGeneratedLine.swift; sourceTree = "<group>"; };
+		048E19471C721BCB00035760 /* trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trans.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				048E19471C721BCB00035760 /* trans.png */,
 				048064D21C15B76B00F775CC /* ball.png */,
 				040691461C24464F00E2F9B2 /* finish_trial.png */,
 				0418F5F81C083D6400B90989 /* launcher_smile-jpg.png */,
@@ -317,6 +320,7 @@
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,
 				048064D31C15B76B00F775CC /* ball.png in Resources */,
+				048E19481C721BCB00035760 /* trans.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,

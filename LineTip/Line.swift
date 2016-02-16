@@ -34,7 +34,7 @@ class Line: NSObject {
     }
     
     func getMidpointX() -> Double {
-        let result = (Double(self.x1) + Double(self.x2) / 2) - (75/2)
+        let result = (Double(self.x1) + Double(self.x2) / 2) - 75 //- (75/2)
         return result
     }
     

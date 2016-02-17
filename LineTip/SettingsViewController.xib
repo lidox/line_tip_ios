@@ -3,10 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
+                <outlet property="canvasUV" destination="MvK-fC-6Cw" id="EKr-rG-EpR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,15 +18,22 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-HM-K01">
-                    <rect key="frame" x="117" y="92" width="64" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-HM-K01">
+                    <rect key="frame" x="26" y="18" width="64" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-8b-THj">
-                    <rect key="frame" x="303" y="197" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvK-fC-6Cw">
+                    <rect key="frame" x="8" y="47" width="584" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MvK-fC-6Cw" secondAttribute="height" multiplier="73:16" id="KWb-vo-NWI"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-8b-THj">
+                    <rect key="frame" x="8" y="198" width="123" height="30"/>
+                    <state key="normal" title="Background Color"/>
                     <connections>
                         <action selector="showColorPickerProgrammatically:" destination="-1" eventType="touchUpInside" id="3LE-C6-BMM"/>
                     </connections>
@@ -31,6 +41,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.34418178001812316" blue="0.26359035247012874" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="dnW-8b-THj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="2Lb-c9-ec8"/>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Aix-bL-AQK"/>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="top" secondItem="cim-HM-K01" secondAttribute="bottom" id="BzL-5z-9Fe"/>
+                <constraint firstAttribute="trailing" secondItem="MvK-fC-6Cw" secondAttribute="trailing" constant="8" id="GcC-sQ-cKC"/>
+                <constraint firstItem="dnW-8b-THj" firstAttribute="top" secondItem="MvK-fC-6Cw" secondAttribute="bottom" constant="23" id="HMw-ug-QKo"/>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="8" id="VpI-N6-9Iw"/>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" constant="8" id="gI2-jB-st6"/>
                 <constraint firstItem="cim-HM-K01" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="117" id="ib7-9n-iG2"/>
                 <constraint firstItem="cim-HM-K01" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="onA-TT-Qp3"/>
             </constraints>

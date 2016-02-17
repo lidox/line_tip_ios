@@ -83,7 +83,7 @@ class CanvasUIView: UIView {
     }
     
     //hier weiter
-    func setBackgroundColor(color:) -> CGColor {
+    func setBackgroundColorUV(color: UIColor) {
         //CGContextSetRGBFillColor(context, <#T##red: CGFloat##CGFloat#>, <#T##green: CGFloat##CGFloat#>, <#T##blue: CGFloat##CGFloat#>, <#T##alpha: CGFloat##CGFloat#>)
     }
     

@@ -36,6 +36,7 @@
 		048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D61C1AE52C00F775CC /* LineGenerator.swift */; };
 		048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D81C1AE89800F775CC /* PreGeneratedLine.swift */; };
 		048E19481C721BCB00035760 /* trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 048E19471C721BCB00035760 /* trans.png */; };
+		04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		048064D61C1AE52C00F775CC /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
 		048064D81C1AE89800F775CC /* PreGeneratedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreGeneratedLine.swift; path = ../PreGeneratedLine.swift; sourceTree = "<group>"; };
 		048E19471C721BCB00035760 /* trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trans.png; sourceTree = "<group>"; };
+		04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		0418F5C81C083A4A00B90989 /* LineTip */ = {
 			isa = PBXGroup;
 			children = (
+				04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */,
 				0418F5C91C083A4A00B90989 /* AppDelegate.swift */,
 				0418F5CB1C083A4A00B90989 /* ViewController.swift */,
 				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
@@ -361,6 +364,7 @@
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
 				048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */,
+				04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */,
 				048064D11C15B73900F775CC /* Line.swift in Sources */,
 				048064BE1C11FCA100F775CC /* SettingsViewController.swift in Sources */,
 			);

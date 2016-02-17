@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         vc1.didMoveToParentViewController(self)
         
         
-        let vc2 = StatisticsViewController(nibName: "SettingsViewController", bundle: nil)
+        let vc2 = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
         var frame2 = vc2.view.frame
         frame2.origin.x = self.view.frame.size.width * 2
         vc2.view.frame = frame2;

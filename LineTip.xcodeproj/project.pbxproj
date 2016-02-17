@@ -37,6 +37,7 @@
 		048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D81C1AE89800F775CC /* PreGeneratedLine.swift */; };
 		048E19481C721BCB00035760 /* trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 048E19471C721BCB00035760 /* trans.png */; };
 		04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */; };
+		04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA71C74B29000D52E27 /* CanvasUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		048064D81C1AE89800F775CC /* PreGeneratedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreGeneratedLine.swift; path = ../PreGeneratedLine.swift; sourceTree = "<group>"; };
 		048E19471C721BCB00035760 /* trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trans.png; sourceTree = "<group>"; };
 		04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
+		04D49DA71C74B29000D52E27 /* CanvasUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
 				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
 				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
+				04D49DA71C74B29000D52E27 /* CanvasUIView.swift */,
 			);
 			path = LineTip;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
+				04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */,
 				04316F1B1C71D23C00BA600C /* Utils.swift in Sources */,
 				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,

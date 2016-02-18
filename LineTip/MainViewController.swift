@@ -21,14 +21,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.addChildViewController(resultsVC)
+        resultsVC.view.frame = self.view.bounds
         self.scrollView.addSubview(resultsVC.view)
         resultsVC.didMoveToParentViewController(self)
         
         
         let vc1 = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
+        vc1.view.frame = self.view.bounds
         var frame1 = vc1.view.frame
         frame1.origin.x = self.view.frame.size.width
         vc1.view.frame = frame1;
+        
         
         self.addChildViewController(vc1)
         self.scrollView.addSubview(vc1.view)
@@ -36,6 +39,7 @@ class MainViewController: UIViewController {
         
         
         let vc2 = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
+        vc2.view.frame = self.view.bounds
         var frame2 = vc2.view.frame
         frame2.origin.x = self.view.frame.size.width * 2
         vc2.view.frame = frame2;

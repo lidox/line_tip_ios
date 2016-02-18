@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
     
 
     
-    @IBOutlet weak var canvasUV: UIView!
+    @IBOutlet weak var canvasUV: CanvasUIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
     // MARK: Color Picker Delegate
     
     func colorSelectionChanged(selectedColor color: UIColor) {
-        self.canvasUV.backgroundColor = color
+        self.canvasUV.setBackgroundColorUV(color)
         //self.view.backgroundColor = color
     }
 

@@ -13,7 +13,7 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var myImageView  = UIImageView(image: UIImage(named: "trans.png"))
+    var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -106,7 +106,8 @@ class LineDetectionUIView: UIView {
     }
     
     func getLineGenerator() -> LineGenerator {
-        return PreGeneratedLine()
+        //return PreGeneratedLine()
+        return LeftRightLine(view: self)
     }
     
     

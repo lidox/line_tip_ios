@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Darwin
 
 class Utils {
     
@@ -32,6 +33,12 @@ class Utils {
     class func random(from: UInt32, to: UInt32) -> UInt32 {
         return arc4random_uniform(to) + from
     }
+    
+    class func randomByInt(from: Int, to: Int) -> Int {
+        //return UInt32.random(lower: from, upper: to)
+        //return Int(arc4random_uniform(UInt32(to)) + UInt32(from))
+    }
+
     
     class func setSettingsData(key :String, value: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -93,3 +100,22 @@ class Utils {
         
     }
 }
+
+
+
+public extension UInt32 {
+    public static func random(lower: UInt32 = min, upper: UInt32 = max) -> UInt32 {
+        return arc4random_uniform(upper - lower) + lower
+    }
+}
+
+public extension Int32 {
+    public static func random(lower: Int32 = min, upper: Int32 = max) -> Int32 {
+        let r = arc4random_uniform(UInt32(Int64(upper) - Int64(lower)))
+        return Int32(Int64(r) + Int64(lower))
+    }
+}
+
+
+
+

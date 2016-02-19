@@ -36,7 +36,7 @@ class Utils {
     
     class func randomByInt(from: Int, to: Int) -> Int {
         //return UInt32.random(lower: from, upper: to)
-        //return Int(arc4random_uniform(UInt32(to)) + UInt32(from))
+        return Int(arc4random_uniform(UInt32(to)) + UInt32(from))
     }
 
     

@@ -39,6 +39,7 @@
 		04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */; };
 		04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA71C74B29000D52E27 /* CanvasUIView.swift */; };
 		04F893D81C75E56E00566C3C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D71C75E56E00566C3C /* UIColor.swift */; };
+		04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D91C771E9900566C3C /* ConfigKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
 		04D49DA71C74B29000D52E27 /* CanvasUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasUIView.swift; sourceTree = "<group>"; };
 		04F893D71C75E56E00566C3C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		04F893D91C771E9900566C3C /* ConfigKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,27 +150,18 @@
 		0418F5C81C083A4A00B90989 /* LineTip */ = {
 			isa = PBXGroup;
 			children = (
-				04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */,
+				04F893DC1C77227000566C3C /* view */,
+				04F893DB1C77222400566C3C /* controller */,
 				0418F5C91C083A4A00B90989 /* AppDelegate.swift */,
-				0418F5CB1C083A4A00B90989 /* ViewController.swift */,
-				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
 				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
 				0418F5D01C083A4A00B90989 /* Assets.xcassets */,
 				0418F5D21C083A4A00B90989 /* LaunchScreen.storyboard */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				0418F5FC1C08433B00B90989 /* Images.xcassets */,
 				047941791C0C5F880093EDD6 /* model */,
-				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
-				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
-				048064B21C11CE6D00F775CC /* MainViewController.swift */,
-				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
-				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
-				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
 				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
-				04D49DA71C74B29000D52E27 /* CanvasUIView.swift */,
-				04F893D71C75E56E00566C3C /* UIColor.swift */,
 			);
 			path = LineTip;
 			sourceTree = "<group>";
@@ -206,6 +199,7 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04F893D91C771E9900566C3C /* ConfigKey.swift */,
 				04316F1A1C71D23C00BA600C /* Utils.swift */,
 				048064D81C1AE89800F775CC /* PreGeneratedLine.swift */,
 				048064D61C1AE52C00F775CC /* LineGenerator.swift */,
@@ -214,6 +208,31 @@
 				047941751C0C59CA0093EDD6 /* User.swift */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		04F893DB1C77222400566C3C /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				0418F5CB1C083A4A00B90989 /* ViewController.swift */,
+				048064B21C11CE6D00F775CC /* MainViewController.swift */,
+				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
+				04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */,
+				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
+				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
+				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
+				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		04F893DC1C77227000566C3C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04F893D71C75E56E00566C3C /* UIColor.swift */,
+				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
+				04D49DA71C74B29000D52E27 /* CanvasUIView.swift */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +385,7 @@
 				04316F1B1C71D23C00BA600C /* Utils.swift in Sources */,
 				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
+				04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,

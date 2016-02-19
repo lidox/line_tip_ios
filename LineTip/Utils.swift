@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Utils {
+    
     class func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as UIViewController
@@ -30,7 +31,22 @@ class Utils {
     
     class func random(from: UInt32, to: UInt32) -> UInt32 {
         return arc4random_uniform(to) + from
-        //var dice = arc4random_uniform(6) + 1
     }
     
+    class func setSettingsData(key :String, value: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        //defaults.setObject(value, forKey: key)
+        defaults.setValue(value, forKey: key)
+        defaults.synchronize()
+    }
+    
+    class func getSettingsData(key :String) -> AnyObject {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let value = defaults.valueForKey(key) {
+            return value
+        }
+        
+        return 0
+    }
 }

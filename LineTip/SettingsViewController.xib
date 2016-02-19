@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
                 <outlet property="canvasUV" destination="MvK-fC-6Cw" id="EKr-rG-EpR"/>
+                <outlet property="lineWidthSlider" destination="ds3-mv-vQ9" id="7e2-b9-2Re"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,39 +19,84 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-HM-K01">
-                    <rect key="frame" x="26" y="18" width="64" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-HM-K01">
+                    <rect key="frame" x="117" y="92" width="64" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvK-fC-6Cw" customClass="CanvasUIView" customModule="LineTip" customModuleProvider="target">
-                    <rect key="frame" x="8" y="47" width="584" height="128"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvK-fC-6Cw" customClass="CanvasUIView" customModule="LineTip" customModuleProvider="target">
+                    <rect key="frame" x="8" y="113" width="584" height="130"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="MvK-fC-6Cw" secondAttribute="height" multiplier="73:16" id="KWb-vo-NWI"/>
+                        <constraint firstAttribute="width" secondItem="MvK-fC-6Cw" secondAttribute="height" multiplier="73:16" constant="-9.125" id="KWb-vo-NWI"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-8b-THj">
-                    <rect key="frame" x="8" y="198" width="123" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-8b-THj">
+                    <rect key="frame" x="8" y="266" width="123" height="30"/>
                     <state key="normal" title="Background Color"/>
                     <connections>
                         <action selector="showColorPickerProgrammatically:" destination="-1" eventType="touchUpInside" id="3LE-C6-BMM"/>
                     </connections>
                 </button>
+                <pageControl opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ayw-7J-HGY">
+                    <rect key="frame" x="281" y="555" width="39" height="37"/>
+                </pageControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bu1-mh-ej1">
+                    <rect key="frame" x="8" y="341" width="584" height="60"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="ds3-mv-vQ9">
+                            <rect key="frame" x="-2" y="16" width="588" height="31"/>
+                            <connections>
+                                <action selector="onLineWidthChanged:" destination="-1" eventType="valueChanged" id="BET-9l-sPF"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ds3-mv-vQ9" firstAttribute="leading" secondItem="Bu1-mh-ej1" secondAttribute="leading" id="57A-pM-tpp"/>
+                        <constraint firstAttribute="trailing" secondItem="ds3-mv-vQ9" secondAttribute="trailing" id="FgH-Zf-E8a"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LINE WIDTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceb-Fs-dAE">
+                    <rect key="frame" x="8" y="311" width="100" height="22"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="0.34418178001812316" blue="0.26359035247012874" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="0Q7-Mc-cWM"/>
+                <constraint firstAttribute="trailing" secondItem="Bu1-mh-ej1" secondAttribute="trailing" constant="8" id="1mW-B0-Osf"/>
+                <constraint firstAttribute="bottom" secondItem="Ayw-7J-HGY" secondAttribute="bottom" constant="8" id="1qs-1T-EYZ"/>
+                <constraint firstItem="ds3-mv-vQ9" firstAttribute="top" secondItem="Ceb-Fs-dAE" secondAttribute="bottom" constant="24" id="240-iX-4Cw"/>
                 <constraint firstItem="dnW-8b-THj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="2Lb-c9-ec8"/>
+                <constraint firstAttribute="bottom" secondItem="Bu1-mh-ej1" secondAttribute="bottom" constant="199" id="A5h-OQ-98D"/>
                 <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Aix-bL-AQK"/>
                 <constraint firstItem="MvK-fC-6Cw" firstAttribute="top" secondItem="cim-HM-K01" secondAttribute="bottom" id="BzL-5z-9Fe"/>
+                <constraint firstAttribute="trailing" secondItem="MvK-fC-6Cw" secondAttribute="trailing" constant="8" id="DtT-VM-Ohe"/>
+                <constraint firstItem="Bu1-mh-ej1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="EDS-Di-6Ad"/>
                 <constraint firstAttribute="trailing" secondItem="MvK-fC-6Cw" secondAttribute="trailing" constant="8" id="GcC-sQ-cKC"/>
                 <constraint firstItem="dnW-8b-THj" firstAttribute="top" secondItem="MvK-fC-6Cw" secondAttribute="bottom" constant="23" id="HMw-ug-QKo"/>
+                <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="dnW-8b-THj" secondAttribute="leading" id="LcG-3i-Vwr"/>
+                <constraint firstItem="Ceb-Fs-dAE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="UQC-B5-Ugm"/>
                 <constraint firstItem="MvK-fC-6Cw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="8" id="VpI-N6-9Iw"/>
+                <constraint firstItem="Ceb-Fs-dAE" firstAttribute="top" secondItem="dnW-8b-THj" secondAttribute="bottom" constant="15" id="Xtv-De-Jqg"/>
                 <constraint firstItem="MvK-fC-6Cw" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" constant="8" id="gI2-jB-st6"/>
                 <constraint firstItem="cim-HM-K01" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="117" id="ib7-9n-iG2"/>
                 <constraint firstItem="cim-HM-K01" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="onA-TT-Qp3"/>
+                <constraint firstItem="Bu1-mh-ej1" firstAttribute="top" secondItem="Ceb-Fs-dAE" secondAttribute="bottom" constant="8" symbolic="YES" id="ruu-QO-CRq"/>
+                <constraint firstItem="Ayw-7J-HGY" firstAttribute="centerX" secondItem="MvK-fC-6Cw" secondAttribute="centerX" id="yzy-qH-zKj"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Aix-bL-AQK"/>
+                    <exclude reference="GcC-sQ-cKC"/>
+                    <exclude reference="VpI-N6-9Iw"/>
+                    <exclude reference="gI2-jB-st6"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

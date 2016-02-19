@@ -75,24 +75,32 @@ class LineDetectionUIView: UIView {
     }
     
     func getLineWidth() -> CGFloat {
-        return 5.0
+        let value = (Utils.getSettingsData(ConfigKey.LINE_WIDTH)) as! NSNumber
+        return CGFloat(value.floatValue)
     }
     
     func getSpotWidth() -> Double {
-        return 75
+        let value = Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as? NSNumber
+        return value!.doubleValue
     }
     
     func getSpotHeight() -> Double {
-        return 75
+        let value = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
+        return value!.doubleValue
     }
     
     func getImageName() -> String {
-        return "ball.png"
+        return (Utils.getSettingsData(ConfigKey.SPOT_IMAGE_NAME) as? String)!
     }
     
     func getLineColor() -> CGColor {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let components: [CGFloat] = [255, 255, 255, 255]
+        let red = Utils.getSettingsData(ConfigKey.LINE_COLOR_RED) as? NSNumber
+        let green = Utils.getSettingsData(ConfigKey.LINE_COLOR_GREEN) as? NSNumber
+        let blue = Utils.getSettingsData(ConfigKey.LINE_COLOR_BLUE) as? NSNumber
+        let alpha = Utils.getSettingsData(ConfigKey.LINE_COLOR_ALPHA) as? NSNumber
+        
+        let components: [CGFloat] = [CGFloat(red!.floatValue), CGFloat(green!.floatValue), CGFloat(blue!.floatValue), CGFloat(alpha!.floatValue)]
         let color = CGColorCreate(colorSpace, components)
         return color!
     }

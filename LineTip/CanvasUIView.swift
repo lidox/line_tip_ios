@@ -84,11 +84,12 @@ class CanvasUIView: UIView {
     
     //hier weiter
     func setBackgroundColorUV(color: UIColor) {
-        context = UIGraphicsGetCurrentContext()
+        CGContextClearRect(context, self.bounds)
+        //context = UIGraphicsGetCurrentContext()
         let colors = color.components
         CGContextSetRGBFillColor(context, colors.red, colors.green, colors.blue, colors.alpha)
         CGContextStrokePath(context)
-        print("done")
+        //print("done")
     }
     
     

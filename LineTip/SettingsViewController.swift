@@ -10,7 +10,11 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIPopoverPresentationControllerDelegate, SwiftColorPickerDelegate, SwiftColorPickerDataSource {
     
+    @IBOutlet weak var lineWidthSlider: UISlider!
 
+    @IBAction func onLineWidthChanged(sender: AnyObject) {
+        print("done")
+    }
     
     @IBOutlet weak var canvasUV: CanvasUIView!
     

@@ -157,6 +157,7 @@
                             <constraint firstItem="FbE-Qs-PRf" firstAttribute="top" secondItem="QpQ-k2-910" secondAttribute="bottom" constant="-7" id="dmu-Ke-WZK"/>
                         </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="finishImg" destination="FbE-Qs-PRf" id="K7e-Wu-yS2"/>
                         <outlet property="uiView" destination="uY3-MK-RpN" id="gxU-0C-bAQ"/>

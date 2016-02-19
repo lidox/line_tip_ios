@@ -15,6 +15,10 @@ class LineDetectionViewController: UIViewController {
     
     var userName: String = ""
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Landscape
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")

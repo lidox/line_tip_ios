@@ -107,7 +107,7 @@ class LineDetectionUIView: UIView {
     
     func getLineGenerator() -> LineGenerator {
         //return PreGeneratedLine()
-        return LeftRightLine(view: self)
+        return LeftRightLine()
     }
     
     

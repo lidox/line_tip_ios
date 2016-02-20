@@ -11,9 +11,11 @@ import UIKit
 
 class LeftRightLine: LineGenerator {
     
-    var leftFieldX: Int
+    var leftFieldX1: Int
+    var leftFieldX2: Int
     var middleFieldX: Int
-    var rightFieldX: Int
+    var rightFieldX1: Int
+    var rightFieldX2: Int
     var viewHeight: Int
     var viewWidth: Double
     var edgeTolerance: Int
@@ -22,9 +24,11 @@ class LeftRightLine: LineGenerator {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         self.edgeTolerance = 10
         self.viewWidth = Double(screenSize.height)
-        self.leftFieldX = Int(viewWidth * 0.25)
+        self.leftFieldX1 = Int(viewWidth * 0.17)
+        self.leftFieldX2 = Int(viewWidth * 0.34)
         self.middleFieldX = Int(viewWidth * 0.5)
-        self.rightFieldX = Int(viewWidth * 0.75)
+        self.rightFieldX1 = Int(viewWidth * 0.67)
+        self.rightFieldX2 = Int(viewWidth * 0.84)
         self.viewHeight = Int(screenSize.width) - edgeTolerance
     }
     
@@ -39,23 +43,18 @@ class LeftRightLine: LineGenerator {
             // left right order
             var x1, x2, y1: Int
             if(i%2==0){
-                x1 = Random.within(self.leftFieldX...self.middleFieldX)
-                x2 = Random.within(self.rightFieldX...Int(self.viewWidth))
-                //x1 = Utils.randomByInt(self.leftFieldX, to: self.middleFieldX)
-                //x2 = Utils.randomByInt(self.rightFieldX, to: Int(self.viewWidth))
+                x1 = Random.within(self.middleFieldX...self.rightFieldX1)
+                x2 = Random.within(self.rightFieldX2...Int(self.viewWidth))
             }
             else{
-                x1 = Random.within(self.edgeTolerance...self.leftFieldX)
-                x2 = Random.within(self.middleFieldX...self.rightFieldX)
-                //x1 = Utils.randomByInt(0, to: self.leftFieldX)
-                //x2 = Utils.randomByInt(self.middleFieldX, to: self.rightFieldX)
+                x1 = Random.within(self.edgeTolerance...self.leftFieldX1)
+                x2 = Random.within(self.leftFieldX2...self.middleFieldX)
             }
-            //y1 = Utils.randomByInt(0, to: self.viewHeight)
-            y1 = Random.within(self.edgeTolerance...self.viewHeight)
+            y1 = Random.within(self.edgeTolerance...(self.viewHeight-self.edgeTolerance))
             
-            print("viewWidt:\(viewWidth) and viewHeight:\(viewHeight)")
-            print("blocks left: \(leftFieldX) , middle: \(middleFieldX), right: \(rightFieldX)")
-            print("generated: \(x1) to \(x2)")
+            //print("viewWidt:\(viewWidth) and viewHeight:\(viewHeight)")
+            //print("blocks left: \(leftFieldX) , middle: \(middleFieldX), right: \(rightFieldX)")
+            //print("generated: \(x1) to \(x2)")
             let line = Line(x1: x1, y1: y1, x2: x2, y2: y1)
             lines.append(line)
             

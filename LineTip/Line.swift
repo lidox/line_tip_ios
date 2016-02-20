@@ -29,18 +29,30 @@ class Line: NSObject {
         let numerator = (x2-x1) * (x2-x1)
         let denominator = (y2-y1) * (y2-y1)
         let result = sqrt(numerator + denominator)
-        print("lenght: \(result)")
+        //print("lenght: \(result)")
         return result;
     }
     
     func getMidpointX() -> Double {
-        let result = (Double(self.x1) + Double(self.x2) / 2) - 75 //- (75/2)
+        let result = ((Double(self.x1) + Double(self.x2)) / 2) - (self.getSpotWidth()/2)
         return result
     }
     
     func getMidpointY() -> Double {
-        let numerator = Double(self.y1) + Double(self.y2) - 75
+        let numerator = Double(self.y1) + Double(self.y2) - self.getSpotHeight()
         let result = numerator / 2
         return result
+    }
+    
+    func getSpotWidth() -> Double {
+        let spotWidthInPecentageValue = Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as? NSNumber
+        let spotWidth = (spotWidthInPecentageValue!.doubleValue) * self.getLenght()
+        return spotWidth
+    }
+    
+    func getSpotHeight() -> Double {
+        let spotHeightInPecentageValue = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
+        let spotWidth = (spotHeightInPecentageValue!.doubleValue) * self.getLenght()
+        return spotWidth
     }
 }

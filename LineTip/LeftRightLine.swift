@@ -29,7 +29,7 @@ class LeftRightLine: LineGenerator {
     }
     
     func getLines() -> Array<Line> {
-        return getLinesByAmount(2)
+        return getLinesByAmount(20)
     }
     
     func getLinesByAmount(amount: Int) -> Array<Line> {

@@ -28,7 +28,6 @@ class LineDetectionUIView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        //print("drawRect")
         draw()
     }
     
@@ -38,15 +37,16 @@ class LineDetectionUIView: UIView {
             trial.overflowCounter = 0
         }
         
-        print("counter:\(trial.overflowCounter)")
+        //print("counter:\(trial.overflowCounter)")
         
         
         if(!trial.hasStarted()){
             context = UIGraphicsGetCurrentContext()
         }
         
-        drawRawLine(lines[trial.overflowCounter], lineWidth: getLineWidth(), lineColor: getLineColor())
-        drawSpot(getImageName(), spotWidth: getSpotWidth(), spotHeight: getSpotHeight(), spotAlpha: 1, line: lines[trial.overflowCounter])
+        let line = lines[trial.overflowCounter]
+        drawRawLine(line, lineWidth: getLineWidth(), lineColor: getLineColor())
+        drawSpot(getImageName(), spotWidth: line.getSpotWidth(), spotHeight: line.getSpotHeight(), spotAlpha: 1, line: line)
     }
     
     func onFail(img: AnyObject){
@@ -70,7 +70,7 @@ class LineDetectionUIView: UIView {
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
         
         CGContextStrokePath(context)
-        print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
+        //print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
         
     }
     

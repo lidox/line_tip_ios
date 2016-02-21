@@ -20,6 +20,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        
         self.addChildViewController(resultsVC)
         resultsVC.view.frame = self.view.bounds
         self.scrollView.addSubview(resultsVC.view)

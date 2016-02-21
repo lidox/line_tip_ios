@@ -15,14 +15,12 @@ class LineDetectionViewController: UIViewController {
     
     var userName: String = ""
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Landscape
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
         addHitListener()
+        let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,8 +41,8 @@ class LineDetectionViewController: UIViewController {
     func onFinish(img: AnyObject){
         uiView.trial.stopCountigTime()
         print("Trial finished! hits: \(uiView.trial.hits) misses: \(uiView.trial.fails) duration: \(uiView.trial.duration) s timestamp: \(uiView.trial.timeStamp)")
-        
-        
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
         nextViewController.resultsVC.lastTrial = uiView.trial

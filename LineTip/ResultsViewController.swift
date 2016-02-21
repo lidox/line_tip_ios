@@ -22,6 +22,8 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
         if(lastTrial.hasStarted()){
             timeStampLabel.text = "\(lastTrial.timeStamp)"

@@ -41,6 +41,7 @@
 		04F893D81C75E56E00566C3C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D71C75E56E00566C3C /* UIColor.swift */; };
 		04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D91C771E9900566C3C /* ConfigKey.swift */; };
 		04F893DE1C77745B00566C3C /* LeftRightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893DD1C77745B00566C3C /* LeftRightLine.swift */; };
+		04F893E01C7DA19600566C3C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893DF1C7DA19600566C3C /* LineChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		04F893D71C75E56E00566C3C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		04F893D91C771E9900566C3C /* ConfigKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigKey.swift; sourceTree = "<group>"; };
 		04F893DD1C77745B00566C3C /* LeftRightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftRightLine.swift; sourceTree = "<group>"; };
+		04F893DF1C7DA19600566C3C /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04F893DF1C7DA19600566C3C /* LineChart.swift */,
 				04F893D91C771E9900566C3C /* ConfigKey.swift */,
 				04316F1A1C71D23C00BA600C /* Utils.swift */,
 				048064D81C1AE89800F775CC /* PreGeneratedLine.swift */,
@@ -390,6 +393,7 @@
 				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
 				04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */,
+				04F893E01C7DA19600566C3C /* LineChart.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,

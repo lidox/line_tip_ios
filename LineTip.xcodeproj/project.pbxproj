@@ -42,6 +42,10 @@
 		04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D91C771E9900566C3C /* ConfigKey.swift */; };
 		04F893DE1C77745B00566C3C /* LeftRightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893DD1C77745B00566C3C /* LeftRightLine.swift */; };
 		04F893E01C7DA19600566C3C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893DF1C7DA19600566C3C /* LineChart.swift */; };
+		04F893E31C7DA49800566C3C /* StatisticsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */; };
+		04F893E61C7DA64E00566C3C /* MedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */; };
+		04F893E71C7DA64E00566C3C /* MedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E51C7DA64E00566C3C /* MedUser.swift */; };
+		04F893E91C7DA6DB00566C3C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E81C7DA6DB00566C3C /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +107,10 @@
 		04F893D91C771E9900566C3C /* ConfigKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigKey.swift; sourceTree = "<group>"; };
 		04F893DD1C77745B00566C3C /* LeftRightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftRightLine.swift; sourceTree = "<group>"; };
 		04F893DF1C7DA19600566C3C /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		04F893E21C7DA49800566C3C /* StatisticsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatisticsModel.xcdatamodel; sourceTree = "<group>"; };
+		04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedUser+CoreDataProperties.swift"; path = "LineTip/MedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04F893E51C7DA64E00566C3C /* MedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedUser.swift; path = LineTip/MedUser.swift; sourceTree = "<group>"; };
+		04F893E81C7DA6DB00566C3C /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,8 @@
 		0418F5BD1C083A4A00B90989 = {
 			isa = PBXGroup;
 			children = (
+				04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */,
+				04F893E51C7DA64E00566C3C /* MedUser.swift */,
 				0418F5F71C083D3D00B90989 /* images */,
 				0418F5C81C083A4A00B90989 /* LineTip */,
 				0418F5DD1C083A4A00B90989 /* LineTipTests */,
@@ -162,10 +172,12 @@
 				0418F5D21C083A4A00B90989 /* LaunchScreen.storyboard */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				0418F5FC1C08433B00B90989 /* Images.xcassets */,
+				04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */,
 				047941791C0C5F880093EDD6 /* model */,
 				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
 				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
 				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
+				04F893E81C7DA6DB00566C3C /* DataController.swift */,
 			);
 			path = LineTip;
 			sourceTree = "<group>";
@@ -384,15 +396,19 @@
 			files = (
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
+				04F893E31C7DA49800566C3C /* StatisticsModel.xcdatamodeld in Sources */,
 				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
 				0418F5CC1C083A4A00B90989 /* ViewController.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
+				04F893E61C7DA64E00566C3C /* MedUser+CoreDataProperties.swift in Sources */,
 				04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */,
 				04316F1B1C71D23C00BA600C /* Utils.swift in Sources */,
 				04F893DE1C77745B00566C3C /* LeftRightLine.swift in Sources */,
+				04F893E91C7DA6DB00566C3C /* DataController.swift in Sources */,
 				048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */,
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
 				04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */,
+				04F893E71C7DA64E00566C3C /* MedUser.swift in Sources */,
 				04F893E01C7DA19600566C3C /* LineChart.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
@@ -656,6 +672,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04F893E21C7DA49800566C3C /* StatisticsModel.xcdatamodel */,
+			);
+			currentVersion = 04F893E21C7DA49800566C3C /* StatisticsModel.xcdatamodel */;
+			path = StatisticsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0418F5BE1C083A4A00B90989 /* Project object */;
 }

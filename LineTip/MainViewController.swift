@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController {
 
@@ -53,6 +54,9 @@ class MainViewController: UIViewController {
         
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
         
+        fetch()
+        seedPerson()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -60,5 +64,37 @@ class MainViewController: UIViewController {
         resultsVC.userName = self.userName
         medIdLabel.text = "Med-ID: \(userName)"
     }
-
+    
+    func seedPerson() {
+        
+        // create an instance of our managedObjectContext
+        let moc = DataController().managedObjectContext
+        
+        // we set up our entity by selecting the entity and context that we're targeting
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
+        
+        // add our data
+        entity.setValue(userName, forKey: "medId")
+        
+        
+        // we save our entity
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    func fetch() {
+        let moc = DataController().managedObjectContext
+        let personFetch = NSFetchRequest(entityName: "MedUser")
+        
+        do {
+            let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
+            print("fetched person: \(fetchedPerson.last!.medId!)")
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
+    }
 }

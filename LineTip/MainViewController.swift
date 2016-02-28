@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
         
-        fetch()
+        fetchLastTrial()
         seedPerson()
         
     }
@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func fetch() {
+    func fetchLastTrial() {
         let moc = DataController().managedObjectContext
         let personFetch = NSFetchRequest(entityName: "MedUser")
         

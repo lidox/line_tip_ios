@@ -46,6 +46,8 @@
 		04F893E61C7DA64E00566C3C /* MedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */; };
 		04F893E71C7DA64E00566C3C /* MedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E51C7DA64E00566C3C /* MedUser.swift */; };
 		04F893E91C7DA6DB00566C3C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893E81C7DA6DB00566C3C /* DataController.swift */; };
+		04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */; };
+		04F893ED1C83183300566C3C /* MedTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EB1C83183300566C3C /* MedTrial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedUser+CoreDataProperties.swift"; path = "LineTip/MedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04F893E51C7DA64E00566C3C /* MedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedUser.swift; path = LineTip/MedUser.swift; sourceTree = "<group>"; };
 		04F893E81C7DA6DB00566C3C /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedTrial+CoreDataProperties.swift"; path = "LineTip/MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 		0418F5BD1C083A4A00B90989 = {
 			isa = PBXGroup;
 			children = (
+				04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */,
+				04F893EB1C83183300566C3C /* MedTrial.swift */,
 				04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */,
 				04F893E51C7DA64E00566C3C /* MedUser.swift */,
 				0418F5F71C083D3D00B90989 /* images */,
@@ -409,6 +415,7 @@
 				048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */,
 				04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */,
 				04F893E71C7DA64E00566C3C /* MedUser.swift in Sources */,
+				04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */,
 				04F893E01C7DA19600566C3C /* LineChart.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
@@ -417,6 +424,7 @@
 				04F893D81C75E56E00566C3C /* UIColor.swift in Sources */,
 				048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */,
 				04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */,
+				04F893ED1C83183300566C3C /* MedTrial.swift in Sources */,
 				048064D11C15B73900F775CC /* Line.swift in Sources */,
 				048064BE1C11FCA100F775CC /* SettingsViewController.swift in Sources */,
 			);

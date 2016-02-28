@@ -1,5 +1,5 @@
 //
-//  MedUser+CoreDataProperties.swift
+//  MedTrial+CoreDataProperties.swift
 //  LineTip
 //
 //  Created by Artur Schäfer on 28.02.16.
@@ -12,9 +12,12 @@
 import Foundation
 import CoreData
 
-extension MedUser {
+extension MedTrial {
 
-    @NSManaged var medId: String?
-    @NSManaged var trial: NSSet?
+    @NSManaged var hits: NSNumber?
+    @NSManaged var fails: NSNumber?
+    @NSManaged var timeStamp: NSDate?
+    @NSManaged var duration: NSNumber?
+    @NSManaged var user: MedUser?
 
 }

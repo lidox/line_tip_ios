@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LineDetectionViewController: UIViewController {
     
@@ -17,14 +18,11 @@ class LineDetectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        print("viewDidLoad with userName \(userName)")
         addHitListener()
+        
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-       print("viewWillAppear")
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,4 +63,23 @@ class LineDetectionViewController: UIViewController {
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
     }
     
+    func seedTrial() {
+        
+        // create an instance of our managedObjectContext
+        let moc = DataController().managedObjectContext
+        
+        // we set up our entity by selecting the entity and context that we're targeting
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
+        
+        // add our data
+        entity.setValue(userName, forKey: "medId")
+        
+        
+        // we save our entity
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
 }

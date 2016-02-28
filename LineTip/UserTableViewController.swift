@@ -10,6 +10,7 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
+    @IBOutlet weak var wellcomeImage: UIImageView!
     
     @IBOutlet weak var tableView2: UITableView!
     
@@ -18,6 +19,11 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "User Management"
+        
+        let imageName = "ball.png"
+        let image = UIImage(named: imageName)
+        //let imageView = UIImageView(image: image!)
+        wellcomeImage.image = image
         // Do any additional setup after loading the view.
     }
 
@@ -31,6 +37,22 @@ class UserTableViewController: UITableViewController {
         cell.textLabel!.text = names[indexPath.row]
         return cell
     }
+    
+    //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      //  let reuseIdentifier = "myCell"
+        //var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)!// as UITableViewCell?
+        //if (cell != nil) {
+        //    cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
+        //}
+        //cell!.textLabel!.text = names[indexPath.row]
+        //cell!.detailTextLabel?.text = "\(names[indexPath.row]) nur genauer"
+        
+        //let imageName = UIImage(named: "ball")
+        //cell!.imageView?.image = imageName
+        // cell!.accessoryView = imageName
+        
+        //return cell!
+    //}
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

@@ -13,16 +13,23 @@ class LineDetectionViewController: UIViewController {
     
     @IBOutlet weak var finishImg: UIImageView!
     @IBOutlet var uiView: LineDetectionUIView!
-    var selectedUser : MedUser!
-    var userName: String = ""
+    
+    var medUser : MedUser!
+    var selectedUserObjectID : NSManagedObjectID!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad with userName \(userName)")
-        addHitListener()
+        print("LineDetection with obejectId \(selectedUserObjectID)")
+        self.medUser = MedUserManager.fetchMedUserById(selectedUserObjectID)
         
+        addHitListener()
+
+        
+        // set orientation
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        
+        print("LineDetection with medUser: \(medUser.medId)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,8 +51,8 @@ class LineDetectionViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
         nextViewController.resultsVC.lastTrial = uiView.trial
-        nextViewController.selectedUser = self.selectedUser
-        nextViewController.resultsVC.selectedUser = self.selectedUser
+        nextViewController.selectedUserObjectID = self.selectedUserObjectID
+        nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
         self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
@@ -61,25 +68,5 @@ class LineDetectionViewController: UIViewController {
         let finishTrialGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFinish:"))
         finishImg.userInteractionEnabled = true
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
-    }
-    
-    func seedTrial() { // TODO:
-        
-        // create an instance of our managedObjectContext
-        let moc = DataController().managedObjectContext
-        
-        // we set up our entity by selecting the entity and context that we're targeting
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
-        
-        // add our data
-        entity.setValue(userName, forKey: "medId")
-        
-        
-        // we save our entity
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
     }
 }

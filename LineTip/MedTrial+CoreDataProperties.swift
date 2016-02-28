@@ -18,6 +18,6 @@ extension MedTrial {
     @NSManaged var fails: NSNumber?
     @NSManaged var timeStamp: NSDate?
     @NSManaged var duration: NSNumber?
-    @NSManaged var user: MedUser?
+    @NSManaged var user: MedUser!
 
 }

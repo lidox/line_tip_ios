@@ -52,6 +52,29 @@ class MedUserManager {
         }
     }
     
+    class func fetchMedUserById(objectID: NSManagedObjectID ) -> MedUser {
+        let moc = DataController().managedObjectContext
+        do {
+            let users = try moc.existingObjectWithID(objectID) as! MedUser
+            print("fetched user: \(users.medId)")
+            return users
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
+    }
+    
+    class func fetchMedIdByObjectId(objectID: NSManagedObjectID ) -> String {
+        let moc = DataController().managedObjectContext
+        do {
+            let users = try moc.existingObjectWithID(objectID) as! MedUser
+            return users.medId
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
+    }
+    
     func fetchLastTrial() {
         let moc = DataController().managedObjectContext
         let personFetch = NSFetchRequest(entityName: "MedUser")

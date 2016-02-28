@@ -17,23 +17,26 @@ class MainViewController: UIViewController {
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
     var selectedUser : MedUser!
+    var selectedUserObjectID : NSManagedObjectID!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initScrollViews()
+        print("viewDidLoad MainController")
         
-        
-        
+        resultsVC.selectedUser = self.selectedUser
+        resultsVC.selectedUserObjectID = self.selectedUserObjectID
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("MainViewController userName= \(selectedUser.medId)")
-        resultsVC.selectedUser = self.selectedUser
-        medIdLabel.text = "Med-ID: \(selectedUser.medId)"
+        if((selectedUser) != nil){
+            //selectedUser = MedUserManager.fetchMedUserById(selectedUserObjectID)
+            print("viewWIllAppear MainViewController userName= \(selectedUser.medId)")
+            resultsVC.selectedUser = self.selectedUser
+            medIdLabel.text = "Med-ID: \(selectedUser.medId)"
+        }
+        initScrollViews()
     }
-    
-
-    
     
     func initScrollViews() {
         let value = UIInterfaceOrientation.Portrait.rawValue

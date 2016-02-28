@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ResultsViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class ResultsViewController: UIViewController {
     
     var lastTrial = Trial()
     var selectedUser : MedUser!
+    var selectedUserObjectID : NSManagedObjectID!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +38,12 @@ class ResultsViewController: UIViewController {
             missLabel.text = "\(lastTrial.fails)"
             durationLabel.text = "\(lastTrial.duration)"
         }
+        
+        print("resultViewController MED-ID: \(MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID))")
     }
     
     @IBAction func startLineDetectionBtn(sender: AnyObject) {
-        print("start line detection")
+        //print("start line detection with user: \(self.selectedUser.medId)")
         
         switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
     }
@@ -52,7 +56,9 @@ class ResultsViewController: UIViewController {
     func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
-        nextViewController.selectedUser = self.selectedUser
+        self.selectedUser = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
+        //print("ResultView segue to linedetection: \(self.selectedUser.medId) and \(self.selectedUserID)")
+        nextViewController.selectedUserObjectID = (self.selectedUserObjectID)
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
 

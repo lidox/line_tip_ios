@@ -14,7 +14,7 @@ import CoreData
 
 extension MedUser {
 
-    @NSManaged var medId: String?
+    @NSManaged var medId: String!
     @NSManaged var trial: NSSet?
 
 }

@@ -14,17 +14,14 @@ class UserTableViewController: UITableViewController {
     
     @IBOutlet weak var tableView2: UITableView!
     
-    var medUserList = [MedUser]!()
-    //var names = ["Max Kieslich", "Artur Schäfer", "Tim Katz", "Regina Nuss", "Thomas Renerken"]
+    var medUserList = [MedUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "User Management"
         
-        
         let imageName = "ball.png"
         let image = UIImage(named: imageName)
-        //let imageView = UIImageView(image: image!)
         wellcomeImage.image = image
         
         medUserList = MedUserManager.fetchMedUsers()
@@ -32,7 +29,7 @@ class UserTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return medUserList.count//names.count
+        return medUserList.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -122,8 +119,9 @@ class UserTableViewController: UITableViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
                     medUserList = MedUserManager.fetchMedUsers()
                     let selectedUser = medUserList[index]
-                    print(selectedUser.medId)
+                    print("\(selectedUser.medId) segue")
                     destination.selectedUser = selectedUser
+                    destination.selectedUserObjectID = selectedUser.objectID
                 }
             }
         }

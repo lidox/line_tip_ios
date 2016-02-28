@@ -39,15 +39,13 @@ class MedUserManager {
     }
     
     class func fetchMedUsers() -> Array<MedUser> {
-        var userList = [MedUser]()
         
         let moc = DataController().managedObjectContext
         let personFetch = NSFetchRequest(entityName: "MedUser")
         
         do {
             let users = try moc.executeFetchRequest(personFetch) as! [MedUser]
-            userList = users
-            return userList
+            return users
             
         } catch {
             fatalError("Failed to fetch person: \(error)")

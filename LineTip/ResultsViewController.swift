@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    
+
     //labels
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var hitLabel: UILabel!
@@ -18,12 +18,17 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     
     var lastTrial = Trial()
-    var userName: String = ""
+    var selectedUser : MedUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        
+        timeStampLabel.text = "noch kein Versuch durchgeführt"
+        hitLabel.text = "0"
+        missLabel.text = "0"
+        durationLabel.text = "-"
         
         if(lastTrial.hasStarted()){
             timeStampLabel.text = "\(lastTrial.timeStamp)"
@@ -47,7 +52,7 @@ class ResultsViewController: UIViewController {
     func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
-        nextViewController.userName = self.userName
+        nextViewController.selectedUser = self.selectedUser
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
 

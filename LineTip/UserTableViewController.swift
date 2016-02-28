@@ -14,7 +14,7 @@ class UserTableViewController: UITableViewController {
     
     @IBOutlet weak var tableView2: UITableView!
     
-    var medUserList = [MedUser] ()
+    var medUserList = [MedUser]!()
     //var names = ["Max Kieslich", "Artur Schäfer", "Tim Katz", "Regina Nuss", "Thomas Renerken"]
     
     override func viewDidLoad() {
@@ -120,7 +120,10 @@ class UserTableViewController: UITableViewController {
         if segue.identifier == "toMainSegue" {
             if let destination = segue.destinationViewController as? MainViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
-                    //destination.userName = medUserList[index].medId!
+                    medUserList = MedUserManager.fetchMedUsers()
+                    let selectedUser = medUserList[index]
+                    print(selectedUser.medId)
+                    destination.selectedUser = selectedUser
                 }
             }
         }

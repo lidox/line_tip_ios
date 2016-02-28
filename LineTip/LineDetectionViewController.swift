@@ -13,7 +13,7 @@ class LineDetectionViewController: UIViewController {
     
     @IBOutlet weak var finishImg: UIImageView!
     @IBOutlet var uiView: LineDetectionUIView!
-    
+    var selectedUser : MedUser!
     var userName: String = ""
     
     override func viewDidLoad() {
@@ -44,8 +44,8 @@ class LineDetectionViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
         nextViewController.resultsVC.lastTrial = uiView.trial
-        nextViewController.userName = self.userName
-        nextViewController.resultsVC.userName = self.userName
+        nextViewController.selectedUser = self.selectedUser
+        nextViewController.resultsVC.selectedUser = self.selectedUser
         self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     

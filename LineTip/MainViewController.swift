@@ -16,41 +16,23 @@ class MainViewController: UIViewController {
     @IBOutlet weak var medIdLabel: UILabel!
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
-    var userName = String()
+    var selectedUser : MedUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initScrollViews()
         
-        //fetchLastTrial()
+        
         
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("MainViewController userName= \(userName)")
-        resultsVC.userName = self.userName
-        medIdLabel.text = "Med-ID: \(userName)"
+        print("MainViewController userName= \(selectedUser.medId)")
+        resultsVC.selectedUser = self.selectedUser
+        medIdLabel.text = "Med-ID: \(selectedUser.medId)"
     }
     
-    func seedPerson() {
-        
-        // create an instance of our managedObjectContext
-        let moc = DataController().managedObjectContext
-        
-        // we set up our entity by selecting the entity and context that we're targeting
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
-        
-        // add our data
-        entity.setValue(userName, forKey: "medId")
-        
-        
-        // we save our entity
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-    }
+
     
     
     func initScrollViews() {

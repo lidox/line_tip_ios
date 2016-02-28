@@ -63,7 +63,7 @@ class LineDetectionViewController: UIViewController {
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
     }
     
-    func seedTrial() {
+    func seedTrial() { // TODO:
         
         // create an instance of our managedObjectContext
         let moc = DataController().managedObjectContext

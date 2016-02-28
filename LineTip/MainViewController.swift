@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
         
         fetchLastTrial()
         seedPerson()
+        //list = MedUserManager.fetchMedUsers() TODO:
         
     }
     

@@ -14,27 +14,33 @@ class UserTableViewController: UITableViewController {
     
     @IBOutlet weak var tableView2: UITableView!
     
-    var names = ["Max Kieslich", "Artur Schäfer", "Tim Katz", "Regina Nuss", "Thomas Renerken"]
+    var medUserList = [MedUser] ()
+    //var names = ["Max Kieslich", "Artur Schäfer", "Tim Katz", "Regina Nuss", "Thomas Renerken"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "User Management"
         
+        
         let imageName = "ball.png"
         let image = UIImage(named: imageName)
         //let imageView = UIImageView(image: image!)
         wellcomeImage.image = image
-        // Do any additional setup after loading the view.
+        
+        medUserList = MedUserManager.fetchMedUsers()
+
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return medUserList.count//names.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
-        cell.textLabel!.text = names[indexPath.row]
+        self.medUserList = MedUserManager.fetchMedUsers()
+        cell.textLabel!.text = medUserList[indexPath.row].medId
+        
         return cell
     }
     
@@ -57,7 +63,7 @@ class UserTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
-        print("Row: \(row) value= \(names[row])")
+        print("Row: \(row) value= \(medUserList[row].medId)")
     }
 
     @IBAction func addUser(sender: AnyObject) {
@@ -70,8 +76,28 @@ class UserTableViewController: UITableViewController {
             handler: { (action:UIAlertAction) -> Void in
                 
                 let textField = alert.textFields!.first
-                self.names.append(textField!.text!)
-                self.tableView.reloadData()
+                
+                //if not contains
+                var containsName = false
+                let newUserName = textField!.text!
+                self.medUserList = MedUserManager.fetchMedUsers()
+                for user in self.medUserList{
+                    let userName = user.medId
+                    if(userName == newUserName){
+                        containsName = true
+                        break
+                    }
+                }
+                
+                if(containsName){
+                    print("MedUser: '\(newUserName)' already exists")                }
+                else{
+                    let user = MedUserManager.insertMedUserByName(newUserName)
+                    self.medUserList.append(user)
+                    self.tableView.reloadData()
+                    print("MedUser: '\(newUserName)' added")
+                }
+                
         })
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -94,7 +120,7 @@ class UserTableViewController: UITableViewController {
         if segue.identifier == "toMainSegue" {
             if let destination = segue.destinationViewController as? MainViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
-                    destination.userName = names[index]
+                    //destination.userName = medUserList[index].medId!
                 }
             }
         }

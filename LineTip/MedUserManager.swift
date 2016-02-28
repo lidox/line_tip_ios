@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class MedUserManager: NSObject {
+class MedUserManager {
     
     let medId : String
     
@@ -17,7 +17,7 @@ class MedUserManager: NSObject {
         self.medId = medId
     }
     
-    func insertMedUserByName(userName: String) -> MedUser {
+    class func insertMedUserByName(userName: String) -> MedUser {
         
         // create an instance of our managedObjectContext
         let moc = DataController().managedObjectContext

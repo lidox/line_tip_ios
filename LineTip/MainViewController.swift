@@ -20,7 +20,40 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initScrollViews()
         
+        //fetchLastTrial()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("MainViewController userName= \(userName)")
+        resultsVC.userName = self.userName
+        medIdLabel.text = "Med-ID: \(userName)"
+    }
+    
+    func seedPerson() {
+        
+        // create an instance of our managedObjectContext
+        let moc = DataController().managedObjectContext
+        
+        // we set up our entity by selecting the entity and context that we're targeting
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
+        
+        // add our data
+        entity.setValue(userName, forKey: "medId")
+        
+        
+        // we save our entity
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    
+    func initScrollViews() {
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
@@ -53,49 +86,5 @@ class MainViewController: UIViewController {
         vc2.didMoveToParentViewController(self)
         
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
-        
-        fetchLastTrial()
-        seedPerson()
-        //list = MedUserManager.fetchMedUsers() TODO:
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        print("MainViewController userName= \(userName)")
-        resultsVC.userName = self.userName
-        medIdLabel.text = "Med-ID: \(userName)"
-    }
-    
-    func seedPerson() {
-        
-        // create an instance of our managedObjectContext
-        let moc = DataController().managedObjectContext
-        
-        // we set up our entity by selecting the entity and context that we're targeting
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
-        
-        // add our data
-        entity.setValue(userName, forKey: "medId")
-        
-        
-        // we save our entity
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-    }
-    
-    func fetchLastTrial() {
-        let moc = DataController().managedObjectContext
-        let personFetch = NSFetchRequest(entityName: "MedUser")
-        
-        do {
-            let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
-            print("fetched person: \(fetchedPerson.last!.medId!)")
-            
-        } catch {
-            fatalError("Failed to fetch person: \(error)")
-        }
     }
 }

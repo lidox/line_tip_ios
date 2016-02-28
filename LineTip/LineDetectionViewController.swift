@@ -20,16 +20,16 @@ class LineDetectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("LineDetection with obejectId \(selectedUserObjectID)")
-        self.medUser = MedUserManager.fetchMedUserById(selectedUserObjectID)
         
         addHitListener()
-
         
         // set orientation
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
+        fetchMedUserById(self.selectedUserObjectID)
         print("LineDetection with medUser: \(medUser.medId)")
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,5 +68,16 @@ class LineDetectionViewController: UIViewController {
         let finishTrialGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onFinish:"))
         finishImg.userInteractionEnabled = true
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
+    }
+    
+    func fetchMedUserById(objectID: NSManagedObjectID )  {
+        let moc = DataController().managedObjectContext
+        do {
+            let user = try moc.existingObjectWithID(objectID) as! MedUser
+            self.medUser = user
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
     }
 }

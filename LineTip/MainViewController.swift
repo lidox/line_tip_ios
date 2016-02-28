@@ -23,18 +23,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad MainController")
-        
-        resultsVC.selectedUser = self.selectedUser
-        resultsVC.selectedUserObjectID = self.selectedUserObjectID
     }
     
     override func viewWillAppear(animated: Bool) {
-        if((selectedUser) != nil){
-            //selectedUser = MedUserManager.fetchMedUserById(selectedUserObjectID)
-            print("viewWIllAppear MainViewController userName= \(selectedUser.medId)")
-            resultsVC.selectedUser = self.selectedUser
-            medIdLabel.text = "Med-ID: \(selectedUser.medId)"
-        }
+        print("viewWillAppear MainViewController obejct-id= \(self.selectedUserObjectID)")
+        fetchMedUserById(self.selectedUserObjectID)
+        print("viewWillAppear MainViewController med-id= \(self.selectedUser.medId)")
+        medIdLabel.text = "Med-ID: \(self.selectedUser.medId)"
+        
+        resultsVC.selectedUser = self.selectedUser
+        resultsVC.selectedUserObjectID = self.selectedUserObjectID
+        
+        
         initScrollViews()
     }
     
@@ -71,5 +71,15 @@ class MainViewController: UIViewController {
         vc2.didMoveToParentViewController(self)
         
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
+    }
+    
+    func fetchMedUserById(objectID: NSManagedObjectID )  {
+        let moc = DataController().managedObjectContext
+        do {
+            selectedUser = try moc.existingObjectWithID(objectID) as! MedUser
+            print("fetched user: \(selectedUser.medId)")
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
     }
 }

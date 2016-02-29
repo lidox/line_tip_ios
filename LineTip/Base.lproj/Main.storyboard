@@ -18,17 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome text, Launcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YA0-ne-E8r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome text, Launcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YA0-ne-E8r">
                                 <rect key="frame" x="181" y="127" width="238" height="27"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="launcher_smile-jpg.png" translatesAutoresizingMaskIntoConstraints="NO" id="GAq-yt-kDS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="launcher_smile-jpg.png" translatesAutoresizingMaskIntoConstraints="NO" id="GAq-yt-kDS">
                                 <rect key="frame" x="172" y="170" width="256" height="256"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elH-bz-7jv">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elH-bz-7jv">
                                 <rect key="frame" x="206" y="467" width="188" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="LINE DETECTION TEST"/>
@@ -61,12 +61,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="csN-sU-PgR">
-                            <rect key="frame" x="0.0" y="64" width="600" height="203"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="203"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myCell" id="mei-jD-bUF">
-                                <rect key="frame" x="0.0" y="295" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="231" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mei-jD-bUF" id="YY8-Rs-bWe">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -79,8 +79,8 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="cDA-Za-BAG">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="VVW-fl-Ilv"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="4fN-7J-TKV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="VVW-fl-Ilv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4fN-7J-TKV">
                             <connections>
                                 <action selector="addUser:" destination="rUj-SJ-ezV" id="e2C-89-Bez"/>
                             </connections>
@@ -106,13 +106,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
                                 <rect key="frame" x="268" y="72" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
                                 <rect key="frame" x="0.0" y="92" width="600" height="508"/>
                             </scrollView>
                         </subviews>
@@ -128,7 +128,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HUh-DB-kqb">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="85P-He-PRq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="85P-He-PRq">
                             <connections>
                                 <segue destination="rUj-SJ-ezV" kind="show" id="roG-dV-4Ip"/>
                             </connections>
@@ -219,6 +219,6 @@
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gfk-1t-n2N"/>
+        <segue reference="roG-dV-4Ip"/>
     </inferredMetricsTieBreakers>
 </document>

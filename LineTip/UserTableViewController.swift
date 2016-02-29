@@ -19,7 +19,7 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.loadSettingsData()        
-        title = "User Management"
+        title = "Benutzerverwaltung"
         
         let imageName = "ball.png"
         let image = UIImage(named: imageName)
@@ -65,11 +65,11 @@ class UserTableViewController: UITableViewController {
     }
 
     @IBAction func addUser(sender: AnyObject) {
-        let alert = UIAlertController(title: "New Name",
-            message: "Add a new name",
+        let alert = UIAlertController(title: "Neuer Benutzer",
+            message: "Erstelle einen Benutzer",
             preferredStyle: .Alert)
         
-        let saveAction = UIAlertAction(title: "Save",
+        let saveAction = UIAlertAction(title: "Speichern",
             style: .Default,
             handler: { (action:UIAlertAction) -> Void in
                 

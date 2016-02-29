@@ -49,6 +49,7 @@
 		04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */; };
 		04F893ED1C83183300566C3C /* MedTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EB1C83183300566C3C /* MedTrial.swift */; };
 		04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EE1C83208800566C3C /* MedUserManager.swift */; };
+		04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893F21C84AE2400566C3C /* MyNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedTrial+CoreDataProperties.swift"; path = "LineTip/MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
+		04F893F21C84AE2400566C3C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
+				04F893F21C84AE2400566C3C /* MyNavigationController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */,
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
 				04F893E31C7DA49800566C3C /* StatisticsModel.xcdatamodeld in Sources */,

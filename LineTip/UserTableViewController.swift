@@ -18,6 +18,7 @@ class UserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utils.loadSettingsData()        
         title = "User Management"
         
         let imageName = "ball.png"

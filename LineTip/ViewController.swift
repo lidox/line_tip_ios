@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utils.loadSettingsData()
+        //Utils.loadSettingsData()
     }
 
     override func didReceiveMemoryWarning() {

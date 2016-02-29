@@ -83,11 +83,18 @@ class LineDetectionViewController: UIViewController {
     
     func switchToResultViewController() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
+        //self.navigationController!.pushViewController(nextViewController, animated: true)
+        let navController = MyNavigationController(rootViewController: nextViewController)
+        // Creating a navigation controller with VC1 at the root of the navigation stack.
+        
+        
         nextViewController.resultsVC.lastTrial = uiView.trial
         nextViewController.selectedUserObjectID = self.selectedUserObjectID
         nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
-        self.presentViewController(nextViewController, animated:true, completion:nil)
+        self.presentViewController(navController, animated:true, completion: nil)
+        //self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
     func addHitListener() {

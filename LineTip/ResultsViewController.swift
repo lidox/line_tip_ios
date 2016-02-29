@@ -38,8 +38,8 @@ class ResultsViewController: UIViewController {
             missLabel.text = "\(lastTrial.fails)"
             durationLabel.text = "\(lastTrial.duration)"
         }
-        
-        print("resultViewController MED-ID: \(MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID))")
+        print("3. Result")
+        //print("resultViewController MED-ID: \(MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID))")
     }
     
     @IBAction func startLineDetectionBtn(sender: AnyObject) {
@@ -56,9 +56,8 @@ class ResultsViewController: UIViewController {
     func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
-        self.selectedUser = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
-        //print("ResultView segue to linedetection: \(self.selectedUser.medId) and \(self.selectedUserID)")
-        nextViewController.selectedUserObjectID = (self.selectedUserObjectID)
+        print("results segue: \(self.selectedUserObjectID)")
+        nextViewController.selectedUserObjectID = self.selectedUserObjectID
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
 

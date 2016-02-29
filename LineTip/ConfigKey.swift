@@ -17,4 +17,6 @@ enum ConfigKey {
     static let SPOT_WIDTH = "spot_width"
     static let SPOT_HEIGHT = "spot_height"
     static let SPOT_IMAGE_NAME = "spot_image_name"
+    
+    static let USER_OBJECT_ID = "objectId"
 }

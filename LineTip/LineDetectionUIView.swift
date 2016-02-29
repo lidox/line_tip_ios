@@ -21,7 +21,7 @@ class LineDetectionUIView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        print("init")
+        //print("init")
         var lineGenerator : LineGenerator
         lineGenerator = getLineGenerator()
         lines = lineGenerator.getLines()
@@ -52,7 +52,7 @@ class LineDetectionUIView: UIView {
     func onFail(img: AnyObject){
         trial.startCountingTime()
         trial.countMiss()
-        print("failed to hit line")
+        //print("failed to hit line")
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {

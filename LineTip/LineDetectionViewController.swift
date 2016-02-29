@@ -19,7 +19,6 @@ class LineDetectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("LineDetection with obejectId \(selectedUserObjectID)")
         
         addHitListener()
         
@@ -27,9 +26,8 @@ class LineDetectionViewController: UIViewController {
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
+        print("LineDetection with obejectId \(selectedUserObjectID)")
         fetchMedUserById(self.selectedUserObjectID)
-        print("LineDetection with medUser: \(medUser.medId)")
-       
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +38,7 @@ class LineDetectionViewController: UIViewController {
         uiView.trial.startCountingTime()
         uiView.trial.countHit()
         uiView.setNeedsDisplay()
-        print("CONTROLLER Hit line")
+        //print("CONTROLLER Hit line")
     }
     
     func onFinish(img: AnyObject){
@@ -74,6 +72,7 @@ class LineDetectionViewController: UIViewController {
         let moc = DataController().managedObjectContext
         do {
             let user = try moc.existingObjectWithID(objectID) as! MedUser
+            print("LineDetection MedUser=\(user.medId)")
             self.medUser = user
             
         } catch {

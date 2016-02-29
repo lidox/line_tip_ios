@@ -16,27 +16,17 @@ class MainViewController: UIViewController {
     @IBOutlet weak var medIdLabel: UILabel!
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
-    var selectedUser : MedUser!
+    var selectedUser : MedUser?
     var selectedUserObjectID : NSManagedObjectID!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad MainController")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear MainViewController obejct-id= \(self.selectedUserObjectID)")
-        fetchMedUserById(self.selectedUserObjectID)
-        print("viewWillAppear MainViewController med-id= \(self.selectedUser.medId)")
-        medIdLabel.text = "Med-ID: \(self.selectedUser.medId)"
-        
-        resultsVC.selectedUser = self.selectedUser
-        resultsVC.selectedUserObjectID = self.selectedUserObjectID
-        
-        
+        initMedUserInAllView(self.selectedUserObjectID)
+        print("1. MainController with obejct-id= \(self.selectedUserObjectID)")
         initScrollViews()
     }
+    
     
     func initScrollViews() {
         let value = UIInterfaceOrientation.Portrait.rawValue
@@ -73,11 +63,14 @@ class MainViewController: UIViewController {
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
     }
     
-    func fetchMedUserById(objectID: NSManagedObjectID )  {
+    func initMedUserInAllView(objectID: NSManagedObjectID )  {
         let moc = DataController().managedObjectContext
         do {
-            selectedUser = try moc.existingObjectWithID(objectID) as! MedUser
-            print("fetched user: \(selectedUser.medId)")
+            selectedUser = try moc.existingObjectWithID(objectID) as? MedUser
+            medIdLabel.text = "Med-ID: \(selectedUser!.medId)"
+            resultsVC.selectedUserObjectID = self.selectedUser?.objectID
+            resultsVC.selectedUser = self.selectedUser
+            //print("fetched user: \(selectedUser!.medId)")
         } catch {
             fatalError("Failed to fetch person: \(error)")
         }

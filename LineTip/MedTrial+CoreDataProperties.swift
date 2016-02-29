@@ -2,7 +2,7 @@
 //  MedTrial+CoreDataProperties.swift
 //  LineTip
 //
-//  Created by Artur Schäfer on 28.02.16.
+//  Created by Artur Schäfer on 29.02.16.
 //  Copyright © 2016 Artur Schäfer. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,10 +14,11 @@ import CoreData
 
 extension MedTrial {
 
-    @NSManaged var hits: NSNumber?
-    @NSManaged var fails: NSNumber?
-    @NSManaged var timeStamp: NSDate?
     @NSManaged var duration: NSNumber?
-    @NSManaged var user: MedUser!
+    @NSManaged var fails: NSNumber?
+    @NSManaged var hits: NSNumber?
+    @NSManaged var timeStamp: String?
+    @NSManaged var isSelectedForStats: NSNumber?
+    @NSManaged var user: MedUser?
 
 }

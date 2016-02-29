@@ -46,40 +46,45 @@ class LineDetectionViewController: UIViewController {
         
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
-        //TODO: create trial an save in core data
- 
-        
+        addTrialToUser(uiView.trial)
         
         switchToResultViewController()
     }
-    
-    func addTrialToUser() {
+    func addTrialToUser(givenTrial: Trial) {
         let context = DataController().managedObjectContext
         
         
         // fetchRequest = NSFetchRequest(entityName: "MedTrial")
-
+        
         do {
             //TODO: hier weiter
             let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            var trialList = medUser?.trial?.allObjects as! [MedTrial]
-            for var i = 0; i < trialList.count; i++ {
-                var cardData = trialList[i] as! NSDictionary
-                
-                var trial = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: context) as! MedTrial
-                
-                //trial.name = cardData.valueForKey("name") as String
-                
-                medUser!.addTrial(trial)
-                
-                // we save our entity
-                try context.save()            }
+            //var trialList = medUser?.trial?.allObjects as! [MedTrial]
             
+            //for var i = 0; i < trialList.count; i++ {
+            //var cardData = trialList[i] as! NSDictionary
+            //}
+            
+            let trial = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: context) as! MedTrial
+            
+            trial.setValue(givenTrial.hits, forKey: "hits")
+            trial.setValue(givenTrial.fails, forKey: "fails")
+            trial.setValue(givenTrial.duration, forKey: "duration")
+            trial.setValue(givenTrial.timeStamp, forKey: "timeStamp")
+            trial.setValue(true, forKey: "isSelectedForStats")
+            //@NSManaged var hits: NSNumber?
+            //@NSManaged var fails: NSNumber?
+            //@NSManaged var timeStamp: NSDate?
+            //@NSManaged var duration: NSNumber?
+            //@NSManaged var user: MedUser!
+            //trial.name = cardData.valueForKey("name") as String
+            medUser!.addTrial(trial)
+            // we save our entity
+            try context.save()
             
         } catch {
             fatalError("Failure to save context: \(error)")
         }
-
     }
     
     func switchToResultViewController() {

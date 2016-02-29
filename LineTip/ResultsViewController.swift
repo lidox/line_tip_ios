@@ -32,14 +32,13 @@ class ResultsViewController: UIViewController {
         missLabel.text = "0"
         durationLabel.text = "-"
         
-        if(lastTrial.hasStarted()){
-            timeStampLabel.text = "\(lastTrial.timeStamp)"
-            hitLabel.text = "\(lastTrial.hits)"
-            missLabel.text = "\(lastTrial.fails)"
-            durationLabel.text = "\(lastTrial.duration)"
+        let lastTrial2 = getLastTrialByObjectId(self.selectedUserObjectID)
+        if(lastTrial2.hits != -1){
+            timeStampLabel.text = "\(lastTrial2.timeStamp)"
+            hitLabel.text = "\(lastTrial2.hits)"
+            missLabel.text = "\(lastTrial2.fails)"
+            durationLabel.text = "\(lastTrial2.duration)"
         }
-        print("3. Result")
-        //print("resultViewController MED-ID: \(MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID))")
     }
     
     @IBAction func startLineDetectionBtn(sender: AnyObject) {
@@ -61,14 +60,27 @@ class ResultsViewController: UIViewController {
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getLastTrialByObjectId(objectId: NSManagedObjectID) -> Trial {
+        let context = DataController().managedObjectContext
+        
+        do {
+            let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
+            let trialList = medUser?.trial?.allObjects as! [MedTrial]
+            
+            let retTrial = Trial()
+            retTrial.hits = -1
+            if(trialList.count > 0){
+                let lastTrial = trialList.last
+                retTrial.hits = (lastTrial?.hits?.integerValue)!
+                retTrial.fails = (lastTrial?.fails?.integerValue)!
+                retTrial.duration = (lastTrial?.duration?.doubleValue)!
+                retTrial.timeStamp = (lastTrial?.timeStamp)!
+                retTrial.isSelectedForStats = (lastTrial!.isSelectedForStats!.boolValue)
+            }
+            return retTrial
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
-    */
 
 }

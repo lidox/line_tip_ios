@@ -16,5 +16,14 @@ extension MedUser {
 
     @NSManaged var medId: String!
     @NSManaged var trial: NSSet?
+    
+    func addTrial(value: MedTrial) {
+        self.mutableSetValueForKey("trial").addObject(value)
+    }
 
+    func getTrialList() -> [MedTrial] {
+        var trialList: [MedTrial]
+        trialList = self.trial!.allObjects as! [MedTrial]
+        return trialList
+    }
 }

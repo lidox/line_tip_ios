@@ -27,6 +27,8 @@ class MedUserManager {
         
         // add our data
         entity.setValue(userName, forKey: "medId")
+        entity.setValue(NSDate(), forKey: "creationDate")
+ 
         
         // we save our entity
         do {
@@ -81,7 +83,7 @@ class MedUserManager {
         
         do {
             let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
-            print("fetched person: \(fetchedPerson.last!.medId!)")
+            print("fetched person: \(fetchedPerson.last!.medId)")
             
         } catch {
             fatalError("Failed to fetch person: \(error)")

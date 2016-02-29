@@ -18,6 +18,7 @@ class Trial: NSObject {
     var duration: Double = 0
     var userName: String = ""
     var isSelectedForStats: Bool = true
+    var creationDate = NSDate()
     
     override init(){
         self.timeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)

@@ -19,6 +19,7 @@ extension MedTrial {
     @NSManaged var hits: NSNumber?
     @NSManaged var timeStamp: String?
     @NSManaged var isSelectedForStats: NSNumber?
-    @NSManaged var user: MedUser?
+    @NSManaged var creationDate: NSDate
+    @NSManaged var user: MedUser
 
 }

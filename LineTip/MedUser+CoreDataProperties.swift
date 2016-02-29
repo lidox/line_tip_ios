@@ -2,7 +2,7 @@
 //  MedUser+CoreDataProperties.swift
 //  LineTip
 //
-//  Created by Artur Schäfer on 28.02.16.
+//  Created by Artur Schäfer on 29.02.16.
 //  Copyright © 2016 Artur Schäfer. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,16 +14,17 @@ import CoreData
 
 extension MedUser {
 
-    @NSManaged var medId: String!
-    @NSManaged var trial: NSSet?
+    @NSManaged var medId: String
+    @NSManaged var creationDate: NSDate
+    @NSManaged var trial: NSSet
     
     func addTrial(value: MedTrial) {
         self.mutableSetValueForKey("trial").addObject(value)
     }
-
+    
     func getTrialList() -> [MedTrial] {
         var trialList: [MedTrial]
-        trialList = self.trial!.allObjects as! [MedTrial]
+        trialList = self.trial.allObjects as! [MedTrial]
         return trialList
     }
 }

@@ -53,18 +53,8 @@ class LineDetectionViewController: UIViewController {
     func addTrialToUser(givenTrial: Trial) {
         let context = DataController().managedObjectContext
         
-        
-        // fetchRequest = NSFetchRequest(entityName: "MedTrial")
-        
         do {
-            //TODO: hier weiter
             let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            //var trialList = medUser?.trial?.allObjects as! [MedTrial]
-            
-            //for var i = 0; i < trialList.count; i++ {
-            //var cardData = trialList[i] as! NSDictionary
-            //}
-            
             let trial = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: context) as! MedTrial
             
             trial.setValue(givenTrial.hits, forKey: "hits")
@@ -72,14 +62,18 @@ class LineDetectionViewController: UIViewController {
             trial.setValue(givenTrial.duration, forKey: "duration")
             trial.setValue(givenTrial.timeStamp, forKey: "timeStamp")
             trial.setValue(true, forKey: "isSelectedForStats")
-            //@NSManaged var hits: NSNumber?
-            //@NSManaged var fails: NSNumber?
-            //@NSManaged var timeStamp: NSDate?
-            //@NSManaged var duration: NSNumber?
-            //@NSManaged var user: MedUser!
-            //trial.name = cardData.valueForKey("name") as String
+            trial.setValue(givenTrial.creationDate, forKey: "creationDate")
+            /*
+            let currentDateAsString = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+            //"MMMM d  'at'  h:mm a"	April 2 at 5:00 PM
+            // Feb 29, 2016, 4:15 PM
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MMMM d, YYYY, h:mm PM"
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+            let expiryDate = dateFormatter.dateFromString(currentDateAsString)
+            */
+            
             medUser!.addTrial(trial)
-            // we save our entity
             try context.save()
             
         } catch {

@@ -65,12 +65,28 @@ class ResultsViewController: UIViewController {
         
         do {
             let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            let trialList = medUser?.trial?.allObjects as! [MedTrial]
+            let trialList = medUser?.trial.allObjects as! [MedTrial]
+            
+            /*
+            let request = NSFetchRequest(entityName: "Meditation")
+            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            request.fetchLimit = 1
+            */
             
             let retTrial = Trial()
             retTrial.hits = -1
             if(trialList.count > 0){
-                let lastTrial = trialList.last
+                //find the latest trial by creationdate
+                var lastTrial = trialList.last
+                for (index, _) in trialList.enumerate() {
+                    let date = trialList[index].creationDate
+                    if(lastTrial!.creationDate.isLessThanDate(date)){
+                        lastTrial = trialList[index]
+                    }
+                    //print("Item \(index): \(element)")
+                }
+                
+                
                 retTrial.hits = (lastTrial?.hits?.integerValue)!
                 retTrial.fails = (lastTrial?.fails?.integerValue)!
                 retTrial.duration = (lastTrial?.duration?.doubleValue)!

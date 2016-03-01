@@ -14,19 +14,26 @@ class UserTableViewController: UITableViewController {
     
     @IBOutlet weak var tableView2: UITableView!
     
+    @IBOutlet weak var headerView: UIView!
+    
     var medUserList = [MedUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.loadSettingsData()        
         title = "Benutzerverwaltung"
+       // self.tableView2.tableHeaderView = headerView
         
-        let imageName = "ball.png"
+        
+        let imageName = "wellcome.jpg"
         let image = UIImage(named: imageName)
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        //let height = "\(Int(screenSize.height * 0.40))"
+        wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
         wellcomeImage.image = image
         
+        
         medUserList = MedUserManager.fetchMedUsers()
-
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +70,21 @@ class UserTableViewController: UITableViewController {
         let row = indexPath.row
         print("Row: \(row) value= \(medUserList[row].medId)")
     }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        //view.backgroundColor = UIColor.blackColor()
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let txtField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 30.00));
 
+        txtField.borderStyle = UITextBorderStyle.Line
+        txtField.text = "myString"
+        txtField.backgroundColor = UIColor.redColor()
+        
+        self.view.addSubview(txtField)
+        return view
+    }
+    
     @IBAction func addUser(sender: AnyObject) {
         let alert = UIAlertController(title: "Neuer Benutzer",
             message: "Erstelle einen Benutzer",

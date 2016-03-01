@@ -18,6 +18,22 @@ class Utils {
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
+    /*
+    Image Resizing Techniques
+    */
+    class func scaleUIImageToSize(let image: UIImage, let size: CGSize) -> UIImage {
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
+    }
+    
     class func printLinesToConsole(){
         // let line3 = Line(x1: 0, y1: 500, x2: 400, y2: 500)
         // lines.append(line)

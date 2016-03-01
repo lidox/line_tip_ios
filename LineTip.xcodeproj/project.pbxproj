@@ -50,6 +50,7 @@
 		04F893ED1C83183300566C3C /* MedTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EB1C83183300566C3C /* MedTrial.swift */; };
 		04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EE1C83208800566C3C /* MedUserManager.swift */; };
 		04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893F21C84AE2400566C3C /* MyNavigationController.swift */; };
+		04F893F51C86027300566C3C /* wellcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F41C86027300566C3C /* wellcome.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
 		04F893F21C84AE2400566C3C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		04F893F41C86027300566C3C /* wellcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				04F893F41C86027300566C3C /* wellcome.jpg */,
 				048E19471C721BCB00035760 /* trans.png */,
 				048064D21C15B76B00F775CC /* ball.png */,
 				040691461C24464F00E2F9B2 /* finish_trial.png */,
@@ -381,6 +384,7 @@
 				048E19481C721BCB00035760 /* trans.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */,
+				04F893F51C86027300566C3C /* wellcome.jpg in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

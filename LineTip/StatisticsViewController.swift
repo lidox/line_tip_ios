@@ -123,46 +123,48 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     }
     
     func initChart() {
-        views = [:]
-        label.text = "..."
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.Center
-        self.view.addSubview(label)
-        views["label"] = label
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
-        
-        //add data
-        for (index, _) in trialList.enumerate() {
-            timeStampLabels.append(trialList[index].timeStamp)
-            hitValues.append(CGFloat(trialList[index].hits))
-            failValue.append(CGFloat(trialList[index].fails))
+        if(self.trialList.count > 2){
+            views = [:]
+            label.text = "..."
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textAlignment = NSTextAlignment.Center
+            self.view.addSubview(label)
+            views["label"] = label
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
+            
+            //add data
+            for (index, _) in trialList.enumerate() {
+                timeStampLabels.append(trialList[index].timeStamp)
+                hitValues.append(CGFloat(trialList[index].hits))
+                failValue.append(CGFloat(trialList[index].fails))
+            }
+            
+            lineChart = LineChart()
+            lineChart.animation.enabled = true
+            lineChart.area = true
+            lineChart.x.labels.visible = true
+            lineChart.x.grid.count = 5
+            lineChart.y.grid.count = 5
+            lineChart.x.labels.values = timeStampLabels
+            lineChart.y.labels.visible = true
+            lineChart.addLine(hitValues)
+            lineChart.addLine(failValue)
+            
+            lineChart.translatesAutoresizingMaskIntoConstraints = false
+            lineChart.delegate = self
+            self.view.addSubview(lineChart)
+            views["chart"] = lineChart
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
+            // Do any additional setup after loading the view.
+            
+            views["table"] = tableView
+            let screenSize: CGRect = UIScreen.mainScreen().bounds
+            let height = "\(Int(screenSize.height * 0.65))"
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[table(==\(height))]", options: [], metrics: nil, views: views))
         }
-        
-        lineChart = LineChart()
-        lineChart.animation.enabled = true
-        lineChart.area = true
-        lineChart.x.labels.visible = true
-        lineChart.x.grid.count = 5
-        lineChart.y.grid.count = 5
-        lineChart.x.labels.values = timeStampLabels
-        lineChart.y.labels.visible = true
-        lineChart.addLine(hitValues)
-        lineChart.addLine(failValue)
-        
-        lineChart.translatesAutoresizingMaskIntoConstraints = false
-        lineChart.delegate = self
-        self.view.addSubview(lineChart)
-        views["chart"] = lineChart
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
-        // Do any additional setup after loading the view.
-        
-        views["table"] = tableView
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let height = "\(Int(screenSize.height * 0.65))"
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[table(==\(height))]", options: [], metrics: nil, views: views))
     }
     
 }

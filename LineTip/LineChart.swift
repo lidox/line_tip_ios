@@ -353,12 +353,16 @@ public class LineChart: UIView {
      */
     private func getMaximumValue() -> CGFloat {
         var max: CGFloat = 1
-        for data in dataStore {
-            let newMax = data.maxElement()!
-            if newMax > max {
-                max = newMax
+        
+            for data in dataStore {
+                
+                    let newMax = data.maxElement()!
+                    if newMax > max {
+                        max = newMax
+                    }
+                
             }
-        }
+        
         return max
     }
     
@@ -369,12 +373,15 @@ public class LineChart: UIView {
      */
     private func getMinimumValue() -> CGFloat {
         var min: CGFloat = 0
-        for data in dataStore {
-            let newMin = data.minElement()!
-            if newMin < min {
-                min = newMin
-            }
+                   for data in dataStore {
+                            let newMin = data.minElement()!
+                if newMin < min {
+                    min = newMin
+                }
+            
+
         }
+        
         return min
     }
     

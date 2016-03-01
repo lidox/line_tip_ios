@@ -22,7 +22,7 @@ class LeftRightLine: LineGenerator {
     
     init(){
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        self.edgeTolerance = 10
+        self.edgeTolerance = 40
         self.viewWidth = Double(screenSize.height)
         self.leftFieldX1 = Int(viewWidth * 0.17)
         self.leftFieldX2 = Int(viewWidth * 0.34)

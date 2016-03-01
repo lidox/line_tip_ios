@@ -15,20 +15,25 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var label = UILabel()
     var lineChart: LineChart!
-    var trialList: [MedTrial]!
+    var trialList: [Trial]!
     var selectedUserObjectID : NSManagedObjectID!
+    var views: [String: AnyObject]!
+    
+    var hitValues: [CGFloat] = []
+    var failValue: [CGFloat] = []
+    var timeStampLabels: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initChart()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "groupcell")
         tableView.delegate = self
         tableView.dataSource = self
         
-        //print("statics: \(selectedUserObjectID)")
         trialList = getTrialListByObjectId(self.selectedUserObjectID)
         print("medTrialList size= \(trialList.count)")
+        
+        initChart()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,12 +62,18 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
         
     {
-        return 0 //groupList.count
+        print("tableview 1")
+        return trialList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("groupcell", forIndexPath: indexPath) as UITableViewCell
         
+        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("groupcell", forIndexPath: indexPath) as UITableViewCell
+        print("tableview 2")
+        
+        //let cell = tableView.dequeueReusableCellWithIdentifier("statcell")!
+        //self.medUserList = MedUserManager.fetchMedUsers()
+        cell.textLabel!.text = "Treffer: \(trialList[indexPath.row].hits)"
         //cell.textLabel.text = self.groupList[indexPath.row]
         return cell
     }
@@ -88,23 +99,31 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     }
     */
     
-    func getTrialListByObjectId(objectId: NSManagedObjectID) -> [MedTrial]
+    func getTrialListByObjectId(objectId: NSManagedObjectID) -> [Trial]
     {
         let context = DataController().managedObjectContext
-        
+        var retList = [Trial] ()
         do {
             let medUser = try context.existingObjectWithID(objectId) as? MedUser
             let trialList = medUser?.trial.allObjects as! [MedTrial]
-            return trialList
+            
+            for (index, _) in trialList.enumerate() {
+                let trial = Trial()
+                trial.hits = Int(trialList[index].hits!)
+                trial.fails = Int(trialList[index].fails!)
+                trial.duration = trialList[index].duration!.doubleValue
+                trial.timeStamp = trialList[index].timeStamp!
+                trial.creationDate = trialList[index].creationDate
+                retList.append(trial)
+            }
+            return retList
         } catch {
             fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
         }
     }
     
     func initChart() {
-        // chart
-        var views: [String: AnyObject] = [:]
-        
+        views = [:]
         label.text = "..."
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.Center
@@ -113,12 +132,12 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
         
-        // simple arrays
-        let data: [CGFloat] = [3, 4, -2, 11, 13, 15]
-        let data2: [CGFloat] = [1, 3, 5, 13, 17, 20]
-        
-        // simple line with custom x axis labels
-        let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+        //add data
+        for (index, _) in trialList.enumerate() {
+            timeStampLabels.append(trialList[index].timeStamp)
+            hitValues.append(CGFloat(trialList[index].hits))
+            failValue.append(CGFloat(trialList[index].fails))
+        }
         
         lineChart = LineChart()
         lineChart.animation.enabled = true
@@ -126,10 +145,10 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         lineChart.x.labels.visible = true
         lineChart.x.grid.count = 5
         lineChart.y.grid.count = 5
-        lineChart.x.labels.values = xLabels
+        lineChart.x.labels.values = timeStampLabels
         lineChart.y.labels.visible = true
-        lineChart.addLine(data)
-        lineChart.addLine(data2)
+        lineChart.addLine(hitValues)
+        lineChart.addLine(failValue)
         
         lineChart.translatesAutoresizingMaskIntoConstraints = false
         lineChart.delegate = self
@@ -138,6 +157,12 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
         // Do any additional setup after loading the view.
+        
+        views["table"] = tableView
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let height = "\(Int(screenSize.height * 0.65))"
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[table(==\(height))]", options: [], metrics: nil, views: views))
     }
     
 }

@@ -89,10 +89,11 @@ class LineDetectionViewController: UIViewController {
         let navController = MyNavigationController(rootViewController: nextViewController)
         // Creating a navigation controller with VC1 at the root of the navigation stack.
         
-        
         nextViewController.resultsVC.lastTrial = uiView.trial
         nextViewController.selectedUserObjectID = self.selectedUserObjectID
         nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
+        nextViewController.statisticsVC.selectedUserObjectID = self.selectedUserObjectID
+        
         self.presentViewController(navController, animated:true, completion: nil)
         //self.presentViewController(nextViewController, animated:true, completion:nil)
     }

@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var medIdLabel: UILabel!
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
+    let statisticsVC = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
+    
     var selectedUser : MedUser?
     var selectedUserObjectID : NSManagedObjectID!
 
@@ -38,16 +40,16 @@ class MainViewController: UIViewController {
         resultsVC.didMoveToParentViewController(self)
         
         
-        let vc1 = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
-        vc1.view.frame = self.view.bounds
-        var frame1 = vc1.view.frame
+        
+        statisticsVC.view.frame = self.view.bounds
+        var frame1 = statisticsVC.view.frame
         frame1.origin.x = self.view.frame.size.width
-        vc1.view.frame = frame1;
+        statisticsVC.view.frame = frame1;
         
         
-        self.addChildViewController(vc1)
-        self.scrollView.addSubview(vc1.view)
-        vc1.didMoveToParentViewController(self)
+        self.addChildViewController(statisticsVC)
+        self.scrollView.addSubview(statisticsVC.view)
+        statisticsVC.didMoveToParentViewController(self)
         
         
         let vc2 = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
@@ -69,6 +71,7 @@ class MainViewController: UIViewController {
             selectedUser = try moc.existingObjectWithID(objectID) as? MedUser
             medIdLabel.text = "Med-ID: \(selectedUser!.medId)"
             resultsVC.selectedUserObjectID = self.selectedUser?.objectID
+            statisticsVC.selectedUserObjectID = self.selectedUser?.objectID
             resultsVC.selectedUser = self.selectedUser
             //print("fetched user: \(selectedUser!.medId)")
         } catch {

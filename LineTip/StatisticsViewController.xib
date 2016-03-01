@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="4mD-JC-x5K" id="rO0-cO-Fws"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,11 +22,21 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4mD-JC-x5K">
+                    <rect key="frame" x="0.0" y="264" width="600" height="336"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="336" id="Nxx-ea-BkQ"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.46607385464321865" green="0.99607843139999996" blue="0.20110101814475348" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="4mD-JC-x5K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dnj-m1-gAg"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="134" id="Mam-I1-4pq"/>
+                <constraint firstAttribute="trailing" secondItem="4mD-JC-x5K" secondAttribute="trailing" id="O4Z-dy-3qh"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="58" id="QS1-8e-ibQ"/>
+                <constraint firstAttribute="bottom" secondItem="4mD-JC-x5K" secondAttribute="bottom" id="hMn-hB-RED"/>
             </constraints>
         </view>
     </objects>

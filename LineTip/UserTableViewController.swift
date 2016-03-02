@@ -20,15 +20,13 @@ class UserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utils.loadSettingsData()        
-        title = "Benutzerverwaltung"
-       // self.tableView2.tableHeaderView = headerView
+        Utils.loadSettingsData()
         
+        title = "Benutzerverwaltung"
         
         let imageName = "wellcome.jpg"
         let image = UIImage(named: imageName)
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        //let height = "\(Int(screenSize.height * 0.40))"
         wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
         wellcomeImage.image = image
         
@@ -69,20 +67,6 @@ class UserTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
         print("Row: \(row) value= \(medUserList[row].medId)")
-    }
-    
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        //view.backgroundColor = UIColor.blackColor()
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let txtField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 30.00));
-
-        txtField.borderStyle = UITextBorderStyle.Line
-        txtField.text = "myString"
-        txtField.backgroundColor = UIColor.redColor()
-        
-        self.view.addSubview(txtField)
-        return view
     }
     
     @IBAction func addUser(sender: AnyObject) {

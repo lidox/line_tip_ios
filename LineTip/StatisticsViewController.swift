@@ -79,23 +79,18 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     }
     
     /*
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    let row = indexPath.row
-    print("Row: \(row) value= \(medUserList[row].medId)")
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return medUserList.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
-    self.medUserList = MedUserManager.fetchMedUsers()
-    cell.textLabel!.text = medUserList[indexPath.row].medId
-    
-    return cell
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        //view.backgroundColor = UIColor.blackColor()
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let txtField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 30.00));
+        
+        txtField.borderStyle = UITextBorderStyle.Line
+        txtField.text = "myString"
+        txtField.backgroundColor = UIColor.redColor()
+        
+        self.view.addSubview(txtField)
+        return view
     }
     */
     

@@ -253,6 +253,21 @@ extension String {
             else if key == "measurement results" {
                 translation = "Versuchsergebnisse"
             }
+            else if key == "New user" {
+                translation = "Neuer Benutzer"
+            }
+            else if key == "Create user" {
+                translation = "Erstelle einen Benutzer"
+            }
+            else if key == "Save" {
+                translation = "Speichern"
+            }
+            else if key == "Cancel" {
+                translation = "Abbrechen"
+            }
+            /*
+
+            */
         }
         
         if(translation != "" ) {

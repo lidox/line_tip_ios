@@ -46,7 +46,11 @@ class MedUserManager {
         let personFetch = NSFetchRequest(entityName: "MedUser")
         
         do {
-            let users = try moc.executeFetchRequest(personFetch) as! [MedUser]
+            var users = try moc.executeFetchRequest(personFetch) as! [MedUser]
+            
+            // sort by creation date:
+            users = users.sort({ $0.creationDate.compare($1.creationDate) == .OrderedDescending })
+            
             return users
             
         } catch {

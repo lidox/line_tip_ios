@@ -106,7 +106,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         cell.textLabel?.textColor = UIColor.myKeyColor()
         
         // set cell text
-        cell.textLabel!.text = "\(trialList[indexPath.row].timeStamp), \("duration".translate()) : \(trialList[indexPath.row].duration)"
+        cell.textLabel!.text = "(\(indexPath.row+1)): \(trialList[indexPath.row].timeStamp), \("duration".translate()) : \(trialList[indexPath.row].duration)"
         cell.detailTextLabel!.text = "\("hits".translate()): \(trialList[indexPath.row].hits), \("misses".translate()) : \(trialList[indexPath.row].fails)"
         
         return cell
@@ -119,7 +119,10 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         var retList = [Trial] ()
         do {
             let medUser = try context.existingObjectWithID(objectId) as? MedUser
-            let trialList = medUser?.trial.allObjects as! [MedTrial]
+            var trialList = medUser?.trial.allObjects as! [MedTrial]
+            
+            // sort by creation date:
+            trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
             
             for (index, _) in trialList.enumerate() {
                 let trial = Trial()
@@ -149,7 +152,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             
             //add data
             for (index, _) in trialList.enumerate() {
-                timeStampLabels.append(trialList[index].timeStamp)
+                timeStampLabels.append("\(index+1)")
                 hitValues.append(CGFloat(trialList[index].hits))
                 failValue.append(CGFloat(trialList[index].fails))
             }

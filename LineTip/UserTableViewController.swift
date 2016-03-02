@@ -45,17 +45,6 @@ class UserTableViewController: UITableViewController {
         cell.textLabel?.textColor = UIColor.myKeyColor()
         
         /*
-        //cell.accessoryView?.tintColor = UIColor.myKeyColor()
-        let onlyUIButtons = cell.subviews.filter { $0 is UIButton }
-        for button in onlyUIButtons {
-            print("boom baby")
-            //button.backgroundColor = UIColor.myKeyColor()
-            //button.setTitleColor(UIColor.myKeyColor(), forState: UIControlState.Normal)
-        }
-        cell.tintColor = UIColor.myKeyColor()
-        */
-
-        /*
         //Change cell's tint color
         cell.tintColor = UIColor.myKeyColor()
         //Set UITableViewCellAccessoryType.Checkmark here if necessary
@@ -78,11 +67,17 @@ class UserTableViewController: UITableViewController {
     }
     
     @IBAction func addUser(sender: AnyObject) {
-        let alert = UIAlertController(title: "Neuer Benutzer",
-            message: "Erstelle einen Benutzer",
+        let alert = UIAlertController(title: "",
+            message: "\("Create user".translate())",
             preferredStyle: .Alert)
+        alert.view.tintColor = UIColor.myKeyColor()
         
-        let saveAction = UIAlertAction(title: "Speichern",
+        let attributedString = NSAttributedString(string: "\("New user".translate())", attributes: [
+            NSForegroundColorAttributeName : UIColor.myKeyColor()
+            ])
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let saveAction = UIAlertAction(title: "\("Save".translate())",
             style: .Default,
             handler: { (action:UIAlertAction) -> Void in
                 
@@ -113,7 +108,7 @@ class UserTableViewController: UITableViewController {
                 
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
             style: .Default) { (action: UIAlertAction) -> Void in
         }
         

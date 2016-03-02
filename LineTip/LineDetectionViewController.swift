@@ -64,15 +64,6 @@ class LineDetectionViewController: UIViewController {
             trial.setValue(givenTrial.timeStamp, forKey: "timeStamp")
             trial.setValue(true, forKey: "isSelectedForStats")
             trial.setValue(givenTrial.creationDate, forKey: "creationDate")
-            /*
-            let currentDateAsString = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
-            //"MMMM d  'at'  h:mm a"	April 2 at 5:00 PM
-            // Feb 29, 2016, 4:15 PM
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "MMMM d, YYYY, h:mm PM"
-            dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
-            let expiryDate = dateFormatter.dateFromString(currentDateAsString)
-            */
             
             medUser!.addTrial(trial)
             try context.save()

@@ -10,6 +10,9 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
+    
+    @IBOutlet weak var navigation: UINavigationItem!
+    
     @IBOutlet weak var wellcomeImage: UIImageView!
     
     @IBOutlet weak var tableView2: UITableView!
@@ -22,13 +25,8 @@ class UserTableViewController: UITableViewController {
         super.viewDidLoad()
         Utils.loadSettingsData()
         
-        title = "Benutzerverwaltung"
-        
-        let imageName = "wellcome.jpg"
-        let image = UIImage(named: imageName)
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
-        wellcomeImage.image = image
+        initTitleAndColors()
+        initWelcomeImage()
         
         
         medUserList = MedUserManager.fetchMedUsers()
@@ -43,25 +41,9 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
-        
+        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial.count) Versuche"
         return cell
     }
-    
-    //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      //  let reuseIdentifier = "myCell"
-        //var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)!// as UITableViewCell?
-        //if (cell != nil) {
-        //    cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
-        //}
-        //cell!.textLabel!.text = names[indexPath.row]
-        //cell!.detailTextLabel?.text = "\(names[indexPath.row]) nur genauer"
-        
-        //let imageName = UIImage(named: "ball")
-        //cell!.imageView?.image = imageName
-        // cell!.accessoryView = imageName
-        
-        //return cell!
-    //}
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -131,5 +113,21 @@ class UserTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func initTitleAndColors() {
+        navigation.title = "Benutzerverwaltung"
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
+    }
+    
+    func initWelcomeImage() {
+        let imageName = "wellcome.jpg"
+        let image = UIImage(named: imageName)
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
+        wellcomeImage.image = image
     }
 }

@@ -208,5 +208,26 @@ extension NSDate {
     }
 }
 
+extension String {
+    func translate() -> String {
+
+        let translation = my(self)
+        
+        //Return Result
+        return translation
+    }
+    
+    func my(key: String) -> String {
+        var translation = ""
+        if key == "" {
+            translation = ""
+        }
+        if(translation != "" ) {
+            return translation
+        }
+        return key
+    }
+}
+
 
 

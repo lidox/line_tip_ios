@@ -15,4 +15,8 @@ extension UIColor {
         getRed(&r, green: &g, blue: &b, alpha: &a)
         return (r,g,b,a)
     }
+    
+    class func myKeyColor() -> UIColor {
+        return UIColor.orangeColor()
+    }
 }

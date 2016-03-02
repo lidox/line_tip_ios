@@ -52,6 +52,7 @@ class LineDetectionUIView: UIView {
     func onFail(img: AnyObject){
         trial.startCountingTime()
         trial.countMiss()
+        ClickSound.play("wrong", soundExtension: "wav")
         //print("failed to hit line")
     }
     

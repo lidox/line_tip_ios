@@ -54,6 +54,9 @@
 		04F893FA1C86DC4100566C3C /* wellcome_orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F91C86DC4100566C3C /* wellcome_orange.jpg */; };
 		04F893FC1C86F5A000566C3C /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FB1C86F5A000566C3C /* orangeButton.png */; };
 		04F893FE1C87184500566C3C /* new-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FD1C87184500566C3C /* new-icon.png */; };
+		04F894021C873CDC00566C3C /* ClickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F894011C873CDC00566C3C /* ClickSound.swift */; };
+		04F894051C873E6600566C3C /* good.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04F894041C873E6600566C3C /* good.wav */; };
+		04F894071C873E7900566C3C /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04F894061C873E7900566C3C /* wrong.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,9 @@
 		04F893F91C86DC4100566C3C /* wellcome_orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome_orange.jpg; sourceTree = "<group>"; };
 		04F893FB1C86F5A000566C3C /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
 		04F893FD1C87184500566C3C /* new-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-icon.png"; sourceTree = "<group>"; };
+		04F894011C873CDC00566C3C /* ClickSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickSound.swift; sourceTree = "<group>"; };
+		04F894041C873E6600566C3C /* good.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good.wav; sourceTree = "<group>"; };
+		04F894061C873E7900566C3C /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +167,6 @@
 				04F893EB1C83183300566C3C /* MedTrial.swift */,
 				04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */,
 				04F893E51C7DA64E00566C3C /* MedUser.swift */,
-				0418F5F71C083D3D00B90989 /* images */,
 				0418F5C81C083A4A00B90989 /* LineTip */,
 				0418F5DD1C083A4A00B90989 /* LineTipTests */,
 				0418F5E81C083A4A00B90989 /* LineTipUITests */,
@@ -182,6 +187,8 @@
 		0418F5C81C083A4A00B90989 /* LineTip */ = {
 			isa = PBXGroup;
 			children = (
+				0418F5F71C083D3D00B90989 /* images */,
+				04F894031C873E4A00566C3C /* sounds */,
 				04F893F61C86CC6D00566C3C /* service */,
 				04F893DC1C77227000566C3C /* view */,
 				04F893DB1C77222400566C3C /* controller */,
@@ -233,6 +240,7 @@
 				0418F5F91C083D6400B90989 /* Line-icon.png */,
 			);
 			name = images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		047941791C0C5F880093EDD6 /* model */ = {
@@ -281,8 +289,19 @@
 				04316F1A1C71D23C00BA600C /* Utils.swift */,
 				04F893D91C771E9900566C3C /* ConfigKey.swift */,
 				04F893DF1C7DA19600566C3C /* LineChart.swift */,
+				04F894011C873CDC00566C3C /* ClickSound.swift */,
 			);
 			name = service;
+			sourceTree = "<group>";
+		};
+		04F894031C873E4A00566C3C /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				04F894061C873E7900566C3C /* wrong.wav */,
+				04F894041C873E6600566C3C /* good.wav */,
+			);
+			name = sounds;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,11 +413,13 @@
 				0418F5D41C083A4A00B90989 /* LaunchScreen.storyboard in Resources */,
 				040691471C24464F00E2F9B2 /* finish_trial.png in Resources */,
 				0418F5D11C083A4A00B90989 /* Assets.xcassets in Resources */,
+				04F894071C873E7900566C3C /* wrong.wav in Resources */,
 				04F893FA1C86DC4100566C3C /* wellcome_orange.jpg in Resources */,
 				0418F5FA1C083D6400B90989 /* launcher_smile-jpg.png in Resources */,
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,
 				048064D31C15B76B00F775CC /* ball.png in Resources */,
+				04F894051C873E6600566C3C /* good.wav in Resources */,
 				048E19481C721BCB00035760 /* trans.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */,
@@ -452,6 +473,7 @@
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
+				04F894021C873CDC00566C3C /* ClickSound.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
 				04F893D81C75E56E00566C3C /* UIColor.swift in Sources */,
 				048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */,

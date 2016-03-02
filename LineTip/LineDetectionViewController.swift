@@ -37,6 +37,7 @@ class LineDetectionViewController: UIViewController {
         uiView.trial.startCountingTime()
         uiView.trial.countHit()
         uiView.setNeedsDisplay()
+        ClickSound.play("good", soundExtension: "wav")
         //print("CONTROLLER Hit line")
     }
     

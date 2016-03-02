@@ -211,17 +211,32 @@ extension NSDate {
 extension String {
     func translate() -> String {
 
-        let translation = my(self)
+        let translation = my(self, language: "de")
         
         //Return Result
         return translation
     }
     
-    func my(key: String) -> String {
+    func trim() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
+    
+    func my(key: String, language: String) -> String {
         var translation = ""
-        if key == "" {
-            translation = ""
+        if key == "trials" {
+            translation = "Versuche"
         }
+        else if key == "user management" {
+            translation = "Benutzerverwaltung"
+        }
+        else if key == "result view" {
+            translation = "Ergebnisansicht"
+        }
+        else if key == "medical ID" {
+            translation = "MED ID"
+        }
+        
+        
         if(translation != "" ) {
             return translation
         }

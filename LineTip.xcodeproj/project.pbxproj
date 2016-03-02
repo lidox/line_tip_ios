@@ -51,6 +51,7 @@
 		04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EE1C83208800566C3C /* MedUserManager.swift */; };
 		04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893F21C84AE2400566C3C /* MyNavigationController.swift */; };
 		04F893F51C86027300566C3C /* wellcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F41C86027300566C3C /* wellcome.jpg */; };
+		04F893FA1C86DC4100566C3C /* wellcome_orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F91C86DC4100566C3C /* wellcome_orange.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
 		04F893F21C84AE2400566C3C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		04F893F41C86027300566C3C /* wellcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome.jpg; sourceTree = "<group>"; };
+		04F893F91C86DC4100566C3C /* wellcome_orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome_orange.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				04F893F91C86DC4100566C3C /* wellcome_orange.jpg */,
 				04F893F41C86027300566C3C /* wellcome.jpg */,
 				048E19471C721BCB00035760 /* trans.png */,
 				048064D21C15B76B00F775CC /* ball.png */,
@@ -385,6 +388,7 @@
 				0418F5D41C083A4A00B90989 /* LaunchScreen.storyboard in Resources */,
 				040691471C24464F00E2F9B2 /* finish_trial.png in Resources */,
 				0418F5D11C083A4A00B90989 /* Assets.xcassets in Resources */,
+				04F893FA1C86DC4100566C3C /* wellcome_orange.jpg in Resources */,
 				0418F5FA1C083D6400B90989 /* launcher_smile-jpg.png in Resources */,
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,

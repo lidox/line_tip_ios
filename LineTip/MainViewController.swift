@@ -20,15 +20,25 @@ class MainViewController: UIViewController {
     
     var selectedUser : MedUser?
     var selectedUserObjectID : NSManagedObjectID!
+    var viewtitle = ""
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initMedUserInAllView(self.selectedUserObjectID)
+        initTitleAndColors()
+        
+        
         print("1. MainController with obejct-id= \(self.selectedUserObjectID)")
         initScrollViews()
     }
     
+    func initTitleAndColors() {
+        title = viewtitle
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
+    }
     
     func initScrollViews() {
         let value = UIInterfaceOrientation.Portrait.rawValue
@@ -69,7 +79,7 @@ class MainViewController: UIViewController {
         let moc = DataController().managedObjectContext
         do {
             selectedUser = try moc.existingObjectWithID(objectID) as? MedUser
-            medIdLabel.text = "Med-ID: \(selectedUser!.medId)"
+            viewtitle = "\("medical ID".translate()): \(selectedUser!.medId)"
             resultsVC.selectedUserObjectID = self.selectedUser?.objectID
             statisticsVC.selectedUserObjectID = self.selectedUser?.objectID
             resultsVC.selectedUser = self.selectedUser

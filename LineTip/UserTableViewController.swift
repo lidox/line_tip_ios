@@ -41,7 +41,33 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
-        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial.count) Versuche"
+        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial.count) \("trials".translate())"
+        cell.textLabel?.textColor = UIColor.myKeyColor()
+        
+        /*
+        //cell.accessoryView?.tintColor = UIColor.myKeyColor()
+        let onlyUIButtons = cell.subviews.filter { $0 is UIButton }
+        for button in onlyUIButtons {
+            print("boom baby")
+            //button.backgroundColor = UIColor.myKeyColor()
+            //button.setTitleColor(UIColor.myKeyColor(), forState: UIControlState.Normal)
+        }
+        cell.tintColor = UIColor.myKeyColor()
+        */
+
+        /*
+        //Change cell's tint color
+        cell.tintColor = UIColor.myKeyColor()
+        //Set UITableViewCellAccessoryType.Checkmark here if necessary
+        cell.accessoryType = .Checkmark
+        */
+        
+        /*
+        let chevron = UIImage(named: "chevron.png")
+        cell.accessoryType = .DisclosureIndicator
+        cell.accessoryView = UIImageView(image: chevron!)
+        */
+
         return cell
     }
     
@@ -64,7 +90,7 @@ class UserTableViewController: UITableViewController {
                 
                 //if not contains
                 var containsName = false
-                let newUserName = textField!.text!
+                let newUserName = textField!.text!.trim()
                 self.medUserList = MedUserManager.fetchMedUsers()
                 for user in self.medUserList{
                     let userName = user.medId
@@ -73,8 +99,10 @@ class UserTableViewController: UITableViewController {
                         break
                     }
                 }
-                
-                if(containsName){
+                if(newUserName == ""){
+                    print("cannot add emtpy string")
+                }
+                else if(containsName){
                     print("MedUser: '\(newUserName)' already exists")                }
                 else{
                     let user = MedUserManager.insertMedUserByName(newUserName)
@@ -116,7 +144,7 @@ class UserTableViewController: UITableViewController {
     }
     
     func initTitleAndColors() {
-        navigation.title = "Benutzerverwaltung"
+        navigation.title = "\("user management".translate())"
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
@@ -124,7 +152,7 @@ class UserTableViewController: UITableViewController {
     }
     
     func initWelcomeImage() {
-        let imageName = "wellcome.jpg"
+        let imageName = "wellcome_orange.jpg"
         let image = UIImage(named: imageName)
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)

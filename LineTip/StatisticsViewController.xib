@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="4mD-JC-x5K" id="rO0-cO-Fws"/>
+                <outlet property="titleText" destination="hbi-m6-Vc3" id="jXM-Ha-gey"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,18 +25,18 @@
                     </constraints>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-m6-Vc3">
-                    <rect key="frame" x="280" y="22" width="40" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="280" y="24" width="40" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" red="0.30810053659999997" green="0.30810053659999997" blue="0.30810053659999997" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
                 <constraint firstItem="4mD-JC-x5K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dnj-m1-gAg"/>
-                <constraint firstItem="hbi-m6-Vc3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="134" id="Mam-I1-4pq"/>
                 <constraint firstAttribute="trailing" secondItem="4mD-JC-x5K" secondAttribute="trailing" id="O4Z-dy-3qh"/>
-                <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="58" id="QS1-8e-ibQ"/>
+                <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="QS1-8e-ibQ"/>
                 <constraint firstAttribute="bottom" secondItem="4mD-JC-x5K" secondAttribute="bottom" id="hMn-hB-RED"/>
+                <constraint firstItem="hbi-m6-Vc3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mPf-qC-LEG"/>
             </constraints>
             <point key="canvasLocation" x="371" y="286"/>
         </view>

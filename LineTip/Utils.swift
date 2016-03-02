@@ -211,9 +211,8 @@ extension NSDate {
 extension String {
     func translate() -> String {
 
-        let translation = my(self, language: "de")
-        
-        //Return Result
+        let translation = myTranslation(self, language: "de")
+
         return translation
     }
     
@@ -221,36 +220,40 @@ extension String {
         return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
     
-    func my(key: String, language: String) -> String {
+    func myTranslation(key: String, language: String) -> String {
         var translation = ""
-        if key == "trials" {
-            translation = "Versuche"
+        if(language == "de") {
+            if key == "trials" {
+                translation = "Versuche"
+            }
+            else if key == "user management" {
+                translation = "Benutzerverwaltung"
+            }
+            else if key == "result view" {
+                translation = "Ergebnisansicht"
+            }
+            else if key == "medical ID" {
+                translation = "MED ID"
+            }
+            else if key == "NEW TRIAL" {
+                translation = " Neuer Versuch"
+            }
+            else if key == "duration" {
+                translation = "Versuchdauer"
+            }
+            else if key == "timestamp" {
+                translation = "Versuchszeitpunkt"
+            }
+            else if key == "hits" {
+                translation = "Treffer"
+            }
+            else if key == "misses" {
+                translation = "Fehlversuche"
+            }
+            else if key == "measurement results" {
+                translation = "Versuchsergebnisse"
+            }
         }
-        else if key == "user management" {
-            translation = "Benutzerverwaltung"
-        }
-        else if key == "result view" {
-            translation = "Ergebnisansicht"
-        }
-        else if key == "medical ID" {
-            translation = "MED ID"
-        }
-        else if key == "NEW TRIAL" {
-            translation = " Neuer Versuch"
-        }
-        else if key == "duration" {
-            translation = "Versuchdauer"
-        }
-        else if key == "timestamp" {
-            translation = "Versuchszeitpunkt"
-        }
-        else if key == "hits" {
-            translation = "Treffer"
-        }
-        else if key == "misses" {
-            translation = "Fehlversuche"
-        }
-        
         
         if(translation != "" ) {
             return translation

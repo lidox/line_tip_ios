@@ -65,8 +65,6 @@ class ResultsViewController: UIViewController {
     
     func initTexts() {
         startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
-        //startButton.frame = CGRectMake(startButton.frame.origin.x, startButton.frame.origin.y, 700, 200)
-        //let screenSize: CGRect = UIScreen.mainScreen().bounds
         
         titleLabel.text = "\("result view".translate())"
         timeStampTextLabel.text = "\("timestamp".translate())"

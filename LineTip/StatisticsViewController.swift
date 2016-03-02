@@ -13,6 +13,9 @@ import CoreData
 class StatisticsViewController: UIViewController, LineChartDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleText: UILabel!
+    
+    
     var label = UILabel()
     var lineChart: LineChart!
     var trialList: [Trial]!
@@ -33,7 +36,38 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         trialList = getTrialListByObjectId(self.selectedUserObjectID)
         print("medTrialList size= \(trialList.count)")
         
+        initColors()
+        initTexts()
         initChart()
+    }
+    
+    func initColors() {
+        /*
+        startButton.backgroundColor = UIColor.myKeyColor()
+        timeStampLabel.textColor = UIColor.myKeyColor()
+        hitLabel.textColor = UIColor.myKeyColor()
+        missLabel.textColor = UIColor.myKeyColor()
+        durationLabel.textColor = UIColor.myKeyColor()
+        startButton.setTitleColor(UIColor.myKeyColorSecond(), forState: UIControlState.Normal)
+        
+        //button settings
+        startButton.layer.cornerRadius = 7.0
+        */
+    }
+    
+    func initTexts() {
+        titleText.text = "\("measurement results".translate())"
+        /*
+        startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
+        //startButton.frame = CGRectMake(startButton.frame.origin.x, startButton.frame.origin.y, 700, 200)
+        //let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        titleLabel.text = "\("result view".translate())"
+        timeStampTextLabel.text = "\("timestamp".translate())"
+        hitTextLabel.text = "\("hits".translate())"
+        missTextLabel.text = "\("misses".translate())"
+        durationTextLabel.text = "\("duration".translate())"
+        */
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,40 +93,25 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-        
-    {
-        print("tableview 1")
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trialList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "groupcell")
         
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("groupcell", forIndexPath: indexPath) as UITableViewCell
-        print("tableview 2")
+        // set style and color
+        cell.tintColor = UIColor.myKeyColor()
+        cell.accessoryType = .Checkmark
+        cell.textLabel?.textColor = UIColor.myKeyColor()
         
-        //let cell = tableView.dequeueReusableCellWithIdentifier("statcell")!
-        //self.medUserList = MedUserManager.fetchMedUsers()
-        cell.textLabel!.text = "Treffer: \(trialList[indexPath.row].hits)"
-        //cell.textLabel.text = self.groupList[indexPath.row]
+        // set cell text
+        cell.textLabel!.text = "\(trialList[indexPath.row].timeStamp), \("duration".translate()) : \(trialList[indexPath.row].duration)"
+        cell.detailTextLabel!.text = "\("hits".translate()): \(trialList[indexPath.row].hits), \("misses".translate()) : \(trialList[indexPath.row].fails)"
+        
         return cell
     }
     
-    /*
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        //view.backgroundColor = UIColor.blackColor()
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let txtField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 30.00));
-        
-        txtField.borderStyle = UITextBorderStyle.Line
-        txtField.text = "myString"
-        txtField.backgroundColor = UIColor.redColor()
-        
-        self.view.addSubview(txtField)
-        return view
-    }
-    */
     
     func getTrialListByObjectId(objectId: NSManagedObjectID) -> [Trial]
     {
@@ -152,13 +171,37 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             views["chart"] = lineChart
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
-            // Do any additional setup after loading the view.
             
-            views["table"] = tableView
             let screenSize: CGRect = UIScreen.mainScreen().bounds
+            
+            // TABELLEN Titel
+            let viewTitel = UIView()
+            self.view.addSubview(viewTitel)
+
+            var txtField: UITextField //= UITextField(frame: CGRect(x: 0, y: 0 , width: screenSize.width, height: 30.00))
+            
+            //txtField.borderStyle = UITextBorderStyle.Line
+            //txtField.text = "myString"
+            //txtField.backgroundColor = UIColor.redColor()
+            
+            views["title"] = viewTitel
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[title]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[title(==50)]", options: [], metrics: nil, views: views))
+            
+            
+            
+            // Do any additional setup after loading the view.
+            views["table"] = tableView
+            //let screenSize: CGRect = UIScreen.mainScreen().bounds
             let height = "\(Int(screenSize.height * 0.65))"
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[table(==\(height))]", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[title]-[table(==\(height))]", options: [], metrics: nil, views: views))
+            
+            let hoch = tableView.frame.origin.y + 50
+            txtField = UITextField(frame: CGRect(x: 0, y:  hoch , width: screenSize.width, height: 30.00))
+            txtField.text = "   \(trialList.count). \("trials".translate())"
+            txtField.textColor = UIColor.myKeyColor()
+            self.view.addSubview(txtField)
         }
     }
     

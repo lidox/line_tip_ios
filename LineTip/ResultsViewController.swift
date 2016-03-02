@@ -13,6 +13,13 @@ class ResultsViewController: UIViewController {
     
 
     //labels
+    @IBOutlet weak var timeStampTextLabel: UILabel!
+    @IBOutlet weak var hitTextLabel: UILabel!
+    @IBOutlet weak var missTextLabel: UILabel!
+    @IBOutlet weak var durationTextLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var hitLabel: UILabel!
     @IBOutlet weak var missLabel: UILabel!
@@ -39,9 +46,38 @@ class ResultsViewController: UIViewController {
             missLabel.text = "\(lastTrial2.fails)"
             durationLabel.text = "\(lastTrial2.duration)"
         }
+        
+        initColors()
+        initTexts()
     }
     
-    @IBAction func startLineDetectionBtn(sender: AnyObject) {
+    func initColors() {
+        startButton.backgroundColor = UIColor.myKeyColor()
+        timeStampLabel.textColor = UIColor.myKeyColor()
+        hitLabel.textColor = UIColor.myKeyColor()
+        missLabel.textColor = UIColor.myKeyColor()
+        durationLabel.textColor = UIColor.myKeyColor()
+        startButton.setTitleColor(UIColor.myKeyColorSecond(), forState: UIControlState.Normal)
+        
+        //button settings
+        startButton.layer.cornerRadius = 7.0
+    }
+    
+    func initTexts() {
+        startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
+        //startButton.frame = CGRectMake(startButton.frame.origin.x, startButton.frame.origin.y, 700, 200)
+        //let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        titleLabel.text = "\("result view".translate())"
+        timeStampTextLabel.text = "\("timestamp".translate())"
+        hitTextLabel.text = "\("hits".translate())"
+        missTextLabel.text = "\("misses".translate())"
+        durationTextLabel.text = "\("duration".translate())"
+        
+    }
+    
+    
+    @IBAction func onStartLineDetection(sender: AnyObject) {
         //print("start line detection with user: \(self.selectedUser.medId)")
         
         switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")

@@ -19,4 +19,8 @@ extension UIColor {
     class func myKeyColor() -> UIColor {
         return UIColor.orangeColor()
     }
+    
+    class func myKeyColorSecond() -> UIColor {
+        return UIColor.whiteColor()
+    }
 }

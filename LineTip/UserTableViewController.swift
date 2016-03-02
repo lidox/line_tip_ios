@@ -11,6 +11,7 @@ import UIKit
 class UserTableViewController: UITableViewController {
 
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var navigation: UINavigationItem!
     
     @IBOutlet weak var wellcomeImage: UIImageView!
@@ -27,7 +28,6 @@ class UserTableViewController: UITableViewController {
         
         initTitleAndColors()
         initWelcomeImage()
-        
         
         medUserList = MedUserManager.fetchMedUsers()
     }

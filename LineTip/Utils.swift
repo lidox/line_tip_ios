@@ -235,6 +235,21 @@ extension String {
         else if key == "medical ID" {
             translation = "MED ID"
         }
+        else if key == "NEW TRIAL" {
+            translation = " Neuer Versuch"
+        }
+        else if key == "duration" {
+            translation = "Versuchdauer"
+        }
+        else if key == "timestamp" {
+            translation = "Versuchszeitpunkt"
+        }
+        else if key == "hits" {
+            translation = "Treffer"
+        }
+        else if key == "misses" {
+            translation = "Fehlversuche"
+        }
         
         
         if(translation != "" ) {

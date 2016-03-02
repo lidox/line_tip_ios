@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
 
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var medIdLabel: UILabel!
+    //∫@IBOutlet weak var medIdLabel: UILabel!
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
     let statisticsVC = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)

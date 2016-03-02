@@ -52,6 +52,8 @@
 		04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893F21C84AE2400566C3C /* MyNavigationController.swift */; };
 		04F893F51C86027300566C3C /* wellcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F41C86027300566C3C /* wellcome.jpg */; };
 		04F893FA1C86DC4100566C3C /* wellcome_orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04F893F91C86DC4100566C3C /* wellcome_orange.jpg */; };
+		04F893FC1C86F5A000566C3C /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FB1C86F5A000566C3C /* orangeButton.png */; };
+		04F893FE1C87184500566C3C /* new-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FD1C87184500566C3C /* new-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		04F893F21C84AE2400566C3C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		04F893F41C86027300566C3C /* wellcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome.jpg; sourceTree = "<group>"; };
 		04F893F91C86DC4100566C3C /* wellcome_orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome_orange.jpg; sourceTree = "<group>"; };
+		04F893FB1C86F5A000566C3C /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
+		04F893FD1C87184500566C3C /* new-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				04F893FD1C87184500566C3C /* new-icon.png */,
+				04F893FB1C86F5A000566C3C /* orangeButton.png */,
 				04F893F91C86DC4100566C3C /* wellcome_orange.jpg */,
 				04F893F41C86027300566C3C /* wellcome.jpg */,
 				048E19471C721BCB00035760 /* trans.png */,
@@ -398,6 +404,8 @@
 				0418F5FB1C083D6400B90989 /* Line-icon.png in Resources */,
 				04F893F51C86027300566C3C /* wellcome.jpg in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,
+				04F893FC1C86F5A000566C3C /* orangeButton.png in Resources */,
+				04F893FE1C87184500566C3C /* new-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

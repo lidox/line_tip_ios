@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="2567" y="-350"/>
         </scene>
-        <!--TEst-->
+        <!--title-->
         <scene sceneID="q1s-bw-seM">
             <objects>
                 <viewController id="rUj-SJ-ezV" customClass="UserTableViewController" customModule="LineTip" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,7 +94,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TEst" id="cDA-Za-BAG">
+                    <navigationItem key="navigationItem" title="title" id="cDA-Za-BAG">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="VVW-fl-Ilv"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4fN-7J-TKV">
                             <connections>
@@ -103,6 +103,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="4fN-7J-TKV" id="ar8-ht-Ygs"/>
                         <outlet property="navigation" destination="cDA-Za-BAG" id="gf8-A5-fkc"/>
                         <outlet property="wellcomeImage" destination="csN-sU-PgR" id="gtc-BX-Qyh"/>
                     </connections>
@@ -130,23 +131,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MED-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-OJ-gJR">
-                                <rect key="frame" x="268" y="72" width="65" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
-                                <rect key="frame" x="0.0" y="92" width="600" height="508"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="AO8-OJ-gJR" secondAttribute="bottom" constant="-1" id="9LV-eY-PO5"/>
-                            <constraint firstItem="AO8-OJ-gJR" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="HEM-Bu-idg"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="leading" secondItem="osz-hr-bmT" secondAttribute="leading" id="Jl5-ZJ-hSo"/>
-                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="wUH-hF-MwW" secondAttribute="bottom" constant="28" id="Nra-Vr-rjS"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="UDf-gD-94R"/>
+                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="osz-hr-bmT" secondAttribute="top" id="jEO-L1-PuI"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="bottom" secondItem="lwW-WC-ELI" secondAttribute="top" id="l54-Od-c7k"/>
                             <constraint firstAttribute="trailing" secondItem="Kx6-XX-yKP" secondAttribute="trailing" id="xcd-5d-7eh"/>
                         </constraints>
@@ -159,7 +152,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="medIdLabel" destination="AO8-OJ-gJR" id="CgR-Kg-zNq"/>
                         <outlet property="scrollView" destination="Kx6-XX-yKP" id="EdB-S9-kWB"/>
                     </connections>
                 </viewController>

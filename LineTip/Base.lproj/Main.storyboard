@@ -95,7 +95,6 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="title" id="cDA-Za-BAG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="VVW-fl-Ilv"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4fN-7J-TKV">
                             <connections>
                                 <action selector="addUser:" destination="rUj-SJ-ezV" id="e2C-89-Bez"/>

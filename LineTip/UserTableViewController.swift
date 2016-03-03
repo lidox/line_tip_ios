@@ -72,36 +72,13 @@ class UserTableViewController: UITableViewController {
         return true
     }
     
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "\("Delete".translate())"
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete) {
-            //medUserList = MedUserManager.fetchMedUsers()
-            medUserList.removeAtIndex(indexPath.row)
-            
-            let moc = DataController().managedObjectContext
-            let personFetch = NSFetchRequest(entityName: "MedUser")
-
-            do{
-                
-                var fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
-                // sort by creation date as in the table view:
-                fetchedPerson = fetchedPerson.sort({ $0.creationDate.compare($1.creationDate) == .OrderedDescending })
-                let userToDelete = fetchedPerson[indexPath.row]
-                
-                // first delete all trials of object
-                for item in userToDelete.trial!{
-                    moc.deleteObject(item as! NSManagedObject)
-                }
-                
-                let userName = userToDelete.medId
-                
-                // now delete object
-                moc.deleteObject(userToDelete)
-                try moc.save()
-                print("removed user: \(userName)")
-            } catch let error as NSError {
-                print ("Couldn't delete. ERROR: \(error)")
-            }
-
+            MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
             self.tableView.reloadData()
         }
     }

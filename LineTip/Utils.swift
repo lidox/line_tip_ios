@@ -271,6 +271,9 @@ extension String {
             else if key == "in following colors" {
                 translation = "in folgenden Farben"
             }
+            else if key == "Delete" {
+                translation = "Löschen"
+            }
             /*
 
             */

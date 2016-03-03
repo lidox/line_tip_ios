@@ -93,4 +93,29 @@ class MedUserManager {
             fatalError("Failed to fetch person: \(error)")
         }
     }
+    
+    class func deleteMedUserByObjectId(objectID: NSManagedObjectID ) {
+        let moc = DataController().managedObjectContext
+        do {
+            let userToDelete = try moc.existingObjectWithID(objectID) as! MedUser
+            
+            // first delete all trials of user
+            for item in userToDelete.trial!{
+                moc.deleteObject(item as! NSManagedObject)
+            }
+            
+            let userName = userToDelete.medId
+            
+            // now delete object
+            moc.deleteObject(userToDelete)
+            
+            try moc.save()
+            print("user: \(userName) deleted")
+            
+        } catch {
+            fatalError("Failed to delete user: \(error)")
+        }
+    }
 }
+
+    

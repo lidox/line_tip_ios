@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIScrollViewDelegate {
 
     
+    @IBOutlet weak var scrollPager: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
-    //∫@IBOutlet weak var medIdLabel: UILabel!
     
     let resultsVC = ResultsViewController(nibName: "ResultsViewController", bundle: nil)
     let statisticsVC = StatisticsViewController(nibName: "StatisticsViewController", bundle: nil)
@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         initMedUserInAllView(self.selectedUserObjectID)
         initTitleAndColors()
-        
+        configurePageControl()
         
         print("1. MainController with obejct-id= \(self.selectedUserObjectID)")
         initScrollViews()
@@ -41,9 +41,12 @@ class MainViewController: UIViewController {
     }
     
     func initScrollViews() {
+        scrollView.delegate = self
+        
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
+        self.scrollView.pagingEnabled = true
         self.addChildViewController(resultsVC)
         resultsVC.view.frame = self.view.bounds
         self.scrollView.addSubview(resultsVC.view)
@@ -73,6 +76,30 @@ class MainViewController: UIViewController {
         vc2.didMoveToParentViewController(self)
         
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3, self.view.frame.size.height - 66)
+        
+        scrollPager.addTarget(self, action: Selector("changePage:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func configurePageControl() {
+        self.scrollPager.numberOfPages = 3
+        self.scrollPager.currentPage = 0
+        //self.scrollPager.tintColor = UIColor.myKeyColor()
+        self.scrollPager.pageIndicatorTintColor = UIColor.blackColor()
+        self.scrollPager.currentPageIndicatorTintColor = UIColor.myKeyColor()
+  
+        
+    }
+    
+    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+    func changePage(sender: AnyObject) -> () {
+        let x = CGFloat(scrollPager.currentPage) * scrollView.frame.size.width
+        scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        scrollPager.currentPage = Int(pageNumber)
     }
     
     func initMedUserInAllView(objectID: NSManagedObjectID )  {

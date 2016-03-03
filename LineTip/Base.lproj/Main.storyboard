@@ -61,12 +61,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="csN-sU-PgR">
-                            <rect key="frame" x="0.0" y="64" width="600" height="203"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="203"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myCell" textLabel="roG-lC-2VT" detailTextLabel="QO8-K6-cOv" style="IBUITableViewCellStyleValue1" id="mei-jD-bUF">
-                                <rect key="frame" x="0.0" y="295" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="231" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mei-jD-bUF" id="YY8-Rs-bWe">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -130,16 +130,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xUo-fR-SfR">
+                                <rect key="frame" x="281" y="558" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="5Ly-FV-yze"/>
+                                    <constraint firstAttribute="height" constant="37" id="OZA-kI-v00"/>
+                                </constraints>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.34418177999999999" blue="0.26359035250000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kx6-XX-yKP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="545"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xUo-fR-SfR" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="7db-Zj-NeU"/>
+                            <constraint firstItem="lwW-WC-ELI" firstAttribute="top" secondItem="xUo-fR-SfR" secondAttribute="bottom" constant="10" id="I7u-Ac-Ms2"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="leading" secondItem="osz-hr-bmT" secondAttribute="leading" id="Jl5-ZJ-hSo"/>
+                            <constraint firstItem="xUo-fR-SfR" firstAttribute="top" secondItem="Kx6-XX-yKP" secondAttribute="bottom" constant="8" id="Tc5-qr-i7U"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="centerX" secondItem="osz-hr-bmT" secondAttribute="centerX" id="UDf-gD-94R"/>
                             <constraint firstItem="Kx6-XX-yKP" firstAttribute="top" secondItem="osz-hr-bmT" secondAttribute="top" id="jEO-L1-PuI"/>
-                            <constraint firstItem="Kx6-XX-yKP" firstAttribute="bottom" secondItem="lwW-WC-ELI" secondAttribute="top" id="l54-Od-c7k"/>
                             <constraint firstAttribute="trailing" secondItem="Kx6-XX-yKP" secondAttribute="trailing" id="xcd-5d-7eh"/>
                         </constraints>
                     </view>
@@ -151,6 +161,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="scrollPager" destination="xUo-fR-SfR" id="iCU-g9-oOa"/>
                         <outlet property="scrollView" destination="Kx6-XX-yKP" id="EdB-S9-kWB"/>
                     </connections>
                 </viewController>
@@ -234,6 +245,6 @@
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gfk-1t-n2N"/>
+        <segue reference="roG-dV-4Ip"/>
     </inferredMetricsTieBreakers>
 </document>

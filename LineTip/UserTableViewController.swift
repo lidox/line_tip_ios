@@ -42,7 +42,7 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
-        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial.count) \("trials".translate())"
+        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
         cell.textLabel?.textColor = UIColor.myKeyColor()
         
         /*
@@ -74,39 +74,33 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete) {
-            medUserList = MedUserManager.fetchMedUsers()
+            //medUserList = MedUserManager.fetchMedUsers()
             medUserList.removeAtIndex(indexPath.row)
             
-            //core data
             let moc = DataController().managedObjectContext
             let personFetch = NSFetchRequest(entityName: "MedUser")
-            //
-            //let predicate = NSPredicate(format: "uniqueKey == %@", "value")
-            //personFetch.predicate = predicate
-            
+
             do{
-                //print("pos to delete: \(indexPath.row)")
+                
                 var fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
+                // sort by creation date as in the table view:
+                fetchedPerson = fetchedPerson.sort({ $0.creationDate.compare($1.creationDate) == .OrderedDescending })
                 let userToDelete = fetchedPerson[indexPath.row]
                 
-                //print("name: \(userToDelete.medId)")
+                // first delete all trials of object
+                for item in userToDelete.trial!{
+                    moc.deleteObject(item as! NSManagedObject)
+                }
+                
+                let userName = userToDelete.medId
+                
+                // now delete object
                 moc.deleteObject(userToDelete)
                 try moc.save()
+                print("removed user: \(userName)")
             } catch let error as NSError {
                 print ("Couldn't delete. ERROR: \(error)")
             }
-            /*
-            let moc = DataController().managedObjectContext
-            let personFetch = NSFetchRequest(entityName: "MedUser")
-            
-            do {
-            let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
-            print("fetched person: \(fetchedPerson.last!.medId)")
-            
-            } catch {
-            fatalError("Failed to fetch person: \(error)")
-            }
-            */
 
             self.tableView.reloadData()
         }

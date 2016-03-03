@@ -102,7 +102,7 @@ class ResultsViewController: UIViewController {
         
         do {
             let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            let trialList = medUser?.trial.allObjects as! [MedTrial]
+            let trialList = medUser?.trial!.allObjects as! [MedTrial]
             
             let retTrial = Trial()
             retTrial.hits = -1

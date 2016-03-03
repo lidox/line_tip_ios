@@ -105,7 +105,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         var retList = [Trial] ()
         do {
             let medUser = try context.existingObjectWithID(objectId) as? MedUser
-            var trialList = medUser?.trial.allObjects as! [MedTrial]
+            var trialList = medUser?.trial!.allObjects as! [MedTrial]
             
             // sort by creation date:
             trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })

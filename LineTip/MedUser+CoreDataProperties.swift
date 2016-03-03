@@ -16,7 +16,7 @@ extension MedUser {
 
     @NSManaged var medId: String
     @NSManaged var creationDate: NSDate
-    @NSManaged var trial: NSSet
+    @NSManaged var trial: NSSet?
     
     func addTrial(value: MedTrial) {
         self.mutableSetValueForKey("trial").addObject(value)
@@ -24,7 +24,7 @@ extension MedUser {
     
     func getTrialList() -> [MedTrial] {
         var trialList: [MedTrial]
-        trialList = self.trial.allObjects as! [MedTrial]
+        trialList = self.trial!.allObjects as! [MedTrial]
         return trialList
     }
 }

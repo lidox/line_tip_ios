@@ -33,10 +33,88 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        trialList = getTrialListByObjectId(self.selectedUserObjectID)
+        trialList = MedUserManager.getTrialListByObjectId(self.selectedUserObjectID)
         
         initTexts()
+        
         initChart()
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    // Workaround for deleting
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            
+            let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
+            if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
+                print("long press on: \(indexPath.row)")
+            
+        
+            let alert = UIAlertController(title: "",
+                message: "",
+                preferredStyle: .Alert)
+            alert.view.tintColor = UIColor.myKeyColor()
+            
+            let attributedString = NSAttributedString(string: "\("Delete selected trial".translate())", attributes: [
+                NSForegroundColorAttributeName : UIColor.myKeyColor()
+                ])
+            alert.setValue(attributedString, forKey: "attributedTitle")
+            
+            let saveAction = UIAlertAction(title: "\("Delete".translate())",
+                style: .Default,
+                handler: { (action:UIAlertAction) -> Void in
+                    
+                // delete selected trial
+                MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
+                self.trialList.removeAtIndex(indexPath.row)
+                self.hitValues.removeAtIndex(indexPath.row)
+                self.failValue.removeAtIndex(indexPath.row)
+                    
+                self.timeStampLabels.popLast()
+                    
+                self.tableView.reloadData()
+                //self.initChart()
+                    
+                //self.lineChart.clearAll()
+                self.lineChart = LineChart()
+                    //
+                    /*for (index, _) in self.trialList.enumerate() {
+                        self.timeStampLabels.append("\(index+1).\("trial".translate())")
+                        self.hitValues.append(CGFloat(self.trialList[index].hits))
+                        self.failValue.append(CGFloat(self.trialList[index].fails))
+                    }*/
+                    
+                    //self.lineChart = LineChart()
+                    
+                    self.lineChart.animation.enabled = true
+                    self.lineChart.area = true
+                    self.lineChart.x.labels.visible = true
+                    self.lineChart.x.grid.count = 5
+                    self.lineChart.y.grid.count = 5
+                    self.lineChart.x.labels.values = self.timeStampLabels
+                    self.lineChart.y.labels.visible = true
+                    self.lineChart.addLine(self.hitValues)
+                    self.lineChart.addLine(self.failValue)
+                    
+                    self.lineChart.translatesAutoresizingMaskIntoConstraints = false
+                    self.lineChart.delegate = self
+                    //
+                    
+            })
+            
+            let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
+                style: .Default) { (action: UIAlertAction) -> Void in
+            }
+            
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            
+            presentViewController(alert,
+                animated: true,
+                completion: nil)
+        }}
     }
     
     func initTexts() {
@@ -98,33 +176,26 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         return cell
     }
     
-    
-    func getTrialListByObjectId(objectId: NSManagedObjectID) -> [Trial]
-    {
-        let context = DataController().managedObjectContext
-        var retList = [Trial] ()
-        do {
-            let medUser = try context.existingObjectWithID(objectId) as? MedUser
-            var trialList = medUser?.trial!.allObjects as! [MedTrial]
-            
-            // sort by creation date:
-            trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
-            
-            for (index, _) in trialList.enumerate() {
-                let trial = Trial()
-                trial.hits = Int(trialList[index].hits!)
-                trial.fails = Int(trialList[index].fails!)
-                trial.duration = trialList[index].duration!.doubleValue
-                trial.timeStamp = trialList[index].timeStamp!
-                trial.creationDate = trialList[index].creationDate
-                retList.append(trial)
-            }
-            return retList
-        } catch {
-            fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
-        }
+    /*
+    // -- BEGINNING: REMOVE FUNCTION --
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "\("Delete".translate())"
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(editingStyle == UITableViewCellEditingStyle.Delete) {
+            print("MUHAHA \(indexPath.row)")
+            //MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
+            //self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.reloadData()
+        }
+    }
+    // -- ENDING: REMOVE FUNCTION --
+    */
     func initChart() {
         if(self.trialList.count > 2){
             views = [:]
@@ -145,6 +216,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
                 failValue.append(CGFloat(trialList[index].fails))
             }
             
+            //
             lineChart = LineChart()
             
             lineChart.animation.enabled = true
@@ -159,6 +231,8 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             
             lineChart.translatesAutoresizingMaskIntoConstraints = false
             lineChart.delegate = self
+            //
+            
             self.view.addSubview(lineChart)
             views["chart"] = lineChart
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))

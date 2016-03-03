@@ -31,6 +31,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
         print("1. MainController with obejct-id= \(self.selectedUserObjectID)")
         initScrollViews()
+        
     }
     
     func initTitleAndColors() {
@@ -59,6 +60,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         frame1.origin.x = self.view.frame.size.width
         statisticsVC.view.frame = frame1;
         
+        //
+        self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()//self.editButtonItem()
         
         self.addChildViewController(statisticsVC)
         self.scrollView.addSubview(statisticsVC.view)

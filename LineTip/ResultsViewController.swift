@@ -50,6 +50,7 @@ class ResultsViewController: UIViewController {
         initColors()
         initTexts()
     }
+ 
     
     func initColors() {
         startButton.backgroundColor = UIColor.myKeyColor()

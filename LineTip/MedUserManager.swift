@@ -116,6 +116,53 @@ class MedUserManager {
             fatalError("Failed to delete user: \(error)")
         }
     }
+    
+    class func deleteTrialByObjectIdAndTrialIndex(objectID: NSManagedObjectID, index : Int) {
+        let moc = DataController().managedObjectContext
+        do {
+            let medUser = try moc.existingObjectWithID(objectID) as! MedUser
+            
+            var trialList = medUser.trial!.allObjects as! [MedTrial]
+            
+            // sort by creation date:
+            trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
+            
+            // now delete object
+            moc.deleteObject(trialList[index])
+            
+            try moc.save()
+            print("trial deleted")
+            
+        } catch {
+            fatalError("Failed to delete user: \(error)")
+        }
+    }
+    
+    class func getTrialListByObjectId(objectId: NSManagedObjectID) -> [Trial]
+    {
+        let context = DataController().managedObjectContext
+        var retList = [Trial] ()
+        do {
+            let medUser = try context.existingObjectWithID(objectId) as? MedUser
+            var trialList = medUser?.trial!.allObjects as! [MedTrial]
+            
+            // sort by creation date:
+            trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
+            
+            for (index, _) in trialList.enumerate() {
+                let trial = Trial()
+                trial.hits = Int(trialList[index].hits!)
+                trial.fails = Int(trialList[index].fails!)
+                trial.duration = trialList[index].duration!.doubleValue
+                trial.timeStamp = trialList[index].timeStamp!
+                trial.creationDate = trialList[index].creationDate
+                retList.append(trial)
+            }
+            return retList
+        } catch {
+            fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
+        }
+    }
 }
 
     

@@ -14,12 +14,12 @@ import CoreData
 
 extension MedTrial {
 
-    @NSManaged var duration: NSNumber?
-    @NSManaged var fails: NSNumber?
-    @NSManaged var hits: NSNumber?
-    @NSManaged var timeStamp: String?
-    @NSManaged var isSelectedForStats: NSNumber?
-    @NSManaged var creationDate: NSDate
-    @NSManaged var user: MedUser
+    @NSManaged var duration: NSNumber!
+    @NSManaged var fails: NSNumber!
+    @NSManaged var hits: NSNumber!
+    @NSManaged var timeStamp: String!
+    @NSManaged var isSelectedForStats: NSNumber!
+    @NSManaged var creationDate: NSDate!
+    @NSManaged var user: MedUser!
 
 }

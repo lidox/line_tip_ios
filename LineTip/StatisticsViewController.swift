@@ -15,7 +15,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleText: UILabel!
     
-    
+    var txtField: UITextField!
     var label = UILabel()
     var lineChart: LineChart!
     var trialList: [Trial]!
@@ -34,40 +34,13 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         tableView.dataSource = self
         
         trialList = getTrialListByObjectId(self.selectedUserObjectID)
-        print("medTrialList size= \(trialList.count)")
         
-        initColors()
         initTexts()
         initChart()
     }
     
-    func initColors() {
-        /*
-        startButton.backgroundColor = UIColor.myKeyColor()
-        timeStampLabel.textColor = UIColor.myKeyColor()
-        hitLabel.textColor = UIColor.myKeyColor()
-        missLabel.textColor = UIColor.myKeyColor()
-        durationLabel.textColor = UIColor.myKeyColor()
-        startButton.setTitleColor(UIColor.myKeyColorSecond(), forState: UIControlState.Normal)
-        
-        //button settings
-        startButton.layer.cornerRadius = 7.0
-        */
-    }
-    
     func initTexts() {
         titleText.text = "\("measurement results".translate())"
-        /*
-        startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
-        //startButton.frame = CGRectMake(startButton.frame.origin.x, startButton.frame.origin.y, 700, 200)
-        //let screenSize: CGRect = UIScreen.mainScreen().bounds
-        
-        titleLabel.text = "\("result view".translate())"
-        timeStampTextLabel.text = "\("timestamp".translate())"
-        hitTextLabel.text = "\("hits".translate())"
-        missTextLabel.text = "\("misses".translate())"
-        durationTextLabel.text = "\("duration".translate())"
-        */
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,10 +52,23 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
      * Line chart delegate method.
      */
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
+        //txtField.backgroundColor = UIColor.myKeyColorSecond()
+        
+        // set multiple color in a textfield
+        let myString:NSString = "   \(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
+        
+        let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:14))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:14,length:15))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:27,length:myMutableString.length-27))
+        
+        // set label Attribute
+        txtField.attributedText = myMutableString
+      
         label.text = "x: \(x)     y: \(yValues)"
     }
-    
-    
     
     /**
      * Redraw chart on device rotation.
@@ -145,19 +131,22 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             label.text = "..."
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = NSTextAlignment.Center
-            self.view.addSubview(label)
+            
             views["label"] = label
+            self.view.addSubview(label)
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
             
+            
             //add data
             for (index, _) in trialList.enumerate() {
-                timeStampLabels.append("\(index+1)")
+                timeStampLabels.append("\(index+1).\("trial".translate())")
                 hitValues.append(CGFloat(trialList[index].hits))
                 failValue.append(CGFloat(trialList[index].fails))
             }
             
             lineChart = LineChart()
+            
             lineChart.animation.enabled = true
             lineChart.area = true
             lineChart.x.labels.visible = true
@@ -180,30 +169,34 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             // TABELLEN Titel
             let viewTitel = UIView()
             self.view.addSubview(viewTitel)
-
-            var txtField: UITextField //= UITextField(frame: CGRect(x: 0, y: 0 , width: screenSize.width, height: 30.00))
-            
-            //txtField.borderStyle = UITextBorderStyle.Line
-            //txtField.text = "myString"
-            //txtField.backgroundColor = UIColor.redColor()
             
             views["title"] = viewTitel
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[title]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[title(==50)]", options: [], metrics: nil, views: views))
             
-            
-            
             // Do any additional setup after loading the view.
             views["table"] = tableView
-            //let screenSize: CGRect = UIScreen.mainScreen().bounds
             let height = "\(Int(screenSize.height * 0.65))"
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[title]-[table(==\(height))]", options: [], metrics: nil, views: views))
             
             let hoch = tableView.frame.origin.y + 50
             txtField = UITextField(frame: CGRect(x: 0, y:  hoch , width: screenSize.width, height: 30.00))
-            txtField.text = "   \(trialList.count). \("trials".translate())"
-            txtField.textColor = UIColor.myKeyColor()
+            
+            // set multiple color in a textfield
+            let myString:NSString = "   \(trialList.count). \("trial".translate()) \("in following colors".translate()): \("hits".translate()) \("misses".translate())"
+            //"\(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
+            
+            let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
+            
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:25))
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:35,length:7))
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:42,length:myMutableString.length-42))
+            
+            // set label Attribute
+            txtField.attributedText = myMutableString
             self.view.addSubview(txtField)
         }
     }

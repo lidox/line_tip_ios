@@ -67,6 +67,9 @@ class ResultsViewController: UIViewController {
         startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
         
         titleLabel.text = "\("result view".translate())"
+        //print("TITELCOLOR:  \(titleLabel.textColor)")
+        //UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
+        //0.160784 0.384314 0.658824 1
         timeStampTextLabel.text = "\("timestamp".translate())"
         hitTextLabel.text = "\("hits".translate())"
         missTextLabel.text = "\("misses".translate())"

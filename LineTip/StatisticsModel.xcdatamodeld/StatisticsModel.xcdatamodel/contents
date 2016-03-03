@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
     <entity name="MedTrial" representedClassName=".MedTrial" syncable="YES">
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="fails" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="hits" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="isSelectedForStats" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fails" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hits" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isSelectedForStats" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timeStamp" attributeType="String" syncable="YES"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="MedUser" inverseName="trial" inverseEntity="MedUser" syncable="YES"/>
     </entity>
     <entity name="MedUser" representedClassName=".MedUser" syncable="YES">
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="medId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="medId" attributeType="String" syncable="YES"/>
         <relationship name="trial" toMany="YES" deletionRule="Nullify" destinationEntity="MedTrial" inverseName="user" inverseEntity="MedTrial" syncable="YES"/>
     </entity>
     <elements>

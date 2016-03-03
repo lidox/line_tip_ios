@@ -226,6 +226,9 @@ extension String {
             if key == "trials" {
                 translation = "Versuche"
             }
+            else if key == "trial" {
+                translation = "Versuch"
+            }
             else if key == "user management" {
                 translation = "Benutzerverwaltung"
             }
@@ -264,6 +267,9 @@ extension String {
             }
             else if key == "Cancel" {
                 translation = "Abbrechen"
+            }
+            else if key == "in following colors" {
+                translation = "in folgenden Farben"
             }
             /*
 

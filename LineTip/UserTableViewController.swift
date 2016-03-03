@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UserTableViewController: UITableViewController {
 
@@ -65,6 +66,52 @@ class UserTableViewController: UITableViewController {
         let row = indexPath.row
         print("Row: \(row) value= \(medUserList[row].medId)")
     }
+    
+    // -- BEGINNING: REMOVE FUNCTION --
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(editingStyle == UITableViewCellEditingStyle.Delete) {
+            medUserList = MedUserManager.fetchMedUsers()
+            medUserList.removeAtIndex(indexPath.row)
+            
+            //core data
+            let moc = DataController().managedObjectContext
+            let personFetch = NSFetchRequest(entityName: "MedUser")
+            //
+            //let predicate = NSPredicate(format: "uniqueKey == %@", "value")
+            //personFetch.predicate = predicate
+            
+            do{
+                //print("pos to delete: \(indexPath.row)")
+                var fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
+                let userToDelete = fetchedPerson[indexPath.row]
+                
+                //print("name: \(userToDelete.medId)")
+                moc.deleteObject(userToDelete)
+                try moc.save()
+            } catch let error as NSError {
+                print ("Couldn't delete. ERROR: \(error)")
+            }
+            /*
+            let moc = DataController().managedObjectContext
+            let personFetch = NSFetchRequest(entityName: "MedUser")
+            
+            do {
+            let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
+            print("fetched person: \(fetchedPerson.last!.medId)")
+            
+            } catch {
+            fatalError("Failed to fetch person: \(error)")
+            }
+            */
+
+            self.tableView.reloadData()
+        }
+    }
+    // -- ENDING: REMOVE FUNCTION --
     
     @IBAction func addUser(sender: AnyObject) {
         let alert = UIAlertController(title: "",

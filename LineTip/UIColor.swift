@@ -21,6 +21,6 @@ extension UIColor {
     }
     
     class func myKeyColorSecond() -> UIColor {
-        return UIColor.whiteColor()
+        return UIColor.blackColor()
     }
 }

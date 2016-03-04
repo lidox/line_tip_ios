@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
+                <outlet property="label" destination="2xG-ZE-dkg" id="peb-BZ-fVd"/>
                 <outlet property="lineChart" destination="UQ2-7Y-Fsq" id="IPP-a6-2T4"/>
                 <outlet property="tableView" destination="4mD-JC-x5K" id="rO0-cO-Fws"/>
                 <outlet property="titleText" destination="hbi-m6-Vc3" id="jXM-Ha-gey"/>
@@ -25,17 +26,20 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOM LABEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ZE-dkg">
-                    <rect key="frame" x="0.0" y="252" width="595" height="21"/>
+                    <rect key="frame" x="10" y="438" width="580" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQ2-7Y-Fsq" customClass="LineChart" customModule="LineTip" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="123" width="600" height="114"/>
+                    <rect key="frame" x="5" y="123" width="590" height="300"/>
                     <color key="backgroundColor" red="0.4660738546" green="0.99607843139999996" blue="0.2011010181" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Vsd-12-6T2"/>
+                    </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4mD-JC-x5K">
-                    <rect key="frame" x="0.0" y="288" width="600" height="312"/>
+                    <rect key="frame" x="5" y="474" width="590" height="126"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -43,18 +47,28 @@
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2L4-Op-k8j"/>
                 <constraint firstAttribute="bottom" secondItem="4mD-JC-x5K" secondAttribute="bottom" id="2q1-1w-xzB"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="3kn-JC-jxW"/>
-                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="2xG-ZE-dkg" secondAttribute="leading" id="7T3-oR-dOx"/>
-                <constraint firstItem="4mD-JC-x5K" firstAttribute="top" secondItem="2xG-ZE-dkg" secondAttribute="bottom" constant="15" id="Fq3-Em-G5k"/>
-                <constraint firstItem="2xG-ZE-dkg" firstAttribute="top" secondItem="UQ2-7Y-Fsq" secondAttribute="bottom" constant="15" id="Gjo-Ct-Vij"/>
+                <constraint firstItem="2xG-ZE-dkg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BnG-cs-v9N"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H6l-E5-iyz"/>
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="top" secondItem="hbi-m6-Vc3" secondAttribute="bottom" constant="15" id="Hdr-h7-2r8"/>
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="trailing" secondItem="4mD-JC-x5K" secondAttribute="trailing" id="KjW-6K-9gk"/>
                 <constraint firstAttribute="bottom" secondItem="UQ2-7Y-Fsq" secondAttribute="bottom" constant="363" id="Qbc-bO-44A"/>
                 <constraint firstItem="4mD-JC-x5K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RZY-8R-9uP"/>
+                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="2xG-ZE-dkg" secondAttribute="trailing" constant="-585" id="Uda-k1-pXa"/>
+                <constraint firstItem="2xG-ZE-dkg" firstAttribute="top" secondItem="UQ2-7Y-Fsq" secondAttribute="bottom" constant="15" id="WPI-qM-SvJ"/>
+                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="top" secondItem="hbi-m6-Vc3" secondAttribute="bottom" constant="15" id="b2J-jv-eA9"/>
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="4mD-JC-x5K" secondAttribute="leading" id="br9-91-b1z"/>
-                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kuc-TG-M3l"/>
-                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="trailing" secondItem="2xG-ZE-dkg" secondAttribute="trailing" constant="5" id="met-3p-IQP"/>
+                <constraint firstAttribute="trailing" secondItem="2xG-ZE-dkg" secondAttribute="trailing" constant="10" id="gb6-f5-lZs"/>
+                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="kuc-TG-M3l"/>
+                <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="rcF-B6-H99"/>
+                <constraint firstItem="4mD-JC-x5K" firstAttribute="top" secondItem="2xG-ZE-dkg" secondAttribute="bottom" constant="15" id="zNJ-Lv-c5u"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Hdr-h7-2r8"/>
+                    <exclude reference="Qbc-bO-44A"/>
+                    <exclude reference="3kn-JC-jxW"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="461" y="300"/>
         </view>
     </objects>

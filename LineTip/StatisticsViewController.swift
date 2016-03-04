@@ -14,16 +14,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleText: UILabel!
-    
-    var txtField: UITextField!
-    var label = UILabel()
-    
-    
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var lineChart: LineChart!
     
-    //var lineChart: LineChart!
-    var trialList: [Trial]!
     var selectedUserObjectID : NSManagedObjectID!
+    var trialList: [Trial]!
     var views: [String: AnyObject]!
     
     var hitValues: [CGFloat] = []
@@ -59,19 +54,17 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
      * Line chart delegate method.
      */
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
-        /*
+        
         // set multiple color in a textfield
-        let myString:NSString = "   \(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
+        let myString:NSString = "\(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
-        
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:14))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:14,length:15))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:27,length:myMutableString.length-27))
-    
         label.attributedText = myMutableString
-        */
+
     }
     
     /**

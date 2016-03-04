@@ -109,17 +109,19 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
 
     
     func goodOldLineChart() {
-        lineChart.animation.enabled = true
-        lineChart.area = true
-        lineChart.x.labels.visible = true
-        lineChart.x.grid.count = 5
-        lineChart.y.grid.count = 5
-        lineChart.x.labels.values = timeStampLabels
-        lineChart.y.labels.visible = true
-        lineChart.addLine(hitValues)
-        lineChart.addLine(failValue)
-        lineChart.translatesAutoresizingMaskIntoConstraints = false
-        lineChart.delegate = self
+        if(self.trialList.count > 2){
+            lineChart.animation.enabled = true
+            lineChart.area = true
+            lineChart.x.labels.visible = true
+            lineChart.x.grid.count = 5
+            lineChart.y.grid.count = 5
+            lineChart.x.labels.values = timeStampLabels
+            lineChart.y.labels.visible = true
+            lineChart.addLine(hitValues)
+            lineChart.addLine(failValue)
+            lineChart.translatesAutoresizingMaskIntoConstraints = false
+            lineChart.delegate = self
+        }
     }
     
     func initChart() {
@@ -175,10 +177,16 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
                         self.trialList.removeAtIndex(indexPath.row)
                         self.hitValues.removeAtIndex(indexPath.row)
                         self.failValue.removeAtIndex(indexPath.row)
+                        
+                        
+                        
                         self.timeStampLabels.popLast()
      
                         self.tableView.reloadData()
+    
+                        self.lineChart.clearAll()
                         self.goodOldLineChart()
+                        self.lineChart.setNeedsDisplay()
                 })
                 
                 let cancelAction = UIAlertAction(title: "\("Cancel".translate())",

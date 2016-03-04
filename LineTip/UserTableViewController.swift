@@ -24,6 +24,9 @@ class UserTableViewController: UITableViewController {
     var medUserList = [MedUser]()
     
     override func viewDidLoad() {
+        //Disable autolayout constraint error messages in debug console output in Xcode
+        NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        
         super.viewDidLoad()
         Utils.loadSettingsData()
         
@@ -63,8 +66,8 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let row = indexPath.row
-        print("Row: \(row) value= \(medUserList[row].medId)")
+        //let row = indexPath.row
+        //print("Row: \(row) value= \(medUserList[row].medId)")
     }
     
     // -- BEGINNING: REMOVE FUNCTION --
@@ -148,7 +151,7 @@ class UserTableViewController: UITableViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
                     medUserList = MedUserManager.fetchMedUsers()
                     let selectedUser = medUserList[index]
-                    print("\(selectedUser.medId) segue")
+                    //print("\(selectedUser.medId) segue")
                     destination.selectedUser = selectedUser
                     destination.selectedUserObjectID = selectedUser.objectID
                 }

@@ -208,6 +208,29 @@ extension NSDate {
     }
 }
 
+
+extension Double {
+    func secondsToHoursMinutesSeconds () -> (Int, Int, Int) {
+        let seconds = Int(self)
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+    func getStringAsHoursMinutesSeconds () -> String {
+        let (h, m, s) = secondsToHoursMinutesSeconds ()
+        var retString = "";
+        if(h != 0){
+            retString = "\(h) h "
+        }
+        if(m != 0){
+            retString += "\(m) min "
+        }
+        retString += "\(s) s"
+
+        return retString
+    }
+}
+
+
 extension String {
     func translate() -> String {
 

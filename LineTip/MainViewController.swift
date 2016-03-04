@@ -28,10 +28,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         initMedUserInAllView(self.selectedUserObjectID)
         initTitleAndColors()
         configurePageControl()
-        
-        print("1. MainController with obejct-id= \(self.selectedUserObjectID)")
         initScrollViews()
-        
     }
     
     func initTitleAndColors() {

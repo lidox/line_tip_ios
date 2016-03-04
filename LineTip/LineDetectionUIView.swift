@@ -19,15 +19,24 @@ class LineDetectionUIView: UIView {
         super.init(frame: frame)
     }
     
+    /**
+     Initializes the the canvas where the lines will be drawn.
+     
+     - Parameters:
+     - coder: The decoder of the uiview
+     
+     - Returns: A a list of generated lines
+     */
     required init(coder aDecoder: NSCoder) {
+        print("LineDetectionUIView: init")
         super.init(coder: aDecoder)!
-        //print("init")
         var lineGenerator : LineGenerator
         lineGenerator = getLineGenerator()
         lines = lineGenerator.getLines()
     }
     
     override func drawRect(rect: CGRect) {
+        print("LineDetectionUIView: drawRect")
         draw()
     }
     
@@ -36,9 +45,6 @@ class LineDetectionUIView: UIView {
         if(isLastLineDrawn){
             trial.overflowCounter = 0
         }
-        
-        //print("counter:\(trial.overflowCounter)")
-        
         
         if(!trial.hasStarted()){
             context = UIGraphicsGetCurrentContext()
@@ -57,6 +63,7 @@ class LineDetectionUIView: UIView {
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
+        print("LineDetectionUIView: drawSpot")
         myImageView.alpha = spotAlpha
         myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
         self.addSubview(myImageView)
@@ -64,12 +71,12 @@ class LineDetectionUIView: UIView {
     }
     
     func drawRawLine(line: Line, lineWidth: CGFloat, lineColor: CGColor) {
+        print("LineDetectionUIView: drawRawLine")
         CGContextClearRect(context, self.bounds)
         CGContextSetLineWidth(context, lineWidth)
         CGContextSetStrokeColorWithColor(context, lineColor)
         CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
-        
         CGContextStrokePath(context)
         //print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
         

@@ -18,6 +18,7 @@ class LineDetectionViewController: UIViewController {
     var selectedUserObjectID : NSManagedObjectID!
     
     override func viewDidLoad() {
+        print("LineDetectionViewController: viewDidLoad")
         super.viewDidLoad()
         
         addHitListener()
@@ -25,7 +26,6 @@ class LineDetectionViewController: UIViewController {
         // set orientation
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
         
-        print("LineDetection with obejectId \(selectedUserObjectID)")
         fetchMedUserById(self.selectedUserObjectID)
     }
     
@@ -36,7 +36,10 @@ class LineDetectionViewController: UIViewController {
     func onHit(img: AnyObject){
         uiView.trial.startCountingTime()
         uiView.trial.countHit()
+        
+        // update the UIView (redraw the line)
         uiView.setNeedsDisplay()
+        
         ClickSound.play("good", soundExtension: "wav")
         //print("CONTROLLER Hit line")
     }

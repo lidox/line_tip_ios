@@ -44,7 +44,7 @@ class ResultsViewController: UIViewController {
             timeStampLabel.text = "\(lastTrial2.timeStamp)"
             hitLabel.text = "\(lastTrial2.hits)"
             missLabel.text = "\(lastTrial2.fails)"
-            durationLabel.text = "\(lastTrial2.duration)"
+            durationLabel.text = "\(lastTrial2.duration.getStringAsHoursMinutesSeconds())"
         }
         
         initColors()

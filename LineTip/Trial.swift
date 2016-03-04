@@ -21,13 +21,18 @@ class Trial: NSObject {
     var creationDate = NSDate()
     
     override init(){
+        print("Trial: init")
         self.timeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
     }
     
     
     func startCountingTime() {
         if(!self.hasStarted()){
+            print("Trial: startCountingTime: counting started")
             self.startTime = CFAbsoluteTimeGetCurrent()
+        }
+        else{
+            print("Trial: startCountingTime: not started, beacause already counting")
         }
     }
     
@@ -46,17 +51,19 @@ class Trial: NSObject {
     }
 
     func countMiss() {
+        print("Trial: countMiss")
         self.fails++
     }
     
     func countHit() {
+        print("Trial: countHit")
         self.hits++
         self.overflowCounter++
     }
     
     func hasStarted() -> Bool {
-        let ret =   ((self.hits != 0) && (self.fails != 0))
-        print(ret)
+        let ret =   ((self.hits != 0) || (self.fails != 0))
+        print("Trial: hasStarted =\(ret)")
         return ret
     }
     

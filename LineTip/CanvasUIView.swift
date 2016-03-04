@@ -23,7 +23,7 @@ class CanvasUIView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        print("init")
+        print("CanvasUIView: init")
         lines.append(line2)
     }
     
@@ -55,8 +55,7 @@ class CanvasUIView: UIView {
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
         
         CGContextStrokePath(context)
-        print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
-        
+        //print("CanvasUIView: drawRawLine= line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
     }
     
     func getLineWidth() -> CGFloat {

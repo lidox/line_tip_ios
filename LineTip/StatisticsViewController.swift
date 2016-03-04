@@ -43,6 +43,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     
     func initTexts() {
         titleText.text = "\("measurement results".translate())"
+        label.text = "\("trials".translate())"
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,13 +57,24 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         
         // set multiple color in a textfield
-        let myString:NSString = "\(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
+        let trialNum = "\(Int(x)+1)."
+        let trialName = "\("trial".translate()) = "
+        let hitValue = "\(Int(yValues[0]))."
+        let hitName = "\("hits".translate()) "
+        let missValue = "\(Int(yValues[1]))."
+        let missName = "\("misses".translate())"
+        
+        let myString:NSString = "\(trialNum)\(trialName)\(hitValue)\(hitName)\(missValue)\(missName)" // 5 leerstellen
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
+        
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:14))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:14,length:15))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:27,length:myMutableString.length-27))
+        let first = trialName.characters.count + trialNum.characters.count
+        let second = hitValue.characters.count + hitName.characters.count
+        let third = missValue.characters.count + missName.characters.count
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:first))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:first,length:second))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:third,length:myMutableString.length-third))
         label.attributedText = myMutableString
 
     }
@@ -97,7 +109,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
 
     
     func goodOldLineChart() {
-        //lineChart = LineChart()
         lineChart.animation.enabled = true
         lineChart.area = true
         lineChart.x.labels.visible = true
@@ -107,7 +118,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         lineChart.y.labels.visible = true
         lineChart.addLine(hitValues)
         lineChart.addLine(failValue)
-        
         lineChart.translatesAutoresizingMaskIntoConstraints = false
         lineChart.delegate = self
     }
@@ -115,7 +125,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     func initChart() {
         if(self.trialList.count > 2){
             fillGraphByData()
-            
             goodOldLineChart()
         }
         else {

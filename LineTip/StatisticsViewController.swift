@@ -39,6 +39,10 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         
         initChart()
         
+        addLongPressRecognizer()
+    }
+    
+    func addLongPressRecognizer() {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
         self.view.addGestureRecognizer(longPressRecognizer)
     }
@@ -50,71 +54,71 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
             if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
                 print("long press on: \(indexPath.row)")
-            
-        
-            let alert = UIAlertController(title: "",
-                message: "",
-                preferredStyle: .Alert)
-            alert.view.tintColor = UIColor.myKeyColor()
-            
-            let attributedString = NSAttributedString(string: "\("Delete selected trial".translate())", attributes: [
-                NSForegroundColorAttributeName : UIColor.myKeyColor()
-                ])
-            alert.setValue(attributedString, forKey: "attributedTitle")
-            
-            let saveAction = UIAlertAction(title: "\("Delete".translate())",
-                style: .Default,
-                handler: { (action:UIAlertAction) -> Void in
-                    
-                // delete selected trial
-                MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
-                self.trialList.removeAtIndex(indexPath.row)
-                self.hitValues.removeAtIndex(indexPath.row)
-                self.failValue.removeAtIndex(indexPath.row)
-                    
-                self.timeStampLabels.popLast()
-                    
-                self.tableView.reloadData()
-                //self.initChart()
-                    
-                //self.lineChart.clearAll()
-                self.lineChart = LineChart()
-                    //
-                    /*for (index, _) in self.trialList.enumerate() {
+                
+                
+                let alert = UIAlertController(title: "",
+                    message: "",
+                    preferredStyle: .Alert)
+                alert.view.tintColor = UIColor.myKeyColor()
+                
+                let attributedString = NSAttributedString(string: "\("Delete selected trial".translate())", attributes: [
+                    NSForegroundColorAttributeName : UIColor.myKeyColor()
+                    ])
+                alert.setValue(attributedString, forKey: "attributedTitle")
+                
+                let saveAction = UIAlertAction(title: "\("Delete".translate())",
+                    style: .Default,
+                    handler: { (action:UIAlertAction) -> Void in
+                        
+                        // delete selected trial
+                        MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
+                        self.trialList.removeAtIndex(indexPath.row)
+                        self.hitValues.removeAtIndex(indexPath.row)
+                        self.failValue.removeAtIndex(indexPath.row)
+                        
+                        self.timeStampLabels.popLast()
+                        
+                        self.tableView.reloadData()
+                        //self.initChart()
+                        
+                        //self.lineChart.clearAll()
+                        self.lineChart = LineChart()
+                        //
+                        /*for (index, _) in self.trialList.enumerate() {
                         self.timeStampLabels.append("\(index+1).\("trial".translate())")
                         self.hitValues.append(CGFloat(self.trialList[index].hits))
                         self.failValue.append(CGFloat(self.trialList[index].fails))
-                    }*/
-                    
-                    //self.lineChart = LineChart()
-                    
-                    self.lineChart.animation.enabled = true
-                    self.lineChart.area = true
-                    self.lineChart.x.labels.visible = true
-                    self.lineChart.x.grid.count = 5
-                    self.lineChart.y.grid.count = 5
-                    self.lineChart.x.labels.values = self.timeStampLabels
-                    self.lineChart.y.labels.visible = true
-                    self.lineChart.addLine(self.hitValues)
-                    self.lineChart.addLine(self.failValue)
-                    
-                    self.lineChart.translatesAutoresizingMaskIntoConstraints = false
-                    self.lineChart.delegate = self
-                    //
-                    
-            })
-            
-            let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
-                style: .Default) { (action: UIAlertAction) -> Void in
-            }
-            
-            alert.addAction(saveAction)
-            alert.addAction(cancelAction)
-            
-            presentViewController(alert,
-                animated: true,
-                completion: nil)
-        }}
+                        }*/
+                        
+                        //self.lineChart = LineChart()
+                        
+                        self.lineChart.animation.enabled = true
+                        self.lineChart.area = true
+                        self.lineChart.x.labels.visible = true
+                        self.lineChart.x.grid.count = 5
+                        self.lineChart.y.grid.count = 5
+                        self.lineChart.x.labels.values = self.timeStampLabels
+                        self.lineChart.y.labels.visible = true
+                        self.lineChart.addLine(self.hitValues)
+                        self.lineChart.addLine(self.failValue)
+                        
+                        self.lineChart.translatesAutoresizingMaskIntoConstraints = false
+                        self.lineChart.delegate = self
+                        //
+                        
+                })
+                
+                let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
+                    style: .Default) { (action: UIAlertAction) -> Void in
+                }
+                
+                alert.addAction(saveAction)
+                alert.addAction(cancelAction)
+                
+                presentViewController(alert,
+                    animated: true,
+                    completion: nil)
+            }}
     }
     
     func initTexts() {
@@ -130,8 +134,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
      * Line chart delegate method.
      */
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
-        //txtField.backgroundColor = UIColor.myKeyColorSecond()
-        
+        /*
         // set multiple color in a textfield
         let myString:NSString = "   \(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
         var myMutableString = NSMutableAttributedString()
@@ -141,11 +144,9 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:14))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:14,length:15))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:27,length:myMutableString.length-27))
-        
-        // set label Attribute
-        txtField.attributedText = myMutableString
-      
-        label.text = "x: \(x)     y: \(yValues)"
+    
+        label.attributedText = myMutableString
+        */
     }
     
     /**
@@ -179,20 +180,20 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     /*
     // -- BEGINNING: REMOVE FUNCTION --
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    return true
     }
     
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-        return "\("Delete".translate())"
+    return "\("Delete".translate())"
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if(editingStyle == UITableViewCellEditingStyle.Delete) {
-            print("MUHAHA \(indexPath.row)")
-            //MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
-            //self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            self.tableView.reloadData()
-        }
+    if(editingStyle == UITableViewCellEditingStyle.Delete) {
+    print("MUHAHA \(indexPath.row)")
+    //MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
+    //self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    self.tableView.reloadData()
+    }
     }
     // -- ENDING: REMOVE FUNCTION --
     */
@@ -203,10 +204,20 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = NSTextAlignment.Center
             
+            let placeHolder = UILabel()
+            views["placeHolder"] = placeHolder
+            placeHolder.backgroundColor = UIColor.redColor()
+            self.view.addSubview(placeHolder)
+            
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[placeHolder]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[placeHolder]", options: [], metrics: nil, views: views))
+            
             views["label"] = label
+            placeHolder.backgroundColor = UIColor.yellowColor()
             self.view.addSubview(label)
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
+            //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[placeHolder]-[label(==150)]", options: [], metrics: nil, views: views))
             
             
             //add data
@@ -218,7 +229,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             
             //
             lineChart = LineChart()
-            
             lineChart.animation.enabled = true
             lineChart.area = true
             lineChart.x.labels.visible = true
@@ -228,50 +238,39 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             lineChart.y.labels.visible = true
             lineChart.addLine(hitValues)
             lineChart.addLine(failValue)
-            
             lineChart.translatesAutoresizingMaskIntoConstraints = false
             lineChart.delegate = self
             //
             
+            // chart
+            lineChart.backgroundColor = UIColor.blueColor()
             self.view.addSubview(lineChart)
+            
             views["chart"] = lineChart
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
-            
             let screenSize: CGRect = UIScreen.mainScreen().bounds
+            // chart
             
-            // TABELLEN Titel
-            let viewTitel = UIView()
-            self.view.addSubview(viewTitel)
-            
-            views["title"] = viewTitel
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[title]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[title(==50)]", options: [], metrics: nil, views: views))
+            // txt label
+            let hoch = tableView.frame.origin.y + 110
+            let txtlabel = UILabel(frame: CGRect(x: 0, y:  hoch , width: screenSize.width, height: 30.00))
+            views["txtlabel"] = txtlabel
+            //txtlabel.center = CGPointMake(160, 284)
+            txtlabel.textAlignment = NSTextAlignment.Center
+            txtlabel.text = "I'am a test label"
+            txtlabel.backgroundColor = UIColor.cyanColor()
+            self.view.addSubview(txtlabel)
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[txtlabel]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[txtlabel(==40)]", options: [], metrics: nil, views: views))
+            // txt label
             
             // Do any additional setup after loading the view.
             views["table"] = tableView
-            let height = "\(Int(screenSize.height * 0.65))"
+            tableView.backgroundColor = UIColor.greenColor()
+            let height = "\(Int(screenSize.height * 0.60))"
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[title]-[table(==\(height))]", options: [], metrics: nil, views: views))
-            
-            let hoch = tableView.frame.origin.y + 50
-            txtField = UITextField(frame: CGRect(x: 0, y:  hoch , width: screenSize.width, height: 30.00))
-            
-            // set multiple color in a textfield
-            let myString:NSString = "   \(trialList.count). \("trial".translate()) \("in following colors".translate()): \("hits".translate()) \("misses".translate())"
-            //"\(Int(x)+1). \("trial".translate())= \(Int(yValues[0])).\("hits".translate()),  \(Int(yValues[1])).\("misses".translate())"
-            var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
-            
-            let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
-            
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:25))
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:35,length:7))
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:42,length:myMutableString.length-42))
-            
-            // set label Attribute
-            txtField.attributedText = myMutableString
-            self.view.addSubview(txtField)
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[txtlabel]-[table(==\(height))]", options: [], metrics: nil, views: views))
         }
     }
     

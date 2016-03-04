@@ -155,7 +155,8 @@ public class LineChart: UIView {
     }
     
     override public func drawRect(rect: CGRect) {
-        
+        if dataStore.count > 0 {
+            
         if removeAll {
             let context = UIGraphicsGetCurrentContext()
             CGContextClearRect(context, rect)
@@ -205,6 +206,7 @@ public class LineChart: UIView {
             // draw area under line chart
             if area { drawAreaBeneathLineChart(lineIndex) }
             
+        }
         }
         
     }

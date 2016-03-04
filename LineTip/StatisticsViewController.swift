@@ -37,7 +37,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         
         initTexts()
         
-        initChart()
+        //initChart()
         
         addLongPressRecognizer()
     }

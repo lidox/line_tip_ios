@@ -42,85 +42,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         addLongPressRecognizer()
     }
     
-    func addLongPressRecognizer() {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
-        self.view.addGestureRecognizer(longPressRecognizer)
-    }
-    
-    // Workaround for deleting
-    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
-            
-            let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
-            if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
-                print("long press on: \(indexPath.row)")
-                
-                
-                let alert = UIAlertController(title: "",
-                    message: "",
-                    preferredStyle: .Alert)
-                alert.view.tintColor = UIColor.myKeyColor()
-                
-                let attributedString = NSAttributedString(string: "\("Delete selected trial".translate())", attributes: [
-                    NSForegroundColorAttributeName : UIColor.myKeyColor()
-                    ])
-                alert.setValue(attributedString, forKey: "attributedTitle")
-                
-                let saveAction = UIAlertAction(title: "\("Delete".translate())",
-                    style: .Default,
-                    handler: { (action:UIAlertAction) -> Void in
-                        
-                        // delete selected trial
-                        MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
-                        self.trialList.removeAtIndex(indexPath.row)
-                        self.hitValues.removeAtIndex(indexPath.row)
-                        self.failValue.removeAtIndex(indexPath.row)
-                        
-                        self.timeStampLabels.popLast()
-                        
-                        self.tableView.reloadData()
-                        //self.initChart()
-                        
-                        //self.lineChart.clearAll()
-                        self.lineChart = LineChart()
-                        //
-                        /*for (index, _) in self.trialList.enumerate() {
-                        self.timeStampLabels.append("\(index+1).\("trial".translate())")
-                        self.hitValues.append(CGFloat(self.trialList[index].hits))
-                        self.failValue.append(CGFloat(self.trialList[index].fails))
-                        }*/
-                        
-                        //self.lineChart = LineChart()
-                        
-                        self.lineChart.animation.enabled = true
-                        self.lineChart.area = true
-                        self.lineChart.x.labels.visible = true
-                        self.lineChart.x.grid.count = 5
-                        self.lineChart.y.grid.count = 5
-                        self.lineChart.x.labels.values = self.timeStampLabels
-                        self.lineChart.y.labels.visible = true
-                        self.lineChart.addLine(self.hitValues)
-                        self.lineChart.addLine(self.failValue)
-                        
-                        self.lineChart.translatesAutoresizingMaskIntoConstraints = false
-                        self.lineChart.delegate = self
-                        //
-                        
-                })
-                
-                let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
-                    style: .Default) { (action: UIAlertAction) -> Void in
-                }
-                
-                alert.addAction(saveAction)
-                alert.addAction(cancelAction)
-                
-                presentViewController(alert,
-                    animated: true,
-                    completion: nil)
-            }}
-    }
-    
     func initTexts() {
         titleText.text = "\("measurement results".translate())"
     }
@@ -197,6 +118,24 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     }
     // -- ENDING: REMOVE FUNCTION --
     */
+    
+    func goodOldLineChart() {
+        print("StatisticsViewController: goodOldLineChart")
+        self.lineChart = LineChart()
+        self.lineChart.animation.enabled = true
+        self.lineChart.area = true
+        self.lineChart.x.labels.visible = true
+        self.lineChart.x.grid.count = 5
+        self.lineChart.y.grid.count = 5
+        self.lineChart.x.labels.values = self.timeStampLabels
+        self.lineChart.y.labels.visible = true
+        self.lineChart.addLine(self.hitValues)
+        self.lineChart.addLine(self.failValue)
+        
+        self.lineChart.translatesAutoresizingMaskIntoConstraints = false
+        self.lineChart.delegate = self
+    }
+    
     func initChart() {
         if(self.trialList.count > 2){
             views = [:]
@@ -219,28 +158,9 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[placeHolder]-[label(==150)]", options: [], metrics: nil, views: views))
             
+            fillGraphByData()
             
-            //add data
-            for (index, _) in trialList.enumerate() {
-                timeStampLabels.append("\(index+1).\("trial".translate())")
-                hitValues.append(CGFloat(trialList[index].hits))
-                failValue.append(CGFloat(trialList[index].fails))
-            }
-            
-            //
-            lineChart = LineChart()
-            lineChart.animation.enabled = true
-            lineChart.area = true
-            lineChart.x.labels.visible = true
-            lineChart.x.grid.count = 5
-            lineChart.y.grid.count = 5
-            lineChart.x.labels.values = timeStampLabels
-            lineChart.y.labels.visible = true
-            lineChart.addLine(hitValues)
-            lineChart.addLine(failValue)
-            lineChart.translatesAutoresizingMaskIntoConstraints = false
-            lineChart.delegate = self
-            //
+            goodOldLineChart()
             
             // chart
             lineChart.backgroundColor = UIColor.blueColor()
@@ -272,6 +192,68 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[txtlabel]-[table(==\(height))]", options: [], metrics: nil, views: views))
         }
+    }
+    
+    func addLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    func fillGraphByData() {
+        for (index, _) in trialList.enumerate() {
+            timeStampLabels.append("\(index+1).\("trial".translate())")
+            hitValues.append(CGFloat(trialList[index].hits))
+            failValue.append(CGFloat(trialList[index].fails))
+        }
+    }
+    
+
+    
+    // Workaround for deleting
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            
+            let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
+            if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
+                print("long press on: \(indexPath.row)")
+                
+                
+                let alert = UIAlertController(title: "",
+                    message: "",
+                    preferredStyle: .Alert)
+                alert.view.tintColor = UIColor.myKeyColor()
+                
+                let attributedString = NSAttributedString(string: "\("Delete selected trial".translate())", attributes: [
+                    NSForegroundColorAttributeName : UIColor.myKeyColor()
+                    ])
+                alert.setValue(attributedString, forKey: "attributedTitle")
+                
+                let saveAction = UIAlertAction(title: "\("Delete".translate())",
+                    style: .Default,
+                    handler: { (action:UIAlertAction) -> Void in
+                        
+                        // delete selected trial
+                        MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
+                        self.trialList.removeAtIndex(indexPath.row)
+                        self.hitValues.removeAtIndex(indexPath.row)
+                        self.failValue.removeAtIndex(indexPath.row)
+                        self.timeStampLabels.popLast()
+     
+                        self.tableView.reloadData()
+                        self.goodOldLineChart()
+                })
+                
+                let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
+                    style: .Default) { (action: UIAlertAction) -> Void in
+                }
+                
+                alert.addAction(saveAction)
+                alert.addAction(cancelAction)
+                
+                presentViewController(alert,
+                    animated: true,
+                    completion: nil)
+            }}
     }
     
 }

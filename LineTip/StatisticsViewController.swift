@@ -17,7 +17,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     
     var txtField: UITextField!
     var label = UILabel()
-    var lineChart: LineChart!
+    
+    
+    @IBOutlet weak var lineChart: LineChart!
+    
+    //var lineChart: LineChart!
     var trialList: [Trial]!
     var selectedUserObjectID : NSManagedObjectID!
     var views: [String: AnyObject]!
@@ -37,7 +41,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         
         initTexts()
         
-        //initChart()
+        initChart()
         
         addLongPressRecognizer()
     }
@@ -97,100 +101,32 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         
         return cell
     }
-    
-    /*
-    // -- BEGINNING: REMOVE FUNCTION --
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-    }
-    
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-    return "\("Delete".translate())"
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if(editingStyle == UITableViewCellEditingStyle.Delete) {
-    print("MUHAHA \(indexPath.row)")
-    //MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
-    //self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    self.tableView.reloadData()
-    }
-    }
-    // -- ENDING: REMOVE FUNCTION --
-    */
+
     
     func goodOldLineChart() {
-        print("StatisticsViewController: goodOldLineChart")
-        self.lineChart = LineChart()
-        self.lineChart.animation.enabled = true
-        self.lineChart.area = true
-        self.lineChart.x.labels.visible = true
-        self.lineChart.x.grid.count = 5
-        self.lineChart.y.grid.count = 5
-        self.lineChart.x.labels.values = self.timeStampLabels
-        self.lineChart.y.labels.visible = true
-        self.lineChart.addLine(self.hitValues)
-        self.lineChart.addLine(self.failValue)
+        //lineChart = LineChart()
+        lineChart.animation.enabled = true
+        lineChart.area = true
+        lineChart.x.labels.visible = true
+        lineChart.x.grid.count = 5
+        lineChart.y.grid.count = 5
+        lineChart.x.labels.values = timeStampLabels
+        lineChart.y.labels.visible = true
+        lineChart.addLine(hitValues)
+        lineChart.addLine(failValue)
         
-        self.lineChart.translatesAutoresizingMaskIntoConstraints = false
-        self.lineChart.delegate = self
+        lineChart.translatesAutoresizingMaskIntoConstraints = false
+        lineChart.delegate = self
     }
     
     func initChart() {
         if(self.trialList.count > 2){
-            views = [:]
-            label.text = "..."
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.textAlignment = NSTextAlignment.Center
-            
-            let placeHolder = UILabel()
-            views["placeHolder"] = placeHolder
-            placeHolder.backgroundColor = UIColor.redColor()
-            self.view.addSubview(placeHolder)
-            
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[placeHolder]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[placeHolder]", options: [], metrics: nil, views: views))
-            
-            views["label"] = label
-            placeHolder.backgroundColor = UIColor.yellowColor()
-            self.view.addSubview(label)
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-            //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[label]", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[placeHolder]-[label(==150)]", options: [], metrics: nil, views: views))
-            
             fillGraphByData()
             
             goodOldLineChart()
-            
-            // chart
-            lineChart.backgroundColor = UIColor.blueColor()
-            self.view.addSubview(lineChart)
-            
-            views["chart"] = lineChart
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
-            let screenSize: CGRect = UIScreen.mainScreen().bounds
-            // chart
-            
-            // txt label
-            let hoch = tableView.frame.origin.y + 110
-            let txtlabel = UILabel(frame: CGRect(x: 0, y:  hoch , width: screenSize.width, height: 30.00))
-            views["txtlabel"] = txtlabel
-            //txtlabel.center = CGPointMake(160, 284)
-            txtlabel.textAlignment = NSTextAlignment.Center
-            txtlabel.text = "I'am a test label"
-            txtlabel.backgroundColor = UIColor.cyanColor()
-            self.view.addSubview(txtlabel)
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[txtlabel]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chart]-[txtlabel(==40)]", options: [], metrics: nil, views: views))
-            // txt label
-            
-            // Do any additional setup after loading the view.
-            views["table"] = tableView
-            tableView.backgroundColor = UIColor.greenColor()
-            let height = "\(Int(screenSize.height * 0.60))"
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[table]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[txtlabel]-[table(==\(height))]", options: [], metrics: nil, views: views))
+        }
+        else {
+            print("cant show statistics becuase not enougth data dude!")
         }
     }
     

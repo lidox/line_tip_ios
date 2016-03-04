@@ -207,7 +207,7 @@ public class LineChart: UIView {
             if area { drawAreaBeneathLineChart(lineIndex) }
             
         }
-        }
+    }
         
     }
     

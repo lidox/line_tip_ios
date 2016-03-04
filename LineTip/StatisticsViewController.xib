@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
+                <outlet property="lineChart" destination="UQ2-7Y-Fsq" id="IPP-a6-2T4"/>
                 <outlet property="tableView" destination="4mD-JC-x5K" id="rO0-cO-Fws"/>
                 <outlet property="titleText" destination="hbi-m6-Vc3" id="jXM-Ha-gey"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

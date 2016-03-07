@@ -17,7 +17,7 @@ class ClickSound {
             var mySound: SystemSoundID = 0
             AudioServicesCreateSystemSoundID(soundURL, &mySound)
             // Play
-            //AudioServicesPlaySystemSound(mySound);
+            AudioServicesPlaySystemSound(mySound);
         }
     }
 

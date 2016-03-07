@@ -201,3 +201,16 @@ extension UINavigationController {
     }
 }
 
+extension UIAlertController {
+    /*public override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }*/
+    
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [.Portrait, .PortraitUpsideDown]
+    }
+    public override func shouldAutorotate() -> Bool {
+        return false
+    }
+}
+

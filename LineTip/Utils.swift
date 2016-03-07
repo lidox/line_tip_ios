@@ -109,7 +109,7 @@ class Utils {
                     Utils.setSettingsData(ConfigKey.SPOT_WIDTH, value: 0.23)
                 }
                 else if(item == ConfigKey.LINE_BROADNESS){
-                    Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: 5)
+                    Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: 5.0)
                 }
             }
             else{

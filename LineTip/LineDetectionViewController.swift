@@ -118,4 +118,11 @@ class LineDetectionViewController: UIViewController {
             fatalError("Failed to fetch person: \(error)")
         }
     }
+    
+    override internal func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [.Landscape]
+    }
+    internal override func shouldAutorotate() -> Bool {
+        return false
+    }
 }

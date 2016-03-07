@@ -24,11 +24,15 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
 
     
     override func viewDidLoad() {
+        
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         super.viewDidLoad()
         initMedUserInAllView(self.selectedUserObjectID)
         initTitleAndColors()
         configurePageControl()
         initScrollViews()
+
     }
     
     func initTitleAndColors() {
@@ -115,4 +119,17 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             fatalError("Failed to fetch person: \(error)")
         }
     }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
 }

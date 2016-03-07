@@ -24,6 +24,8 @@ class UserTableViewController: UITableViewController {
     var medUserList = [MedUser]()
     
     override func viewDidLoad() {
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         //Disable autolayout constraint error messages in debug console output in Xcode
         NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
@@ -174,4 +176,28 @@ class UserTableViewController: UITableViewController {
         wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
         wellcomeImage.image = image
     }
+    
+    override func shouldAutorotate() -> Bool {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
+
+
+extension UINavigationController {
+    
+    public override func shouldAutorotate() -> Bool {
+        return visibleViewController!.shouldAutorotate()
+    }
+
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return (visibleViewController?.supportedInterfaceOrientations())!
+    }
+}
+

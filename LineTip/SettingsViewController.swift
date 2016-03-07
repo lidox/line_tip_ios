@@ -8,20 +8,20 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UIPopoverPresentationControllerDelegate, SwiftColorPickerDelegate, SwiftColorPickerDataSource {
+class SettingsViewController: UIViewController {
     
-    @IBOutlet weak var lineWidthSlider: UISlider!
 
-    @IBAction func onLineWidthChanged(sender: AnyObject) {
-        print("done")
-    }
-    
-    @IBOutlet weak var canvasUV: CanvasUIView!
+    @IBOutlet weak var previewUI: CanvasUIView!
+    @IBOutlet weak var lineWidhtStepper: UIStepper!
+    @IBOutlet weak var spotWidthStepper: UIStepper!
+    @IBOutlet weak var spotHeightStepper: UIStepper!
+    @IBOutlet weak var lineGenerationPicker: UISwitch!
+    @IBOutlet weak var hotSoundPicker: UIPickerView!
+    @IBOutlet weak var missSoundPicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        initConfiguration()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,74 +29,49 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showColorPickerProgrammatically(sender: UIButton)
-    {
-        let colorPickerVC = SwiftColorPickerViewController()
-        colorPickerVC.delegate = self
-        colorPickerVC.dataSource = self
-        colorPickerVC.modalPresentationStyle = .Popover
-        let popVC = colorPickerVC.popoverPresentationController!;
-        popVC.sourceRect = sender.frame
-        popVC.sourceView = self.view
-        popVC.permittedArrowDirections = .Any;
-        popVC.delegate = self;
+    @IBAction func lineWidthStepperAction(sender: AnyObject) {
+        Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: lineWidhtStepper.value)
+        print("lineWidthStepperAction (LINE_BROADNESS): \(lineWidhtStepper.value)")
+        refreshPreview()
+    }
+    
+    @IBAction func spotHeightStepperAction(sender: AnyObject) {
+        Utils.setSettingsData(ConfigKey.SPOT_HEIGHT, value: spotHeightStepper.value)
+        print("spotHeightStepperAction : \(spotHeightStepper.value)")
+        refreshPreview()
+    }
+    
+    @IBAction func spotWidthStepperAction(sender: AnyObject) {
+        Utils.setSettingsData(ConfigKey.SPOT_WIDTH, value: (spotWidthStepper.value/100))
+        print("spotWidthStepperAction : \(spotWidthStepper.value/100)")
+        refreshPreview()
+    }
+    
+    @IBAction func lineGenerationPickerAction(sender: AnyObject) {
         
-        self.presentViewController(colorPickerVC, animated: true, completion: {
-            print("Ready");
-        })
     }
     
-    // MARK: popover presenation delegates
-    
-    // this enables pop over on iphones
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        
-        return UIModalPresentationStyle.None
+    func refreshPreview() {
+        previewUI.setNeedsDisplay()
     }
     
-    
-    // MARK: - Color Matrix (only for test case)
-    var colorMatrix = [ [UIColor]() ]
-    private func fillColorMatrix(numX: Int, _ numY: Int) {
-        
-        colorMatrix.removeAll()
-        if numX > 0 && numY > 0 {
-            
-            for _ in 0..<numX {
-                var colInX = [UIColor]()
-                for _ in 0..<numY {
-                    colInX += [UIColor.randomColor()]
-                }
-                colorMatrix += [colInX]
-            }
-        }
+    func initConfiguration() {
+        lineWidhtStepper.value = Double(Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber)
+        spotWidthStepper.value = Double(Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as! NSNumber) * 100
+        spotHeightStepper.value = Double(Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as! NSNumber)
     }
+
+
+    
+
     
     
-    // MARK: - Swift Color Picker Data Source
-    
-    func colorForPalletIndex(x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor {
-        if colorMatrix.count > x  {
-            let colorArray = colorMatrix[x]
-            if colorArray.count > y {
-                return colorArray[y]
-            } else {
-                fillColorMatrix(numXStripes,numYStripes)
-                return colorForPalletIndex(x, y:y, numXStripes: numXStripes, numYStripes: numYStripes)
-            }
-        } else {
-            fillColorMatrix(numXStripes,numYStripes)
-            return colorForPalletIndex(x, y:y, numXStripes: numXStripes, numYStripes: numYStripes)
-        }
-    }
+
     
     
-    // MARK: Color Picker Delegate
     
-    func colorSelectionChanged(selectedColor color: UIColor) {
-        self.canvasUV.setBackgroundColorUV(color)
-        //self.view.backgroundColor = color
-    }
+    
+
 
 
 }

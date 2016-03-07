@@ -100,13 +100,16 @@ class Utils {
                     Utils.setSettingsData(ConfigKey.LINE_COLOR_ALPHA, value: 255)
                 }
                 else if(item == ConfigKey.SPOT_HEIGHT){
-                    Utils.setSettingsData(ConfigKey.SPOT_HEIGHT, value: 0.1)
+                    Utils.setSettingsData(ConfigKey.SPOT_HEIGHT, value: 70.0)
                 }
                 else if(item == ConfigKey.SPOT_IMAGE_NAME){
                     Utils.setSettingsData(ConfigKey.SPOT_IMAGE_NAME, value: "trans.png")
                 }
                 else if(item == ConfigKey.SPOT_WIDTH){
                     Utils.setSettingsData(ConfigKey.SPOT_WIDTH, value: 0.23)
+                }
+                else if(item == ConfigKey.LINE_BROADNESS){
+                    Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: 5)
                 }
             }
             else{

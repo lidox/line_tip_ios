@@ -51,8 +51,7 @@ class Line: NSObject {
     }
     
     func getSpotHeight() -> Double {
-        let spotHeightInPecentageValue = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
-        let spotWidth = (spotHeightInPecentageValue!.doubleValue) * self.getLenght()
-        return spotWidth
+        let spotHeight = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
+        return Double(spotHeight!)
     }
 }

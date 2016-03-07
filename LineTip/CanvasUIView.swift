@@ -12,10 +12,9 @@ import Foundation
 import UIKit
 
 class CanvasUIView: UIView {
-    var lines = [Line]()
-    let line2 = Line(x1: 105, y1: 70, x2: 401, y2: 70)
+    var line : Line!
     var context = UIGraphicsGetCurrentContext()
-    var myImageView  = UIImageView(image: UIImage(named: "trans.png"))
+    var myImageView  : UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,24 +22,26 @@ class CanvasUIView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+        myImageView  = UIImageView(image: UIImage(named: getImageName()))
         print("CanvasUIView: init")
-        lines.append(line2)
     }
     
     override func drawRect(rect: CGRect) {
-        //print("drawRect")
+        generateLineByPreviewSize()
         draw()
     }
     
     func draw(){
-        lines.append(line2)
+        print("CanvasUIView: draw")
         context = UIGraphicsGetCurrentContext()
-        drawRawLine(lines[0], lineWidth: getLineWidth(), lineColor: getLineColor())
-        drawSpot(getImageName(), spotWidth: getSpotWidth(), spotHeight: getSpotHeight(), spotAlpha: 1, line: lines[0])
+        drawRawLine(line, lineWidth: getLineWidth(), lineColor: getLineColor())
+        drawSpot(getImageName(), spotWidth: getSpotWidth(), spotHeight: getSpotHeight(), spotAlpha: 1.0, line: line)
+        self.setNeedsDisplay()
     }
 
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
+        print("CanvasUIView: drawSpot")
         myImageView.alpha = spotAlpha
         myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
         self.addSubview(myImageView)
@@ -53,9 +54,7 @@ class CanvasUIView: UIView {
         CGContextSetStrokeColorWithColor(context, lineColor)
         CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
-        
         CGContextStrokePath(context)
-        //print("CanvasUIView: drawRawLine= line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
     }
     
     func getLineWidth() -> CGFloat {
@@ -63,11 +62,13 @@ class CanvasUIView: UIView {
     }
     
     func getSpotWidth() -> Double {
-        return 75
+        let value = Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as? NSNumber
+        return value!.doubleValue * 100
     }
     
     func getSpotHeight() -> Double {
-        return 75
+        let value = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
+        return value!.doubleValue
     }
     
     func getImageName() -> String {
@@ -81,22 +82,12 @@ class CanvasUIView: UIView {
         return color!
     }
     
-    //hier weiter
-    func setBackgroundColorUV(color: UIColor) {
-        CGContextClearRect(context, self.bounds)
-        //context = UIGraphicsGetCurrentContext()
-        let colors = color.components
-        CGContextSetRGBFillColor(context, colors.red, colors.green, colors.blue, colors.alpha)
-        CGContextStrokePath(context)
-        //print("done")
+    func generateLineByPreviewSize() {
+        let screenSize = self.frame.size
+        let halfLineWidth = Int(screenSize.width * 0.25)
+        let screenWidth = Int(screenSize.width / 2)
+        let screenHeight = Int(screenSize.height / 2)
+        line = Line(x1: (screenWidth - halfLineWidth), y1: screenHeight, x2: (screenWidth + halfLineWidth), y2: screenHeight)
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

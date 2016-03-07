@@ -78,8 +78,6 @@ class LineDetectionUIView: UIView {
         CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
         CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
         CGContextStrokePath(context)
-        //print("line drawn to: (\(line.x1) / \(line.y1)) to (\(line.x2) / \(line.y2))")
-        
     }
     
     func getLineWidth() -> CGFloat {

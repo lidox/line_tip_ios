@@ -82,6 +82,7 @@ class Utils {
         settingsList.append(ConfigKey.SPOT_HEIGHT)
         settingsList.append(ConfigKey.SPOT_WIDTH)
         settingsList.append(ConfigKey.SPOT_IMAGE_NAME)
+        settingsList.append(ConfigKey.LINE_BROADNESS)
         
         for (index, item) in settingsList.enumerate() {
             //print("Item \(index): \(item)")

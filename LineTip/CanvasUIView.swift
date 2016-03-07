@@ -43,7 +43,8 @@ class CanvasUIView: UIView {
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
         print("CanvasUIView: drawSpot")
         myImageView.alpha = spotAlpha
-        myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
+        
+        myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: line.getSpotWidth(), height: line.getSpotHeight())
         self.addSubview(myImageView)
         return myImageView
     }
@@ -58,7 +59,8 @@ class CanvasUIView: UIView {
     }
     
     func getLineWidth() -> CGFloat {
-        return 5.0
+        let value = Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as? NSNumber
+        return CGFloat(value!)
     }
     
     func getSpotWidth() -> Double {

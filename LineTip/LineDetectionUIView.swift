@@ -13,7 +13,7 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var myImageView  = UIImageView(image: UIImage(named: "ball.png"))
+    var myImageView  : UIImageView! //(image: UIImage(named: "ball.png"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +30,8 @@ class LineDetectionUIView: UIView {
     required init(coder aDecoder: NSCoder) {
         print("LineDetectionUIView: init")
         super.init(coder: aDecoder)!
+        self.myImageView  = UIImageView(image: UIImage(named: getImageName()))
+        
         var lineGenerator : LineGenerator
         lineGenerator = getLineGenerator()
         lines = lineGenerator.getLines()
@@ -81,8 +83,9 @@ class LineDetectionUIView: UIView {
     }
     
     func getLineWidth() -> CGFloat {
-        let value = (Utils.getSettingsData(ConfigKey.LINE_WIDTH)) as! NSNumber
-        return CGFloat(value.floatValue)
+        return CGFloat((Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber))
+        //let value = (Utils.getSettingsData(ConfigKey.LINE_WIDTH)) as! NSNumber
+        //return CGFloat(value.floatValue)
     }
     
     func getSpotWidth() -> Double {

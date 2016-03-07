@@ -47,7 +47,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minimumValue="20" maximumValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="3jZ-qd-gha">
+                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="3jZ-qd-gha">
                     <rect key="frame" x="501" y="318" width="94" height="29"/>
                     <connections>
                         <action selector="lineWidthStepperAction:" destination="-1" eventType="valueChanged" id="scW-co-TDJ"/>

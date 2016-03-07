@@ -31,19 +31,19 @@ class SettingsViewController: UIViewController {
     
     @IBAction func lineWidthStepperAction(sender: AnyObject) {
         Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: lineWidhtStepper.value)
-        print("lineWidthStepperAction (LINE_BROADNESS): \(lineWidhtStepper.value)")
+        //print("lineWidthStepperAction (LINE_BROADNESS): \(lineWidhtStepper.value)")
         refreshPreview()
     }
     
     @IBAction func spotHeightStepperAction(sender: AnyObject) {
         Utils.setSettingsData(ConfigKey.SPOT_HEIGHT, value: spotHeightStepper.value)
-        print("spotHeightStepperAction : \(spotHeightStepper.value)")
+        //print("spotHeightStepperAction : \(spotHeightStepper.value)")
         refreshPreview()
     }
     
     @IBAction func spotWidthStepperAction(sender: AnyObject) {
         Utils.setSettingsData(ConfigKey.SPOT_WIDTH, value: (spotWidthStepper.value/100))
-        print("spotWidthStepperAction : \(spotWidthStepper.value/100)")
+        //print("spotWidthStepperAction : \(spotWidthStepper.value/100)")
         refreshPreview()
     }
     

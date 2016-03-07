@@ -105,6 +105,7 @@
                         <outlet property="addButton" destination="4fN-7J-TKV" id="ar8-ht-Ygs"/>
                         <outlet property="navigation" destination="cDA-Za-BAG" id="gf8-A5-fkc"/>
                         <outlet property="wellcomeImage" destination="csN-sU-PgR" id="gtc-BX-Qyh"/>
+                        <outlet property="wellcomeImageView" destination="csN-sU-PgR" id="Nql-ke-Bbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94F-pF-GSI" userLabel="First Responder" sceneMemberID="firstResponder"/>

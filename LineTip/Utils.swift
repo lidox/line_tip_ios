@@ -334,16 +334,8 @@ extension String {
                 translation = "Verfehlt-Ton"
             }
             
-            
             /*
-            settingsLabel.text = "Settings".translate()
-            previewLabel.text = "Preview".translate()
-            lineWidthLabel.text = "Line Width".translate()
-            spotWidthLabel.text = "Spot Width".translate()
-            spotHeightLabel.text = "Spot Weight".translate()
-            randomLineLabel.text = "Display lines random".translate()
-            hitSoundLabel.text = "Hit Sound".translate()
-            missSoundLabel.text = "Miss Sound".translate()
+
             */
         }
         

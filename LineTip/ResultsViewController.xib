@@ -85,7 +85,9 @@
                         <constraint firstAttribute="width" constant="250" id="RWv-cw-bq1"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <state key="normal" title="Start" image="new-icon.png"/>
+                    <state key="normal" title="Start">
+                        <color key="titleColor" red="0.4660738546" green="0.99607843139999996" blue="0.2011010181" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onStartLineDetection:" destination="-1" eventType="touchUpInside" id="b6f-I2-qAz"/>
                     </connections>
@@ -132,7 +134,4 @@
             <point key="canvasLocation" x="501" y="351"/>
         </view>
     </objects>
-    <resources>
-        <image name="new-icon.png" width="64" height="64"/>
-    </resources>
 </document>

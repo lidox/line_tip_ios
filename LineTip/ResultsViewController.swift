@@ -53,15 +53,17 @@ class ResultsViewController: UIViewController {
  
     
     func initColors() {
-        startButton.backgroundColor = UIColor.myKeyColor()
         timeStampLabel.textColor = UIColor.myKeyColor()
         hitLabel.textColor = UIColor.myKeyColor()
         missLabel.textColor = UIColor.myKeyColor()
         durationLabel.textColor = UIColor.myKeyColor()
-        startButton.setTitleColor(UIColor.myKeyColorSecond(), forState: UIControlState.Normal)
+        startButton.setTitleColor(UIColor.myKeyColor(), forState: UIControlState.Normal)
         
         //button settings
-        startButton.layer.cornerRadius = 7.0
+        startButton.backgroundColor = UIColor.clearColor()
+        startButton.layer.cornerRadius = 20
+        startButton.layer.borderWidth = 1
+        startButton.layer.borderColor = UIColor.myKeyColor().CGColor
     }
     
     func initTexts() {

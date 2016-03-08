@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4mD-JC-x5K">
-                    <rect key="frame" x="5" y="474" width="590" height="126"/>
+                    <rect key="frame" x="10" y="474" width="580" height="86"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOM TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-m6-Vc3">
@@ -30,13 +30,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="trials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ZE-dkg">
-                    <rect key="frame" x="10" y="438" width="580" height="21"/>
+                    <rect key="frame" x="5" y="438" width="590" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQ2-7Y-Fsq" customClass="LineChart" customModule="LineTip" customModuleProvider="target">
-                    <rect key="frame" x="5" y="123" width="590" height="300"/>
+                    <rect key="frame" x="10" y="123" width="580" height="300"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="Vsd-12-6T2"/>
@@ -45,7 +45,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2L4-Op-k8j"/>
-                <constraint firstAttribute="bottom" secondItem="4mD-JC-x5K" secondAttribute="bottom" id="2q1-1w-xzB"/>
+                <constraint firstAttribute="bottom" secondItem="4mD-JC-x5K" secondAttribute="bottom" constant="40" id="2q1-1w-xzB"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="3kn-JC-jxW"/>
                 <constraint firstItem="2xG-ZE-dkg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BnG-cs-v9N"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H6l-E5-iyz"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="top" secondItem="hbi-m6-Vc3" secondAttribute="bottom" constant="15" id="b2J-jv-eA9"/>
                 <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="4mD-JC-x5K" secondAttribute="leading" id="br9-91-b1z"/>
                 <constraint firstAttribute="trailing" secondItem="2xG-ZE-dkg" secondAttribute="trailing" constant="10" id="gb6-f5-lZs"/>
-                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="kuc-TG-M3l"/>
+                <constraint firstItem="UQ2-7Y-Fsq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="kuc-TG-M3l"/>
                 <constraint firstItem="hbi-m6-Vc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="rcF-B6-H99"/>
                 <constraint firstItem="4mD-JC-x5K" firstAttribute="top" secondItem="2xG-ZE-dkg" secondAttribute="bottom" constant="15" id="zNJ-Lv-c5u"/>
             </constraints>

@@ -115,20 +115,20 @@
                         <action selector="lineGenerationPickerAction:" destination="-1" eventType="valueChanged" id="vM3-Ic-G57"/>
                     </connections>
                 </switch>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Euj-Vx-ds2">
-                    <rect key="frame" x="275" y="468" width="320" height="30"/>
+                <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Euj-Vx-ds2">
+                    <rect key="frame" x="275" y="506" width="320" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EMF-Eg-Pe8"/>
                     </constraints>
                 </pickerView>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijk-zQ-WGF">
-                    <rect key="frame" x="275" y="506" width="320" height="30"/>
+                <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijk-zQ-WGF">
+                    <rect key="frame" x="275" y="544" width="320" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EIZ-Gh-6D9"/>
                     </constraints>
                 </pickerView>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXe-bf-epN">
-                    <rect key="frame" x="275" y="544" width="320" height="30"/>
+                <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXe-bf-epN">
+                    <rect key="frame" x="275" y="582" width="320" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hUl-yz-c4f"/>
                     </constraints>
@@ -153,7 +153,6 @@
                 <constraint firstItem="Wpr-3K-puf" firstAttribute="top" secondItem="lrh-R0-g0y" secondAttribute="bottom" constant="15" id="G3T-UC-URm"/>
                 <constraint firstAttribute="trailing" secondItem="TXe-bf-epN" secondAttribute="trailing" constant="5" id="H3H-ib-KIa"/>
                 <constraint firstAttribute="trailing" secondItem="ff6-rp-MVg" secondAttribute="trailing" constant="27" id="HOc-qa-Mwi"/>
-                <constraint firstItem="Euj-Vx-ds2" firstAttribute="top" secondItem="ff6-rp-MVg" secondAttribute="bottom" constant="8" id="I7x-ZC-1mp"/>
                 <constraint firstItem="jCw-NJ-LqM" firstAttribute="top" secondItem="os2-Z1-4hv" secondAttribute="bottom" constant="12" id="JDF-hl-pau"/>
                 <constraint firstItem="ff3-Ah-5dx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="Kdw-L7-4dy"/>
                 <constraint firstItem="TXe-bf-epN" firstAttribute="top" secondItem="ijk-zQ-WGF" secondAttribute="bottom" constant="8" id="LWL-vJ-CLp"/>

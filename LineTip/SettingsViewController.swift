@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var missSoundPicker: UIPickerView!
     
     
+
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var lineWidthLabel: UILabel!
@@ -29,11 +30,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var hitSoundLabel: UILabel!
     @IBOutlet weak var missSoundLabel: UILabel!
     
+    let gradePickerValues = ["5. Klasse", "6. Klasse", "7. Klasse"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initConfiguration()
         initTexts()
+        
     }
     
     func initTexts() {
@@ -89,5 +92,6 @@ class SettingsViewController: UIViewController {
         
         lineGenerationPicker.on = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
     }
+    
 
 }

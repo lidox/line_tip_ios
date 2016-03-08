@@ -54,7 +54,7 @@ class Utils {
         //return UInt32.random(lower: from, upper: to)
         return Int(arc4random_uniform(UInt32(to)) + UInt32(from))
     }
-
+    
     
     class func setSettingsData(key :String, value: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -83,6 +83,8 @@ class Utils {
         settingsList.append(ConfigKey.SPOT_WIDTH)
         settingsList.append(ConfigKey.SPOT_IMAGE_NAME)
         settingsList.append(ConfigKey.LINE_BROADNESS)
+        settingsList.append(ConfigKey.LINE_RANDOM_GENERATION)
+        settingsList.append(ConfigKey.LINE_TIMER_ACTIVATED)
         
         for (index, item) in settingsList.enumerate() {
             //print("Item \(index): \(item)")
@@ -93,6 +95,12 @@ class Utils {
                 
                 if(item == ConfigKey.LINE_WIDTH){
                     Utils.setSettingsData(ConfigKey.LINE_WIDTH, value: 5.0)
+                }
+                else if(item == ConfigKey.LINE_RANDOM_GENERATION){
+                    Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: false)
+                }
+                else if(item == ConfigKey.LINE_TIMER_ACTIVATED){
+                    Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: false)
                 }
                 else if(item == ConfigKey.LINE_REDRAW_DELAY){
                     Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: 5.0)
@@ -226,7 +234,7 @@ extension Double {
             retString += "\(m) min "
         }
         retString += "\(s) s"
-
+        
         return retString
     }
 }
@@ -242,9 +250,9 @@ extension NSObject {
 
 extension String {
     func translate() -> String {
-
+        
         let translation = myTranslation(self, language: "de")
-
+        
         return translation
     }
     
@@ -335,7 +343,7 @@ extension String {
             }
             
             /*
-
+            
             */
         }
         
@@ -345,6 +353,3 @@ extension String {
         return key
     }
 }
-
-
-

@@ -309,8 +309,41 @@ extension String {
             else if key == "Not enough trials yet" {
                 translation = "Bisher zu wenige Versuche durchgeführt"
             }
+            else if key == "Settings" {
+                translation = "Einstellungen"
+            }
+            else if key == "Preview" {
+                translation = "Vorschau"
+            }
+            else if key == "Line Width" {
+                translation = "Linienstärke"
+            }
+            else if key == "Spot Width" {
+                translation = "Mittelpunkt-Breite"
+            }
+            else if key == "Spot Height" {
+                translation = "Mittelpunkt-Höhe"
+            }
+            else if key == "Display lines random" {
+                translation = "Zufällige Liniendarstellung"
+            }
+            else if key == "Hit Sound" {
+                translation = "Treffer-Ton"
+            }
+            else if key == "Miss Sound" {
+                translation = "Verfehlt-Ton"
+            }
+            
+            
             /*
-            Not enough trials yet
+            settingsLabel.text = "Settings".translate()
+            previewLabel.text = "Preview".translate()
+            lineWidthLabel.text = "Line Width".translate()
+            spotWidthLabel.text = "Spot Width".translate()
+            spotHeightLabel.text = "Spot Weight".translate()
+            randomLineLabel.text = "Display lines random".translate()
+            hitSoundLabel.text = "Hit Sound".translate()
+            missSoundLabel.text = "Miss Sound".translate()
             */
         }
         

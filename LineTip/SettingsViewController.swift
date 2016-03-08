@@ -19,9 +19,32 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var hotSoundPicker: UIPickerView!
     @IBOutlet weak var missSoundPicker: UIPickerView!
     
+    
+    @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var previewLabel: UILabel!
+    @IBOutlet weak var lineWidthLabel: UILabel!
+    @IBOutlet weak var spotWidthLabel: UILabel!
+    @IBOutlet weak var spotHeightLabel: UILabel!
+    @IBOutlet weak var randomLineLabel: UILabel!
+    @IBOutlet weak var hitSoundLabel: UILabel!
+    @IBOutlet weak var missSoundLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initConfiguration()
+        initTexts()
+    }
+    
+    func initTexts() {
+        settingsLabel.text = "Settings".translate()
+        previewLabel.text = "Preview".translate()
+        lineWidthLabel.text = "Line Width".translate()
+        spotWidthLabel.text = "Spot Width".translate()
+        spotHeightLabel.text = "Spot Height".translate()
+        randomLineLabel.text = "Display lines random".translate()
+        hitSoundLabel.text = "Hit Sound".translate()
+        missSoundLabel.text = "Miss Sound".translate()
     }
     
     override func didReceiveMemoryWarning() {

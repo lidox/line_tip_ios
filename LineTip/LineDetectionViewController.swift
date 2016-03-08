@@ -64,6 +64,10 @@ class LineDetectionViewController: UIViewController {
         
         addTrialToUser(uiView.trial)
         
+        if uiView.lineTimer != nil {
+            uiView.lineTimer.invalidate()
+        }
+        
         switchToResultViewController()
     }
     func addTrialToUser(givenTrial: Trial) {

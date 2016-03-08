@@ -71,8 +71,6 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        //let row = indexPath.row
-        //print("Row: \(row) value= \(medUserList[row].medId)")
     }
     
     // -- BEGINNING: REMOVE FUNCTION --
@@ -175,14 +173,14 @@ class UserTableViewController: UITableViewController {
     
     func initWelcomeImage() {
         let imageName = "splash-overlay.png"
-        self.wellcomeImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        
         image = UIImage(named: imageName)
         wellcomeImageView.backgroundColor = UIColor.myKeyColor()
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
+        //self.wellcomeImageView.contentMode = UIViewContentMode.ScaleAspectFit
         image = textToImage("BOOM BABY", inImage: image, atPoint: CGPointMake(100, 100))
         wellcomeImage.image = image
+        wellcomeImageView.setNeedsDisplay()
     }
     
     override func shouldAutorotate() -> Bool {
@@ -200,7 +198,7 @@ class UserTableViewController: UITableViewController {
         
         // Setup the font specific variables
         let textColor: UIColor = UIColor.blackColor()
-        let textFont: UIFont = UIFont(name: "Helvetica Bold", size: 25)!
+        let textFont: UIFont = UIFont(name: "Helvetica Bold", size: 44)!
         
         //Setup the image context using the passed image.
         UIGraphicsBeginImageContext(inImage.size)

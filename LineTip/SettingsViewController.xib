@@ -7,12 +7,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="LineTip" customModuleProvider="target">
             <connections>
+                <outlet property="hitSoundLabel" destination="Yn8-fD-TIu" id="Uxa-V8-Vst"/>
                 <outlet property="hotSoundPicker" destination="Euj-Vx-ds2" id="Bep-nr-fHU"/>
                 <outlet property="lineGenerationPicker" destination="ff6-rp-MVg" id="V8J-NI-yXg"/>
                 <outlet property="lineWidhtStepper" destination="3jZ-qd-gha" id="NYa-7T-ugC"/>
+                <outlet property="lineWidthLabel" destination="ff3-Ah-5dx" id="1XD-Pq-2ce"/>
+                <outlet property="missSoundLabel" destination="82t-ei-gPL" id="oNn-zj-laZ"/>
                 <outlet property="missSoundPicker" destination="ijk-zQ-WGF" id="xu7-yV-359"/>
+                <outlet property="previewLabel" destination="fgf-CN-0On" id="mOS-5e-vrp"/>
                 <outlet property="previewUI" destination="mQt-8c-uIb" id="dRV-19-oga"/>
+                <outlet property="randomLineLabel" destination="os2-Z1-4hv" id="xXh-9a-ZpF"/>
+                <outlet property="settingsLabel" destination="cim-HM-K01" id="Vjd-Vv-FaM"/>
+                <outlet property="spotHeightLabel" destination="Wpr-3K-puf" id="3hh-cd-uN8"/>
                 <outlet property="spotHeightStepper" destination="cFQ-2E-lVR" id="4hL-yl-Tfu"/>
+                <outlet property="spotWidthLabel" destination="lrh-R0-g0y" id="j9t-Hg-ArC"/>
                 <outlet property="spotWidthStepper" destination="zgD-Ug-FrP" id="Acg-64-Iyb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

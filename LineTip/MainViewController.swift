@@ -60,14 +60,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         var frame1 = statisticsVC.view.frame
         frame1.origin.x = self.view.frame.size.width
         statisticsVC.view.frame = frame1;
-        
-        //
-        self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()//self.editButtonItem()
+
+        self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()
         
         self.addChildViewController(statisticsVC)
         self.scrollView.addSubview(statisticsVC.view)
         statisticsVC.didMoveToParentViewController(self)
-        
         
         let vc2 = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
         vc2.view.frame = self.view.bounds
@@ -90,8 +88,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         //self.scrollPager.tintColor = UIColor.myKeyColor()
         self.scrollPager.pageIndicatorTintColor = UIColor.blackColor()
         self.scrollPager.currentPageIndicatorTintColor = UIColor.myKeyColor()
-  
-        
+    
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL

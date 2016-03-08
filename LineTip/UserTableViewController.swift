@@ -175,6 +175,8 @@ class UserTableViewController: UITableViewController {
     
     func initWelcomeImage() {
         let imageName = "splash-overlay.png"
+        self.wellcomeImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        
         image = UIImage(named: imageName)
         wellcomeImageView.backgroundColor = UIColor.myKeyColor()
         let screenSize: CGRect = UIScreen.mainScreen().bounds

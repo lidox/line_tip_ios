@@ -130,7 +130,27 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             goodOldLineChart()
         }
         else {
+            self.label.hidden = true
+            tableView.hidden = true
+            if(self.trialList.count > 0){
+                self.label.hidden = false
+                tableView.hidden = false
+            }
+            
             print("cant show statistics becuase not enougth data dude!")
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(titleText.frame.origin.x, (titleText.frame.origin.y + 30) , self.view.bounds.size.width, self.titleText.bounds.size.height))
+            noDataLabel.font.fontWithSize(20)
+            noDataLabel.text = "Not enough trials yet".translate()
+            noDataLabel.textColor = UIColor.myKeyColor()
+            
+            let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)!)
+
+            var myframe = noDataLabel.frame
+            myframe.origin.x = centeredXPosition;
+            noDataLabel.frame = myframe
+            
+            self.view.addSubview(noDataLabel)
+            self.tableView.setNeedsDisplay()
         }
     }
     
@@ -174,19 +194,24 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
                         
                         // delete selected trial
                         MedUserManager.deleteTrialByObjectIdAndTrialIndex(self.selectedUserObjectID, index: indexPath.row)
+                    
                         self.trialList.removeAtIndex(indexPath.row)
-                        self.hitValues.removeAtIndex(indexPath.row)
-                        self.failValue.removeAtIndex(indexPath.row)
                         
-                        
-                        
-                        self.timeStampLabels.popLast()
+                        if self.hitValues.count > 0 {
+                            self.hitValues.removeAtIndex(indexPath.row)
+                            self.failValue.removeAtIndex(indexPath.row)
+                            self.timeStampLabels.popLast()
+                        }
+                        if self.hitValues.count < 3 {
+                            self.lineChart.hidden = true
+                        }
      
                         self.tableView.reloadData()
     
                         self.lineChart.clearAll()
                         self.goodOldLineChart()
                         self.lineChart.setNeedsDisplay()
+                        //self.view.setNeedsDisplay()
                 })
                 
                 let cancelAction = UIAlertAction(title: "\("Cancel".translate())",

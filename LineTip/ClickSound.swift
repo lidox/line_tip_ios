@@ -18,6 +18,10 @@ class ClickSound {
             AudioServicesCreateSystemSoundID(soundURL, &mySound)
             // Play
             AudioServicesPlaySystemSound(mySound);
+            
+            if true {
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
         }
     }
 

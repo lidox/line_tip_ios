@@ -301,8 +301,11 @@ extension String {
             else if key == "Delete" {
                 translation = "Löschen"
             }
+            else if key == "Not enough trials yet" {
+                translation = "Bisher zu wenige Versuche durchgeführt"
+            }
             /*
-
+            Not enough trials yet
             */
         }
         

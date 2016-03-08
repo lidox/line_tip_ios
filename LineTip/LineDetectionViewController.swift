@@ -34,12 +34,12 @@ class LineDetectionViewController: UIViewController {
     }
     
     func onHit(img: AnyObject){
-        if(uiView.isTimerActivated) {
+        if(uiView.isTimerActivated!) {
             if(uiView.firstTime) {
                 uiView.startResumeLineTimer()
                 uiView.firstTime = false
             }
-            else if(uiView.isTimerActivated) {
+            else if(uiView.isTimerActivated!) {
                 if uiView.lineTimer != nil {
                     uiView.lineTimer.invalidate()
                 }

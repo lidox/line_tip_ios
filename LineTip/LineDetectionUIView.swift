@@ -16,7 +16,7 @@ class LineDetectionUIView: UIView {
     var myImageView  : UIImageView!
     var timer: dispatch_source_t!
     var lineTimer : NSTimer!
-    var isTimerActivated = true
+    var isTimerActivated : Bool!
     var delayToRedraw : Double!
     var firstTime = true
     
@@ -37,6 +37,7 @@ class LineDetectionUIView: UIView {
         super.init(coder: aDecoder)!
         self.myImageView  = UIImageView(image: UIImage(named: getImageName()))
         self.delayToRedraw = getDelayToRedrawLines()
+        self.isTimerActivated = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
         
         var lineGenerator : LineGenerator
         lineGenerator = getLineGenerator()

@@ -61,12 +61,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="csN-sU-PgR">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="203"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="203"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myCell" textLabel="roG-lC-2VT" detailTextLabel="QO8-K6-cOv" style="IBUITableViewCellStyleValue1" id="mei-jD-bUF">
-                                <rect key="frame" x="0.0" y="231" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="295" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mei-jD-bUF" id="YY8-Rs-bWe">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -246,6 +246,6 @@
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="roG-dV-4Ip"/>
+        <segue reference="gfk-1t-n2N"/>
     </inferredMetricsTieBreakers>
 </document>

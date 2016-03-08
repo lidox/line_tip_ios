@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var missSoundPicker: UIPickerView!
     
     
+    @IBOutlet weak var lineTimerSegment: UISegmentedControl!
 
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var previewLabel: UILabel!
@@ -29,14 +30,42 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var randomLineLabel: UILabel!
     @IBOutlet weak var hitSoundLabel: UILabel!
     @IBOutlet weak var missSoundLabel: UILabel!
-    
-    let gradePickerValues = ["5. Klasse", "6. Klasse", "7. Klasse"]
+    @IBOutlet weak var lineTimerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initConfiguration()
         initTexts()
+        initLineTimerSegment()
+        initColors()
+    }
+    
+    @IBAction func onLineTimerSegment(sender: AnyObject) {
+        if(lineTimerSegment.selectedSegmentIndex == 0)
+        {
+            Utils.setSettingsData(ConfigKey.LINE_TIMER_ACTIVATED, value: false)
+        }
+        else if(lineTimerSegment.selectedSegmentIndex == 1)
+        {
+            Utils.setSettingsData(ConfigKey.LINE_TIMER_ACTIVATED, value: true)
+        }
+    }
+    
+    func initLineTimerSegment() {
+        self.lineTimerSegment.setTitle("Line Timer Off".translate(), forSegmentAtIndex:0)
+        self.lineTimerSegment.setTitle("Draw every 5 s".translate(), forSegmentAtIndex:1)
+        let isLineDelayActivated = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
+        if isLineDelayActivated {
+            lineTimerSegment.selectedSegmentIndex = 1
+        }
+        else {
+            lineTimerSegment.selectedSegmentIndex = 0
+        }
         
+        // Style the Segmented Control
+        lineTimerSegment.layer.cornerRadius = 5.0
+        lineTimerSegment.backgroundColor = UIColor.whiteColor()
+        lineTimerSegment.tintColor = UIColor.myKeyColor()
     }
     
     func initTexts() {
@@ -48,6 +77,7 @@ class SettingsViewController: UIViewController {
         randomLineLabel.text = "Display lines random".translate()
         hitSoundLabel.text = "Hit Sound".translate()
         missSoundLabel.text = "Miss Sound".translate()
+        lineTimerLabel.text = "Line Timer".translate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,5 +123,20 @@ class SettingsViewController: UIViewController {
         lineGenerationPicker.on = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
     }
     
+    
+    func initColors() {
+        setStepperColor(lineWidhtStepper)
+        setStepperColor(spotWidthStepper)
+        setStepperColor(spotHeightStepper)
+        
+        lineGenerationPicker.backgroundColor = UIColor.whiteColor()
+        lineGenerationPicker.tintColor = UIColor.myKeyColor()
+    }
+    
+    func setStepperColor(stepper: UIStepper) {
+        stepper.backgroundColor = UIColor.whiteColor()
+        stepper.tintColor = UIColor.myKeyColor()
+    }
+
 
 }

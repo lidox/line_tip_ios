@@ -258,8 +258,8 @@
 				04F893DD1C77745B00566C3C /* LeftRightLine.swift */,
 				048064D61C1AE52C00F775CC /* LineGenerator.swift */,
 				048064D01C15B73900F775CC /* Line.swift */,
-				047941771C0C5A300093EDD6 /* Trial.swift */,
 				047941751C0C59CA0093EDD6 /* User.swift */,
+				047941771C0C5A300093EDD6 /* Trial.swift */,
 				04F893EE1C83208800566C3C /* MedUserManager.swift */,
 			);
 			name = model;

@@ -341,6 +341,15 @@ extension String {
             else if key == "Miss Sound" {
                 translation = "Verfehlt-Ton"
             }
+            else if key == "Line Timer" {
+                translation = "Linien-Timer"
+            }
+            else if key == "Line Timer Off" {
+                translation = "Linien-Timer Aus"
+            }
+            else if key == "Draw every 5 s" {
+                translation = "Alle 5 s neue Linie"
+            }
             
             /*
             

@@ -61,7 +61,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         frame1.origin.x = self.view.frame.size.width
         statisticsVC.view.frame = frame1;
 
-        self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()
+        //self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()
         
         self.addChildViewController(statisticsVC)
         self.scrollView.addSubview(statisticsVC.view)

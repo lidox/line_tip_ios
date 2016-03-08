@@ -178,7 +178,7 @@ class UserTableViewController: UITableViewController {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
         //self.wellcomeImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        image = textToImage("BOOM BABY", inImage: image, atPoint: CGPointMake(100, 100))
+        //image = textToImage("BOOM BABY", inImage: image, atPoint: CGPointMake(100, 100))
         wellcomeImage.image = image
         wellcomeImageView.setNeedsDisplay()
     }

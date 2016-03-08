@@ -138,16 +138,18 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             }
             
             print("cant show statistics becuase not enougth data dude!")
-            let noDataLabel: UILabel = UILabel(frame: CGRectMake(titleText.frame.origin.x, (titleText.frame.origin.y + 30) , self.view.bounds.size.width, self.titleText.bounds.size.height))
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, (titleText.frame.origin.y + 30) , 400, 60))
+    
             noDataLabel.font.fontWithSize(20)
             noDataLabel.text = "Not enough trials yet".translate()
             noDataLabel.textColor = UIColor.myKeyColor()
             
-            let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)!)
-
+            
+            let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)! + 30)
             var myframe = noDataLabel.frame
             myframe.origin.x = centeredXPosition;
             noDataLabel.frame = myframe
+            
             
             self.view.addSubview(noDataLabel)
             self.tableView.setNeedsDisplay()

@@ -37,8 +37,9 @@ class UserTableViewController: UITableViewController {
         
         initWelcomeImage()
         
-        wellcomeImageView.setNeedsDisplay()
         medUserList = MedUserManager.fetchMedUsers()
+        
+        //initEmptyView()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,13 +47,12 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
         cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
         cell.textLabel?.textColor = UIColor.myKeyColor()
-        
+
         /*
         //Change cell's tint color
         cell.tintColor = UIColor.myKeyColor()
@@ -182,6 +182,35 @@ class UserTableViewController: UITableViewController {
         wellcomeImage.image = image
         wellcomeImageView.setNeedsDisplay()
     }
+    
+    
+    func initEmptyView() {
+        
+        if(medUserList.count > 0) {
+        
+        }
+        else {
+        //tableView.hidden = true
+        print("there is no user to display, so show 'create button'")
+        let noDataLabel: UILabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, (wellcomeImageView.frame.origin.y + 500) , 400, 60))
+        
+        noDataLabel.font.fontWithSize(20)
+        noDataLabel.text = "Please add a user".translate()
+        noDataLabel.textColor = UIColor.myKeyColor()
+        
+        
+        let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)! + 30)
+        var myframe = noDataLabel.frame
+        myframe.origin.x = centeredXPosition;
+        noDataLabel.frame = myframe
+        
+        
+        self.view.addSubview(noDataLabel)
+        self.tableView.setNeedsDisplay()
+        }
+
+    }
+
     
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||

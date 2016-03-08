@@ -71,7 +71,11 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func lineGenerationPickerAction(sender: AnyObject) {
-        
+        if lineGenerationPicker.on {
+            Utils.setSettingsData(ConfigKey.LINE_RANDOM_GENERATION, value: true)
+        } else {
+            Utils.setSettingsData(ConfigKey.LINE_RANDOM_GENERATION, value: false)
+        }
     }
     
     func refreshPreview() {
@@ -82,19 +86,8 @@ class SettingsViewController: UIViewController {
         lineWidhtStepper.value = Double(Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber)
         spotWidthStepper.value = Double(Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as! NSNumber) * 100
         spotHeightStepper.value = Double(Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as! NSNumber)
+        
+        lineGenerationPicker.on = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
     }
-
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-
 
 }

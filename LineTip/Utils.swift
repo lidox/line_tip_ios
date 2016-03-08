@@ -97,10 +97,10 @@ class Utils {
                     Utils.setSettingsData(ConfigKey.LINE_WIDTH, value: 5.0)
                 }
                 else if(item == ConfigKey.LINE_RANDOM_GENERATION){
-                    Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: false)
+                    Utils.setSettingsData(ConfigKey.LINE_RANDOM_GENERATION, value: false)
                 }
                 else if(item == ConfigKey.LINE_TIMER_ACTIVATED){
-                    Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: false)
+                    Utils.setSettingsData(ConfigKey.LINE_TIMER_ACTIVATED, value: false)
                 }
                 else if(item == ConfigKey.LINE_REDRAW_DELAY){
                     Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: 5.0)

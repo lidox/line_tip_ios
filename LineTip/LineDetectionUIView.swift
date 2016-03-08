@@ -120,7 +120,11 @@ class LineDetectionUIView: UIView {
     }
     
     func getLineGenerator() -> LineGenerator {
-        //return PreGeneratedLine()
+        let isRandomLine = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
+        if isRandomLine {
+            return RandomLine()
+        }
+
         return LeftRightLine()
     }
     

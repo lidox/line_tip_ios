@@ -60,4 +60,5 @@ class LeftRightLine: LineGenerator {
             
         }
         return lines
-    }}
+    }
+}

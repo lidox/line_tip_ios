@@ -10,7 +10,6 @@
 		040691471C24464F00E2F9B2 /* finish_trial.png in Resources */ = {isa = PBXBuildFile; fileRef = 040691461C24464F00E2F9B2 /* finish_trial.png */; };
 		0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5C91C083A4A00B90989 /* AppDelegate.swift */; };
 		0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5CD1C083A4A00B90989 /* Main.storyboard */; };
-		0418F5D11C083A4A00B90989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5D01C083A4A00B90989 /* Assets.xcassets */; };
 		0418F5DF1C083A4A00B90989 /* LineTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5DE1C083A4A00B90989 /* LineTipTests.swift */; };
 		0418F5EA1C083A4A00B90989 /* LineTipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5E91C083A4A00B90989 /* LineTipUITests.swift */; };
 		0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5FC1C08433B00B90989 /* Images.xcassets */; };
@@ -62,6 +61,7 @@
 		04F894261C8EAE0700566C3C /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F894211C8EAE0700566C3C /* icon-58.png */; };
 		04F894271C8EAE0700566C3C /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F894221C8EAE0700566C3C /* icon-80.png */; };
 		04F894281C8EAE0700566C3C /* icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F894231C8EAE0700566C3C /* icon-87.png */; };
+		04F8942A1C8EC57B00566C3C /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F894291C8EC57B00566C3C /* icon-40.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +86,6 @@
 		0418F5C61C083A4A00B90989 /* LineTip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineTip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0418F5C91C083A4A00B90989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0418F5CE1C083A4A00B90989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0418F5D01C083A4A00B90989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0418F5D51C083A4A00B90989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0418F5DA1C083A4A00B90989 /* LineTipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LineTipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0418F5DE1C083A4A00B90989 /* LineTipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTipTests.swift; sourceTree = "<group>"; };
@@ -143,6 +142,7 @@
 		04F894211C8EAE0700566C3C /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58.png"; sourceTree = "<group>"; };
 		04F894221C8EAE0700566C3C /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
 		04F894231C8EAE0700566C3C /* icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-87.png"; sourceTree = "<group>"; };
+		04F894291C8EC57B00566C3C /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +204,6 @@
 				04F893DB1C77222400566C3C /* controller */,
 				0418F5C91C083A4A00B90989 /* AppDelegate.swift */,
 				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
-				0418F5D01C083A4A00B90989 /* Assets.xcassets */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				0418F5FC1C08433B00B90989 /* Images.xcassets */,
 				04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */,
@@ -314,6 +313,7 @@
 			children = (
 				04F894111C8D5B3700566C3C /* icon-76.png */,
 				04F8941F1C8EAE0700566C3C /* icon-29.png */,
+				04F894291C8EC57B00566C3C /* icon-40.png */,
 				04F894201C8EAE0700566C3C /* icon-49.png */,
 				04F894211C8EAE0700566C3C /* icon-58.png */,
 				04F894221C8EAE0700566C3C /* icon-80.png */,
@@ -435,12 +435,12 @@
 				048064BF1C11FCA100F775CC /* SettingsViewController.xib in Resources */,
 				040691471C24464F00E2F9B2 /* finish_trial.png in Resources */,
 				04F894281C8EAE0700566C3C /* icon-87.png in Resources */,
-				0418F5D11C083A4A00B90989 /* Assets.xcassets in Resources */,
 				04F894181C8D5B3700566C3C /* icon-120.png in Resources */,
 				04F894071C873E7900566C3C /* wrong.wav in Resources */,
 				04F8941E1C8DD80800566C3C /* splash-overlay.png in Resources */,
 				0418F5FD1C08433B00B90989 /* Images.xcassets in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,
+				04F8942A1C8EC57B00566C3C /* icon-40.png in Resources */,
 				048064D31C15B76B00F775CC /* ball.png in Resources */,
 				04F894051C873E6600566C3C /* good.wav in Resources */,
 				048E19481C721BCB00035760 /* trans.png in Resources */,

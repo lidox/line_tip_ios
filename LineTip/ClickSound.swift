@@ -6,23 +6,23 @@
 //  Copyright © 2016 Artur Schäfer. All rights reserved.
 //
 
-import Foundation
 import AudioToolbox
 
 class ClickSound {
     
     class func play(soundName: String, soundExtension: String){
-        // Load "mysoundname.wav"
         if let soundURL = NSBundle.mainBundle().URLForResource(soundName, withExtension: soundExtension) {
             var mySound: SystemSoundID = 0
             AudioServicesCreateSystemSoundID(soundURL, &mySound)
             // Play
             AudioServicesPlaySystemSound(mySound);
-            
-            if true {
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            }
         }
     }
+    
+    class func playVibration(){
+        //AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+    }
+
 
 }

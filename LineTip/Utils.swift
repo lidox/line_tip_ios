@@ -78,7 +78,7 @@ class Utils {
         
         var settingsList = [String]()
         settingsList.append(ConfigKey.LINE_WIDTH)
-        settingsList.append(ConfigKey.LINE_COLOR_ALPHA)
+        settingsList.append(ConfigKey.LINE_REDRAW_DELAY)
         settingsList.append(ConfigKey.SPOT_HEIGHT)
         settingsList.append(ConfigKey.SPOT_WIDTH)
         settingsList.append(ConfigKey.SPOT_IMAGE_NAME)
@@ -94,11 +94,8 @@ class Utils {
                 if(item == ConfigKey.LINE_WIDTH){
                     Utils.setSettingsData(ConfigKey.LINE_WIDTH, value: 5.0)
                 }
-                else if(item == ConfigKey.LINE_COLOR_ALPHA){
-                    Utils.setSettingsData(ConfigKey.LINE_COLOR_RED, value: 255)
-                    Utils.setSettingsData(ConfigKey.LINE_COLOR_GREEN, value: 255)
-                    Utils.setSettingsData(ConfigKey.LINE_COLOR_BLUE, value: 255)
-                    Utils.setSettingsData(ConfigKey.LINE_COLOR_ALPHA, value: 255)
+                else if(item == ConfigKey.LINE_REDRAW_DELAY){
+                    Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: 5.0)
                 }
                 else if(item == ConfigKey.SPOT_HEIGHT){
                     Utils.setSettingsData(ConfigKey.SPOT_HEIGHT, value: 70.0)
@@ -234,6 +231,14 @@ extension Double {
     }
 }
 
+// get instance by reflaction: e.g: NSObject.fromClassName(controllerName) as! UIViewController
+extension NSObject {
+    class func fromClassName(className : String) -> NSObject {
+        let className = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String + "." + className
+        let aClass = NSClassFromString(className) as! UIViewController.Type
+        return aClass.init()
+    }
+}
 
 extension String {
     func translate() -> String {

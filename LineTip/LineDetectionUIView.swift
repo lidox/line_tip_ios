@@ -13,7 +13,12 @@ class LineDetectionUIView: UIView {
     var context = UIGraphicsGetCurrentContext()
     var lines = [Line]()
     var trial = Trial()
-    var myImageView  : UIImageView! //(image: UIImage(named: "ball.png"))
+    var myImageView  : UIImageView!
+    var timer: dispatch_source_t!
+    var lineTimer : NSTimer!
+    var isTimerActivated = true
+    var delayToRedraw : Double!
+    var firstTime = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +36,7 @@ class LineDetectionUIView: UIView {
         print("LineDetectionUIView: init")
         super.init(coder: aDecoder)!
         self.myImageView  = UIImageView(image: UIImage(named: getImageName()))
+        self.delayToRedraw = getDelayToRedrawLines()
         
         var lineGenerator : LineGenerator
         lineGenerator = getLineGenerator()
@@ -53,15 +59,23 @@ class LineDetectionUIView: UIView {
         }
         
         let line = lines[trial.overflowCounter]
-        drawRawLine(line, lineWidth: getLineWidth(), lineColor: getLineColor())
+        drawRawLine(line, lineWidth: getLineWidth(), lineColor: UIColor.whiteColor().CGColor)
         drawSpot(getImageName(), spotWidth: line.getSpotWidth(), spotHeight: line.getSpotHeight(), spotAlpha: 1, line: line)
+        self.setNeedsDisplay()
     }
     
     func onFail(img: AnyObject){
+        if(firstTime) {
+            startResumeLineTimer()
+            firstTime = false
+        }
+        onFail()
+    }
+    
+    func onFail(){
         trial.startCountingTime()
         trial.countMiss()
         ClickSound.play("wrong", soundExtension: "wav")
-        //print("failed to hit line")
     }
     
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
@@ -84,8 +98,6 @@ class LineDetectionUIView: UIView {
     
     func getLineWidth() -> CGFloat {
         return CGFloat((Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber))
-        //let value = (Utils.getSettingsData(ConfigKey.LINE_WIDTH)) as! NSNumber
-        //return CGFloat(value.floatValue)
     }
     
     func getSpotWidth() -> Double {
@@ -102,16 +114,9 @@ class LineDetectionUIView: UIView {
         return (Utils.getSettingsData(ConfigKey.SPOT_IMAGE_NAME) as? String)!
     }
     
-    func getLineColor() -> CGColor {
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let red = Utils.getSettingsData(ConfigKey.LINE_COLOR_RED) as? NSNumber
-        let green = Utils.getSettingsData(ConfigKey.LINE_COLOR_GREEN) as? NSNumber
-        let blue = Utils.getSettingsData(ConfigKey.LINE_COLOR_BLUE) as? NSNumber
-        let alpha = Utils.getSettingsData(ConfigKey.LINE_COLOR_ALPHA) as? NSNumber
-        
-        let components: [CGFloat] = [CGFloat(red!.floatValue), CGFloat(green!.floatValue), CGFloat(blue!.floatValue), CGFloat(alpha!.floatValue)]
-        let color = CGColorCreate(colorSpace, components)
-        return color!
+    func getDelayToRedrawLines() -> Double {
+        let value = Utils.getSettingsData(ConfigKey.LINE_REDRAW_DELAY) as? NSNumber
+        return value!.doubleValue
     }
     
     func getLineGenerator() -> LineGenerator {
@@ -119,10 +124,15 @@ class LineDetectionUIView: UIView {
         return LeftRightLine()
     }
     
+    func userToSlow() {
+        print("User was not fast enought, so redraw and count miss")
+        self.onFail()
+        self.trial.overflowCounter++
+        self.setNeedsDisplay()
+    }
+
+    func startResumeLineTimer() {
+        lineTimer = NSTimer.scheduledTimerWithTimeInterval(delayToRedraw, target: self, selector: Selector("userToSlow"), userInfo: nil, repeats: true)
+    }
     
-  
-
-    
-
-
 }

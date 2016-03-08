@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class MainViewController: UIViewController, UIScrollViewDelegate {
+class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
 
     
     @IBOutlet weak var scrollPager: UIPageControl!
@@ -28,11 +29,22 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         super.viewDidLoad()
+        addEmailNavItem()
         initMedUserInAllView(self.selectedUserObjectID)
         initTitleAndColors()
         configurePageControl()
         initScrollViews()
 
+    }
+    
+    func addEmailNavItem() {
+        if MFMailComposeViewController.canSendMail() {
+            print("user can send mail")
+            self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "barButtonItemClicked:"), animated: true)
+        }
+        else {
+            print("user cannot send mail")
+        }
     }
     
     func initTitleAndColors() {
@@ -101,7 +113,40 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         scrollPager.currentPage = Int(pageNumber)
+        
+        if pageNumber == 0 {
+            addEmailNavItem()
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
+    
+    @IBAction func barButtonItemClicked(sender: UIBarButtonItem) {
+        //print something
+        print("clicked")
+        sendEmail()
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["address@example.com"])
+            mail.setSubject("Hello!")
+            mail.setMessageBody("Hello from California!", isHTML: false)
+            
+            self.presentViewController(mail, animated: true, completion: nil)
+        } else {
+            // show failure alert
+        }
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
     func initMedUserInAllView(objectID: NSManagedObjectID )  {
         let moc = DataController().managedObjectContext

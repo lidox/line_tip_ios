@@ -13,6 +13,7 @@
 		0418F5DF1C083A4A00B90989 /* LineTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5DE1C083A4A00B90989 /* LineTipTests.swift */; };
 		0418F5EA1C083A4A00B90989 /* LineTipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5E91C083A4A00B90989 /* LineTipUITests.swift */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
+		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
 		048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B01C1197AD00F775CC /* UserTableViewController.swift */; };
@@ -95,6 +96,7 @@
 		0418F5E91C083A4A00B90989 /* LineTipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTipUITests.swift; sourceTree = "<group>"; };
 		0418F5EB1C083A4A00B90989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		048064B01C1197AD00F775CC /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
 				048064B21C11CE6D00F775CC /* MainViewController.swift */,
+				04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */,
 				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
 				04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
@@ -505,6 +508,7 @@
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
+				04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */,
 				04F894021C873CDC00566C3C /* ClickSound.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
 				04F893D81C75E56E00566C3C /* UIColor.swift in Sources */,

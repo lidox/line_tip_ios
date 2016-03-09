@@ -1,25 +1,29 @@
 //
-//  UserTableViewController.swift
+//  UserManagementUIViewConroller.swift
 //  LineTip
 //
-//  Created by Artur Schäfer on 04.12.15.
-//  Copyright © 2015 Artur Schäfer. All rights reserved.
+//  Created by Artur Schäfer on 09.03.16.
+//  Copyright © 2016 Artur Schäfer. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class UserTableViewController: UITableViewController {
-
-    @IBOutlet weak var wellcomeImageView: UIImageView!
-    @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var navigation: UINavigationItem!
+class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var wellcomeImageView: UIImageView!
     @IBOutlet weak var wellcomeImage: UIImageView!
     
-    @IBOutlet weak var tableView2: UITableView!
-    
+    @IBOutlet weak var greetUserLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var navigation: UINavigationItem!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectUserLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var createUserButton: UIButton!
+    @IBOutlet weak var settingsNavItem: UIBarButtonItem!
     
     var image : UIImage!
     var medUserList = [MedUser]()
@@ -27,32 +31,59 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        
         //Disable autolayout constraint error messages in debug console output in Xcode
         NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
         super.viewDidLoad()
         Utils.loadSettingsData()
         
+        tableView.hidden = true
+        
         initTitleAndColors()
         
-        initWelcomeImage()
+        //initWelcomeImage()
         
-        medUserList = MedUserManager.fetchMedUsers()
+        //medUserList = MedUserManager.fetchMedUsers()
         
         //initEmptyView()
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func initTitleAndColors() {
+        navigation.title = "LineTip".translate()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
+        
+        settingsNavItem.title = "Settings".translate()
+        changeButtonColorAndStyle(startButton)
+        startButton.setTitle(" " + "NEW TRIAL".translate() + " ", forState: UIControlState.Normal)
+        changeButtonColorAndStyle(createUserButton)
+        createUserButton.setTitle(" " + "New user".translate() + " ", forState: UIControlState.Normal)
+        noDataLabel.text = "Create user".translate()
+        greetUserLabel.text = ""
+        
+    }
+    
+    func changeButtonColorAndStyle(button: UIButton) {
+        button.setTitleColor(UIColor.myKeyColor(), forState: UIControlState.Normal)
+        button.backgroundColor = UIColor.clearColor()
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.myKeyColor().CGColor
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return medUserList.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
         cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
         cell.textLabel?.textColor = UIColor.myKeyColor()
-
+        
         /*
         //Change cell's tint color
         cell.tintColor = UIColor.myKeyColor()
@@ -65,24 +96,24 @@ class UserTableViewController: UITableViewController {
         cell.accessoryType = .DisclosureIndicator
         cell.accessoryView = UIImageView(image: chevron!)
         */
-
+        
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     // -- BEGINNING: REMOVE FUNCTION --
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "\("Delete".translate())"
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete) {
             MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
             self.tableView.reloadData()
@@ -162,15 +193,6 @@ class UserTableViewController: UITableViewController {
         }
     }
     
-    func initTitleAndColors() {
-        navigation.title = "\("user management".translate())"
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
-        
-    }
-    
     func initWelcomeImage() {
         let imageName = "splash-overlay.png"
         image = UIImage(named: imageName)
@@ -187,30 +209,30 @@ class UserTableViewController: UITableViewController {
     func initEmptyView() {
         
         if(medUserList.count > 0) {
-        
+            
         }
         else {
-        //tableView.hidden = true
-        print("there is no user to display, so show 'create button'")
-        let noDataLabel: UILabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, (wellcomeImageView.frame.origin.y + 500) , 400, 60))
-        
-        noDataLabel.font.fontWithSize(20)
-        noDataLabel.text = "Please add a user".translate()
-        noDataLabel.textColor = UIColor.myKeyColor()
-        
-        
-        let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)! + 30)
-        var myframe = noDataLabel.frame
-        myframe.origin.x = centeredXPosition;
-        noDataLabel.frame = myframe
-        
-        
-        self.view.addSubview(noDataLabel)
-        self.tableView.setNeedsDisplay()
+            //tableView.hidden = true
+            print("there is no user to display, so show 'create button'")
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, (wellcomeImageView.frame.origin.y + 500) , 400, 60))
+            
+            noDataLabel.font.fontWithSize(20)
+            noDataLabel.text = "Please add a user".translate()
+            noDataLabel.textColor = UIColor.myKeyColor()
+            
+            
+            let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)! + 30)
+            var myframe = noDataLabel.frame
+            myframe.origin.x = centeredXPosition;
+            noDataLabel.frame = myframe
+            
+            
+            self.view.addSubview(noDataLabel)
+            self.tableView.setNeedsDisplay()
         }
-
+        
     }
-
+    
     
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
@@ -259,13 +281,13 @@ class UserTableViewController: UITableViewController {
     }
 }
 
-/*
+
 extension UINavigationController {
     
     public override func shouldAutorotate() -> Bool {
         return visibleViewController!.shouldAutorotate()
     }
-
+    
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return (visibleViewController?.supportedInterfaceOrientations())!
     }
@@ -281,5 +303,3 @@ extension UIAlertController {
         return false
     }
 }
-*/
-

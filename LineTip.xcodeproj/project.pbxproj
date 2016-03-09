@@ -16,7 +16,6 @@
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
-		048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B01C1197AD00F775CC /* UserTableViewController.swift */; };
 		048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B21C11CE6D00F775CC /* MainViewController.swift */; };
 		048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B81C11FC8200F775CC /* StatisticsViewController.swift */; };
 		048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048064B91C11FC8200F775CC /* StatisticsViewController.xib */; };
@@ -31,7 +30,6 @@
 		048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D61C1AE52C00F775CC /* LineGenerator.swift */; };
 		048064D91C1AE89800F775CC /* PreGeneratedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064D81C1AE89800F775CC /* PreGeneratedLine.swift */; };
 		048E19481C721BCB00035760 /* trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 048E19471C721BCB00035760 /* trans.png */; };
-		04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */; };
 		04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49DA71C74B29000D52E27 /* CanvasUIView.swift */; };
 		04F893D81C75E56E00566C3C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D71C75E56E00566C3C /* UIColor.swift */; };
 		04F893DA1C771E9900566C3C /* ConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893D91C771E9900566C3C /* ConfigKey.swift */; };
@@ -44,7 +42,6 @@
 		04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */; };
 		04F893ED1C83183300566C3C /* MedTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EB1C83183300566C3C /* MedTrial.swift */; };
 		04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EE1C83208800566C3C /* MedUserManager.swift */; };
-		04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893F21C84AE2400566C3C /* MyNavigationController.swift */; };
 		04F893FE1C87184500566C3C /* new-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FD1C87184500566C3C /* new-icon.png */; };
 		04F894021C873CDC00566C3C /* ClickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F894011C873CDC00566C3C /* ClickSound.swift */; };
 		04F894051C873E6600566C3C /* good.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04F894041C873E6600566C3C /* good.wav */; };
@@ -99,7 +96,6 @@
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
-		048064B01C1197AD00F775CC /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		048064B21C11CE6D00F775CC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		048064B81C11FC8200F775CC /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		048064B91C11FC8200F775CC /* StatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsViewController.xib; sourceTree = "<group>"; };
@@ -114,7 +110,6 @@
 		048064D61C1AE52C00F775CC /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
 		048064D81C1AE89800F775CC /* PreGeneratedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreGeneratedLine.swift; path = ../PreGeneratedLine.swift; sourceTree = "<group>"; };
 		048E19471C721BCB00035760 /* trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trans.png; sourceTree = "<group>"; };
-		04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
 		04D49DA71C74B29000D52E27 /* CanvasUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasUIView.swift; sourceTree = "<group>"; };
 		04F893D71C75E56E00566C3C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		04F893D91C771E9900566C3C /* ConfigKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigKey.swift; sourceTree = "<group>"; };
@@ -127,7 +122,6 @@
 		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedTrial+CoreDataProperties.swift"; path = "LineTip/MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
-		04F893F21C84AE2400566C3C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		04F893FD1C87184500566C3C /* new-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-icon.png"; sourceTree = "<group>"; };
 		04F894011C873CDC00566C3C /* ClickSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickSound.swift; sourceTree = "<group>"; };
 		04F894041C873E6600566C3C /* good.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good.wav; sourceTree = "<group>"; };
@@ -285,12 +279,9 @@
 				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
 				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */,
-				048064B01C1197AD00F775CC /* UserTableViewController.swift */,
-				04D49DA51C74A9B900D52E27 /* SwiftColorPickerViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
-				04F893F21C84AE2400566C3C /* MyNavigationController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -486,7 +477,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F893F31C84AE2400566C3C /* MyNavigationController.swift in Sources */,
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
 				04F893E31C7DA49800566C3C /* StatisticsModel.xcdatamodeld in Sources */,
@@ -512,8 +502,6 @@
 				04F894021C873CDC00566C3C /* ClickSound.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
 				04F893D81C75E56E00566C3C /* UIColor.swift in Sources */,
-				048064B11C1197AD00F775CC /* UserTableViewController.swift in Sources */,
-				04D49DA61C74A9B900D52E27 /* SwiftColorPickerViewController.swift in Sources */,
 				04F893ED1C83183300566C3C /* MedTrial.swift in Sources */,
 				048064D11C15B73900F775CC /* Line.swift in Sources */,
 				048064BE1C11FCA100F775CC /* SettingsViewController.swift in Sources */,

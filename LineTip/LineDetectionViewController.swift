@@ -97,7 +97,7 @@ class LineDetectionViewController: UIViewController {
         
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
         //self.navigationController!.pushViewController(nextViewController, animated: true)
-        let navController = MyNavigationController(rootViewController: nextViewController)
+        let navController = UINavigationController(rootViewController: nextViewController)
         // Creating a navigation controller with VC1 at the root of the navigation stack.
         
         nextViewController.resultsVC.lastTrial = uiView.trial

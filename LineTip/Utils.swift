@@ -356,8 +356,11 @@ extension String {
             else if key == "Best regards" {
                 translation = "Beste Grüße"
             }
+            else if key == "Select User" {
+                translation = "Wähle eine Benutzer"
+            }
             /*
-            
+            "Select User"
             */
         }
         

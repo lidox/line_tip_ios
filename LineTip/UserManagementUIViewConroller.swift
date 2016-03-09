@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var wellcomeImageView: UIImageView!
-    @IBOutlet weak var wellcomeImage: UIImageView!
-    
+    @IBOutlet weak var welcomeUIView: UIView!
     @IBOutlet weak var greetUserLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -38,18 +36,24 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         Utils.loadSettingsData()
         
-        tableView.hidden = true
-        
         initTitleAndColors()
         
-        //initWelcomeImage()
         
-        //medUserList = MedUserManager.fetchMedUsers()
+        medUserList = MedUserManager.fetchMedUsers()
         
-        //initEmptyView()
+        initEmptyView()
+    }
+    
+    @IBAction func onAddUserBarItemClick(sender: AnyObject) {
+        addUser()
+    }
+    
+    @IBAction func onAddUserButtonClick(sender: AnyObject) {
+        addUser()
     }
     
     func initTitleAndColors() {
+        welcomeUIView.backgroundColor = UIColor.myKeyColor()
         navigation.title = "LineTip".translate()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
@@ -62,7 +66,11 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         createUserButton.setTitle(" " + "New user".translate() + " ", forState: UIControlState.Normal)
         noDataLabel.text = "Create user".translate()
         greetUserLabel.text = ""
+        selectUserLabel.text = "Select User".translate()
+        selectUserLabel.textColor = UIColor.myKeyColor()
         
+        startButton.layer.borderColor = UIColor.whiteColor().CGColor
+        startButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
     func changeButtonColorAndStyle(button: UIButton) {
@@ -121,7 +129,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     }
     // -- ENDING: REMOVE FUNCTION --
     
-    @IBAction func addUser(sender: AnyObject) {
+    func addUser() {
         let alert = UIAlertController(title: "",
             message: "\("Create user".translate())",
             preferredStyle: .Alert)
@@ -160,7 +168,6 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
                     self.tableView.reloadData()
                     print("MedUser: '\(newUserName)' added")
                 }
-                
         })
         
         let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
@@ -193,44 +200,17 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func initWelcomeImage() {
-        let imageName = "splash-overlay.png"
-        image = UIImage(named: imageName)
-        wellcomeImageView.backgroundColor = UIColor.myKeyColor()
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        wellcomeImage.frame = CGRectMake(0,0, screenSize.width, screenSize.height * 0.33)
-        //self.wellcomeImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        //image = textToImage("BOOM BABY", inImage: image, atPoint: CGPointMake(100, 100))
-        wellcomeImage.image = image
-        wellcomeImageView.setNeedsDisplay()
-    }
-    
     
     func initEmptyView() {
-        
-        if(medUserList.count > 0) {
-            
+        if(medUserList.count == 0) {
+            print("there is no user to display, so show 'create button'")
+            tableView.hidden = true
+            selectUserLabel.hidden = true
         }
         else {
-            //tableView.hidden = true
-            print("there is no user to display, so show 'create button'")
-            let noDataLabel: UILabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, (wellcomeImageView.frame.origin.y + 500) , 400, 60))
-            
-            noDataLabel.font.fontWithSize(20)
-            noDataLabel.text = "Please add a user".translate()
-            noDataLabel.textColor = UIColor.myKeyColor()
-            
-            
-            let centeredXPosition = (self.view.bounds.size.width / 2 ) - CGFloat((noDataLabel.text?.characters.count)! + 30)
-            var myframe = noDataLabel.frame
-            myframe.origin.x = centeredXPosition;
-            noDataLabel.frame = myframe
-            
-            
-            self.view.addSubview(noDataLabel)
-            self.tableView.setNeedsDisplay()
+            print("users will be displayed in table")
         }
-        
+        self.view.setNeedsDisplay()
     }
     
     

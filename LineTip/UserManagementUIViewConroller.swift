@@ -168,6 +168,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
                     self.tableView.reloadData()
                     print("MedUser: '\(newUserName)' added")
                 }
+                self.initEmptyView()
         })
         
         let cancelAction = UIAlertAction(title: "\("Cancel".translate())",

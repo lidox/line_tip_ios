@@ -224,7 +224,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="le0-y4-Xyt">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="7Xd-ij-K6W"/>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="7Xd-ij-K6W">
+                            <connections>
+                                <action selector="onSettingsClick:" destination="s7v-oF-JLo" id="ciy-hM-Dy0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Syr-Kl-5OA">
                             <connections>
                                 <action selector="onAddUserBarItemClick:" destination="s7v-oF-JLo" id="YJk-kM-y0R"/>
@@ -273,6 +277,6 @@
         <image name="splash-overlay.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dYh-c0-tng"/>
+        <segue reference="h4Z-up-PFb"/>
     </inferredMetricsTieBreakers>
 </document>

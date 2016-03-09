@@ -44,6 +44,11 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         initEmptyView()
     }
     
+    
+    @IBAction func onSettingsClick(sender: AnyObject) {
+        //Utils.switchToViewControllerByIdentifier(self, identifier: "")
+    }
+    
     @IBAction func onAddUserBarItemClick(sender: AnyObject) {
         addUser()
     }

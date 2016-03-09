@@ -350,7 +350,12 @@ extension String {
             else if key == "Draw every 5 s" {
                 translation = "Alle 5 s neue Linie"
             }
-            
+            else if key == "Results for user" {
+                translation = "Ergebniss für den Benutzer"
+            }
+            else if key == "Best regards" {
+                translation = "Beste Grüße"
+            }
             /*
             
             */

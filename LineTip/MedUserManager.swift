@@ -81,16 +81,36 @@ class MedUserManager {
         }
     }
     
-    func fetchLastTrial() {
-        let moc = DataController().managedObjectContext
-        let personFetch = NSFetchRequest(entityName: "MedUser")
+    class func getLastTrialByObjectId(objectId: NSManagedObjectID) -> Trial {
+        let context = DataController().managedObjectContext
         
         do {
-            let fetchedPerson = try moc.executeFetchRequest(personFetch) as! [MedUser]
-            print("fetched person: \(fetchedPerson.last!.medId)")
+            let medUser = try context.existingObjectWithID(objectId) as? MedUser
+            let trialList = medUser?.trial!.allObjects as! [MedTrial]
             
+            let retTrial = Trial()
+            retTrial.hits = -1
+            if(trialList.count > 0){
+                
+                //find the latest trial by creationdate
+                var lastTrial = trialList.last
+                for (index, _) in trialList.enumerate() {
+                    let date = trialList[index].creationDate
+                    if(lastTrial!.creationDate.isLessThanDate(date)){
+                        lastTrial = trialList[index]
+                    }
+                    
+                }
+                
+                retTrial.hits = (lastTrial?.hits?.integerValue)!
+                retTrial.fails = (lastTrial?.fails?.integerValue)!
+                retTrial.duration = (lastTrial?.duration?.doubleValue)!
+                retTrial.timeStamp = (lastTrial?.timeStamp)!
+                retTrial.isSelectedForStats = (lastTrial!.isSelectedForStats!.boolValue)
+            }
+            return retTrial
         } catch {
-            fatalError("Failed to fetch person: \(error)")
+            fatalError("Failure to save context: \(error)")
         }
     }
     

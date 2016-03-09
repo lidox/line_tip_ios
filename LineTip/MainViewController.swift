@@ -37,16 +37,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
 
     }
     
-    func addEmailNavItem() {
-        if MFMailComposeViewController.canSendMail() {
-            print("user can send mail")
-            self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "barButtonItemClicked:"), animated: true)
-        }
-        else {
-            print("user cannot send mail")
-        }
-    }
-    
     func initTitleAndColors() {
         title = viewtitle
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
@@ -67,13 +57,11 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         resultsVC.didMoveToParentViewController(self)
         
         
-        
         statisticsVC.view.frame = self.view.bounds
         var frame1 = statisticsVC.view.frame
         frame1.origin.x = self.view.frame.size.width
         statisticsVC.view.frame = frame1;
-
-        //self.navigationItem.rightBarButtonItem = statisticsVC.editButtonItem()
+    
         
         self.addChildViewController(statisticsVC)
         self.scrollView.addSubview(statisticsVC.view)
@@ -97,7 +85,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
     func configurePageControl() {
         self.scrollPager.numberOfPages = 3
         self.scrollPager.currentPage = 0
-        //self.scrollPager.tintColor = UIColor.myKeyColor()
         self.scrollPager.pageIndicatorTintColor = UIColor.blackColor()
         self.scrollPager.currentPageIndicatorTintColor = UIColor.myKeyColor()
     
@@ -122,24 +109,58 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         }
     }
     
-    @IBAction func barButtonItemClicked(sender: UIBarButtonItem) {
-        //print something
-        print("clicked")
-        sendEmail()
+    func addEmailNavItem() {
+        if deviceCanSendEmails() {
+            self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "sentMailButtonClicked:"), animated: true)
+        }
+        
     }
     
-    func sendEmail() {
+    @IBAction func sentMailButtonClicked(sender: UIBarButtonItem) {
+        let recipient = ["your@mail.com"]
+        let user = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
+        let subject = "[Line Detection Test] \("Results for user".translate()) \(user.medId))"
+        let lastTrial = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
+        let messageBody = lastTrial.toString() + "\r\n" + "\("Best regards".translate())," + "\r\n" + "LineTip APP"
+        print(messageBody)
+        sendEmail(recipient, subject: subject, messageBody: messageBody)
+    }
+    
+    func sendEmail(toRecipients: [String], subject: String, messageBody: String) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["address@example.com"])
-            mail.setSubject("Hello!")
-            mail.setMessageBody("Hello from California!", isHTML: false)
-            
+            mail.setToRecipients(toRecipients)
+            mail.setSubject(subject)
+            mail.setMessageBody(messageBody, isHTML: false)
             self.presentViewController(mail, animated: true, completion: nil)
         } else {
-            // show failure alert
+            if let
+                urlString = ("mailto:\(toRecipients[0])?subject=\(subject)&body=\(messageBody)").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()),
+                url = NSURL(string:urlString) {
+                    UIApplication.sharedApplication().openURL(url)
+            }
+            else {
+                print("the device has no e-mail functionality")
+            }
         }
+    }
+    
+    func deviceCanSendEmails() -> Bool {
+        let sopportsMFMailComposeViewController = MFMailComposeViewController.canSendMail()
+        if sopportsMFMailComposeViewController {
+            print("device supports: MFMailComposeViewController")
+            return true
+        }
+        
+        let supportsMailTo = ("mailto:\("")").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()),
+        _ = NSURL(string:supportsMailTo!)
+        if (supportsMailTo != nil) {
+            print("device supports: supportsMailTo")
+            return true
+        }
+        print("device does not support sending emails")
+        return false
     }
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {

@@ -39,7 +39,7 @@ class ResultsViewController: UIViewController {
         missLabel.text = "0"
         durationLabel.text = "-"
         
-        let lastTrial2 = getLastTrialByObjectId(self.selectedUserObjectID)
+        let lastTrial2 = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
         if(lastTrial2.hits != -1){
             timeStampLabel.text = "\(lastTrial2.timeStamp)"
             hitLabel.text = "\(lastTrial2.hits)"
@@ -68,11 +68,7 @@ class ResultsViewController: UIViewController {
     
     func initTexts() {
         startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
-        
         titleLabel.text = "\("result view".translate())"
-        //print("TITELCOLOR:  \(titleLabel.textColor)")
-        //UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
-        //0.160784 0.384314 0.658824 1
         timeStampTextLabel.text = "\("timestamp".translate())"
         hitTextLabel.text = "\("hits".translate())"
         missTextLabel.text = "\("misses".translate())"
@@ -98,39 +94,6 @@ class ResultsViewController: UIViewController {
         print("results segue: \(self.selectedUserObjectID)")
         nextViewController.selectedUserObjectID = self.selectedUserObjectID
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
-    }
-
-    func getLastTrialByObjectId(objectId: NSManagedObjectID) -> Trial {
-        let context = DataController().managedObjectContext
-        
-        do {
-            let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            let trialList = medUser?.trial!.allObjects as! [MedTrial]
-            
-            let retTrial = Trial()
-            retTrial.hits = -1
-            if(trialList.count > 0){
-                
-                //find the latest trial by creationdate
-                var lastTrial = trialList.last
-                for (index, _) in trialList.enumerate() {
-                    let date = trialList[index].creationDate
-                    if(lastTrial!.creationDate.isLessThanDate(date)){
-                        lastTrial = trialList[index]
-                    }
-                   
-                }
-                
-                retTrial.hits = (lastTrial?.hits?.integerValue)!
-                retTrial.fails = (lastTrial?.fails?.integerValue)!
-                retTrial.duration = (lastTrial?.duration?.doubleValue)!
-                retTrial.timeStamp = (lastTrial?.timeStamp)!
-                retTrial.isSelectedForStats = (lastTrial!.isSelectedForStats!.boolValue)
-            }
-            return retTrial
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
     }
 
 }

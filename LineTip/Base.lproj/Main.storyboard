@@ -229,7 +229,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.4660738546" green="0.99607843139999996" blue="0.2011010181" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Obd-hc-Igv" firstAttribute="centerX" secondItem="qEd-i3-icX" secondAttribute="centerX" id="Fvh-Sb-vPg"/>
                                     <constraint firstItem="Obd-hc-Igv" firstAttribute="centerX" secondItem="K6W-Gg-DKe" secondAttribute="centerX" id="OEJ-IV-TTL"/>
@@ -254,6 +253,9 @@
                                         <rect key="frame" x="208" y="72" width="184" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Create User"/>
+                                        <connections>
+                                            <action selector="onAddUserButtonClick:" destination="s7v-oF-JLo" eventType="touchUpInside" id="Cip-MB-l4E"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maV-GX-gbs">
                                         <rect key="frame" x="270" y="43" width="61" height="21"/>
@@ -266,7 +268,6 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.4660738546" green="0.99607843139999996" blue="0.2011010181" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hbE-gb-lI6" firstAttribute="centerY" secondItem="mqS-YG-2mB" secondAttribute="centerY" id="AIP-28-7Bn"/>
                                     <constraint firstItem="Cii-w1-vH8" firstAttribute="top" secondItem="mqS-YG-2mB" secondAttribute="topMargin" id="Lv1-Fx-lcY"/>
@@ -295,7 +296,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="le0-y4-Xyt">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="7Xd-ij-K6W"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Syr-Kl-5OA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Syr-Kl-5OA">
+                            <connections>
+                                <action selector="onAddUserBarItemClick:" destination="s7v-oF-JLo" id="YJk-kM-y0R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="Syr-Kl-5OA" id="Q0a-fw-vUz"/>
@@ -308,6 +313,7 @@
                         <outlet property="settingsNavItem" destination="7Xd-ij-K6W" id="tE4-Ma-v9X"/>
                         <outlet property="startButton" destination="K6W-Gg-DKe" id="UCH-o9-DIn"/>
                         <outlet property="tableView" destination="Cii-w1-vH8" id="Aji-dP-WBs"/>
+                        <outlet property="welcomeUIView" destination="qEd-i3-icX" id="6yd-Dn-xHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-1i-chz" userLabel="First Responder" sceneMemberID="firstResponder"/>

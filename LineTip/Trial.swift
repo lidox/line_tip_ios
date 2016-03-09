@@ -105,7 +105,7 @@ class Trial: NSObject {
     }
     
     func toString() -> String {
-        let ret =  "\("timestamp".translate()) " + "\(self.timeStamp)" + "\r\n" + "\("hits".translate()) " + "\(self.hits)" + "\r\n" + "\("misses".translate()) " + "\(self.fails)" + "\r\n" + "\("duration".translate()) " + "\(self.duration.getStringAsHoursMinutesSeconds())" + "\r\n"
+        let ret =  "\("timestamp".translate()): " + "\(self.timeStamp)" + "\r\n" + "\("hits".translate()): " + "\(self.hits)" + "\r\n" + "\("misses".translate()): " + "\(self.fails)" + "\r\n" + "\("duration".translate()): " + "\(self.duration.getStringAsHoursMinutesSeconds())" + "\r\n"
         return ret
     }
     

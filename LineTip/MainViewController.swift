@@ -118,8 +118,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
     
     @IBAction func sentMailButtonClicked(sender: UIBarButtonItem) {
         let recipient = ["your@mail.com"]
-        let user = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
-        let subject = "[Line Detection Test] \("Results for user".translate()) \(user.medId))"
+        let userMedId = MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID)
+        let subject = "[Line Detection Test] \("Results for user".translate()): \(userMedId)"
         let lastTrial = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
         let messageBody = lastTrial.toString() + "\r\n" + "\("Best regards".translate())," + "\r\n" + "LineTip APP"
         print(messageBody)

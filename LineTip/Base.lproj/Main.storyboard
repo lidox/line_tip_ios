@@ -117,7 +117,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="1157" y="1238"/>
+            <point key="canvasLocation" x="1015" y="1135"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="lXG-z7-9HY">
@@ -157,7 +157,7 @@
                     <navigationItem key="navigationItem" id="HUh-DB-kqb">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="85P-He-PRq">
                             <connections>
-                                <segue destination="rUj-SJ-ezV" kind="show" id="roG-dV-4Ip"/>
+                                <segue destination="s7v-oF-JLo" kind="show" id="dYh-c0-tng"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDe-eY-scl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="1128"/>
+            <point key="canvasLocation" x="1814" y="1206"/>
         </scene>
         <!--Line Detection View Controller-->
         <scene sceneID="Jba-07-V4f">
@@ -299,6 +299,9 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="sxP-u8-0uh" kind="show" identifier="toMainSegue" id="Bue-Bd-973"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -357,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-1i-chz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-149"/>
+            <point key="canvasLocation" x="1814" y="432"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">
@@ -395,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wis-78-jfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649.5" y="431.5"/>
+            <point key="canvasLocation" x="2328.5" y="453.5"/>
         </scene>
     </scenes>
     <resources>
@@ -403,4 +406,8 @@
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
         <image name="splash-overlay.png" width="1024" height="1024"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bue-Bd-973"/>
+        <segue reference="dYh-c0-tng"/>
+    </inferredMetricsTieBreakers>
 </document>

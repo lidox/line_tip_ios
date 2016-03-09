@@ -228,12 +228,21 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qhg-P2-r3n">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Qhg-P2-r3n" firstAttribute="centerX" secondItem="qEd-i3-icX" secondAttribute="centerX" id="4Ap-rp-Y2v"/>
+                                    <constraint firstItem="Qhg-P2-r3n" firstAttribute="centerY" secondItem="qEd-i3-icX" secondAttribute="centerY" id="EsT-8E-MNq"/>
                                     <constraint firstItem="Obd-hc-Igv" firstAttribute="centerX" secondItem="qEd-i3-icX" secondAttribute="centerX" id="Fvh-Sb-vPg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qhg-P2-r3n" secondAttribute="trailing" id="LAL-h5-R2S"/>
+                                    <constraint firstItem="Qhg-P2-r3n" firstAttribute="leading" secondItem="qEd-i3-icX" secondAttribute="leading" id="NZ3-wQ-wPb"/>
                                     <constraint firstItem="Obd-hc-Igv" firstAttribute="centerX" secondItem="K6W-Gg-DKe" secondAttribute="centerX" id="OEJ-IV-TTL"/>
+                                    <constraint firstItem="Qhg-P2-r3n" firstAttribute="top" secondItem="qEd-i3-icX" secondAttribute="top" id="Zjl-2o-8GZ"/>
                                     <constraint firstAttribute="height" constant="300" id="okZ-Y6-afm"/>
                                     <constraint firstItem="K6W-Gg-DKe" firstAttribute="top" secondItem="Obd-hc-Igv" secondAttribute="bottom" constant="12" id="qJ7-9L-EJC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qhg-P2-r3n" secondAttribute="bottom" id="qST-cW-v6K"/>
                                     <constraint firstItem="K6W-Gg-DKe" firstAttribute="centerY" secondItem="qEd-i3-icX" secondAttribute="centerY" id="wHu-yj-KQL"/>
                                 </constraints>
                             </view>
@@ -362,5 +371,6 @@
     <resources>
         <image name="finish_trial.png" width="48" height="48"/>
         <image name="launcher_smile-jpg.png" width="256" height="256"/>
+        <image name="splash-overlay.png" width="1024" height="1024"/>
     </resources>
 </document>

@@ -125,6 +125,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         if(editingStyle == UITableViewCellEditingStyle.Delete) {
             MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
             self.tableView.reloadData()
+            initEmptyView()
         }
     }
     // -- ENDING: REMOVE FUNCTION --
@@ -209,9 +210,12 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
             selectUserLabel.hidden = true
         }
         else {
+            tableView.hidden = false
+            selectUserLabel.hidden = false
             print("users will be displayed in table")
         }
         self.view.setNeedsDisplay()
+        self.tableView.setNeedsDisplay()
     }
     
     

@@ -362,8 +362,20 @@ extension String {
             else if key == "Quick Start" {
                 translation = "Schnellstart"
             }
+            else if key == "Assign Trial" {
+                translation = "Versuchszuordnung"
+            }
+            else if key == "Please assign trial(s) to a user." {
+                translation = "Bitte ordnen Sie den Versuch einem Benutzer zu."
+            }
+            else if key == "There is no user to assign" {
+                translation = "Kein Benutzer vorhanden"
+            }
+            else if key == "Please create a new user to assign the trial(s)." {
+                translation = "Bitte erstellen sie einen neuen Benutzer."
+            }
             /*
-            
+
             */
         }
         

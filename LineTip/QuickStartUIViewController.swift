@@ -24,12 +24,20 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
 
     var medUserList = [MedUser]()
     var selectedUserObjectID : NSManagedObjectID!
+    var userManager = MedUserManager()
     
     override func viewDidLoad() {
         print("QuickStartUIViewController: viewDidLoad")
         super.viewDidLoad()
         initTitleAndColors()
-        medUserList = MedUserManager.fetchMedUsers()
+        medUserList = userManager.fetchMedUsers()
+  
+        for (index, item) in medUserList.enumerate() {
+            let currentUserEqualsSelectedUser = item.medId == userManager.fetchMedUserById(self.selectedUserObjectID).medId
+            if  currentUserEqualsSelectedUser {
+                medUserList.removeAtIndex(index)
+            }
+        }
         addLongPressRecognizer()
     }
     
@@ -71,7 +79,7 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("quickstartCell")!
-        self.medUserList = MedUserManager.fetchMedUsers()
+        //self.medUserList = userManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
         cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
         cell.textLabel?.textColor = UIColor.myKeyColor()
@@ -93,25 +101,21 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
                 print("long press on: \(indexPath.row)")
                 // add trials to new user
-                medUserList = MedUserManager.fetchMedUsers()
+                //medUserList = userManager.fetchMedUsers()
                 let selectedUser = medUserList[indexPath.row]
-                let placeHolderUser = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
+                let placeHolderUser = userManager.fetchMedUserById(self.selectedUserObjectID)
                 
                 
                 //let trialList = placeHolderUser.getTrialList()
-                let trialList = MedUserManager.getMedTrialListByObjectId(placeHolderUser.objectID)
+                let trialList = userManager.getMedTrialListByObjectId(placeHolderUser.objectID)
                 for trial in trialList {
-                    //selectedUser = MedUserManager.fetchMedUsers()[indexPath.row]
-                    print(trial)
-                    //let createdTrial = MedUserManager.insertMedTrial(trial.duration, fails: trial.fails, hits: trial.hits, timeStamp: trial.timeStamp, isSelectedForStats: trial.isSelectedForStats, creationDate: trial.creationDate, user: selectedUser)
-                    trial.user = nil 
                     trial.user = selectedUser
-                    //selectedUser.addTrial(trial)
                 }
                 
                 //delete placeholder user
-                MedUserManager.deleteMedUserByObjectId(placeHolderUser.objectID)
+                userManager.deleteMedUserByObjectId(placeHolderUser.objectID)
                 
+                self.selectedUserObjectID = selectedUser.objectID
                 // switch to results view
                 switchToResultViewController()
             }
@@ -122,7 +126,7 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
         let navController = UINavigationController(rootViewController: nextViewController)
-        nextViewController.resultsVC.lastTrial = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
+        nextViewController.resultsVC.lastTrial = userManager.getLastTrialByObjectId(self.selectedUserObjectID)
         nextViewController.selectedUserObjectID = self.selectedUserObjectID
         nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
         nextViewController.statisticsVC.selectedUserObjectID = self.selectedUserObjectID

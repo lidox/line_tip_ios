@@ -11,17 +11,115 @@ import CoreData
 
 class MedUserManager {
     
-    let medId : String
+    var myMoc : NSManagedObjectContext!
     
-    init(medId : String){
-        self.medId = medId
+    init(){
+        myMoc = DataController().managedObjectContext
+    }
+    
+    func deleteMedUserByObjectId(objectID: NSManagedObjectID ) {
+        
+        do {
+            let userToDelete = try myMoc.existingObjectWithID(objectID) as! MedUser
+            
+            // first delete all trials of user
+            for item in userToDelete.trial!{
+                myMoc.deleteObject(item as! NSManagedObject)
+            }
+            
+            let userName = userToDelete.medId
+            
+            // now delete object
+            myMoc.deleteObject(userToDelete)
+            
+            try myMoc.save()
+            print("user: \(userName) deleted")
+            
+        } catch {
+            fatalError("Failed to delete user: \(error)")
+        }
+    }
+    
+    func getLastTrialByObjectId(objectId: NSManagedObjectID) -> Trial {
+        do {
+            let medUser = try myMoc.existingObjectWithID(objectId) as? MedUser
+            let trialList = medUser?.trial!.allObjects as! [MedTrial]
+            
+            let retTrial = Trial()
+            retTrial.hits = 0
+            if(trialList.count > 0){
+                
+                //find the latest trial by creationdate
+                let lastTrial = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedDescending }).last
+
+                
+                retTrial.hits = (lastTrial?.hits?.integerValue)!
+                retTrial.fails = (lastTrial?.fails?.integerValue)!
+                retTrial.duration = (lastTrial?.duration?.doubleValue)!
+                retTrial.timeStamp = (lastTrial?.timeStamp)!
+                retTrial.isSelectedForStats = (lastTrial!.isSelectedForStats!.boolValue)
+            }
+            return retTrial
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    func fetchMedUserById(objectID: NSManagedObjectID ) -> MedUser {
+        do {
+            let users = try self.myMoc.existingObjectWithID(objectID) as! MedUser
+            print("fetched user: \(users.medId)")
+            return users
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
+    }
+
+    
+    func fetchMedUsers() -> Array<MedUser> {
+        
+        let personFetch = NSFetchRequest(entityName: "MedUser")
+        
+        do {
+            var users = try myMoc.executeFetchRequest(personFetch) as! [MedUser]
+            
+            // sort by creation date:
+            users = users.sort({ $0.creationDate.compare($1.creationDate) == .OrderedDescending })
+            
+            return users
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
+        }
+    }
+    
+    func getMedTrialListByObjectId(objectId: NSManagedObjectID) -> [MedTrial]
+    {
+        do {
+            
+            let medUser = try myMoc.existingObjectWithID(objectId) as? MedUser
+            //return medUser!.trial!.allObjects as! [MedTrial]
+            
+            let fetchRequest = NSFetchRequest(entityName: "MedTrial")
+            let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+            let predicate = NSPredicate(format: "user == %@", medUser!)
+            
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = predicate
+            
+            let result = try myMoc.executeFetchRequest(fetchRequest)
+            //print(result)
+            
+            return (result as! [MedTrial])
+            
+        } catch {
+            fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
+        }
     }
     
     class func insertMedUserByName(userName: String) -> MedUser {
-        
-        // create an instance of our managedObjectContext
         let moc = DataController().managedObjectContext
-        
         // we set up our entity by selecting the entity and context that we're targeting
         let entity = NSEntityDescription.insertNewObjectForEntityForName("MedUser", inManagedObjectContext: moc) as! MedUser
         

@@ -108,6 +108,9 @@
                                         <rect key="frame" x="248" y="123" width="104" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="START"/>
+                                        <connections>
+                                            <action selector="onQuickStartButton:" destination="s7v-oF-JLo" eventType="touchUpInside" id="4WI-0w-FZL"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greet User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obd-hc-Igv">
                                         <rect key="frame" x="258" y="90" width="84" height="21"/>

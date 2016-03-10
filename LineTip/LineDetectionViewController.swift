@@ -16,6 +16,7 @@ class LineDetectionViewController: UIViewController {
     
     var medUser : MedUser!
     var selectedUserObjectID : NSManagedObjectID!
+    var isQuickstart = false
     
     override func viewDidLoad() {
         print("LineDetectionViewController: viewDidLoad")

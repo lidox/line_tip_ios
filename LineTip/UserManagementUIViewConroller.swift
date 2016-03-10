@@ -66,7 +66,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         
         settingsNavItem.title = "Settings".translate()
         changeButtonColorAndStyle(startButton)
-        startButton.setTitle(" " + "NEW TRIAL".translate() + " ", forState: UIControlState.Normal)
+        startButton.setTitle(" " + "Quick Start".translate() + " ", forState: UIControlState.Normal)
         changeButtonColorAndStyle(createUserButton)
         createUserButton.setTitle(" " + "New user".translate() + " ", forState: UIControlState.Normal)
         noDataLabel.text = "Create user".translate()
@@ -151,7 +151,8 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
             handler: { (action:UIAlertAction) -> Void in
                 
                 let textField = alert.textFields!.first
-                
+                self.createUser(textField!.text!)
+                /*
                 //if not contains
                 var containsName = false
                 let newUserName = textField!.text!.trim()
@@ -173,7 +174,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
                     self.medUserList.append(user)
                     self.tableView.reloadData()
                     print("MedUser: '\(newUserName)' added")
-                }
+                }*/
                 self.initEmptyView()
         })
         
@@ -193,6 +194,36 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
             completion: nil)
     }
     
+    func createUser(newUserName: String) -> NSManagedObjectID {
+        var retObjectId : NSManagedObjectID!
+        //if not contains
+        var containsName = false
+        let newUserName = newUserName.trim()
+        self.medUserList = MedUserManager.fetchMedUsers()
+        for user in self.medUserList{
+            let userName = user.medId
+            if(userName == newUserName){
+                containsName = true
+                break
+            }
+        }
+        if(newUserName == ""){
+            print("cannot add emtpy string")
+        }
+        else if(containsName){
+            print("MedUser: '\(newUserName)' already exists")
+        }
+        else{
+            let user = MedUserManager.insertMedUserByName(newUserName)
+            retObjectId = user.objectID
+            print("klappt: \(retObjectId)")
+            self.medUserList.append(user)
+            self.tableView.reloadData()
+            print("MedUser: '\(newUserName)' added")
+        }
+        return retObjectId
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toMainSegue" {
             if let destination = segue.destinationViewController as? MainViewController {
@@ -205,6 +236,39 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
                 }
             }
         }
+        /*
+        if segue.identifier == "quickstart" {
+            if let destination = segue.destinationViewController as? LineDetectionViewController {
+                let selectedUserObjectID = createUser("Quick Start".translate() + "\(NSDate())")
+                let user = MedUserManager.fetchMedUserById(selectedUserObjectID)
+                
+                //var selectedUserObjectID : NSManagedObjectID!
+                destination.medUser = user
+                destination.selectedUserObjectID = selectedUserObjectID
+                destination.isQuickstart = true
+            }
+        }
+        */
+
+    }
+    
+    
+    @IBAction func onQuickStartButton(sender: AnyObject) {
+        switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
+    }
+    
+    func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
+        
+        let selectedUserObjectID = createUser("Quick Start".translate() + "\(NSDate())")
+        let user = MedUserManager.fetchMedUserById(selectedUserObjectID)
+        
+        nextViewController.medUser = user
+        nextViewController.selectedUserObjectID = selectedUserObjectID
+        nextViewController.isQuickstart = true
+
+        currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
     

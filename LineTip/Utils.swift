@@ -359,8 +359,11 @@ extension String {
             else if key == "Select User" {
                 translation = "Wähle eine Benutzer"
             }
+            else if key == "Quick Start" {
+                translation = "Schnellstart"
+            }
             /*
-            "Select User"
+            
             */
         }
         

@@ -18,6 +18,10 @@ extension MedUser {
     @NSManaged var creationDate: NSDate
     @NSManaged var trial: NSSet?
     
+    func rename(value: String) {
+        self.setValue(value, forKey: "medId")
+    }
+    
     func addTrial(value: MedTrial) {
         self.mutableSetValueForKey("trial").addObject(value)
     }

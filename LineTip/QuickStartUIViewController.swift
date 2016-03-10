@@ -39,6 +39,7 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
             }
         }
         addLongPressRecognizer()
+        initEmptyView()
     }
     
     func initTitleAndColors() {
@@ -66,11 +67,11 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     }
     
     @IBAction func onCreateUserButtonClick(sender: AnyObject) {
-        
+        addUser()
     }
     
     @IBAction func onStartTrialButtonClick(sender: AnyObject){
-        
+        switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas", selectedUserObjectID: self.selectedUserObjectID)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,9 +81,11 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("quickstartCell")!
         //self.medUserList = userManager.fetchMedUsers()
-        cell.textLabel!.text = medUserList[indexPath.row].medId
-        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
-        cell.textLabel?.textColor = UIColor.myKeyColor()
+        if (medUserList[indexPath.row].trial != nil) {
+            cell.textLabel!.text = medUserList[indexPath.row].medId
+            cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
+            cell.textLabel?.textColor = UIColor.myKeyColor()
+        }
         return cell
     }
     
@@ -133,4 +136,99 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         
         self.presentViewController(navController, animated:true, completion: nil)
     }
+    
+    func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String, selectedUserObjectID: NSManagedObjectID){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
+        nextViewController.selectedUserObjectID = selectedUserObjectID
+        nextViewController.isQuickstart = true
+        currentVC.presentViewController(nextViewController, animated:true, completion:nil)
+    }
+    
+    func switchToViewControllerLaunchByIdentifier(currentVC: UIViewController, identifier: String, selectedUserObjectID: NSManagedObjectID){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! UserManagementUIViewConroller
+        currentVC.presentViewController(nextViewController, animated:true, completion:nil)
+    }
+    
+    func addUser() {
+        let alert = UIAlertController(title: "",
+            message: "\("Create user".translate())",
+            preferredStyle: .Alert)
+        alert.view.tintColor = UIColor.myKeyColor()
+        
+        let attributedString = NSAttributedString(string: "\("New user".translate())", attributes: [
+            NSForegroundColorAttributeName : UIColor.myKeyColor()
+            ])
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let saveAction = UIAlertAction(title: "\("Save".translate())",
+            style: .Default,
+            handler: { (action:UIAlertAction) -> Void in
+                
+                let textField = alert.textFields!.first
+                // rename user
+                self.userManager.renameMedUserByObjectId(self.selectedUserObjectID, newName: textField!.text!)
+                self.switchToViewControllerLaunchByIdentifier(self, identifier: "launcher", selectedUserObjectID: self.selectedUserObjectID)
+                //self.medUserList = MedUserManager.fetchMedUsers()
+        })
+        
+        let cancelAction = UIAlertAction(title: "\("Cancel".translate())",
+            style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField) -> Void in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
+    
+    func createUser(newUserName: String) -> NSManagedObjectID {
+        var retObjectId : NSManagedObjectID!
+        //if not contains
+        var containsName = false
+        let newUserName = newUserName.trim()
+
+        for user in self.medUserList{
+            let userName = user.medId
+            if(userName == newUserName){
+                containsName = true
+                break
+            }
+        }
+        if(newUserName == ""){
+            print("cannot add emtpy string")
+        }
+        else if(containsName){
+            print("MedUser: '\(newUserName)' already exists")
+        }
+        else{
+            let user = MedUserManager.insertMedUserByName(newUserName)
+            retObjectId = user.objectID
+            print("klappt: \(retObjectId)")
+            self.medUserList.append(user)
+            self.tableView.reloadData()
+            print("MedUser: '\(newUserName)' added")
+        }
+        return retObjectId
+    }
+    
+    func initEmptyView() {
+        if(medUserList.count == 0) {
+            tableView.hidden = true
+        }
+        else {
+            tableView.hidden = false
+            print("users will be displayed in table")
+        }
+        self.view.setNeedsDisplay()
+        self.tableView.setNeedsDisplay()
+    }
+    
 }

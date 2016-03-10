@@ -17,6 +17,22 @@ class MedUserManager {
         myMoc = DataController().managedObjectContext
     }
     
+    func renameMedUserByObjectId(objectID: NSManagedObjectID, newName: String ) {
+        
+        do {
+            let userToRename = try myMoc.existingObjectWithID(objectID) as! MedUser
+            
+            
+            // now delete object
+            userToRename.rename(newName)
+            
+            try myMoc.save()
+            
+        } catch {
+            fatalError("Failed to rename user: \(error)")
+        }
+    }
+    
     func deleteMedUserByObjectId(objectID: NSManagedObjectID ) {
         
         do {

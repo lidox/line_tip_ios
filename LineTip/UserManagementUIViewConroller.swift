@@ -152,29 +152,6 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
                 
                 let textField = alert.textFields!.first
                 self.createUser(textField!.text!)
-                /*
-                //if not contains
-                var containsName = false
-                let newUserName = textField!.text!.trim()
-                self.medUserList = MedUserManager.fetchMedUsers()
-                for user in self.medUserList{
-                    let userName = user.medId
-                    if(userName == newUserName){
-                        containsName = true
-                        break
-                    }
-                }
-                if(newUserName == ""){
-                    print("cannot add emtpy string")
-                }
-                else if(containsName){
-                    print("MedUser: '\(newUserName)' already exists")                }
-                else{
-                    let user = MedUserManager.insertMedUserByName(newUserName)
-                    self.medUserList.append(user)
-                    self.tableView.reloadData()
-                    print("MedUser: '\(newUserName)' added")
-                }*/
                 self.initEmptyView()
         })
         
@@ -249,7 +226,6 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
             }
         }
         */
-
     }
     
     

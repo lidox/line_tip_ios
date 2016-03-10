@@ -159,11 +159,17 @@
                                 <rect key="frame" x="112" y="500" width="107" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create User"/>
+                                <connections>
+                                    <action selector="onCreateUserButtonClick:" destination="ZI8-hP-r6s" eventType="touchUpInside" id="58H-Qk-4Uj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVv-AO-XGg">
                                 <rect key="frame" x="381" y="500" width="77" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="NewTrial"/>
+                                <connections>
+                                    <action selector="onStartTrialButtonClick:" destination="ZI8-hP-r6s" eventType="touchUpInside" id="FOG-jd-709"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPy-DM-ols">
                                 <rect key="frame" x="283" y="47" width="34" height="24"/>
@@ -192,6 +198,14 @@
                             <constraint firstItem="6FJ-KU-EPe" firstAttribute="top" secondItem="xkV-5E-QYH" secondAttribute="bottom" constant="38" id="pFe-CA-wIp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="assignUserLabel" destination="nPy-DM-ols" id="yh2-1e-RWf"/>
+                        <outlet property="assignUserSubtitleLabel" destination="6rG-8y-zdH" id="dXd-dL-DtH"/>
+                        <outlet property="createUserButton" destination="UMJ-0z-Lo1" id="BoT-2q-SxF"/>
+                        <outlet property="noUserSubTitleLabel" destination="3Xp-eO-zMY" id="6Ud-fm-3MF"/>
+                        <outlet property="noUserTitleLabel" destination="h6z-vl-396" id="kZR-8m-0qA"/>
+                        <outlet property="startTrialButton" destination="uVv-AO-XGg" id="XIi-po-Edt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IpU-xA-IAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,7 +223,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEd-i3-icX">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEd-i3-icX">
                                 <rect key="frame" x="0.0" y="64" width="600" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6W-Gg-DKe">
@@ -244,7 +258,7 @@
                                     <constraint firstItem="K6W-Gg-DKe" firstAttribute="centerY" secondItem="qEd-i3-icX" secondAttribute="centerY" id="wHu-yj-KQL"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-ic-ipI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-ic-ipI">
                                 <rect key="frame" x="20" y="369" width="128" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IP4-xj-7zX"/>
@@ -253,10 +267,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqS-YG-2mB">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mqS-YG-2mB">
                                 <rect key="frame" x="0.0" y="402" width="600" height="198"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbE-gb-lI6">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbE-gb-lI6">
                                         <rect key="frame" x="208" y="72" width="184" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Create User"/>
@@ -264,13 +278,13 @@
                                             <action selector="onAddUserButtonClick:" destination="s7v-oF-JLo" eventType="touchUpInside" id="Cip-MB-l4E"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maV-GX-gbs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maV-GX-gbs">
                                         <rect key="frame" x="270" y="43" width="61" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cii-w1-vH8">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cii-w1-vH8">
                                         <rect key="frame" x="0.0" y="8" width="600" height="182"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>

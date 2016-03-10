@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDe-eY-scl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="1206"/>
+            <point key="canvasLocation" x="2475" y="432"/>
         </scene>
         <!--Line Detection View Controller-->
         <scene sceneID="Jba-07-V4f">
@@ -87,7 +87,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piX-ta-s0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="1206"/>
+            <point key="canvasLocation" x="1135" y="1135"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wmI-B0-x2c">
+            <objects>
+                <viewController id="ZI8-hP-r6s" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2eD-Gb-ZKC"/>
+                        <viewControllerLayoutGuide type="bottom" id="ayw-hT-8zg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iid-IJ-uz8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IpU-xA-IAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="1135"/>
         </scene>
         <!--Title-->
         <scene sceneID="Qkk-J8-cIZ">
@@ -254,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-1i-chz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="432"/>
+            <point key="canvasLocation" x="1793" y="432"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="qm8-3M-Unf">
@@ -280,6 +298,6 @@
         <image name="splash-overlay.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h4Z-up-PFb"/>
+        <segue reference="dYh-c0-tng"/>
     </inferredMetricsTieBreakers>
 </document>

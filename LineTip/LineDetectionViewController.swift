@@ -69,7 +69,13 @@ class LineDetectionViewController: UIViewController {
             uiView.lineTimer.invalidate()
         }
         
-        switchToResultViewController()
+        if isQuickstart {
+            print("quickstart :)")
+        }
+        else {
+            switchToResultViewController()
+        }
+        
     }
     func addTrialToUser(givenTrial: Trial) {
         let context = DataController().managedObjectContext

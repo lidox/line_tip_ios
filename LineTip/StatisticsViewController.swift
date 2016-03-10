@@ -169,8 +169,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         }
     }
     
-
-    
     // Workaround for deleting
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {

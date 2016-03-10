@@ -8,6 +8,7 @@
 
 
 import UIKit
+import CoreData
 
 class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
@@ -22,12 +23,14 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
 
     var medUserList = [MedUser]()
+    var selectedUserObjectID : NSManagedObjectID!
     
     override func viewDidLoad() {
         print("QuickStartUIViewController: viewDidLoad")
         super.viewDidLoad()
         initTitleAndColors()
         medUserList = MedUserManager.fetchMedUsers()
+        addLongPressRecognizer()
     }
     
     func initTitleAndColors() {
@@ -77,5 +80,53 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func addLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "assignUser:")
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    func assignUser(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
+            if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
+                print("long press on: \(indexPath.row)")
+                // add trials to new user
+                medUserList = MedUserManager.fetchMedUsers()
+                let selectedUser = medUserList[indexPath.row]
+                let placeHolderUser = MedUserManager.fetchMedUserById(self.selectedUserObjectID)
+                
+                
+                //let trialList = placeHolderUser.getTrialList()
+                let trialList = MedUserManager.getMedTrialListByObjectId(placeHolderUser.objectID)
+                for trial in trialList {
+                    //selectedUser = MedUserManager.fetchMedUsers()[indexPath.row]
+                    print(trial)
+                    //let createdTrial = MedUserManager.insertMedTrial(trial.duration, fails: trial.fails, hits: trial.hits, timeStamp: trial.timeStamp, isSelectedForStats: trial.isSelectedForStats, creationDate: trial.creationDate, user: selectedUser)
+                    trial.user = nil 
+                    trial.user = selectedUser
+                    //selectedUser.addTrial(trial)
+                }
+                
+                //delete placeholder user
+                MedUserManager.deleteMedUserByObjectId(placeHolderUser.objectID)
+                
+                // switch to results view
+                switchToResultViewController()
+            }
+        }
+    }
+    
+    func switchToResultViewController() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
+        let navController = UINavigationController(rootViewController: nextViewController)
+        nextViewController.resultsVC.lastTrial = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
+        nextViewController.selectedUserObjectID = self.selectedUserObjectID
+        nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
+        nextViewController.statisticsVC.selectedUserObjectID = self.selectedUserObjectID
+        
+        self.presentViewController(navController, animated:true, completion: nil)
     }
 }

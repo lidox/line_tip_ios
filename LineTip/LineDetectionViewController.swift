@@ -120,13 +120,7 @@ class LineDetectionViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("quickstart_controller") as! QuickStartUIViewController
-        
-        //nextViewController.resultsVC.lastTrial = uiView.trial
-        //nextViewController.selectedUserObjectID = self.selectedUserObjectID
-        //nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
-        //nextViewController.statisticsVC.selectedUserObjectID = self.selectedUserObjectID
-        
-        //self.presentViewController(navController, animated:true, completion: nil)
+        nextViewController.selectedUserObjectID = self.selectedUserObjectID
         self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     

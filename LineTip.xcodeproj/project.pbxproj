@@ -281,9 +281,9 @@
 				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
 				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
-				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
 				04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */,
+				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */,
 			);
 			name = controller;

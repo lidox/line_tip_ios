@@ -183,6 +183,55 @@ class MedUserManager {
             fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
         }
     }
+    
+    class func getMedTrialListByObjectId(objectId: NSManagedObjectID) -> [MedTrial]
+    {
+        let context = DataController().managedObjectContext
+        do {
+            
+            let medUser = try context.existingObjectWithID(objectId) as? MedUser
+            //return medUser!.trial!.allObjects as! [MedTrial]
+            
+            let fetchRequest = NSFetchRequest(entityName: "MedTrial")
+            let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+            let predicate = NSPredicate(format: "user == %@", medUser!)
+            
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = predicate
+            
+            let result = try context.executeFetchRequest(fetchRequest)
+            //print(result)
+            
+            return (result as! [MedTrial])
+
+        } catch {
+            fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
+        }
+    }
+    
+    class func insertMedTrial(duration : NSNumber, fails: NSNumber, hits: NSNumber, timeStamp: String, isSelectedForStats: NSNumber, creationDate: NSDate, user: MedUser) -> MedTrial {
+ 
+        let moc = DataController().managedObjectContext
+
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: moc) as! MedTrial
+        
+        entity.setValue(duration, forKey: "duration")
+        entity.setValue(fails, forKey: "fails")
+        entity.setValue(hits, forKey: "hits")
+        entity.setValue(timeStamp, forKey: "timeStamp")
+        entity.setValue(isSelectedForStats, forKey: "isSelectedForStats")
+        entity.setValue(creationDate, forKey: "creationDate")
+        entity.setValue(user, forKey: "user")
+
+        do {
+            try moc.save()
+            return entity
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+    }
+    
 }
 
     

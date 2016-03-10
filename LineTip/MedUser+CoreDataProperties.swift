@@ -24,6 +24,8 @@ extension MedUser {
     
     func getTrialList() -> [MedTrial] {
         var trialList: [MedTrial]
+        //let befriendedByPerson = aPerson.valueForKeyPath("befriendedBy.source")
+        //trialList = self.valueForKeyPath("trial.source") as! [MedTrial]
         trialList = self.trial!.allObjects as! [MedTrial]
         return trialList
     }

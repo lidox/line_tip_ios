@@ -357,7 +357,7 @@ extension String {
                 translation = "Beste Grüße"
             }
             else if key == "Select User" {
-                translation = "Wähle eine Benutzer"
+                translation = "Wähle einen Benutzer"
             }
             else if key == "Quick Start" {
                 translation = "Schnellstart"

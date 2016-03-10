@@ -9,7 +9,7 @@
 
 import UIKit
 
-class QuickStartUIViewController: UIViewController {
+class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
     
     @IBOutlet weak var assignUserLabel: UILabel!
@@ -19,11 +19,15 @@ class QuickStartUIViewController: UIViewController {
     @IBOutlet weak var placeHolderLabel: UILabel!
     @IBOutlet weak var createUserButton: UIButton!
     @IBOutlet weak var startTrialButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+
+    var medUserList = [MedUser]()
     
     override func viewDidLoad() {
         print("QuickStartUIViewController: viewDidLoad")
         super.viewDidLoad()
         initTitleAndColors()
+        medUserList = MedUserManager.fetchMedUsers()
     }
     
     func initTitleAndColors() {
@@ -56,5 +60,22 @@ class QuickStartUIViewController: UIViewController {
     
     @IBAction func onStartTrialButtonClick(sender: AnyObject){
         
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return medUserList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("quickstartCell")!
+        self.medUserList = MedUserManager.fetchMedUsers()
+        cell.textLabel!.text = medUserList[indexPath.row].medId
+        cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
+        cell.textLabel?.textColor = UIColor.myKeyColor()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

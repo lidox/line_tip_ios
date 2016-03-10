@@ -12,6 +12,7 @@
 		0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0418F5CD1C083A4A00B90989 /* Main.storyboard */; };
 		0418F5DF1C083A4A00B90989 /* LineTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5DE1C083A4A00B90989 /* LineTipTests.swift */; };
 		0418F5EA1C083A4A00B90989 /* LineTipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5E91C083A4A00B90989 /* LineTipUITests.swift */; };
+		0422A9991C9191F700CFC0DE /* QuickStartUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
@@ -92,6 +93,7 @@
 		0418F5E51C083A4A00B90989 /* LineTipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LineTipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0418F5E91C083A4A00B90989 /* LineTipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTipUITests.swift; sourceTree = "<group>"; };
 		0418F5EB1C083A4A00B90989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartUIViewController.swift; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
 				048064B81C11FC8200F775CC /* StatisticsViewController.swift */,
 				048064BC1C11FCA100F775CC /* SettingsViewController.swift */,
+				0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */,
 				04F893E01C7DA19600566C3C /* LineChart.swift in Sources */,
 				048064D71C1AE52C00F775CC /* LineGenerator.swift in Sources */,
+				0422A9991C9191F700CFC0DE /* QuickStartUIViewController.swift in Sources */,
 				048064D51C15B7B500F775CC /* LineDetectionViewController.swift in Sources */,
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
 				04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */,

@@ -70,7 +70,7 @@ class LineDetectionViewController: UIViewController {
         }
         
         if isQuickstart {
-            print("quickstart :)")
+            switchToQuickStartViewController()
         }
         else {
             switchToResultViewController()
@@ -114,6 +114,20 @@ class LineDetectionViewController: UIViewController {
         
         self.presentViewController(navController, animated:true, completion: nil)
         //self.presentViewController(nextViewController, animated:true, completion:nil)
+    }
+    
+    func switchToQuickStartViewController() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("quickstart_controller") as! QuickStartUIViewController
+        
+        //nextViewController.resultsVC.lastTrial = uiView.trial
+        //nextViewController.selectedUserObjectID = self.selectedUserObjectID
+        //nextViewController.resultsVC.selectedUserObjectID = self.selectedUserObjectID
+        //nextViewController.statisticsVC.selectedUserObjectID = self.selectedUserObjectID
+        
+        //self.presentViewController(navController, animated:true, completion: nil)
+        self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
     func addHitListener() {

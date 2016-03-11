@@ -43,7 +43,6 @@
 		04F893EC1C83183300566C3C /* MedTrial+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */; };
 		04F893ED1C83183300566C3C /* MedTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EB1C83183300566C3C /* MedTrial.swift */; };
 		04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F893EE1C83208800566C3C /* MedUserManager.swift */; };
-		04F893FE1C87184500566C3C /* new-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F893FD1C87184500566C3C /* new-icon.png */; };
 		04F894021C873CDC00566C3C /* ClickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F894011C873CDC00566C3C /* ClickSound.swift */; };
 		04F894051C873E6600566C3C /* good.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04F894041C873E6600566C3C /* good.wav */; };
 		04F894071C873E7900566C3C /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04F894061C873E7900566C3C /* wrong.wav */; };
@@ -124,7 +123,6 @@
 		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedTrial+CoreDataProperties.swift"; path = "LineTip/MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
-		04F893FD1C87184500566C3C /* new-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-icon.png"; sourceTree = "<group>"; };
 		04F894011C873CDC00566C3C /* ClickSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickSound.swift; sourceTree = "<group>"; };
 		04F894041C873E6600566C3C /* good.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good.wav; sourceTree = "<group>"; };
 		04F894061C873E7900566C3C /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */,
 				047941791C0C5F880093EDD6 /* model */,
-				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
 				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
 				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
 				04F893E81C7DA6DB00566C3C /* DataController.swift */,
@@ -250,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				04F894101C8D5AEB00566C3C /* icon */,
-				04F893FD1C87184500566C3C /* new-icon.png */,
 				04F8941D1C8DD80800566C3C /* splash-overlay.png */,
 				048E19471C721BCB00035760 /* trans.png */,
 				048064D21C15B76B00F775CC /* ball.png */,
@@ -271,6 +267,7 @@
 				047941751C0C59CA0093EDD6 /* User.swift */,
 				047941771C0C5A300093EDD6 /* Trial.swift */,
 				04F893EE1C83208800566C3C /* MedUserManager.swift */,
+				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				04F894271C8EAE0700566C3C /* icon-80.png in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,
 				04F8941C1C8D5B3700566C3C /* icon-1024.png in Resources */,
-				04F893FE1C87184500566C3C /* new-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

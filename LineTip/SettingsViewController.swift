@@ -131,6 +131,7 @@ class SettingsViewController: UIViewController {
         
         lineGenerationPicker.backgroundColor = UIColor.whiteColor()
         lineGenerationPicker.tintColor = UIColor.myKeyColor()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func setStepperColor(stepper: UIStepper) {

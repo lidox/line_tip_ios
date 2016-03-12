@@ -36,9 +36,11 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         initConfiguration()
         initTexts()
-        initLineTimerSegment()
+        initSegments()
         initColors()
     }
+    
+    
     
     @IBAction func onLineTimerSegment(sender: AnyObject) {
         if(lineTimerSegment.selectedSegmentIndex == 0)
@@ -51,7 +53,18 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func initLineTimerSegment() {
+    @IBAction func onTranslationSegment(sender: AnyObject) {
+        if(lineTimerSegment.selectedSegmentIndex == 0)
+        {
+            Utils.setSettingsData(ConfigKey.TRANSLATION, value: "DE")
+        }
+        else if(lineTimerSegment.selectedSegmentIndex == 1)
+        {
+            Utils.setSettingsData(ConfigKey.TRANSLATION, value: "ENG")
+        }
+    }
+    
+    func initSegments() {
         self.lineTimerSegment.setTitle("Line Timer Off".translate(), forSegmentAtIndex:0)
         self.lineTimerSegment.setTitle("Draw every 5 s".translate(), forSegmentAtIndex:1)
         let isLineDelayActivated = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
@@ -62,10 +75,27 @@ class SettingsViewController: UIViewController {
             lineTimerSegment.selectedSegmentIndex = 0
         }
         
+        /*
+        self.translationSegment.setTitle("Line Timer Off".translate(), forSegmentAtIndex:0)
+        self.translationSegment.setTitle("Draw every 5 s".translate(), forSegmentAtIndex:1)
+        let language = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
+        if language == "ENG" {
+            translationSegment.selectedSegmentIndex = 1
+        }
+        else {
+            translationSegment.selectedSegmentIndex = 0
+        }
+        */
         // Style the Segmented Control
-        lineTimerSegment.layer.cornerRadius = 5.0
-        lineTimerSegment.backgroundColor = UIColor.whiteColor()
-        lineTimerSegment.tintColor = UIColor.myKeyColor()
+        setSegmentColors(lineTimerSegment)
+        //setSegmentColors(translationSegment)
+    }
+    
+    func setSegmentColors(segment: UISegmentedControl){
+        // Style the Segmented Control
+        segment.layer.cornerRadius = 5.0
+        segment.backgroundColor = UIColor.whiteColor()
+        segment.tintColor = UIColor.myKeyColor()
     }
     
     func initTexts() {

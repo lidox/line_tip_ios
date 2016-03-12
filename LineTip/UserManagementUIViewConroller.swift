@@ -44,13 +44,16 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         initEmptyView()
     }
     
+    func goBack(){
+        self.navigationController!.popViewControllerAnimated(true)
+    }
     
     @IBAction func onSettingsClick(sender: AnyObject) {
         let nextViewController:SettingsViewController = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
-        let navController = UINavigationController(rootViewController: nextViewController)
-        self.presentViewController(navController, animated:true, completion: nil)
-        
-        //self.presentViewController(nextViewController, animated: true, completion: nil)
+        let button = UIBarButtonItem(title: "Back".translate(), style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
+        nextViewController.navigationItem.leftBarButtonItem = button
+        nextViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.myKeyColor()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     @IBAction func onAddUserBarItemClick(sender: AnyObject) {

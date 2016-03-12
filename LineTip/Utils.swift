@@ -374,6 +374,9 @@ extension String {
             else if key == "Please create a new user to assign the trial(s)." {
                 translation = "Bitte erstellen sie einen neuen Benutzer."
             }
+            else if key == "Back" {
+                translation = "Zurück"
+            }
             /*
 
             */

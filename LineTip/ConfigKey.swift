@@ -23,5 +23,6 @@ enum ConfigKey {
     static let SOUND_MISS = "SOUND_MISS"
     static let SOUND_HIT = "SOUND_HIT"
     
+    static let TRANSLATION = "TRANSLATION"
     
 }

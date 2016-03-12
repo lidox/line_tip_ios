@@ -85,6 +85,7 @@ class Utils {
         settingsList.append(ConfigKey.LINE_BROADNESS)
         settingsList.append(ConfigKey.LINE_RANDOM_GENERATION)
         settingsList.append(ConfigKey.LINE_TIMER_ACTIVATED)
+        settingsList.append(ConfigKey.TRANSLATION)
         
         for (index, item) in settingsList.enumerate() {
             //print("Item \(index): \(item)")
@@ -100,7 +101,7 @@ class Utils {
                     Utils.setSettingsData(ConfigKey.LINE_RANDOM_GENERATION, value: false)
                 }
                 else if(item == ConfigKey.LINE_TIMER_ACTIVATED){
-                    Utils.setSettingsData(ConfigKey.LINE_TIMER_ACTIVATED, value: false)
+                    Utils.setSettingsData(ConfigKey.LINE_TIMER_ACTIVATED, value: true)
                 }
                 else if(item == ConfigKey.LINE_REDRAW_DELAY){
                     Utils.setSettingsData(ConfigKey.LINE_REDRAW_DELAY, value: 5.0)
@@ -116,6 +117,9 @@ class Utils {
                 }
                 else if(item == ConfigKey.LINE_BROADNESS){
                     Utils.setSettingsData(ConfigKey.LINE_BROADNESS, value: 5.0)
+                }
+                else if(item == ConfigKey.TRANSLATION){
+                    Utils.setSettingsData(ConfigKey.TRANSLATION, value: "DE")
                 }
             }
             else{
@@ -251,7 +255,7 @@ extension NSObject {
 extension String {
     func translate() -> String {
         
-        let translation = myTranslation(self, language: "de")
+        let translation = myTranslation(self, language: "DE")
         
         return translation
     }
@@ -262,7 +266,7 @@ extension String {
     
     func myTranslation(key: String, language: String) -> String {
         var translation = ""
-        if(language == "de") {
+        if(language == "DE") {
             if key == "trials" {
                 translation = "Versuche"
             }
@@ -382,7 +386,7 @@ extension String {
             */
         }
         
-        if(translation != "" ) {
+        if(translation == "EN" ) {
             return translation
         }
         return key

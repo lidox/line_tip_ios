@@ -381,8 +381,10 @@ extension String {
             else if key == "Back" {
                 translation = "Zurück"
             }
+            else if key == "no trial yet" {
+                translation = "bisher keine Versuche"
+            }
             /*
-
             */
         }
         

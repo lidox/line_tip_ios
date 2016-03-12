@@ -34,7 +34,7 @@ class ResultsViewController: UIViewController {
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
-        timeStampLabel.text = "noch kein Versuch durchgeführt"
+        timeStampLabel.text = "no trial yet".translate()
         hitLabel.text = "0"
         missLabel.text = "0"
         durationLabel.text = "-"

@@ -384,7 +384,11 @@ extension String {
             else if key == "no trial yet" {
                 translation = "bisher keine Versuche"
             }
+            else if key == "Delete selected trial" {
+                translation = "Ausgewählten Versuch löschen"
+            }
             /*
+
             */
         }
         

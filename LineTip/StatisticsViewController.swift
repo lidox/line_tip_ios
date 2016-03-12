@@ -75,8 +75,10 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:first))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:first,length:second))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:third,length:myMutableString.length-third))
-        label.attributedText = myMutableString
-
+        //label.attributedText = myMutableString
+        
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: Int(x), inSection: 0);  //slecting 0th row with 0th section
+        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None);
     }
     
     /**
@@ -93,16 +95,33 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "groupcell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "groupcell")
         
         // set style and color
         cell.tintColor = UIColor.myKeyColor()
         cell.accessoryType = .Checkmark
-        cell.textLabel?.textColor = UIColor.myKeyColor()
+        //cell.textLabel?.textColor = UIColor.myKeyColor()
+        
+        let duration = ("duration".translate() + ": "+trialList[indexPath.row].duration.getStringAsHoursMinutesSeconds())
+        let hits = "hits".translate() + ": \(trialList[indexPath.row].hits)"
+        let fails = "misses".translate() + ": \(trialList[indexPath.row].fails)"
+        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails)"
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: myString as String, attributes: nil)
+        
+        let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
+        let sTimestamp = trialList[indexPath.row].timeStamp.characters.count
+        let sDuration = duration.characters.count
+        let sHits = hits.characters.count
+        let sMiss = fails.characters.count
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:sTimestamp + sDuration + 3))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:sTimestamp + sDuration + 6,length:sHits))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:sTimestamp + sDuration + sHits + 9,length:sMiss))
+        
         
         // set cell text
-        cell.textLabel!.text = "(\(indexPath.row+1)): \(trialList[indexPath.row].timeStamp), \("duration".translate()) : \(trialList[indexPath.row].duration)"
-        cell.detailTextLabel!.text = "\("hits".translate()): \(trialList[indexPath.row].hits), \("misses".translate()) : \(trialList[indexPath.row].fails)"
+        cell.textLabel!.attributedText = myMutableString
+        //cell.detailTextLabel!.text = "\("hits".translate()): \("misses".translate())
         
         return cell
     }
@@ -163,7 +182,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     
     func fillGraphByData() {
         for (index, _) in trialList.enumerate() {
-            timeStampLabels.append("\(index+1).\("trial".translate())")
+            timeStampLabels.append("\(index+1).")
             hitValues.append(CGFloat(trialList[index].hits))
             failValue.append(CGFloat(trialList[index].fails))
         }

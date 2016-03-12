@@ -24,6 +24,7 @@
                 <outlet property="spotHeightStepper" destination="cFQ-2E-lVR" id="4hL-yl-Tfu"/>
                 <outlet property="spotWidthLabel" destination="lrh-R0-g0y" id="j9t-Hg-ArC"/>
                 <outlet property="spotWidthStepper" destination="zgD-Ug-FrP" id="Acg-64-Iyb"/>
+                <outlet property="translationSegment" destination="DbE-7J-hDx" id="QGy-Oa-iGi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -145,12 +146,16 @@
                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXe-bf-epN">
-                    <rect key="frame" x="275" y="582" width="320" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="hUl-yz-c4f"/>
-                    </constraints>
-                </pickerView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DbE-7J-hDx">
+                    <rect key="frame" x="474" y="582" width="121" height="29"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                    </segments>
+                    <connections>
+                        <action selector="onTranslationSegment:" destination="-1" eventType="valueChanged" id="2PM-T5-fcb"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstItem="lrh-R0-g0y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="16A-Jt-WlT"/>
@@ -163,13 +168,13 @@
                 <constraint firstItem="cim-HM-K01" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Dey-7f-jIb"/>
                 <constraint firstAttribute="trailing" secondItem="cFQ-2E-lVR" secondAttribute="trailing" constant="5" id="Fyq-aY-DTz"/>
                 <constraint firstItem="Wpr-3K-puf" firstAttribute="top" secondItem="lrh-R0-g0y" secondAttribute="bottom" constant="15" id="G3T-UC-URm"/>
-                <constraint firstAttribute="trailing" secondItem="TXe-bf-epN" secondAttribute="trailing" constant="5" id="H3H-ib-KIa"/>
                 <constraint firstAttribute="trailing" secondItem="ff6-rp-MVg" secondAttribute="trailing" constant="27" id="HOc-qa-Mwi"/>
+                <constraint firstAttribute="trailing" secondItem="DbE-7J-hDx" secondAttribute="trailing" constant="5" id="ILG-e5-p5O"/>
                 <constraint firstItem="jCw-NJ-LqM" firstAttribute="top" secondItem="os2-Z1-4hv" secondAttribute="bottom" constant="12" id="JDF-hl-pau"/>
                 <constraint firstItem="ff3-Ah-5dx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="Kdw-L7-4dy"/>
-                <constraint firstItem="TXe-bf-epN" firstAttribute="top" secondItem="ijk-zQ-WGF" secondAttribute="bottom" constant="8" id="LWL-vJ-CLp"/>
                 <constraint firstItem="mQt-8c-uIb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="M6d-IZ-noZ"/>
                 <constraint firstAttribute="trailing" secondItem="ijk-zQ-WGF" secondAttribute="trailing" constant="5" id="QeL-f3-uWR"/>
+                <constraint firstItem="DbE-7J-hDx" firstAttribute="top" secondItem="ijk-zQ-WGF" secondAttribute="bottom" constant="8" id="Qq8-1g-nwa"/>
                 <constraint firstItem="ijk-zQ-WGF" firstAttribute="top" secondItem="Euj-Vx-ds2" secondAttribute="bottom" constant="8" id="RqC-QL-qYh"/>
                 <constraint firstItem="3jZ-qd-gha" firstAttribute="top" secondItem="mQt-8c-uIb" secondAttribute="bottom" constant="15" id="Uv1-yr-70q"/>
                 <constraint firstItem="Yn8-fD-TIu" firstAttribute="top" secondItem="jCw-NJ-LqM" secondAttribute="bottom" constant="12" id="VD7-eC-pXu"/>

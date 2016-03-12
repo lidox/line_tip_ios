@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController {
     
     
     @IBOutlet weak var lineTimerSegment: UISegmentedControl!
+    @IBOutlet weak var translationSegment: UISegmentedControl!
 
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var previewLabel: UILabel!
@@ -54,14 +55,15 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTranslationSegment(sender: AnyObject) {
-        if(lineTimerSegment.selectedSegmentIndex == 0)
+        if(translationSegment.selectedSegmentIndex == 0)
         {
             Utils.setSettingsData(ConfigKey.TRANSLATION, value: "DE")
         }
-        else if(lineTimerSegment.selectedSegmentIndex == 1)
+        else if(translationSegment.selectedSegmentIndex == 1)
         {
             Utils.setSettingsData(ConfigKey.TRANSLATION, value: "ENG")
         }
+        self.view.setNeedsDisplay()
     }
     
     func initSegments() {
@@ -75,20 +77,20 @@ class SettingsViewController: UIViewController {
             lineTimerSegment.selectedSegmentIndex = 0
         }
         
-        /*
-        self.translationSegment.setTitle("Line Timer Off".translate(), forSegmentAtIndex:0)
-        self.translationSegment.setTitle("Draw every 5 s".translate(), forSegmentAtIndex:1)
-        let language = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
+        
+        self.translationSegment.setTitle("DE", forSegmentAtIndex:0)
+        self.translationSegment.setTitle("ENG", forSegmentAtIndex:1)
+        let language = Utils.getSettingsData(ConfigKey.TRANSLATION) as! String
         if language == "ENG" {
             translationSegment.selectedSegmentIndex = 1
         }
         else {
             translationSegment.selectedSegmentIndex = 0
         }
-        */
+        
         // Style the Segmented Control
         setSegmentColors(lineTimerSegment)
-        //setSegmentColors(translationSegment)
+        setSegmentColors(translationSegment)
     }
     
     func setSegmentColors(segment: UISegmentedControl){

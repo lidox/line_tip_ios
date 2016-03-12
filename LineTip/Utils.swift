@@ -254,8 +254,8 @@ extension NSObject {
 
 extension String {
     func translate() -> String {
-        
-        let translation = myTranslation(self, language: "DE")
+        let language = Utils.getSettingsData(ConfigKey.TRANSLATION) as! String
+        let translation = myTranslation(self, language: language)
         
         return translation
     }
@@ -265,7 +265,7 @@ extension String {
     }
     
     func myTranslation(key: String, language: String) -> String {
-        var translation = ""
+        var translation = key
         if(language == "DE") {
             if key == "trials" {
                 translation = "Versuche"
@@ -387,8 +387,8 @@ extension String {
         }
         
         if(translation == "EN" ) {
-            return translation
+            return key
         }
-        return key
+        return translation
     }
 }

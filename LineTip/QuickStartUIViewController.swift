@@ -148,8 +148,12 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     func switchToViewControllerLaunchByIdentifier(currentVC: UIViewController, identifier: String, selectedUserObjectID: NSManagedObjectID){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! UserManagementUIViewConroller
-        currentVC.presentViewController(nextViewController, animated:true, completion:nil)
-    }
+        //currentVC.presentViewController(nextViewController, animated:true, completion:nil)
+ 
+        let navController = UINavigationController(rootViewController: nextViewController)
+
+        
+        currentVC.presentViewController(navController, animated:true, completion: nil)    }
     
     func addUser() {
         let alert = UIAlertController(title: "",

@@ -37,6 +37,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
 
     }
     
+    /// sets key color and texts to ui elements
     func initTitleAndColors() {
         title = viewtitle
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
@@ -44,6 +45,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
     }
     
+    /// creates 3 views to be scrolled
     func initScrollViews() {
         scrollView.delegate = self
         
@@ -82,6 +84,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         scrollPager.addTarget(self, action: Selector("changePage:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    /// set page control to show user which page is activated
     func configurePageControl() {
         self.scrollPager.numberOfPages = 3
         self.scrollPager.currentPage = 0
@@ -90,7 +93,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
     
     }
     
-    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
     func changePage(sender: AnyObject) -> () {
         let x = CGFloat(scrollPager.currentPage) * scrollView.frame.size.width
         scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
@@ -109,6 +111,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         }
     }
     
+    /// add button to navigation for sending emails
     func addEmailNavItem() {
         if deviceCanSendEmails() {
             self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "sentMailButtonClicked:"), animated: true)
@@ -116,6 +119,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         
     }
     
+    /// opens a new email view to sent results of the trial
     @IBAction func sentMailButtonClicked(sender: UIBarButtonItem) {
         let recipient = ["your@mail.com"]
         let userMedId = MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID)
@@ -168,7 +172,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
     }
     
     
-    
     func initMedUserInAllView(objectID: NSManagedObjectID )  {
         let moc = DataController().managedObjectContext
         do {
@@ -177,7 +180,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
             resultsVC.selectedUserObjectID = self.selectedUser?.objectID
             statisticsVC.selectedUserObjectID = self.selectedUser?.objectID
             resultsVC.selectedUser = self.selectedUser
-            //print("fetched user: \(selectedUser!.medId)")
         } catch {
             fatalError("Failed to fetch person: \(error)")
         }

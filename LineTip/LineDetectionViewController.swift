@@ -21,12 +21,9 @@ class LineDetectionViewController: UIViewController {
     override func viewDidLoad() {
         print("LineDetectionViewController: viewDidLoad")
         super.viewDidLoad()
-        
         addHitListener()
-        
         // set orientation
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
-        
         fetchMedUserById(self.selectedUserObjectID)
     }
     
@@ -34,6 +31,7 @@ class LineDetectionViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    /// counts hit, starts or restart timer and plays sound, if user hits the spot
     func onHit(img: AnyObject){
         if(uiView.isTimerActivated!) {
             if(uiView.firstTime) {
@@ -58,6 +56,7 @@ class LineDetectionViewController: UIViewController {
         
     }
     
+    /// finishes the line detection test, stops the timer and switches to new view
     func onFinish(img: AnyObject){
         uiView.trial.stopCountigTime()
         print("Trial finished! hits: \(uiView.trial.hits) misses: \(uiView.trial.fails) duration: \(uiView.trial.duration) s timestamp: \(uiView.trial.timeStamp)")
@@ -78,6 +77,8 @@ class LineDetectionViewController: UIViewController {
         }
         
     }
+    
+    /// adds the trial to the selected user and saves in database
     func addTrialToUser(givenTrial: Trial) {
         let context = DataController().managedObjectContext
         
@@ -100,6 +101,7 @@ class LineDetectionViewController: UIViewController {
         }
     }
     
+    /// switches the view controller and sets some paramaters
     func switchToResultViewController() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -113,6 +115,7 @@ class LineDetectionViewController: UIViewController {
         self.presentViewController(navController, animated:true, completion: nil)
     }
     
+    /// switches the view controller and sets some paramaters
     func switchToQuickStartViewController() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -121,6 +124,7 @@ class LineDetectionViewController: UIViewController {
         self.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
+    /// adds a hit listener to spot and the background in order to recognize users touches
     func addHitListener() {
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
         uiView.spotImage.userInteractionEnabled = true
@@ -135,6 +139,7 @@ class LineDetectionViewController: UIViewController {
         finishImg.addGestureRecognizer(finishTrialGestureRecognizer)
     }
     
+    /// reads a meduser by object id
     func fetchMedUserById(objectID: NSManagedObjectID )  {
         let moc = DataController().managedObjectContext
         do {
@@ -147,9 +152,11 @@ class LineDetectionViewController: UIViewController {
         }
     }
     
+    /// handles the device orientation
     override internal func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return [.Landscape]
     }
+    
     internal override func shouldAutorotate() -> Bool {
         return false
     }

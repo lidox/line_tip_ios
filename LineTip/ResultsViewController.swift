@@ -9,10 +9,9 @@
 import UIKit
 import CoreData
 
+/// shows the results of the last trial
 class ResultsViewController: UIViewController {
     
-
-    //labels
     @IBOutlet weak var timeStampTextLabel: UILabel!
     @IBOutlet weak var hitTextLabel: UILabel!
     @IBOutlet weak var missTextLabel: UILabel!
@@ -31,26 +30,14 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let value = UIInterfaceOrientation.Portrait.rawValue
-        UIDevice.currentDevice().setValue(value, forKey: "orientation")
-        
-        timeStampLabel.text = "no trial yet".translate()
-        hitLabel.text = "0"
-        missLabel.text = "0"
-        durationLabel.text = "-"
-        
-        let lastTrial2 = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
-        if(lastTrial2.hits != -1){
-            timeStampLabel.text = "\(lastTrial2.timeStamp)"
-            hitLabel.text = "\(lastTrial2.hits)"
-            missLabel.text = "\(lastTrial2.fails)"
-            durationLabel.text = "\(lastTrial2.duration.getStringAsHoursMinutesSeconds())"
-        }
-        
+        initDeviceOrientation()
         initColors()
         initTexts()
     }
  
+    func initDeviceOrientation(){
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")    }
     
     func initColors() {
         timeStampLabel.textColor = UIColor.myKeyColor()
@@ -67,6 +54,17 @@ class ResultsViewController: UIViewController {
     }
     
     func initTexts() {
+        timeStampLabel.text = "no trial yet".translate()
+        hitLabel.text = "0"
+        missLabel.text = "0"
+        durationLabel.text = "-"
+        let lastTrial2 = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
+        if(lastTrial2.hits != -1){
+            timeStampLabel.text = "\(lastTrial2.timeStamp)"
+            hitLabel.text = "\(lastTrial2.hits)"
+            missLabel.text = "\(lastTrial2.fails)"
+            durationLabel.text = "\(lastTrial2.duration.getStringAsHoursMinutesSeconds())"
+        }
         startButton.setTitle("\("NEW TRIAL".translate())", forState: UIControlState.Normal)
         titleLabel.text = "\("result view".translate())"
         timeStampTextLabel.text = "\("timestamp".translate())"
@@ -78,20 +76,16 @@ class ResultsViewController: UIViewController {
     
     
     @IBAction func onStartLineDetection(sender: AnyObject) {
-        //print("start line detection with user: \(self.selectedUser.medId)")
-        
         switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
-        print("results segue: \(self.selectedUserObjectID)")
         nextViewController.selectedUserObjectID = self.selectedUserObjectID
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }

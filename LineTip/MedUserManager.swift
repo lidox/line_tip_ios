@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// This class accesses the data base via core data to create, delete and update users and its trials
 class MedUserManager {
     
     var myMoc : NSManagedObjectContext!

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// prototype for different line detection modi (random, leftrigth etc.)
 protocol LineGenerator {
     func getLines() -> Array<Line>
 }

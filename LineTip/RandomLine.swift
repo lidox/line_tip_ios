@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// this class creates random lines for random mode
 class RandomLine: LineGenerator {
     
     var middleFieldX: Int
@@ -24,10 +25,12 @@ class RandomLine: LineGenerator {
         self.viewHeight = Int(screenSize.width) - edgeTolerance
     }
     
+    /// generate 20 lines
     func getLines() -> Array<Line> {
         return getLinesByAmount(20)
     }
     
+    /// random lines are generated randomly in the whole field (device screen)
     func getLinesByAmount(amount: Int) -> Array<Line> {
         var lines = [Line]()
         

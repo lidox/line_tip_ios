@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// this class class contains some lines to test
 class PreGeneratedLine: LineGenerator {
     
     func getLines() -> Array<Line> {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 class User: NSObject {
     
     let medId : String
@@ -16,3 +17,4 @@ class User: NSObject {
         self.medId = medId
     }
 }
+*/

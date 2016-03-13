@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// the line which is displayed on line detection test
 class Line: NSObject {
     var x1 : Int = 0
     var y1 : Int = 0
@@ -29,7 +30,6 @@ class Line: NSObject {
         let numerator = (x2-x1) * (x2-x1)
         let denominator = (y2-y1) * (y2-y1)
         let result = sqrt(numerator + denominator)
-        //print("lenght: \(result)")
         return result;
     }
     

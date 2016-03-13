@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// generates a list of lines switching from left to rigth
 class LeftRightLine: LineGenerator {
     
     var leftFieldX1: Int
@@ -36,6 +37,7 @@ class LeftRightLine: LineGenerator {
         return getLinesByAmount(20)
     }
     
+    /// devides device screen into 5 parts and creates lines from left to rigth
     func getLinesByAmount(amount: Int) -> Array<Line> {
         var lines = [Line]()
         
@@ -51,10 +53,6 @@ class LeftRightLine: LineGenerator {
                 x2 = Random.within(self.leftFieldX2...self.middleFieldX)
             }
             y1 = Random.within(self.edgeTolerance...(self.viewHeight-self.edgeTolerance))
-            
-            //print("viewWidt:\(viewWidth) and viewHeight:\(viewHeight)")
-            //print("blocks left: \(leftFieldX) , middle: \(middleFieldX), right: \(rightFieldX)")
-            //print("generated: \(x1) to \(x2)")
             let line = Line(x1: x1, y1: y1, x2: x2, y2: y1)
             lines.append(line)
             

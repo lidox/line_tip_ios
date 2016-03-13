@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Represents a trial of the line detection test
 class Trial: NSObject {
 
     var hits : Int = 0
@@ -25,7 +26,7 @@ class Trial: NSObject {
         self.timeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
     }
     
-    
+    /// counts trial time
     func startCountingTime() {
         if(!self.hasStarted()){
             print("Trial: startCountingTime: counting started")
@@ -36,6 +37,7 @@ class Trial: NSObject {
         }
     }
     
+    /// stop counting trial time
     func stopCountigTime() -> Double {
         var duration = -1.0
         if((self.startTime) != nil){
@@ -67,7 +69,7 @@ class Trial: NSObject {
         return ret
     }
     
-    //bullshit methods
+    /*
     var count = 0
     func updateTime() {
         count++
@@ -103,6 +105,7 @@ class Trial: NSObject {
             return "\(strMinutes):\(strSeconds)"
         }
     }
+    */
     
     func toString() -> String {
         let ret =  "\("timestamp".translate()): " + "\(self.timeStamp)" + "\r\n" + "\("hits".translate()): " + "\(self.hits)" + "\r\n" + "\("misses".translate()): " + "\(self.fails)" + "\r\n" + "\("duration".translate()): " + "\(self.duration.getStringAsHoursMinutesSeconds())" + "\r\n"

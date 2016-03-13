@@ -150,7 +150,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     }
     
     /// creates a user if validation is ok
-    func createUser(newUserName: String) -> NSManagedObjectID {
+    func createUser(newUserName: String) -> NSManagedObjectID? {
         var retObjectId : NSManagedObjectID!
         //if not contains
         var containsName = false
@@ -204,7 +204,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! LineDetectionViewController
         
         let selectedUserObjectID = createUser("Quick Start".translate() + "\(NSDate())")
-        let user = MedUserManager.fetchMedUserById(selectedUserObjectID)
+        let user = MedUserManager.fetchMedUserById(selectedUserObjectID!)
         
         nextViewController.medUser = user
         nextViewController.selectedUserObjectID = selectedUserObjectID

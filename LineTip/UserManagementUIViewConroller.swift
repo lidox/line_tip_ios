@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// App starts here.
 class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var welcomeUIView: UIView!
@@ -29,7 +30,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         let value = UIInterfaceOrientation.Portrait.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
-        
+    
         //Disable autolayout constraint error messages in debug console output in Xcode
         NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
@@ -38,39 +39,18 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         
         initTitleAndColors()
         
-        
         medUserList = MedUserManager.fetchMedUsers()
         
         initEmptyView()
     }
     
-    func goBack(){
-        self.navigationController!.popViewControllerAnimated(true)
-    }
-    
-    @IBAction func onSettingsClick(sender: AnyObject) {
-        let nextViewController:SettingsViewController = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
-        let button = UIBarButtonItem(title: "Back".translate(), style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
-        nextViewController.navigationItem.leftBarButtonItem = button
-        nextViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.myKeyColor()
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-    }
-    
-    @IBAction func onAddUserBarItemClick(sender: AnyObject) {
-        addUser()
-    }
-    
-    @IBAction func onAddUserButtonClick(sender: AnyObject) {
-        addUser()
-    }
-    
+    /// sets ui elements by key color and texts by selected language
     func initTitleAndColors() {
         welcomeUIView.backgroundColor = UIColor.myKeyColor()
         navigation.title = "LineTip".translate()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myKeyColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         self.navigationController?.navigationBar.tintColor = UIColor.myKeyColor()
-        
         settingsNavItem.title = "Settings".translate()
         changeButtonColorAndStyle(startButton)
         startButton.setTitle(" " + "Quick Start".translate() + " ", forState: UIControlState.Normal)
@@ -80,11 +60,11 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         greetUserLabel.text = ""
         selectUserLabel.text = "Select User".translate()
         selectUserLabel.textColor = UIColor.myKeyColor()
-        
         startButton.layer.borderColor = UIColor.whiteColor().CGColor
         startButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
+    /// sets style and color of an button
     func changeButtonColorAndStyle(button: UIButton) {
         button.setTitleColor(UIColor.myKeyColor(), forState: UIControlState.Normal)
         button.backgroundColor = UIColor.clearColor()
@@ -93,30 +73,18 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         button.layer.borderColor = UIColor.myKeyColor().CGColor
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return medUserList.count
     }
     
+    /// this table contains all med user stored in database
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         self.medUserList = MedUserManager.fetchMedUsers()
         cell.textLabel!.text = medUserList[indexPath.row].medId
         cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
         cell.textLabel?.textColor = UIColor.myKeyColor()
-        
-        /*
-        //Change cell's tint color
-        cell.tintColor = UIColor.myKeyColor()
-        //Set UITableViewCellAccessoryType.Checkmark here if necessary
-        cell.accessoryType = .Checkmark
-        */
-        
-        /*
-        let chevron = UIImage(named: "chevron.png")
-        cell.accessoryType = .DisclosureIndicator
-        cell.accessoryView = UIImageView(image: chevron!)
-        */
-        
         return cell
     }
     
@@ -133,6 +101,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         return "\("Delete".translate())"
     }
     
+    /// deletes a user and all of its trials in database and reloads table
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete) {
             MedUserManager.deleteMedUserByObjectId(medUserList.removeAtIndex(indexPath.row).objectID)
@@ -142,6 +111,8 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     }
     // -- ENDING: REMOVE FUNCTION --
     
+    
+    /// adds a new user to database by name
     func addUser() {
         let alert = UIAlertController(title: "",
             message: "\("Create user".translate())",
@@ -178,6 +149,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
             completion: nil)
     }
     
+    /// creates a user if validation is ok
     func createUser(newUserName: String) -> NSManagedObjectID {
         var retObjectId : NSManagedObjectID!
         //if not contains
@@ -208,34 +180,21 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         return retObjectId
     }
     
+    /// changes view if a user has been seleced
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toMainSegue" {
             if let destination = segue.destinationViewController as? MainViewController {
                 if let index = tableView.indexPathForSelectedRow?.row {
                     medUserList = MedUserManager.fetchMedUsers()
                     let selectedUser = medUserList[index]
-                    //print("\(selectedUser.medId) segue")
                     destination.selectedUser = selectedUser
                     destination.selectedUserObjectID = selectedUser.objectID
                 }
             }
         }
-        /*
-        if segue.identifier == "quickstart" {
-            if let destination = segue.destinationViewController as? LineDetectionViewController {
-                let selectedUserObjectID = createUser("Quick Start".translate() + "\(NSDate())")
-                let user = MedUserManager.fetchMedUserById(selectedUserObjectID)
-                
-                //var selectedUserObjectID : NSManagedObjectID!
-                destination.medUser = user
-                destination.selectedUserObjectID = selectedUserObjectID
-                destination.isQuickstart = true
-            }
-        }
-        */
     }
     
-    
+    /// starts a line detection test as quickstart mode (no user selected)
     @IBAction func onQuickStartButton(sender: AnyObject) {
         switchToViewControllerByIdentifier(self, identifier: "line_detection_canvas")
     }
@@ -254,7 +213,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         currentVC.presentViewController(nextViewController, animated:true, completion:nil)
     }
     
-    
+    /// shows user if exists as tableview, else show create user button
     func initEmptyView() {
         if(medUserList.count == 0) {
             print("there is no user to display, so show 'create button'")
@@ -270,6 +229,28 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         self.tableView.setNeedsDisplay()
     }
     
+    /// switch to user management again if user user clicked on settings before
+    func goBack(){
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+    /// adds settings navigation item
+    @IBAction func onSettingsClick(sender: AnyObject) {
+        let nextViewController:SettingsViewController = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
+        let button = UIBarButtonItem(title: "Back".translate(), style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
+        nextViewController.navigationItem.leftBarButtonItem = button
+        nextViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.myKeyColor()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    @IBAction func onAddUserBarItemClick(sender: AnyObject) {
+        addUser()
+    }
+    
+    @IBAction func onAddUserButtonClick(sender: AnyObject) {
+        addUser()
+    }
+    
     
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
@@ -283,7 +264,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     }
 }
 
-
+/// tricky orientation fix. set orientation to portrait only
 extension UINavigationController {
     
     public override func shouldAutorotate() -> Bool {
@@ -295,6 +276,7 @@ extension UINavigationController {
     }
 }
 
+/// fix bug for orientation of the create user alert
 extension UIAlertController {
     
     override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

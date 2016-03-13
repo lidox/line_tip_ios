@@ -10,8 +10,8 @@
 import UIKit
 import CoreData
 
+/// quickstart of line detection test in case the doctor has no time to create a user first
 class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
-
     
     @IBOutlet weak var assignUserLabel: UILabel!
     @IBOutlet weak var assignUserSubtitleLabel: UILabel!
@@ -32,12 +32,14 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         initTitleAndColors()
         medUserList = userManager.fetchMedUsers()
   
+        // remove placeholder user from list
         for (index, item) in medUserList.enumerate() {
             let currentUserEqualsSelectedUser = item.medId == userManager.fetchMedUserById(self.selectedUserObjectID).medId
             if  currentUserEqualsSelectedUser {
                 medUserList.removeAtIndex(index)
             }
         }
+        
         addLongPressRecognizer()
         initEmptyView()
     }
@@ -80,7 +82,6 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("quickstartCell")!
-        //self.medUserList = userManager.fetchMedUsers()
         if (medUserList[indexPath.row].trial != nil) {
             cell.textLabel!.text = medUserList[indexPath.row].medId
             cell.detailTextLabel!.text = "\(medUserList[indexPath.row].trial!.count) \("trials".translate())"
@@ -98,18 +99,15 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         self.view.addGestureRecognizer(longPressRecognizer)
     }
     
+    /// assign the trials to an existing user and delete the placeholder user
     func assignUser(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
             if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
                 print("long press on: \(indexPath.row)")
-                // add trials to new user
-                //medUserList = userManager.fetchMedUsers()
                 let selectedUser = medUserList[indexPath.row]
                 let placeHolderUser = userManager.fetchMedUserById(self.selectedUserObjectID)
                 
-                
-                //let trialList = placeHolderUser.getTrialList()
                 let trialList = userManager.getMedTrialListByObjectId(placeHolderUser.objectID)
                 for trial in trialList {
                     trial.user = selectedUser
@@ -117,9 +115,7 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
                 
                 //delete placeholder user
                 userManager.deleteMedUserByObjectId(placeHolderUser.objectID)
-                
                 self.selectedUserObjectID = selectedUser.objectID
-                // switch to results view
                 switchToResultViewController()
             }
         }
@@ -148,13 +144,11 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
     func switchToViewControllerLaunchByIdentifier(currentVC: UIViewController, identifier: String, selectedUserObjectID: NSManagedObjectID){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as! UserManagementUIViewConroller
-        //currentVC.presentViewController(nextViewController, animated:true, completion:nil)
- 
         let navController = UINavigationController(rootViewController: nextViewController)
-
-        
-        currentVC.presentViewController(navController, animated:true, completion: nil)    }
+        currentVC.presentViewController(navController, animated:true, completion: nil)
+    }
     
+    /// adds a new user just by changing the name of placeholder user
     func addUser() {
         let alert = UIAlertController(title: "",
             message: "\("Create user".translate())",
@@ -174,7 +168,6 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
                 // rename user
                 self.userManager.renameMedUserByObjectId(self.selectedUserObjectID, newName: textField!.text!)
                 self.switchToViewControllerLaunchByIdentifier(self, identifier: "launcher", selectedUserObjectID: self.selectedUserObjectID)
-                //self.medUserList = MedUserManager.fetchMedUsers()
         })
         
         let cancelAction = UIAlertAction(title: "\("Cancel".translate())",

@@ -10,17 +10,19 @@ import UIKit
 import QuartzCore
 import CoreData
 
+/// shows up statistics (all trials of selected user) via chart and table view
 class StatisticsViewController: UIViewController, LineChartDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var lineChart: LineChart!
-    
+
     var selectedUserObjectID : NSManagedObjectID!
     var trialList: [Trial]!
     var views: [String: AnyObject]!
     
+    // charts axis content
     var hitValues: [CGFloat] = []
     var failValue: [CGFloat] = []
     var timeStampLabels: [String] = []
@@ -48,14 +50,12 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    /**
-     * Line chart delegate method.
-     */
+    /// Line chart delegate method to highlight cell if chart has been touched
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         
+        /*
         // set multiple color in a textfield
         let trialNum = "\(Int(x)+1)."
         let trialName = "\("trial".translate()) = "
@@ -64,10 +64,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let missValue = "\(Int(yValues[1]))."
         let missName = "\("misses".translate())"
         
+        
+        // set colored cell to get better understanding of the chart
         let myString:NSString = "\(trialNum)\(trialName)\(hitValue)\(hitName)\(missValue)\(missName)" // 5 leerstellen
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
-        
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
         let first = trialName.characters.count + trialNum.characters.count
         let second = hitValue.characters.count + hitName.characters.count
@@ -75,15 +76,14 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:first))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:first,length:second))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:third,length:myMutableString.length-third))
-        //label.attributedText = myMutableString
+        */
         
-        let rowToSelect:NSIndexPath = NSIndexPath(forRow: Int(x), inSection: 0);  //slecting 0th row with 0th section
-        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None);
+        // cell highlight on chart click
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: Int(x), inSection: 0)
+        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
     }
     
-    /**
-     * Redraw chart on device rotation.
-     */
+    ///  Redraw chart on device rotation
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         if let chart = lineChart {
             chart.setNeedsDisplay()
@@ -100,15 +100,14 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         // set style and color
         cell.tintColor = UIColor.myKeyColor()
         cell.accessoryType = .Checkmark
-        //cell.textLabel?.textColor = UIColor.myKeyColor()
-        
+
+        // set colored cell to get better understanding of the chart
         let duration = ("duration".translate() + ": "+trialList[indexPath.row].duration.getStringAsHoursMinutesSeconds())
         let hits = "hits".translate() + ": \(trialList[indexPath.row].hits)"
         let fails = "misses".translate() + ": \(trialList[indexPath.row].fails)"
         let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails)"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: nil)
-        
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
         let sTimestamp = trialList[indexPath.row].timeStamp.characters.count
         let sDuration = duration.characters.count
@@ -117,16 +116,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:sTimestamp + sDuration + 3))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:sTimestamp + sDuration + 6,length:sHits))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:sTimestamp + sDuration + sHits + 9,length:sMiss))
-        
-        
-        // set cell text
         cell.textLabel!.attributedText = myMutableString
-        //cell.detailTextLabel!.text = "\("hits".translate()): \("misses".translate())
-        
         return cell
     }
 
-    
+    /// shows chart if only mere then 3 trials availible
     func goodOldLineChart() {
         if(self.trialList.count > 2){
             lineChart.animation.enabled = true
@@ -143,6 +137,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         }
     }
     
+    /// draws the chart
     func initChart() {
         if(self.trialList.count > 2){
             fillGraphByData()
@@ -188,7 +183,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         }
     }
     
-    // Workaround for deleting
+    // Workaround for deleting a trial
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             

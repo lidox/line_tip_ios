@@ -24,14 +24,7 @@ class LineDetectionUIView: UIView {
         super.init(frame: frame)
     }
     
-    /**
-     Initializes the the canvas where the lines will be drawn.
-     
-     - Parameters:
-     - coder: The decoder of the uiview
-     
-     - Returns: A a list of generated lines
-     */
+    /// Initializes the the canvas where the lines will be drawn.
     required init(coder aDecoder: NSCoder) {
         print("LineDetectionUIView: init")
         super.init(coder: aDecoder)!

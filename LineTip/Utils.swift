@@ -128,7 +128,50 @@ class Utils {
             }
         }
     }
+    
+    /// Reads the global line width from the NSUserDefaults.
+    ///
+    /// :returns: the line width
+    class func getLineWidth() -> CGFloat {
+        let value = Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as? NSNumber
+        return CGFloat(value!)
+    }
+    
+    /// Reads the global spot width from the NSUserDefaults.
+    ///
+    /// :returns: the spot width
+    class func getSpotWidth() -> Double {
+        let value = Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as? NSNumber
+        return value!.doubleValue * 100
+    }
+    
+    /// Reads the global spot height from the NSUserDefaults.
+    ///
+    /// :returns: the spot height
+    class func getSpotHeight() -> Double {
+        let value = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
+        return value!.doubleValue
+    }
+    
+    /// Reads the global image name of the spot from the NSUserDefaults.
+    ///
+    /// :returns: the spots image name
+    class func getSpotImageName() -> String {
+        return "trans.png"
+    }
+    
+    /// Reads the global line color from the NSUserDefaults.
+    ///
+    /// :returns: the line color
+    class func getLineColor() -> CGColor {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let components: [CGFloat] = [255, 255, 255, 255]
+        let color = CGColorCreate(colorSpace, components)
+        return color!
+    }
 }
+
+
 
 /*
 struct Random {

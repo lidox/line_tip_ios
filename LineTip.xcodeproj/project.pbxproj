@@ -13,6 +13,8 @@
 		0418F5DF1C083A4A00B90989 /* LineTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5DE1C083A4A00B90989 /* LineTipTests.swift */; };
 		0418F5EA1C083A4A00B90989 /* LineTipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F5E91C083A4A00B90989 /* LineTipUITests.swift */; };
 		0422A9991C9191F700CFC0DE /* QuickStartUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */; };
+		0422A99B1C95758800CFC0DE /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99A1C95758800CFC0DE /* Random.swift */; };
+		0422A99D1C95774900CFC0DE /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99C1C95774900CFC0DE /* Translation.swift */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
@@ -93,6 +95,8 @@
 		0418F5E91C083A4A00B90989 /* LineTipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTipUITests.swift; sourceTree = "<group>"; };
 		0418F5EB1C083A4A00B90989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartUIViewController.swift; sourceTree = "<group>"; };
+		0422A99A1C95758800CFC0DE /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		0422A99C1C95774900CFC0DE /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				04F893D91C771E9900566C3C /* ConfigKey.swift */,
 				04F893DF1C7DA19600566C3C /* LineChart.swift */,
 				04F894011C873CDC00566C3C /* ClickSound.swift */,
+				0422A99A1C95758800CFC0DE /* Random.swift */,
+				0422A99C1C95774900CFC0DE /* Translation.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -478,9 +484,11 @@
 			files = (
 				047941781C0C5A300093EDD6 /* Trial.swift in Sources */,
 				047941761C0C59CA0093EDD6 /* User.swift in Sources */,
+				0422A99B1C95758800CFC0DE /* Random.swift in Sources */,
 				04F893E31C7DA49800566C3C /* StatisticsModel.xcdatamodeld in Sources */,
 				04F893EF1C83208800566C3C /* MedUserManager.swift in Sources */,
 				048064C51C157E2800F775CC /* LineDetectionUIView.swift in Sources */,
+				0422A99D1C95774900CFC0DE /* Translation.swift in Sources */,
 				048064BA1C11FC8200F775CC /* StatisticsViewController.swift in Sources */,
 				04F893E61C7DA64E00566C3C /* MedUser+CoreDataProperties.swift in Sources */,
 				04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */,

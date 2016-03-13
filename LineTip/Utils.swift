@@ -12,6 +12,7 @@ import Darwin
 
 class Utils {
     
+    /// switch the view controller by identifier
     class func switchToViewControllerByIdentifier(currentVC: UIViewController, identifier: String){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier(identifier) as UIViewController
@@ -20,7 +21,7 @@ class Utils {
     
     /*
     Image Resizing Techniques
-    */
+
     class func scaleUIImageToSize(let image: UIImage, let size: CGSize) -> UIImage {
         let hasAlpha = false
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
@@ -33,11 +34,11 @@ class Utils {
         
         return scaledImage
     }
+    */
     
+    /*
+    /// print random lines to console for tests
     class func printLinesToConsole(){
-        // let line3 = Line(x1: 0, y1: 500, x2: 400, y2: 500)
-        // lines.append(line)
-        
         for var index = 0; index < 10; ++index {
             let y = random(200, to: 600)
             print("let line\(index) = Line(x1: \(random(10, to: 100)), y1: \(y), x2: \(random(150, to: 500)), y2: \(y))")
@@ -46,34 +47,35 @@ class Utils {
         
     }
     
+    /// generates random UInt32
     class func random(from: UInt32, to: UInt32) -> UInt32 {
         return arc4random_uniform(to) + from
     }
     
+    /// generates random Int
     class func randomByInt(from: Int, to: Int) -> Int {
-        //return UInt32.random(lower: from, upper: to)
         return Int(arc4random_uniform(UInt32(to)) + UInt32(from))
     }
+    */
     
     
+    /// save data via nsuserdefaults by key
     class func setSettingsData(key :String, value: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        //defaults.setObject(value, forKey: key)
         defaults.setValue(value, forKey: key)
         defaults.synchronize()
     }
     
+    /// read data via nsuserdefaults by key
     class func getSettingsData(key :String) -> AnyObject {
         let defaults = NSUserDefaults.standardUserDefaults()
-        
         if let value = defaults.valueForKey(key) {
             return value
         }
-        
         return 0
     }
     
-    
+    /// loads saved data at app start
     class func loadSettingsData(){
         
         var settingsList = [String]()
@@ -88,7 +90,6 @@ class Utils {
         settingsList.append(ConfigKey.TRANSLATION)
         
         for (index, item) in settingsList.enumerate() {
-            //print("Item \(index): \(item)")
             let test = Utils.getSettingsData(item)
             
             if(test  as! NSObject == 0){
@@ -129,7 +130,7 @@ class Utils {
     }
 }
 
-
+/*
 struct Random {
     
     static func within<B: protocol<Comparable, ForwardIndexType>>(range: ClosedInterval<B>) -> B {
@@ -161,8 +162,8 @@ struct Random {
     static func generate() -> Double {
         return Random.within(0.0...1.0)
     }
-    
 }
+*/
 
 extension NSDate {
     func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
@@ -223,11 +224,17 @@ extension NSDate {
 
 
 extension Double {
+    /// Transforms a double value in seconds to string tupel (h,m,s)
+    ///
+    /// :returns: a tuple (h,m,s)
     func secondsToHoursMinutesSeconds () -> (Int, Int, Int) {
         let seconds = Int(self)
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
+    /// Transforms a double value in seconds to string in format hh:MM:ss
+    ///
+    /// :returns: a formated string hh:mm:ss
     func getStringAsHoursMinutesSeconds () -> String {
         let (h, m, s) = secondsToHoursMinutesSeconds ()
         var retString = "";
@@ -243,6 +250,7 @@ extension Double {
     }
 }
 
+/*
 // get instance by reflaction: e.g: NSObject.fromClassName(controllerName) as! UIViewController
 extension NSObject {
     class func fromClassName(className : String) -> NSObject {
@@ -251,7 +259,9 @@ extension NSObject {
         return aClass.init()
     }
 }
+*/
 
+/*
 extension String {
     func translate() -> String {
         let language = Utils.getSettingsData(ConfigKey.TRANSLATION) as! String
@@ -398,3 +408,4 @@ extension String {
         return translation
     }
 }
+*/

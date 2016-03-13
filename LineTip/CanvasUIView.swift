@@ -7,10 +7,9 @@
 //
 
 import Foundation
-
-
 import UIKit
 
+/// This UIView is diplayed in the SettingsViewController inoder to show a preview of the line detection test
 class CanvasUIView: UIView {
     var line : Line!
     var context = UIGraphicsGetCurrentContext()

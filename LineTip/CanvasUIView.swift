@@ -36,7 +36,7 @@ class CanvasUIView: UIView {
         print("CanvasUIView: draw")
         graphContext = UIGraphicsGetCurrentContext()
         drawRawLine(displayedLine, lineWidth: Utils.getLineWidth(), lineColor: Utils.getLineColor())
-        drawSpot("ball.png", spotWidth: Utils.getSpotWidth(), spotHeight: Utils.getSpotHeight(), spotAlpha: 1.0, line: displayedLine)
+        drawSpot("ball.png", spotWidth: displayedLine.getSpotWidth(), spotHeight: displayedLine.getSpotHeight(), spotAlpha: 1.0, line: displayedLine)
         self.setNeedsDisplay()
     }
 

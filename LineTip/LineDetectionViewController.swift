@@ -44,6 +44,7 @@ class LineDetectionViewController: UIViewController {
                 if uiView.lineTimer != nil {
                     uiView.lineTimer.invalidate()
                 }
+                uiView.lineTimer.invalidate()
                 uiView.startResumeLineTimer()
             }
         }
@@ -122,8 +123,8 @@ class LineDetectionViewController: UIViewController {
     
     func addHitListener() {
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("onHit:"))
-        uiView.myImageView.userInteractionEnabled = true
-        uiView.myImageView.addGestureRecognizer(tapGestureRecognizer)
+        uiView.spotImage.userInteractionEnabled = true
+        uiView.spotImage.addGestureRecognizer(tapGestureRecognizer)
         
         let uiViewGestureRecognizer = UITapGestureRecognizer(target:uiView, action:Selector("onFail:"))
         uiView.userInteractionEnabled = true

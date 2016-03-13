@@ -10,10 +10,10 @@ import UIKit
 
 class LineDetectionUIView: UIView {
     
-    var context = UIGraphicsGetCurrentContext()
-    var lines = [Line]()
+    var graphicContext = UIGraphicsGetCurrentContext()
+    var linesToDisplay = [Line]()
     var trial = Trial()
-    var myImageView  : UIImageView!
+    var spotImage  : UIImageView!
     var timer: dispatch_source_t!
     var lineTimer : NSTimer!
     var isTimerActivated : Bool!
@@ -28,13 +28,13 @@ class LineDetectionUIView: UIView {
     required init(coder aDecoder: NSCoder) {
         print("LineDetectionUIView: init")
         super.init(coder: aDecoder)!
-        self.myImageView  = UIImageView(image: UIImage(named: getImageName()))
-        self.delayToRedraw = getDelayToRedrawLines()
+        self.spotImage  = UIImageView(image: UIImage(named: Utils.getSpotImageName()))
+        self.delayToRedraw = Utils.getDelayToRedrawLines()
         self.isTimerActivated = Utils.getSettingsData(ConfigKey.LINE_TIMER_ACTIVATED) as! Bool
         
         var lineGenerator : LineGenerator
-        lineGenerator = getLineGenerator()
-        lines = lineGenerator.getLines()
+        lineGenerator = Utils.getLineGenerator()
+        linesToDisplay = lineGenerator.getLines()
     }
     
     override func drawRect(rect: CGRect) {
@@ -42,22 +42,30 @@ class LineDetectionUIView: UIView {
         draw()
     }
     
+    /// Draws the line and its spot.
+    /// Following steps are done in this method
+    ///
+    /// 1. If the last line from linesToDisplay list is drawn, the first line will drawn next by overflowcounter
+    /// 2. Creates a new context to draw at the start of the line detection test
+    /// 3. Draws the line and its spot
     func draw(){
-        let isLastLineDrawn = trial.overflowCounter == (lines.count)
+        let isLastLineDrawn = trial.overflowCounter == (linesToDisplay.count)
         if(isLastLineDrawn){
             trial.overflowCounter = 0
         }
         
         if(!trial.hasStarted()){
-            context = UIGraphicsGetCurrentContext()
+            graphicContext = UIGraphicsGetCurrentContext()
         }
         
-        let line = lines[trial.overflowCounter]
-        drawRawLine(line, lineWidth: getLineWidth(), lineColor: UIColor.whiteColor().CGColor)
-        drawSpot(getImageName(), spotWidth: line.getSpotWidth(), spotHeight: line.getSpotHeight(), spotAlpha: 1, line: line)
+        let line = linesToDisplay[trial.overflowCounter]
+        drawRawLine(line, lineWidth: Utils.getLineWidth(), lineColor: UIColor.whiteColor().CGColor)
+        drawSpot(Utils.getSpotImageName(), spotWidth: line.getSpotWidth(), spotHeight: line.getSpotHeight(), spotAlpha: 1, line: line)
         self.setNeedsDisplay()
     }
     
+    /// If user misses the the spot this method is called.
+    /// If the user clicked first time, the timer starts to count
     func onFail(img: AnyObject){
         if(firstTime) {
             startResumeLineTimer()
@@ -66,30 +74,45 @@ class LineDetectionUIView: UIView {
         onFail()
     }
     
+    /// If user misses the the spot this method is called.
     func onFail(){
         trial.startCountingTime()
         trial.countMiss()
         ClickSound.play("wrong", soundExtension: "wav")
     }
     
+    /// Draws the spot into the middle of the given line.
+    ///
+    /// :param: imageNameString The name of the image to be displayed in the middle of the line
+    /// :param: spotWidth The width of the spot to be set
+    /// :param: spotHeight The height of the spot to be set
+    /// :param: spotAlpha The alpha (opecaty) of the spot to be set
+    /// :param: line The line which belongs to be given spot
+    /// :returns: the spot image and its configuration
     func drawSpot(imageNameString: String, spotWidth: Double, spotHeight: Double, spotAlpha: CGFloat, line:Line) -> UIImageView {
         print("LineDetectionUIView: drawSpot")
-        myImageView.alpha = spotAlpha
-        myImageView.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
-        self.addSubview(myImageView)
-        return myImageView
+        spotImage.alpha = spotAlpha
+        spotImage.frame = CGRect(x: line.getMidpointX(), y: line.getMidpointY(), width: spotWidth, height: spotHeight)
+        self.addSubview(spotImage)
+        return spotImage
     }
     
+    /// Draws the line to the graph
+    ///
+    /// :param: line The line to be drawn
+    /// :param: lineWidth The width to be set
+    /// :param: lineColor The line color to be set
     func drawRawLine(line: Line, lineWidth: CGFloat, lineColor: CGColor) {
         print("LineDetectionUIView: drawRawLine")
-        CGContextClearRect(context, self.bounds)
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetStrokeColorWithColor(context, lineColor)
-        CGContextMoveToPoint(context, CGFloat(line.x1), CGFloat(line.y1))
-        CGContextAddLineToPoint(context, CGFloat(line.x2), CGFloat(line.y2))
-        CGContextStrokePath(context)
+        CGContextClearRect(graphicContext, self.bounds)
+        CGContextSetLineWidth(graphicContext, lineWidth)
+        CGContextSetStrokeColorWithColor(graphicContext, lineColor)
+        CGContextMoveToPoint(graphicContext, CGFloat(line.x1), CGFloat(line.y1))
+        CGContextAddLineToPoint(graphicContext, CGFloat(line.x2), CGFloat(line.y2))
+        CGContextStrokePath(graphicContext)
     }
     
+    /*
     func getLineWidth() -> CGFloat {
         return CGFloat((Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber))
     }
@@ -121,7 +144,9 @@ class LineDetectionUIView: UIView {
 
         return LeftRightLine()
     }
+    */
     
+    /// if the user was to slow to hit the spot of the line a new line will be drawn and a miss will be counted
     func userToSlow() {
         print("User was not fast enought, so redraw and count miss")
         self.onFail()
@@ -129,6 +154,7 @@ class LineDetectionUIView: UIView {
         self.setNeedsDisplay()
     }
 
+    /// starts or resume the time, if user was to slow to hit the line
     func startResumeLineTimer() {
         lineTimer = NSTimer.scheduledTimerWithTimeInterval(delayToRedraw, target: self, selector: Selector("userToSlow"), userInfo: nil, repeats: true)
     }

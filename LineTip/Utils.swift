@@ -137,6 +137,7 @@ class Utils {
         return CGFloat(value!)
     }
     
+    /*
     /// Reads the global spot width from the NSUserDefaults.
     ///
     /// :returns: the spot width
@@ -152,7 +153,8 @@ class Utils {
         let value = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
         return value!.doubleValue
     }
-    
+    */
+
     /// Reads the global image name of the spot from the NSUserDefaults.
     ///
     /// :returns: the spots image name
@@ -168,6 +170,26 @@ class Utils {
         let components: [CGFloat] = [255, 255, 255, 255]
         let color = CGColorCreate(colorSpace, components)
         return color!
+    }
+    
+    /// Reads the global delay for redrawing a line, if user takes to long to tap onto the line spot.
+    ///
+    /// :returns: delay to redraw a line if user misses the spot during the delay time
+    class func getDelayToRedrawLines() -> Double {
+        let value = Utils.getSettingsData(ConfigKey.LINE_REDRAW_DELAY) as? NSNumber
+        return value!.doubleValue
+    }
+    
+    /// Reads the global line modus. Decide between Random or LeftRightModus
+    ///
+    /// :returns: the modus saved in nsuserdefaults
+    class func getLineGenerator() -> LineGenerator {
+        let isRandomLine = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
+        if isRandomLine {
+            return RandomLine()
+        }
+        
+        return LeftRightLine()
     }
 }
 

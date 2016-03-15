@@ -15,6 +15,8 @@
 		0422A9991C9191F700CFC0DE /* QuickStartUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */; };
 		0422A99B1C95758800CFC0DE /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99A1C95758800CFC0DE /* Random.swift */; };
 		0422A99D1C95774900CFC0DE /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99C1C95774900CFC0DE /* Translation.swift */; };
+		0422A9A21C98B63200CFC0DE /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */; };
+		0422A9A31C98B63200CFC0DE /* AppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
@@ -97,6 +99,8 @@
 		0422A9981C9191F700CFC0DE /* QuickStartUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartUIViewController.swift; sourceTree = "<group>"; };
 		0422A99A1C95758800CFC0DE /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		0422A99C1C95774900CFC0DE /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
+		0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSettingsViewController.xib; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 			children = (
 				04D49DA71C74B29000D52E27 /* CanvasUIView.swift */,
 				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
+				0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */,
+				0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				04F894261C8EAE0700566C3C /* icon-58.png in Resources */,
 				04F894171C8D5B3700566C3C /* icon-76.png in Resources */,
 				04F894251C8EAE0700566C3C /* icon-49.png in Resources */,
+				0422A9A31C98B63200CFC0DE /* AppSettingsViewController.xib in Resources */,
 				04F8941B1C8D5B3700566C3C /* icon-180.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				04F8941A1C8D5B3700566C3C /* icon-167.png in Resources */,
@@ -493,6 +500,7 @@
 				04F893E61C7DA64E00566C3C /* MedUser+CoreDataProperties.swift in Sources */,
 				04D49DA81C74B29000D52E27 /* CanvasUIView.swift in Sources */,
 				04316F1B1C71D23C00BA600C /* Utils.swift in Sources */,
+				0422A9A21C98B63200CFC0DE /* AppSettingsViewController.swift in Sources */,
 				04F8942C1C8F0A3100566C3C /* RandomLine.swift in Sources */,
 				04F893DE1C77745B00566C3C /* LeftRightLine.swift in Sources */,
 				04F893E91C7DA6DB00566C3C /* DataController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class AppSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //http://www.edumobile.org/ios/creating-grouped-table-views-in-swift/
+    ////http://www.edumobile.org/ios/creating-grouped-table-views-in-swift/
     var array = [ ["Moscow", "Saint Petersburg", "Novosibirsk", "Novosibirsk", "Nizhny Novgorod", "Samara", "Omsk" ],
         
         ["Kiyv", "Odessa", "Donetsk", "Harkiv", "Lviv", "Uzhgorod", "Zhytomyr", "Luhansk", "Mikolayv", "Kherson"],

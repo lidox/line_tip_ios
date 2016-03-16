@@ -236,11 +236,13 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     
     /// adds settings navigation item
     @IBAction func onSettingsClick(sender: AnyObject) {
+        //let nextViewController:AppSettingsViewController = AppSettingsViewController(nibName: "AppSettingsViewController", bundle: nil)
         let nextViewController:SettingsViewController = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
         let button = UIBarButtonItem(title: "Back".translate(), style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
         nextViewController.navigationItem.leftBarButtonItem = button
         nextViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.myKeyColor()
         self.navigationController?.pushViewController(nextViewController, animated: true)
+
     }
     
     @IBAction func onAddUserBarItemClick(sender: AnyObject) {

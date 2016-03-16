@@ -16,7 +16,6 @@
 		0422A99B1C95758800CFC0DE /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99A1C95758800CFC0DE /* Random.swift */; };
 		0422A99D1C95774900CFC0DE /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A99C1C95774900CFC0DE /* Translation.swift */; };
 		0422A9A21C98B63200CFC0DE /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */; };
-		0422A9A31C98B63200CFC0DE /* AppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
@@ -100,7 +99,6 @@
 		0422A99A1C95758800CFC0DE /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		0422A99C1C95774900CFC0DE /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
-		0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSettingsViewController.xib; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
@@ -125,11 +123,11 @@
 		04F893DD1C77745B00566C3C /* LeftRightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftRightLine.swift; sourceTree = "<group>"; };
 		04F893DF1C7DA19600566C3C /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		04F893E21C7DA49800566C3C /* StatisticsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatisticsModel.xcdatamodel; sourceTree = "<group>"; };
-		04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedUser+CoreDataProperties.swift"; path = "LineTip/MedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		04F893E51C7DA64E00566C3C /* MedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedUser.swift; path = LineTip/MedUser.swift; sourceTree = "<group>"; };
+		04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04F893E51C7DA64E00566C3C /* MedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUser.swift; sourceTree = "<group>"; };
 		04F893E81C7DA6DB00566C3C /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MedTrial+CoreDataProperties.swift"; path = "LineTip/MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedTrial.swift; path = LineTip/MedTrial.swift; sourceTree = "<group>"; };
+		04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MedTrial+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04F893EB1C83183300566C3C /* MedTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedTrial.swift; sourceTree = "<group>"; };
 		04F893EE1C83208800566C3C /* MedUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedUserManager.swift; sourceTree = "<group>"; };
 		04F894011C873CDC00566C3C /* ClickSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickSound.swift; sourceTree = "<group>"; };
 		04F894041C873E6600566C3C /* good.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good.wav; sourceTree = "<group>"; };
@@ -148,7 +146,7 @@
 		04F894231C8EAE0700566C3C /* icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-87.png"; sourceTree = "<group>"; };
 		04F894291C8EC57B00566C3C /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		04F8942B1C8F0A3100566C3C /* RandomLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLine.swift; sourceTree = "<group>"; };
-		04F8942D1C8F337800566C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04F8942D1C8F337800566C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,23 +177,6 @@
 		0418F5BD1C083A4A00B90989 = {
 			isa = PBXGroup;
 			children = (
-				04F8942D1C8F337800566C3C /* Images.xcassets */,
-				04F894111C8D5B3700566C3C /* icon-76.png */,
-				04F894291C8EC57B00566C3C /* icon-40.png */,
-				04F894201C8EAE0700566C3C /* icon-49.png */,
-				04F894211C8EAE0700566C3C /* icon-58.png */,
-				04F894221C8EAE0700566C3C /* icon-80.png */,
-				04F894231C8EAE0700566C3C /* icon-87.png */,
-				04F894121C8D5B3700566C3C /* icon-120.png */,
-				04F894131C8D5B3700566C3C /* icon-152.png */,
-				04F894141C8D5B3700566C3C /* icon-167.png */,
-				04F894151C8D5B3700566C3C /* icon-180.png */,
-				04F894161C8D5B3700566C3C /* icon-1024.png */,
-				04F8941F1C8EAE0700566C3C /* icon-29.png */,
-				04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */,
-				04F893EB1C83183300566C3C /* MedTrial.swift */,
-				04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */,
-				04F893E51C7DA64E00566C3C /* MedUser.swift */,
 				0418F5C81C083A4A00B90989 /* LineTip */,
 				0418F5DD1C083A4A00B90989 /* LineTipTests */,
 				0418F5E81C083A4A00B90989 /* LineTipUITests */,
@@ -222,13 +203,10 @@
 				04F893DC1C77227000566C3C /* view */,
 				04F893DB1C77222400566C3C /* controller */,
 				0418F5C91C083A4A00B90989 /* AppDelegate.swift */,
-				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
 				0418F5D51C083A4A00B90989 /* Info.plist */,
 				04F893E11C7DA49800566C3C /* StatisticsModel.xcdatamodeld */,
+				04F8942D1C8F337800566C3C /* Images.xcassets */,
 				047941791C0C5F880093EDD6 /* model */,
-				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
-				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
-				04F893E81C7DA6DB00566C3C /* DataController.swift */,
 			);
 			path = LineTip;
 			sourceTree = "<group>";
@@ -267,6 +245,11 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04F893E81C7DA6DB00566C3C /* DataController.swift */,
+				04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */,
+				04F893EB1C83183300566C3C /* MedTrial.swift */,
+				04F893E41C7DA64E00566C3C /* MedUser+CoreDataProperties.swift */,
+				04F893E51C7DA64E00566C3C /* MedUser.swift */,
 				048064D81C1AE89800F775CC /* PreGeneratedLine.swift */,
 				04F8942B1C8F0A3100566C3C /* RandomLine.swift */,
 				04F893DD1C77745B00566C3C /* LeftRightLine.swift */,
@@ -275,7 +258,6 @@
 				047941751C0C59CA0093EDD6 /* User.swift */,
 				047941771C0C5A300093EDD6 /* Trial.swift */,
 				04F893EE1C83208800566C3C /* MedUserManager.swift */,
-				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -283,6 +265,7 @@
 		04F893DB1C77222400566C3C /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */,
 				048064D41C15B7B500F775CC /* LineDetectionViewController.swift */,
 				048064B21C11CE6D00F775CC /* MainViewController.swift */,
 				048064C01C11FD8300F775CC /* ResultsViewController.swift */,
@@ -299,8 +282,10 @@
 			children = (
 				04D49DA71C74B29000D52E27 /* CanvasUIView.swift */,
 				048064C41C157E2800F775CC /* LineDetectionUIView.swift */,
-				0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */,
-				0422A9A11C98B63200CFC0DE /* AppSettingsViewController.xib */,
+				048064B91C11FC8200F775CC /* StatisticsViewController.xib */,
+				048064C11C11FD8300F775CC /* ResultsViewController.xib */,
+				048064BD1C11FCA100F775CC /* SettingsViewController.xib */,
+				0418F5CD1C083A4A00B90989 /* Main.storyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -332,6 +317,18 @@
 		04F894101C8D5AEB00566C3C /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				04F894111C8D5B3700566C3C /* icon-76.png */,
+				04F894291C8EC57B00566C3C /* icon-40.png */,
+				04F894201C8EAE0700566C3C /* icon-49.png */,
+				04F894211C8EAE0700566C3C /* icon-58.png */,
+				04F894221C8EAE0700566C3C /* icon-80.png */,
+				04F894231C8EAE0700566C3C /* icon-87.png */,
+				04F894121C8D5B3700566C3C /* icon-120.png */,
+				04F894131C8D5B3700566C3C /* icon-152.png */,
+				04F894141C8D5B3700566C3C /* icon-167.png */,
+				04F894151C8D5B3700566C3C /* icon-180.png */,
+				04F894161C8D5B3700566C3C /* icon-1024.png */,
+				04F8941F1C8EAE0700566C3C /* icon-29.png */,
 			);
 			name = icon;
 			sourceTree = "<group>";
@@ -456,7 +453,6 @@
 				04F894261C8EAE0700566C3C /* icon-58.png in Resources */,
 				04F894171C8D5B3700566C3C /* icon-76.png in Resources */,
 				04F894251C8EAE0700566C3C /* icon-49.png in Resources */,
-				0422A9A31C98B63200CFC0DE /* AppSettingsViewController.xib in Resources */,
 				04F8941B1C8D5B3700566C3C /* icon-180.png in Resources */,
 				048064C31C11FD8300F775CC /* ResultsViewController.xib in Resources */,
 				04F8941A1C8D5B3700566C3C /* icon-167.png in Resources */,

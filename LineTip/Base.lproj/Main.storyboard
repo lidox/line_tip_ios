@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -88,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piX-ta-s0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="1135"/>
+            <point key="canvasLocation" x="1134" y="1155"/>
         </scene>
         <!--Quick StartUI View Controller-->
         <scene sceneID="wmI-B0-x2c">
@@ -451,18 +450,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="le0-y4-Xyt">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Settings" id="7Xd-ij-K6W">
-                                <connections>
-                                    <action selector="onSettingsClick:" destination="s7v-oF-JLo" id="ciy-hM-Dy0"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="oWo-Na-RIa">
-                                <connections>
-                                    <segue destination="HVl-v2-5zh" kind="show" id="2Ml-eo-DeH"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="7Xd-ij-K6W">
+                            <connections>
+                                <action selector="onSettingsClick:" destination="s7v-oF-JLo" id="ciy-hM-Dy0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Syr-Kl-5OA">
                             <connections>
                                 <action selector="onAddUserBarItemClick:" destination="s7v-oF-JLo" id="YJk-kM-y0R"/>
@@ -511,6 +503,6 @@
         <image name="splash-overlay.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QYM-t8-YfV"/>
+        <segue reference="h4Z-up-PFb"/>
     </inferredMetricsTieBreakers>
 </document>

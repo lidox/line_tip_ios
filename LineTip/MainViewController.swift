@@ -22,6 +22,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
     var selectedUser : MedUser?
     var selectedUserObjectID : NSManagedObjectID!
     var viewtitle = ""
+    var userManager = MedUserManager()
 
     
     override func viewDidLoad() {
@@ -106,6 +107,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         if pageNumber == 0 {
             addEmailNavItem()
         }
+        else if pageNumber == 1 {
+            self.navigationItem.rightBarButtonItem = nil
+            addEmailNavItemForCompleteUsersResult()
+        }
         else {
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -116,17 +121,40 @@ class MainViewController: UIViewController, UIScrollViewDelegate, MFMailComposeV
         if deviceCanSendEmails() {
             self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "sentMailButtonClicked:"), animated: true)
         }
-        
+    }
+    
+    func addEmailNavItemForCompleteUsersResult() {
+        if deviceCanSendEmails() {
+            self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "sendMailForCompleteUsersResultButtonClicked:"), animated: true)
+        }
     }
     
     /// opens a new email view to sent results of the trial
     @IBAction func sentMailButtonClicked(sender: UIBarButtonItem) {
-        let recipient = ["your@mail.com"]
+        let recipient = [""]
         let userMedId = MedUserManager.fetchMedIdByObjectId(self.selectedUserObjectID)
         let subject = "[Line Detection Test] \("Results for user".translate()): \(userMedId)"
         let lastTrial = MedUserManager.getLastTrialByObjectId(self.selectedUserObjectID)
         let messageBody = lastTrial.toString() + "\r\n" + "\("Best regards".translate())," + "\r\n" + "LineTip APP"
-        print(messageBody)
+        sendEmail(recipient, subject: subject, messageBody: messageBody)
+    }
+    
+    @IBAction func sendMailForCompleteUsersResultButtonClicked(sender: UIBarButtonItem) {
+        let recipient = [""]
+        let userMedId = userManager.fetchMedUserById(self.selectedUserObjectID).medId
+        let subject = "[Line Detection Test] \("Results for user".translate()): \(userMedId)"
+        let trialList = userManager.getMedTrialListByObjectId(self.selectedUserObjectID)
+        
+        var messageBody = ""
+        for (index, trial) in trialList.enumerate() {
+            messageBody += "\(index+1). " + "trial".translate() + "\r\n"
+            messageBody +=  "\("timestamp".translate()): " + "\(trial.timeStamp)"
+            messageBody += "\r\n" + "\("hits".translate()): " + "\(trial.hits)" + "\r\n" + "\("misses".translate()): " + "\(trial.fails)" + "\r\n"
+            messageBody += "\("duration".translate()): " + "\(Double(trial.duration).getStringAsHoursMinutesSeconds())" + "\r\n"
+            messageBody += "-------------" + "\r\n"
+
+        }
+        messageBody += "\r\n" + "\("Best regards".translate())," + "\r\n" + "LineTip APP"
         sendEmail(recipient, subject: subject, messageBody: messageBody)
     }
     

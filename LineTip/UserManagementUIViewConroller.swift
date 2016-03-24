@@ -231,6 +231,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
     
     /// switch to user management again if user user clicked on settings before
     func goBack(){
+        self.view.setNeedsDisplay()
         self.navigationController!.popViewControllerAnimated(true)
     }
     

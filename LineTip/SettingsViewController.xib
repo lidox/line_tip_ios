@@ -124,12 +124,6 @@
                         <constraint firstAttribute="height" constant="30" id="EIZ-Gh-6D9"/>
                     </constraints>
                 </pickerView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-NJ-LqM">
-                    <rect key="frame" x="5" y="471" width="94" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-bV-J6t">
                     <rect key="frame" x="474" y="470" width="121" height="29"/>
                     <segments>
@@ -156,6 +150,12 @@
                         <action selector="onTranslationSegment:" destination="-1" eventType="valueChanged" id="2PM-T5-fcb"/>
                     </connections>
                 </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Line Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-NJ-LqM">
+                    <rect key="frame" x="5" y="472" width="94" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="lrh-R0-g0y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="16A-Jt-WlT"/>
@@ -175,6 +175,7 @@
                 <constraint firstItem="mQt-8c-uIb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="M6d-IZ-noZ"/>
                 <constraint firstAttribute="trailing" secondItem="ijk-zQ-WGF" secondAttribute="trailing" constant="5" id="QeL-f3-uWR"/>
                 <constraint firstItem="DbE-7J-hDx" firstAttribute="top" secondItem="ijk-zQ-WGF" secondAttribute="bottom" constant="8" id="Qq8-1g-nwa"/>
+                <constraint firstAttribute="trailing" secondItem="UYr-Cc-aow" secondAttribute="trailing" constant="496" id="RIm-V3-UVT"/>
                 <constraint firstItem="ijk-zQ-WGF" firstAttribute="top" secondItem="Euj-Vx-ds2" secondAttribute="bottom" constant="8" id="RqC-QL-qYh"/>
                 <constraint firstItem="3jZ-qd-gha" firstAttribute="top" secondItem="mQt-8c-uIb" secondAttribute="bottom" constant="15" id="Uv1-yr-70q"/>
                 <constraint firstItem="Yn8-fD-TIu" firstAttribute="top" secondItem="jCw-NJ-LqM" secondAttribute="bottom" constant="12" id="VD7-eC-pXu"/>

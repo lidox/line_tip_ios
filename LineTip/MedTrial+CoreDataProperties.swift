@@ -21,5 +21,6 @@ extension MedTrial {
     @NSManaged var isSelectedForStats: NSNumber!
     @NSManaged var creationDate: NSDate!
     @NSManaged var user: MedUser!
+    
 
 }

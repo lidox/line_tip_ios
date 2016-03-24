@@ -33,4 +33,5 @@ extension MedUser {
         trialList = self.trial!.allObjects as! [MedTrial]
         return trialList
     }
+    
 }

@@ -121,6 +121,8 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         }
     }
     
+    
+    
     func switchToResultViewController() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("myVCId") as! MainViewController
@@ -184,6 +186,35 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         presentViewController(alert,
             animated: true,
             completion: nil)
+    }
+    
+    /// selects user to assign the trials done by quickstart
+    //Assign user Undo OK Assign trial to user
+    func selectUser() {
+        let alert = UIAlertController(title: "",
+            message: "\("Assign user".translate())",
+            preferredStyle: .Alert)
+        alert.view.tintColor = UIColor.myKeyColor()
+        
+        let attributedString = NSAttributedString(string: "\("Assign trial to user".translate())", attributes: [
+            NSForegroundColorAttributeName : UIColor.myKeyColor()
+            ])
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let saveAction = UIAlertAction(title: "\("OK".translate())",
+            style: .Default,
+            handler: { (action:UIAlertAction) -> Void in
+                hsfg/ƒ/ do something
+        })
+        
+        let cancelAction = UIAlertAction(title: "\("Undo".translate())",
+            style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert,animated: true,completion: nil)
     }
     
     func createUser(newUserName: String) -> NSManagedObjectID {

@@ -153,8 +153,13 @@ extension String {
             else if key == "Delete selected trial" {
                 translation = "Ausgewählten Versuch löschen"
             }
+            else if key == "Undo" {
+                translation = "Zurück"
+            }
+            else if key == "Assign trial to user" {
+                translation = "Benutzer zuordnen"
+            }
             /*
-            
             */
         }
         

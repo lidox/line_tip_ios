@@ -105,6 +105,9 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
             let touchPoint = longPressGestureRecognizer.locationInView(self.tableView)
             if let indexPath = self.tableView.indexPathForRowAtPoint(touchPoint) {
                 print("long press on: \(indexPath.row)")
+                assignUserByTableRow(indexPath.row)
+                switchToResultViewController()
+                /*
                 let selectedUser = medUserList[indexPath.row]
                 let placeHolderUser = userManager.fetchMedUserById(self.selectedUserObjectID)
                 
@@ -117,11 +120,24 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
                 userManager.deleteMedUserByObjectId(placeHolderUser.objectID)
                 self.selectedUserObjectID = selectedUser.objectID
                 switchToResultViewController()
+                */
             }
         }
     }
     
-    
+    func assignUserByTableRow(row: Int){
+        let selectedUser = medUserList[row]
+        let placeHolderUser = userManager.fetchMedUserById(self.selectedUserObjectID)
+        
+        let trialList = userManager.getMedTrialListByObjectId(placeHolderUser.objectID)
+        for trial in trialList {
+            trial.user = selectedUser
+        }
+        
+        //delete placeholder user
+        userManager.deleteMedUserByObjectId(placeHolderUser.objectID)
+        self.selectedUserObjectID = selectedUser.objectID
+    }
     
     func switchToResultViewController() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -188,11 +204,23 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
             completion: nil)
     }
     
+    /// changes view if a user has been seleced
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectUser" {
+            if ((segue.destinationViewController as? UserManagementUIViewConroller) != nil) {
+                if let index = tableView.indexPathForSelectedRow?.row {
+                    selectUser(index)
+                }
+            }
+        }
+    }
+    
+    
     /// selects user to assign the trials done by quickstart
     //Assign user Undo OK Assign trial to user
-    func selectUser() {
+    func selectUser(row: Int) {
         let alert = UIAlertController(title: "",
-            message: "\("Assign user".translate())",
+            message: "",
             preferredStyle: .Alert)
         alert.view.tintColor = UIColor.myKeyColor()
         
@@ -204,7 +232,8 @@ class QuickStartUIViewController: UIViewController , UITableViewDelegate, UITabl
         let saveAction = UIAlertAction(title: "\("OK".translate())",
             style: .Default,
             handler: { (action:UIAlertAction) -> Void in
-                hsfg/ƒ/ do something
+                self.assignUserByTableRow(row)
+                self.switchToResultViewController()
         })
         
         let cancelAction = UIAlertAction(title: "\("Undo".translate())",

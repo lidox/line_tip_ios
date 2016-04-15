@@ -205,7 +205,7 @@ class UserManagementUIViewConroller: UIViewController, UITableViewDelegate, UITa
         
         let selectedUserObjectID = createUser("Quick Start".translate() + "\(NSDate())")
         let user = MedUserManager.fetchMedUserById(selectedUserObjectID!)
-        
+         
         nextViewController.medUser = user
         nextViewController.selectedUserObjectID = selectedUserObjectID
         nextViewController.isQuickstart = true

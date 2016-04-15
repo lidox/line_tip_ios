@@ -54,4 +54,15 @@ class Line: NSObject {
         let spotHeight = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
         return Double(spotHeight!)
     }
+    
+    func getFlatMidpointX() -> Double {
+        let result = ((Double(self.x1) + Double(self.x2)) / 2)
+        return result
+    }
+    
+    func getFlatMidpointY() -> Double {
+        let numerator = Double(self.y1) + Double(self.y2)
+        let result = numerator / 2
+        return result
+    }
 }

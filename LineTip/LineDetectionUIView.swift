@@ -19,6 +19,7 @@ class LineDetectionUIView: UIView {
     var isTimerActivated : Bool!
     var delayToRedraw : Double!
     var firstTime = true
+    var lastTouchPosition : CGPoint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,6 +79,7 @@ class LineDetectionUIView: UIView {
     func onFail(){
         trial.startCountingTime()
         trial.countMiss()
+        trial.addMissedTouchPosition(lastTouchPosition)
         ClickSound.play("wrong", soundExtension: "wav")
     }
     
@@ -112,43 +114,10 @@ class LineDetectionUIView: UIView {
         CGContextStrokePath(graphicContext)
     }
     
-    /*
-    func getLineWidth() -> CGFloat {
-        return CGFloat((Utils.getSettingsData(ConfigKey.LINE_BROADNESS) as! NSNumber))
-    }
-    
-    func getSpotWidth() -> Double {
-        let value = Utils.getSettingsData(ConfigKey.SPOT_WIDTH) as? NSNumber
-        return value!.doubleValue
-    }
-    
-    func getSpotHeight() -> Double {
-        let value = Utils.getSettingsData(ConfigKey.SPOT_HEIGHT) as? NSNumber
-        return value!.doubleValue
-    }
-    
-    func getImageName() -> String {
-        return (Utils.getSettingsData(ConfigKey.SPOT_IMAGE_NAME) as? String)!
-    }
-    
-    func getDelayToRedrawLines() -> Double {
-        let value = Utils.getSettingsData(ConfigKey.LINE_REDRAW_DELAY) as? NSNumber
-        return value!.doubleValue
-    }
-    
-    func getLineGenerator() -> LineGenerator {
-        let isRandomLine = Utils.getSettingsData(ConfigKey.LINE_RANDOM_GENERATION) as! Bool
-        if isRandomLine {
-            return RandomLine()
-        }
-
-        return LeftRightLine()
-    }
-    */
-    
     /// if the user was to slow to hit the spot of the line a new line will be drawn and a miss will be counted
     func userToSlow() {
-        print("User was not fast enought, so redraw and count miss")
+        print("User was not fast enought, so redraw line and count miss")
+        resetLastTouchPosition()
         self.onFail()
         self.trial.overflowCounter++
         self.setNeedsDisplay()
@@ -157,6 +126,26 @@ class LineDetectionUIView: UIView {
     /// starts or resume the time, if user was to slow to hit the line
     func startResumeLineTimer() {
         lineTimer = NSTimer.scheduledTimerWithTimeInterval(delayToRedraw, target: self, selector: Selector("userToSlow"), userInfo: nil, repeats: true)
+    }
+    
+    /// reset last touch position to (0,0)
+    func resetLastTouchPosition() {
+        lastTouchPosition.x = 0
+        lastTouchPosition.y = 0
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let currentline = linesToDisplay[trial.overflowCounter]
+        
+        if let touch = touches.first {
+            self.lastTouchPosition = touch.locationInView(self)
+            //print("(\(currentline.getFlatMidpointX()),\(currentline.getFlatMidpointY()))")
+            //print("(\(lastTouchPosition.x),\(lastTouchPosition.y))")
+            lastTouchPosition.x = CGFloat(currentline.getFlatMidpointX()) - lastTouchPosition.x
+            lastTouchPosition.y = CGFloat(currentline.getFlatMidpointY()) - lastTouchPosition.y
+            //print("(\(lastTouchPosition.x),\(lastTouchPosition.y))")
+            print(self.trial.getTendencyNameByPosition(lastTouchPosition))
+        }
     }
     
 }

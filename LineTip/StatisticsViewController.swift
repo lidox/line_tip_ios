@@ -55,29 +55,6 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     /// Line chart delegate method to highlight cell if chart has been touched
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         
-        /*
-        // set multiple color in a textfield
-        let trialNum = "\(Int(x)+1)."
-        let trialName = "\("trial".translate()) = "
-        let hitValue = "\(Int(yValues[0]))."
-        let hitName = "\("hits".translate()) "
-        let missValue = "\(Int(yValues[1]))."
-        let missName = "\("misses".translate())"
-        
-        
-        // set colored cell to get better understanding of the chart
-        let myString:NSString = "\(trialNum)\(trialName)\(hitValue)\(hitName)\(missValue)\(missName)" // 5 leerstellen
-        var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
-        let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
-        let first = trialName.characters.count + trialNum.characters.count
-        let second = hitValue.characters.count + hitName.characters.count
-        let third = missValue.characters.count + missName.characters.count
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:first))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:first,length:second))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:third,length:myMutableString.length-third))
-        */
-        
         // cell highlight on chart click
         let rowToSelect:NSIndexPath = NSIndexPath(forRow: Int(x), inSection: 0)
         self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
@@ -105,7 +82,8 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let duration = ("duration".translate() + ": "+trialList[indexPath.row].duration.getStringAsHoursMinutesSeconds())
         let hits = "hits".translate() + ": \(trialList[indexPath.row].hits)"
         let fails = "misses".translate() + ": \(trialList[indexPath.row].fails)"
-        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails)"
+        let tendency = "\(trialList[indexPath.row].getTendency())"
+        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails) | \(tendency)"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: nil)
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
@@ -113,9 +91,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let sDuration = duration.characters.count
         let sHits = hits.characters.count
         let sMiss = fails.characters.count
+        let sTendency = tendency.characters.count
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:sTimestamp + sDuration + 3))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:sTimestamp + sDuration + 6,length:sHits))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:sTimestamp + sDuration + sHits + 9,length:sMiss))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:sTimestamp + sDuration + sHits + sMiss + 12,length:sTendency))
         cell.textLabel!.attributedText = myMutableString
         return cell
     }

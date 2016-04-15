@@ -20,6 +20,7 @@ class Trial: NSObject {
     var userName: String = ""
     var isSelectedForStats: Bool = true
     var creationDate = NSDate()
+    var missedLinePositionList = [CGPoint]()
     
     override init(){
         print("Trial: init")
@@ -69,48 +70,98 @@ class Trial: NSObject {
         return ret
     }
     
-    /*
-    var count = 0
-    func updateTime() {
-        count++
-        let seconds = count % 60
-        let minutes = (count / 60) % 60
-        let hours = count / 3600
-        let strHours = hours > 9 ? String(hours) : "0" + String(hours)
-        let strMinutes = minutes > 9 ? String(minutes) : "0" + String(minutes)
-        let strSeconds = seconds > 9 ? String(seconds) : "0" + String(seconds)
-        
-        var text: String
-        if hours > 0 {
-            text = "\(strHours):\(strMinutes):\(strSeconds)"
-        }
-        else {
-            text = "\(strMinutes):\(strSeconds)"
-        }
-        print(text)
-    }
-    
-    func getTimeBySec(totalSeconds: Int) -> String {
-        let seconds = totalSeconds % 60
-        let minutes = (totalSeconds / 60) % 60
-        let hours = totalSeconds / 3600
-        let strHours = hours > 9 ? String(hours) : "0" + String(hours)
-        let strMinutes = minutes > 9 ? String(minutes) : "0" + String(minutes)
-        let strSeconds = seconds > 9 ? String(seconds) : "0" + String(seconds)
-        
-        if hours > 0 {
-            return "\(strHours):\(strMinutes):\(strSeconds)"
-        }
-        else {
-            return "\(strMinutes):\(strSeconds)"
-        }
-    }
-    */
-    
     func toString() -> String {
         let ret =  "\("timestamp".translate()): " + "\(self.timeStamp)" + "\r\n" + "\("hits".translate()): " + "\(self.hits)" + "\r\n" + "\("misses".translate()): " + "\(self.fails)" + "\r\n" + "\("duration".translate()): " + "\(self.duration.getStringAsHoursMinutesSeconds())" + "\r\n"
         return ret
     }
+    
+    /// add a missed touch with its positions to trial
+    func addMissedTouchPosition(lastTouchPosition: CGPoint) { //-> Array<CGPoint>
+        let isNotXEquals0AndYEquals0 = (lastTouchPosition.x != 0) && (lastTouchPosition.y != 0)
+        if(isNotXEquals0AndYEquals0){
+           self.missedLinePositionList.append(lastTouchPosition)
+        }
+    }
+    
+    /// returns a tendecy
+    func getTendency() -> String {
+        var topLeft = 0
+        var topRight = 0
+        var downLeft = 0
+        var downRight = 0
+        
+        for position in missedLinePositionList {
+            let currentTendency = getTendencyNameByPosition(position)
+            if (currentTendency == "topRight") {
+                topRight += 1
+            }
+            else if (currentTendency == "topLeft") {
+                topLeft += 1
+            }
+            else if (currentTendency == "downLeft") {
+                downLeft += 1
+            }
+            else {
+                downRight += 1
+            }
+        }
+        
+        
+        return getMaxOfFour(topLeft, topRight: topRight, downLeft: downLeft, downRight: downRight)
+    }
+    
+    /// returns a tendecy for a point
+    func getMaxOfFour(topLeft: Int, topRight: Int, downLeft: Int, downRight: Int) -> String {
+        var toReturn = ""
+        let numbers = [topLeft, topRight, downLeft, downRight]
+        let max = numbers.maxElement()
+        
+        if max == 0 {
+            return "none"
+        }
+        
+        var index = 0
+        for (element) in numbers {
+            if (max == element) {
+                break
+            }
+            print("Item \(index): \(element)")
+            index += 1
+        }
+        if(index == 0) {
+            toReturn = "topLeft"
+        }
+        else if (index == 1) {
+            toReturn = "topRight"
+        }
+        else if (index == 2) {
+            toReturn = "downLeft"
+        }
+        else  {
+            toReturn = "downRight"
+        }
+        
+        return toReturn
+    }
+    
+    /// returns a tendecy for a point
+    func getTendencyNameByPosition(position: CGPoint) -> String {
+            var toReturn = ""
+            if position.y >= 0 {
+                toReturn += "top"
+            }
+            else {
+                toReturn += "down"
+            }
+            if position.x >= 0 {
+                toReturn += "Left"
+            }
+            else {
+                toReturn += "Right"
+            }
+        return toReturn
+    }
+    
     
     
     

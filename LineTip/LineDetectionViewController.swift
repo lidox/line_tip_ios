@@ -60,7 +60,6 @@ class LineDetectionViewController: UIViewController {
     func onFinish(img: AnyObject){
         uiView.trial.stopCountigTime()
         print("Trial finished! hits: \(uiView.trial.hits) misses: \(uiView.trial.fails) duration: \(uiView.trial.duration) s timestamp: \(uiView.trial.timeStamp)")
-        
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
         addTrialToUser(uiView.trial)

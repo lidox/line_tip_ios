@@ -299,8 +299,14 @@ class MedUserManager {
         do {
             let userToDelete = try moc.existingObjectWithID(objectID) as! MedUser
             
-            // first delete all trials of user
+            
+            // first delete all trials of user and their missed line positions
             for item in userToDelete.trial!{
+                let currentTrial = item as! MedTrial
+                for position in currentTrial.missedTouchPosList! {
+                    moc.deleteObject(position as! NSManagedObject)
+                }
+                
                 moc.deleteObject(item as! NSManagedObject)
             }
             
@@ -327,8 +333,15 @@ class MedUserManager {
             // sort by creation date:
             trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
             
+            // first delete all missed line positions
+            for item in trialList[index].missedTouchPosList! {
+                moc.deleteObject(item as! NSManagedObject)
+            }
+            
             // now delete object
             moc.deleteObject(trialList[index])
+            
+            // delete missed points
             
             try moc.save()
             print("trial deleted")
@@ -370,7 +383,6 @@ class MedUserManager {
         do {
             
             let medUser = try context.existingObjectWithID(objectId) as? MedUser
-            //return medUser!.trial!.allObjects as! [MedTrial]
             
             let fetchRequest = NSFetchRequest(entityName: "MedTrial")
             let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
@@ -380,7 +392,6 @@ class MedUserManager {
             fetchRequest.predicate = predicate
             
             let result = try context.executeFetchRequest(fetchRequest)
-            //print(result)
             
             return (result as! [MedTrial])
 

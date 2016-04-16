@@ -17,6 +17,7 @@ class LineDetectionViewController: UIViewController {
     var medUser : MedUser!
     var selectedUserObjectID : NSManagedObjectID!
     var isQuickstart = false
+    var userManager = MedUserManager()
     
     override func viewDidLoad() {
         print("LineDetectionViewController: viewDidLoad")
@@ -62,7 +63,7 @@ class LineDetectionViewController: UIViewController {
         print("Trial finished! hits: \(uiView.trial.hits) misses: \(uiView.trial.fails) duration: \(uiView.trial.duration) s timestamp: \(uiView.trial.timeStamp)")
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
-        addTrialToUser(uiView.trial)
+        userManager.addTrialToUserByUserObjectId(self.selectedUserObjectID, givenTrial: uiView.trial)
         
         if uiView.lineTimer != nil {
             uiView.lineTimer.invalidate()
@@ -75,29 +76,6 @@ class LineDetectionViewController: UIViewController {
             switchToResultViewController()
         }
         
-    }
-    
-    /// adds the trial to the selected user and saves in database
-    func addTrialToUser(givenTrial: Trial) {
-        let context = DataController().managedObjectContext
-        
-        do {
-            let medUser = try context.existingObjectWithID(self.selectedUserObjectID) as? MedUser
-            let trial = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: context) as! MedTrial
-            
-            trial.setValue(givenTrial.hits, forKey: "hits")
-            trial.setValue(givenTrial.fails, forKey: "fails")
-            trial.setValue(givenTrial.duration, forKey: "duration")
-            trial.setValue(givenTrial.timeStamp, forKey: "timeStamp")
-            trial.setValue(true, forKey: "isSelectedForStats")
-            trial.setValue(givenTrial.creationDate, forKey: "creationDate")
-            
-            medUser!.addTrial(trial)
-            try context.save()
-            
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
     }
     
     /// switches the view controller and sets some paramaters

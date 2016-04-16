@@ -2,7 +2,7 @@
 //  MedTrial+CoreDataProperties.swift
 //  LineTip
 //
-//  Created by Artur Schäfer on 29.02.16.
+//  Created by Artur Schäfer on 16.04.16.
 //  Copyright © 2016 Artur Schäfer. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -11,6 +11,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension MedTrial {
 
@@ -21,6 +22,10 @@ extension MedTrial {
     @NSManaged var isSelectedForStats: NSNumber!
     @NSManaged var creationDate: NSDate!
     @NSManaged var user: MedUser!
+    @NSManaged var missedTouchPosList: NSSet?
     
-
+    
+    func addMissedTouchPosition(value : MissedTouchPosition) {
+        self.mutableSetValueForKey("missedTouchPosList").addObject(value)
+    }
 }

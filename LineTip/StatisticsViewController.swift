@@ -26,6 +26,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     var hitValues: [CGFloat] = []
     var failValue: [CGFloat] = []
     var timeStampLabels: [String] = []
+    var userManager = MedUserManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        trialList = MedUserManager.getTrialListByObjectId(self.selectedUserObjectID)
+        trialList = userManager.getTrialListByObjectId(self.selectedUserObjectID)
         
         initTexts()
         

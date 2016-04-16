@@ -18,6 +18,8 @@
 		0422A9A21C98B63200CFC0DE /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */; };
 		04316F1B1C71D23C00BA600C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04316F1A1C71D23C00BA600C /* Utils.swift */; };
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
+		043FB0F81CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FB0F61CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift */; };
+		043FB0F91CC239BA0071446E /* MissedTouchPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FB0F71CC239BA0071446E /* MissedTouchPosition.swift */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
 		048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B21C11CE6D00F775CC /* MainViewController.swift */; };
@@ -101,6 +103,8 @@
 		0422A9A01C98B63200CFC0DE /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		04316F1A1C71D23C00BA600C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
+		043FB0F61CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MissedTouchPosition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		043FB0F71CC239BA0071446E /* MissedTouchPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissedTouchPosition.swift; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		048064B21C11CE6D00F775CC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 		047941791C0C5F880093EDD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				043FB0F61CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift */,
+				043FB0F71CC239BA0071446E /* MissedTouchPosition.swift */,
 				04F893E81C7DA6DB00566C3C /* DataController.swift */,
 				04F893EA1C83183300566C3C /* MedTrial+CoreDataProperties.swift */,
 				04F893EB1C83183300566C3C /* MedTrial.swift */,
@@ -512,7 +518,9 @@
 				048064C21C11FD8300F775CC /* ResultsViewController.swift in Sources */,
 				04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */,
 				04F894021C873CDC00566C3C /* ClickSound.swift in Sources */,
+				043FB0F81CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift in Sources */,
 				0418F5CA1C083A4A00B90989 /* AppDelegate.swift in Sources */,
+				043FB0F91CC239BA0071446E /* MissedTouchPosition.swift in Sources */,
 				04F893D81C75E56E00566C3C /* UIColor.swift in Sources */,
 				04F893ED1C83183300566C3C /* MedTrial.swift in Sources */,
 				048064D11C15B73900F775CC /* Line.swift in Sources */,

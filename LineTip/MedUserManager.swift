@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 /// This class accesses the data base via core data to create, delete and update users and its trials
 class MedUserManager {
@@ -31,6 +32,70 @@ class MedUserManager {
             
         } catch {
             fatalError("Failed to rename user: \(error)")
+        }
+    }
+    
+    /// adds the trial to the selected user and saves in database
+    func addTrialToUserByUserObjectId(objectID: NSManagedObjectID, givenTrial: Trial) {
+        
+        do {
+            let medUser = try myMoc.existingObjectWithID(objectID) as? MedUser
+            let trial = NSEntityDescription.insertNewObjectForEntityForName("MedTrial", inManagedObjectContext: myMoc) as! MedTrial
+            
+            trial.setValue(givenTrial.hits, forKey: "hits")
+            trial.setValue(givenTrial.fails, forKey: "fails")
+            trial.setValue(givenTrial.duration, forKey: "duration")
+            trial.setValue(givenTrial.timeStamp, forKey: "timeStamp")
+            trial.setValue(true, forKey: "isSelectedForStats")
+            trial.setValue(givenTrial.creationDate, forKey: "creationDate")
+            
+            for point in givenTrial.missedLinePositionList {
+                let databasePoint = NSEntityDescription.insertNewObjectForEntityForName("MissedTouchPosition", inManagedObjectContext: myMoc) as! MissedTouchPosition
+                print("MedUserManager: \(Double(point.x))")
+                databasePoint.setValue(Double(point.x), forKey: "x")
+                databasePoint.setValue(Double(point.y), forKey: "y")
+                //databasePoint.setXY(Double(point.x), y: Double(point.y))
+                trial.addMissedTouchPosition(databasePoint)
+            }
+
+            medUser!.addTrial(trial)
+            try myMoc.save()
+            
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    func getTrialListByObjectId(objectId: NSManagedObjectID) -> [Trial]
+    {
+        var retList = [Trial] ()
+        do {
+            let medUser = try myMoc.existingObjectWithID(objectId) as? MedUser
+            var trialList = medUser?.trial!.allObjects as! [MedTrial]
+            
+            // sort by creation date:
+            trialList = trialList.sort({ $0.creationDate.compare($1.creationDate) == .OrderedAscending })
+            
+            for (index, _) in trialList.enumerate() {
+                let trial = Trial()
+                trial.hits = Int(trialList[index].hits!)
+                trial.fails = Int(trialList[index].fails!)
+                trial.duration = trialList[index].duration!.doubleValue
+                trial.timeStamp = trialList[index].timeStamp!
+                trial.creationDate = trialList[index].creationDate
+                
+                let missedPositionList = trialList[index].missedTouchPosList!.allObjects as! [MissedTouchPosition]
+                for point in missedPositionList {
+                    //print("MedUserManager \(point.x!)")
+                    let cgpoint = CGPoint(x: Double(point.x!), y: Double(point.y!))
+                    trial.missedLinePositionList.append(cgpoint)
+                }
+                
+                retList.append(trial)
+            }
+            return retList
+        } catch {
+            fatalError("Failure to read medTrials at getTrialListByObjectId(): \(error)")
         }
     }
     

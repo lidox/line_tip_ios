@@ -116,6 +116,27 @@ class Trial: NSObject {
         let numbers = [topLeft, topRight, downLeft, downRight]
         let max = numbers.maxElement()
         
+        /*COUNT
+        -hat3Maxima : Bool -> none
+        -hat2Maxima+-3Abweichung: Bool
+            -andere sind min. 5 kleiner
+            -welche sind die zwei Maxima? downLeft and down right? --> Tendez: down
+        -hat1Maximum+-Abweichung
+        
+        let arr = ["FOO", "FOO", "BAR", "FOOBAR"]
+        var counts:[String:Int] = [:]
+        
+        for item in arr {
+            counts[item] = (counts[item] ?? 0) + 1
+        }
+        
+        println(counts)  // "[BAR: 1, FOOBAR: 1, FOO: 2]"
+        
+        for (key, value) in counts {
+            println("\(key) occurs \(value) time(s)")
+        }
+        */
+        
         if max == 0 {
             return "none"
         }
@@ -128,6 +149,7 @@ class Trial: NSObject {
             print("Item \(index): \(element)")
             index += 1
         }
+        
         if(index == 0) {
             toReturn = "topLeft"
         }

@@ -84,7 +84,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let hits = "hits".translate() + ": \(trialList[indexPath.row].hits)"
         let fails = "misses".translate() + ": \(trialList[indexPath.row].fails)"
         let tendency = "\(trialList[indexPath.row].getTendency())"
-        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails) | \(tendency)"
+        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails) | "
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: nil)
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
@@ -92,15 +92,46 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let sDuration = duration.characters.count
         let sHits = hits.characters.count
         let sMiss = fails.characters.count
-        let sTendency = tendency.characters.count
+        //let sTendency = tendency.characters.count
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:sTimestamp + sDuration + 3))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:sTimestamp + sDuration + 6,length:sHits))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:sTimestamp + sDuration + sHits + 9,length:sMiss))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:sTimestamp + sDuration + sHits + sMiss + 12,length:sTendency))
+        //myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:sTimestamp + sDuration + sHits + sMiss + 12,length:sTendency))
+
+        // add image
+        myMutableString.appendAttributedString(getAttributedStringWithImageByTendecy(tendency))
+
         cell.textLabel!.attributedText = myMutableString
         return cell
     }
-
+    
+    /// shows chart if only mere then 3 trials availible
+    func getAttributedStringWithImageByTendecy(tendecy: String) -> NSAttributedString {
+        let textAttachment = NSTextAttachment()
+        var orientation = UIImageOrientation.Left
+        
+        if(tendecy == "downRight"){
+            orientation = .Up
+        }
+        else if(tendecy == "downLeft"){
+            orientation = .Right
+        }
+        else if(tendecy == "topRight"){
+            orientation = .Left
+        }
+        else if(tendecy == "topLeft"){
+            orientation = .Down
+        }
+        else if(tendecy == "none"){
+            return NSAttributedString(attachment: textAttachment)
+        }
+        
+        
+        textAttachment.image = UIImage(named: "arrow.png")!
+        textAttachment.image = UIImage(CGImage: textAttachment.image!.CGImage!, scale: 2, orientation: orientation)
+        return NSAttributedString(attachment: textAttachment)
+    }
+    
     /// shows chart if only mere then 3 trials availible
     func goodOldLineChart() {
         if(self.trialList.count > 2){

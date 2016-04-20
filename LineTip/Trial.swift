@@ -110,14 +110,34 @@ class Trial: NSObject {
         return getMaxOfFour(topLeft, topRight: topRight, downLeft: downLeft, downRight: downRight)
     }
     
-    /// returns a tendecy for a point
+    // TODO : return array with positions
+    func containsNumXTimes(number: Int, Xtimes: Int, numberList: [Int]) -> Bool {
+        var currentX = 0
+        for (i, item) in numberList.enumerate() {
+            if number == item {
+                currentX += 1
+            }
+        }
+        
+        if currentX == Xtimes {
+            return true
+        }
+        return false
+    }
+    
+    /// returns a tendecy for a single point
     func getMaxOfFour(topLeft: Int, topRight: Int, downLeft: Int, downRight: Int) -> String {
         var toReturn = ""
         let numbers = [topLeft, topRight, downLeft, downRight]
         let max = numbers.maxElement()
         
+        if containsNumXTimes(max!, Xtimes: 3, numberList: numbers) {
+            
+        }
         /*COUNT
         -hat3Maxima : Bool -> none
+        
+        
         -hat2Maxima+-3Abweichung: Bool
             -andere sind min. 5 kleiner
             -welche sind die zwei Maxima? downLeft and down right? --> Tendez: down

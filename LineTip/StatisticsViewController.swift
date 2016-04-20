@@ -105,7 +105,7 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         return cell
     }
     
-    /// shows chart if only mere then 3 trials availible
+    /// get attributted string with image and correct orientation by tendecy
     func getAttributedStringWithImageByTendecy(tendecy: String) -> NSAttributedString {
         let textAttachment = NSTextAttachment()
         var orientation = UIImageOrientation.Left

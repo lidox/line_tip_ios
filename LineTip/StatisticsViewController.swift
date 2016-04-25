@@ -109,7 +109,10 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
     func getAttributedStringWithImageByTendecy(tendecy: String) -> NSAttributedString {
         let textAttachment = NSTextAttachment()
         var orientation = UIImageOrientation.Left
-        
+        if(tendecy == "none"){
+            return NSAttributedString(attachment: textAttachment)
+        }
+        textAttachment.image = UIImage(named: "arrow.png")!
         if(tendecy == "downRight"){
             orientation = .Up
         }
@@ -122,13 +125,23 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         else if(tendecy == "topLeft"){
             orientation = .Down
         }
-        else if(tendecy == "none"){
-            return NSAttributedString(attachment: textAttachment)
+        else if(tendecy == "top"){
+            textAttachment.image = UIImage(named: "arrow-right.png")!
+            orientation = .Left
         }
-        
-        
-        textAttachment.image = UIImage(named: "arrow.png")!
-        textAttachment.image = UIImage(CGImage: textAttachment.image!.CGImage!, scale: 2, orientation: orientation)
+        else if(tendecy == "down"){
+            textAttachment.image = UIImage(named: "arrow-right.png")!
+            orientation = .Right
+        }
+        else if(tendecy == "left"){
+            textAttachment.image = UIImage(named: "arrow-right.png")!
+            orientation = .Down
+        }
+        else if(tendecy == "right"){
+            textAttachment.image = UIImage(named: "arrow-right.png")!
+            orientation = .Up
+        }
+        textAttachment.image = UIImage(CGImage: textAttachment.image!.CGImage!, scale: 1, orientation: orientation)
         return NSAttributedString(attachment: textAttachment)
     }
     

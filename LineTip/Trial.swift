@@ -111,76 +111,128 @@ class Trial: NSObject {
     }
     
     // TODO : return array with positions
-    func containsNumXTimes(number: Int, Xtimes: Int, numberList: [Int]) -> Bool {
-        var currentX = 0
+    func getValuePositions(value: Int, numberList: [Int]) -> Array<Int> {
+        var xPositionsList = [Int]()
         for (i, item) in numberList.enumerate() {
-            if number == item {
-                currentX += 1
+            if value == item {
+                xPositionsList.append(i)
             }
         }
-        
-        if currentX == Xtimes {
+        return xPositionsList
+    }
+    
+    func containsValueXTimes(value: Int, xTimes: Int, numberList: [Int]) -> Bool {
+        let xPositionsList = getValuePositions(value, numberList: numberList)
+        if xPositionsList.count == xTimes {
             return true
         }
         return false
+    }
+    
+    func isDeviationHighEnough(deviationConst: Int, maxValuePositions: [Int], valueList: [Int]) -> Bool {
+        let maxValue = valueList[maxValuePositions[0]]
+        for (i,value) in valueList.enumerate() {
+            if maxValuePositions.contains(i) {
+                continue
+            }
+            
+            let isDeviationHighEnough = (maxValue - value) >= deviationConst
+            
+            if !isDeviationHighEnough {
+                return false
+            }
+        }
+        
+        return true
     }
     
     /// returns a tendecy for a single point
     func getMaxOfFour(topLeft: Int, topRight: Int, downLeft: Int, downRight: Int) -> String {
         var toReturn = ""
         let numbers = [topLeft, topRight, downLeft, downRight]
-        let max = numbers.maxElement()
+        let maxValue = numbers.maxElement()
         
-        if containsNumXTimes(max!, Xtimes: 3, numberList: numbers) {
-            
+        if maxValue == 0 {
+            return "none"
         }
+        
+        let maxValuePositions = getValuePositions(maxValue!, numberList: numbers)
+        
+        let hasMoreThenTwoMaxValues = maxValuePositions.count > 2
+        if  hasMoreThenTwoMaxValues {
+            return "none"
+        }
+        
+        let isDeviationHigh = isDeviationHighEnough(5, maxValuePositions: maxValuePositions, valueList: numbers)
+        
+        //hat2Maxima+-Abweichung: Bool
+        let hasTwoMaxValues = maxValuePositions.count == 2
+        if hasTwoMaxValues {
+            // andere sind min. 5 kleiner
+            if isDeviationHigh {
+                //welche sind die zwei Maxima? downLeft and down right? --> Tendez: down
+                //[topLeft, topRight, downLeft, downRight]
+                let maxPosition1 = maxValuePositions[0]
+                let maxPosition2 = maxValuePositions[1]
+                if maxPosition1 == 0 && maxPosition2 == 1 {
+                    print("Trial.getMaxOfFour: top")
+                    return "top"
+                }
+                else if maxPosition1 == 2 && maxPosition2 == 3 {
+                    print("Trial.getMaxOfFour: down")
+                    return "down"
+                }
+                else if maxPosition1 == 0 && maxPosition2 == 2 {
+                    print("Trial.getMaxOfFour: left")
+                    return "left"
+                }
+                else if maxPosition1 == 1 && maxPosition2 == 3 {
+                    print("Trial.getMaxOfFour: right")
+                    return "right"
+                }
+            }
+            else {
+                 // maxValues show in different directions
+                 return "none"
+            }
+        }
+
         /*COUNT
         -hat3Maxima : Bool -> none
         
-        
+        // isDeviationHighEnough()
         -hat2Maxima+-3Abweichung: Bool
             -andere sind min. 5 kleiner
             -welche sind die zwei Maxima? downLeft and down right? --> Tendez: down
         -hat1Maximum+-Abweichung
-        
-        let arr = ["FOO", "FOO", "BAR", "FOOBAR"]
-        var counts:[String:Int] = [:]
-        
-        for item in arr {
-            counts[item] = (counts[item] ?? 0) + 1
-        }
-        
-        println(counts)  // "[BAR: 1, FOOBAR: 1, FOO: 2]"
-        
-        for (key, value) in counts {
-            println("\(key) occurs \(value) time(s)")
-        }
         */
         
-        if max == 0 {
-            return "none"
-        }
-        
-        var index = 0
-        for (element) in numbers {
-            if (max == element) {
-                break
+        if isDeviationHigh {
+            var index = 0
+            for (element) in numbers {
+                if (maxValue == element) {
+                    break
+                }
+                print("Item \(index): \(element)")
+                index += 1
             }
-            print("Item \(index): \(element)")
-            index += 1
-        }
         
-        if(index == 0) {
-            toReturn = "topLeft"
+            if(index == 0) {
+                toReturn = "topLeft"
+            }
+            else if (index == 1) {
+                toReturn = "topRight"
+            }
+            else if (index == 2) {
+                toReturn = "downLeft"
+            }
+            else  {
+                toReturn = "downRight"
+            }
+            
         }
-        else if (index == 1) {
-            toReturn = "topRight"
-        }
-        else if (index == 2) {
-            toReturn = "downLeft"
-        }
-        else  {
-            toReturn = "downRight"
+        else {
+            return "none"
         }
         
         return toReturn

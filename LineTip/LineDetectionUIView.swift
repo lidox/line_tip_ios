@@ -130,8 +130,8 @@ class LineDetectionUIView: UIView {
     
     /// reset last touch position to (0,0)
     func resetLastTouchPosition() {
-        lastTouchPosition.x = 0
-        lastTouchPosition.y = 0
+        self.lastTouchPosition.x = 0
+        self.lastTouchPosition.y = 0
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

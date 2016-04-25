@@ -20,7 +20,8 @@
 		04332A491C901B2D00A29B40 /* UserManagementUIViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */; };
 		043FB0F81CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FB0F61CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift */; };
 		043FB0F91CC239BA0071446E /* MissedTouchPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FB0F71CC239BA0071446E /* MissedTouchPosition.swift */; };
-		043FB0FD1CC398B90071446E /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0FC1CC398B90071446E /* arrow.png */; };
+		043FB0FF1CCE0C840071446E /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0FE1CCE0C840071446E /* arrow-right.png */; };
+		043FB1011CCE0EED0071446E /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FB1001CCE0EED0071446E /* arrow.png */; };
 		047941761C0C59CA0093EDD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941751C0C59CA0093EDD6 /* User.swift */; };
 		047941781C0C5A300093EDD6 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047941771C0C5A300093EDD6 /* Trial.swift */; };
 		048064B31C11CE6D00F775CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048064B21C11CE6D00F775CC /* MainViewController.swift */; };
@@ -106,7 +107,8 @@
 		04332A481C901B2D00A29B40 /* UserManagementUIViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementUIViewConroller.swift; sourceTree = "<group>"; };
 		043FB0F61CC239BA0071446E /* MissedTouchPosition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MissedTouchPosition+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		043FB0F71CC239BA0071446E /* MissedTouchPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissedTouchPosition.swift; sourceTree = "<group>"; };
-		043FB0FC1CC398B90071446E /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		043FB0FE1CCE0C840071446E /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
+		043FB1001CCE0EED0071446E /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		047941751C0C59CA0093EDD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		047941771C0C5A300093EDD6 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		048064B21C11CE6D00F775CC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +240,8 @@
 		0418F5F71C083D3D00B90989 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				043FB0FC1CC398B90071446E /* arrow.png */,
+				043FB0FE1CCE0C840071446E /* arrow-right.png */,
+				043FB1001CCE0EED0071446E /* arrow.png */,
 				04F894101C8D5AEB00566C3C /* icon */,
 				04F8941D1C8DD80800566C3C /* splash-overlay.png */,
 				048E19471C721BCB00035760 /* trans.png */,
@@ -450,11 +453,11 @@
 				048064BF1C11FCA100F775CC /* SettingsViewController.xib in Resources */,
 				040691471C24464F00E2F9B2 /* finish_trial.png in Resources */,
 				04F894281C8EAE0700566C3C /* icon-87.png in Resources */,
+				043FB1011CCE0EED0071446E /* arrow.png in Resources */,
 				04F894181C8D5B3700566C3C /* icon-120.png in Resources */,
 				04F894071C873E7900566C3C /* wrong.wav in Resources */,
 				04F8941E1C8DD80800566C3C /* splash-overlay.png in Resources */,
 				0418F5CF1C083A4A00B90989 /* Main.storyboard in Resources */,
-				043FB0FD1CC398B90071446E /* arrow.png in Resources */,
 				04F8942A1C8EC57B00566C3C /* icon-40.png in Resources */,
 				048064D31C15B76B00F775CC /* ball.png in Resources */,
 				04F8942E1C8F337800566C3C /* Images.xcassets in Resources */,
@@ -470,6 +473,7 @@
 				04F894241C8EAE0700566C3C /* icon-29.png in Resources */,
 				04F894271C8EAE0700566C3C /* icon-80.png in Resources */,
 				048064BB1C11FC8200F775CC /* StatisticsViewController.xib in Resources */,
+				043FB0FF1CCE0C840071446E /* arrow-right.png in Resources */,
 				04F8941C1C8D5B3700566C3C /* icon-1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

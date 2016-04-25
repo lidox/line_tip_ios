@@ -110,11 +110,12 @@ class Trial: NSObject {
         return getMaxOfFour(topLeft, topRight: topRight, downLeft: downLeft, downRight: downRight)
     }
     
-    // TODO : return array with positions
     func getValuePositions(value: Int, numberList: [Int]) -> Array<Int> {
         var xPositionsList = [Int]()
         for (i, item) in numberList.enumerate() {
-            if value == item {
+            // deviation +-2
+            let deviation = abs(value - item)
+            if deviation <= 2 {
                 xPositionsList.append(i)
             }
         }
@@ -165,13 +166,10 @@ class Trial: NSObject {
         
         let isDeviationHigh = isDeviationHighEnough(5, maxValuePositions: maxValuePositions, valueList: numbers)
         
-        //hat2Maxima+-Abweichung: Bool
         let hasTwoMaxValues = maxValuePositions.count == 2
+        
         if hasTwoMaxValues {
-            // andere sind min. 5 kleiner
             if isDeviationHigh {
-                //welche sind die zwei Maxima? downLeft and down right? --> Tendez: down
-                //[topLeft, topRight, downLeft, downRight]
                 let maxPosition1 = maxValuePositions[0]
                 let maxPosition2 = maxValuePositions[1]
                 if maxPosition1 == 0 && maxPosition2 == 1 {
@@ -196,16 +194,6 @@ class Trial: NSObject {
                  return "none"
             }
         }
-
-        /*COUNT
-        -hat3Maxima : Bool -> none
-        
-        // isDeviationHighEnough()
-        -hat2Maxima+-3Abweichung: Bool
-            -andere sind min. 5 kleiner
-            -welche sind die zwei Maxima? downLeft and down right? --> Tendez: down
-        -hat1Maximum+-Abweichung
-        */
         
         if isDeviationHigh {
             var index = 0

@@ -80,11 +80,12 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         cell.accessoryType = .Checkmark
 
         // set colored cell to get better understanding of the chart
-        let duration = ("duration".translate() + ": "+trialList[indexPath.row].duration.getStringAsHoursMinutesSeconds())
+        let duration = ("duration ".translate() + ": "+trialList[indexPath.row].duration.getStringAsHoursMinutesSeconds())
         let hits = "hits".translate() + ": \(trialList[indexPath.row].hits)"
         let fails = "misses".translate() + ": \(trialList[indexPath.row].fails)"
+        let tendecyString = "tendency".translate() + ":";
         let tendency = "\(trialList[indexPath.row].getTendency())"
-        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails) | "
+        let myString:NSString = "\(trialList[indexPath.row].timeStamp) | \(duration) | \(hits) | \(fails) | \(tendecyString)"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: nil)
         let blueLineColor = UIColor(red: 0.160784, green: 0.384314, blue: 0.658824, alpha: 1.0)
@@ -92,11 +93,11 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
         let sDuration = duration.characters.count
         let sHits = hits.characters.count
         let sMiss = fails.characters.count
-        //let sTendency = tendency.characters.count
+        let sTendency = tendency.characters.count
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:0,length:sTimestamp + sDuration + 3))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: blueLineColor, range: NSRange(location:sTimestamp + sDuration + 6,length:sHits))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.myKeyColor(), range: NSRange(location:sTimestamp + sDuration + sHits + 9,length:sMiss))
-        //myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:sTimestamp + sDuration + sHits + sMiss + 12,length:sTendency))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSRange(location:sTimestamp + sDuration + sHits + sMiss + 12,length:sTendency))
 
         // add image
         myMutableString.appendAttributedString(getAttributedStringWithImageByTendecy(tendency))
@@ -142,6 +143,12 @@ class StatisticsViewController: UIViewController, LineChartDelegate, UITableView
             orientation = .Up
         }
         textAttachment.image = UIImage(CGImage: textAttachment.image!.CGImage!, scale: 1, orientation: orientation)
+
+        let font = UIFont.systemFontOfSize(16)
+        let mid = font.descender + font.capHeight
+        textAttachment.bounds = CGRectIntegral(CGRect(x: 0, y: font.descender - textAttachment.image!.size.height / 2 + mid + 2, width: textAttachment.image!.size.width, height: textAttachment.image!.size.height))
+        
+        
         return NSAttributedString(attachment: textAttachment)
     }
     

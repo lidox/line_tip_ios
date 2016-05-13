@@ -159,7 +159,14 @@ extension String {
             else if key == "Assign trial to user" {
                 translation = "Benutzer zuordnen"
             }
+            else if key == "tendency" {
+                translation = "Tendenz"
+            }
+            else if key == "duration " {
+                translation = "Dauer"
+            }
             /*
+
             */
         }
         
